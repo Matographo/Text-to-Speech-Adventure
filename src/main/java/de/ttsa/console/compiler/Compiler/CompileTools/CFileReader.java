@@ -58,13 +58,6 @@ public class CFileReader {
         return null;
     }
 
-
-
-
-
-
-
-
     private boolean isFile(File file) {
         if(file.isDirectory()) {
             output("Path is a directory");
