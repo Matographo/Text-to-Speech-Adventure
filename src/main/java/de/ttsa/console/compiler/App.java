@@ -1,6 +1,6 @@
 package de.ttsa.console.compiler;
 
-import de.ttsa.console.compiler.Compiler.Compiler;
+import de.ttsa.console.compiler.Compiler.StartCompiler;
 import de.ttsa.console.compiler.Tester.Test;
 
 /**
@@ -65,9 +65,9 @@ public class App
         System.out.println("Version: " + COMPILER_VERSION + "\n");
     }
 
-    private void compile(String file, boolean hidden) {
+    private void compile(String file, boolean isHidden) {
         try {
-            Compiler compiler = new Compiler(file);
+            StartCompiler compiler = new StartCompiler(file, isHidden);
             compiler.compile();
         } catch (Exception e) {
             System.out.println(e.getMessage());
