@@ -62,9 +62,11 @@ public class CFileReader {
         if(file.isDirectory()) {
             output("Path is a directory");
             return false;
-        } else {
+        } else if (file.isFile()){
             output("Path is a file");
             return true;
+        } else {
+            throw new IllegalArgumentException("Path is not valid");
         }
     }
 
