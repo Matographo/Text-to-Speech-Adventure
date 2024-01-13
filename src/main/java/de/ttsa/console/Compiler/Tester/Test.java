@@ -1,4 +1,4 @@
-package de.ttsa.console.compiler.Tester;
+package de.ttsa.console.Compiler.Tester;
 
 import java.io.BufferedReader;
 import java.io.File;

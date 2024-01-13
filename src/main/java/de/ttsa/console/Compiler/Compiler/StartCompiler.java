@@ -1,14 +1,14 @@
-package de.ttsa.console.compiler.Compiler;
+package de.ttsa.console.Compiler.Compiler;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import de.ttsa.console.compiler.Compiler.CompileC.Compiler;
-import de.ttsa.console.compiler.Compiler.CompileTools.CFileReader;
-import de.ttsa.console.compiler.Compiler.CompileTools.GameBuilder;
-import de.ttsa.console.compiler.Compiler.CompileTools.Merger;
-import de.ttsa.console.compiler.Compiler.CompileTools.Sorter;
-import de.ttsa.console.compiler.Compiler.TestC.Test;
+import de.ttsa.console.Compiler.Compiler.CompileC.Compiler;
+import de.ttsa.console.Compiler.Compiler.CompileTools.CFileReader;
+import de.ttsa.console.Compiler.Compiler.CompileTools.GameBuilder;
+import de.ttsa.console.Compiler.Compiler.CompileTools.Merger;
+import de.ttsa.console.Compiler.Compiler.CompileTools.Sorter;
+import de.ttsa.console.Compiler.Compiler.TestC.Test;
 
 public class StartCompiler {
 

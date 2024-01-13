@@ -1,4 +1,4 @@
-package de.ttsa.console.compiler.Compiler.TestC;
+package de.ttsa.console.Compiler.Compiler.TestC;
 
 import java.io.File;
 import java.util.ArrayList;

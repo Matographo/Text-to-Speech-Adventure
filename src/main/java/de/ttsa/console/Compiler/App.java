@@ -1,7 +1,7 @@
-package de.ttsa.console.compiler;
+package de.ttsa.console.Compiler;
 
-import de.ttsa.console.compiler.Compiler.StartCompiler;
-import de.ttsa.console.compiler.Tester.Test;
+import de.ttsa.console.Compiler.Compiler.StartCompiler;
+import de.ttsa.console.Compiler.Tester.Test;
 
 /**
  * Hello world!
