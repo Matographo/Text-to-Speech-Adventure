@@ -75,9 +75,13 @@ public class App
     }
 
     private void test(String file) {
-        Test test = new Test(file);
-        test.start();
-        System.out.println(test.getOutput());
+        try {
+            Test test = new Test(file);
+            test.start();
+            System.out.println(test.getOutput());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

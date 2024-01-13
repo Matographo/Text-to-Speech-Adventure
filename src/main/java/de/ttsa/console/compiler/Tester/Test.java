@@ -49,4 +49,8 @@ public class Test {
     private void testBlocks(ArrayList<String> content) {
     
     }
+
+    public String getOutput() {
+        return "";
+    }
 }
