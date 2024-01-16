@@ -1,7 +1,7 @@
 package de.ttsa.console.Compiler;
 
 import de.ttsa.console.Compiler.Compiler.StartCompiler;
-import de.ttsa.console.Compiler.Tester.Test;
+import de.ttsa.console.Compiler.Tester.CCodeTest;
 
 /**
  * Hello world!
@@ -76,7 +76,7 @@ public class App
 
     private void test(String file) {
         try {
-            Test test = new Test(file);
+            CCodeTest test = new CCodeTest(file);
             test.start();
             System.out.println(test.getOutput());
         } catch (Exception e) {

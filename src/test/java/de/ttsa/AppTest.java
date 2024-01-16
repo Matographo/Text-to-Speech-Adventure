@@ -1,4 +1,4 @@
-package de.compiler;
+package de.ttsa;
 
 import static org.junit.Assert.assertTrue;
 

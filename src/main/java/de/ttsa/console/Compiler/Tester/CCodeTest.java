@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Test {
+public class CCodeTest {
 
     File file;
 
-    public Test(String file) {
+    public CCodeTest(String file) {
         this.file = new File(file);
         if(!this.file.exists()) {
             throw new IllegalArgumentException("The file " + file + " does not exist.");
