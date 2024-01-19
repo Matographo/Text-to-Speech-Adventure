@@ -9,7 +9,7 @@ import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterSayTest {
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestTester/TestFiles/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/OpCodeTestTester/TestFiles/";
     
     @Test
     public void testSayFixString() {
