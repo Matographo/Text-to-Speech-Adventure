@@ -1,4 +1,4 @@
-package de.ttsa.OpCodePlayerTester;
+package de.ttsa.TestClasses.OpCodePlayerTester;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -10,7 +10,7 @@ import de.ttsa.ConsoleGame.Player.Player;
 
 public class PlayerSayTest {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/OpCodePlayerTester/TestFiles/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
 
     @Test
     public void testSayFixString() {
@@ -46,7 +46,7 @@ public class PlayerSayTest {
 
     @Test
     public void testSayMultipleSaysFixStrings() {
-        String expected = "Hallo\ndu\ntolle\nWelt";
+        String expected = "Hello\nWorld\nThis is cool";
         GetOutput output = new GetOutput();
         try {
             Player player = new Player(TEST_FILE_PATH + "testSayMultipleSaysFixStrings");
@@ -55,6 +55,21 @@ public class PlayerSayTest {
             assertEquals(expected, output.getTerminalOutput());
         } catch (Exception e) {
             fail();
+        } finally {
+            output.reinit();
+        }
+    }
+
+    @Test
+    public void testSayFixNumber() {
+        String expected = "6";
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testSayFixNumber");
+            output.init();
+            player.play();
+            fail();
+        } catch (Exception e) {
         } finally {
             output.reinit();
         }

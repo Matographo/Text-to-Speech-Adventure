@@ -1,4 +1,4 @@
-package de.ttsa.OpCodeTestTester;
+package de.ttsa.TestClasses.OpCodeTestTester;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -9,7 +9,7 @@ import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterSayTest {
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/OpCodeTestTester/TestFiles/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
     
     @Test
     public void testSayFixString() {

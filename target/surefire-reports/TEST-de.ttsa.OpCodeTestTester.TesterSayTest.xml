@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.ttsa.OpCodeTestTester.TesterSayTest" time="0.001" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.ttsa.OpCodeTestTester.TesterSayTest" time="0" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64/lib"/>
-    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter15075900720370507892.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-01-19T15-23-22_260-jvmRun1 surefire5628126004744254670tmp surefire_05394985758984624664tmp"/>
+    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter2768659891771899509.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-01-19T18-37-53_752-jvmRun1 surefire2727154479364935267tmp surefire_04393186985800375801tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter15075900720370507892.jar"/>
+    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter2768659891771899509.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
     <property name="user.name" value="leodora"/>
@@ -54,5 +54,6 @@
   </properties>
   <testcase name="testSayMultipleSaysFixStrings" classname="de.ttsa.OpCodeTestTester.TesterSayTest" time="0"/>
   <testcase name="testSayMultipleFixString" classname="de.ttsa.OpCodeTestTester.TesterSayTest" time="0"/>
+  <testcase name="testSayFixNumber" classname="de.ttsa.OpCodeTestTester.TesterSayTest" time="0"/>
   <testcase name="testSayFixString" classname="de.ttsa.OpCodeTestTester.TesterSayTest" time="0"/>
 </testsuite>

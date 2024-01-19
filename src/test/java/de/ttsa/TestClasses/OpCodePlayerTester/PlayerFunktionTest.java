@@ -1,4 +1,4 @@
-package de.ttsa.OpCodePlayerTester;
+package de.ttsa.TestClasses.OpCodePlayerTester;
 
 import static org.junit.Assert.fail;
 
@@ -8,7 +8,7 @@ import de.ttsa.ConsoleGame.Player.Player;
 
 public class PlayerFunktionTest {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/OpCodePlayerTester/TestFiles/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
 
     @Test
     public void testEmptyFile() {
