@@ -1,7 +1,7 @@
 package de.ttsa.ConsoleGame.Compiler;
 
-import de.ttsa.ConsoleGame.Compiler.ComCodeTester.CCodeTest;
 import de.ttsa.ConsoleGame.Compiler.Compiler.StartCompiler;
+import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 /**
  * Hello world!
@@ -76,7 +76,7 @@ public class App
 
     private void test(String file) {
         try {
-            CCodeTest test = new CCodeTest(file);
+            OpCodeTest test = new OpCodeTest(file);
             test.start();
             System.out.println(test.getOutput());
         } catch (Exception e) {

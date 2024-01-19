@@ -1,10 +1,10 @@
-package de.ttsa.TestTester;
+package de.ttsa.OpCodeTestTester;
 
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Compiler.ComCodeTester.CCodeTest;
+import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterFunctionTest {
 
@@ -13,7 +13,7 @@ public class TesterFunctionTest {
     @Test
     public void testEmptyFile() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "testEmptyFile");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testEmptyFile");
         } catch (Exception e) {
             fail();
         }
@@ -22,7 +22,7 @@ public class TesterFunctionTest {
     @Test
     public void testNoneExistingFile() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
         fail();
         } catch (Exception e) {
         }

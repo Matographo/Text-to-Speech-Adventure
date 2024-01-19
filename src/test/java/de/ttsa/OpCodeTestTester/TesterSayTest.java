@@ -1,11 +1,11 @@
-package de.ttsa.TestTester;
+package de.ttsa.OpCodeTestTester;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Compiler.ComCodeTester.CCodeTest;
+import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterSayTest {
 
@@ -14,7 +14,7 @@ public class TesterSayTest {
     @Test
     public void testSayFixString() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "testSayFixString");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixString");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -24,7 +24,7 @@ public class TesterSayTest {
     @Test
     public void testSayMultipleFixString() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "testSayMultipleFixStringsAtOnce");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleFixStringsAtOnce");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -34,7 +34,7 @@ public class TesterSayTest {
     @Test
     public void testSayMultipleSaysFixStrings() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "testSayMultipleSaysFixStrings");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleSaysFixStrings");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
