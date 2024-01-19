@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import de.ttsa.console.Compiler.Tester.CCodeTest;
+import de.ttsa.ConsoleGame.Compiler.ComCodeTester.CCodeTest;
 
 public class TesterFunctionTest {
 
@@ -13,7 +13,7 @@ public class TesterFunctionTest {
     @Test
     public void testEmptyFile() {
         try {
-        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "emptyFile");
+        CCodeTest test = new CCodeTest(TEST_FILE_PATH + "testEmptyFile");
         } catch (Exception e) {
             fail();
         }
@@ -27,4 +27,5 @@ public class TesterFunctionTest {
         } catch (Exception e) {
         }
     }
+    
 }

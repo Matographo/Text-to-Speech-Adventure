@@ -1,3 +1,9 @@
-de/ttsa/console/compiler/Compiler/Compiler.class
-de/ttsa/console/compiler/App.class
-de/ttsa/console/compiler/Tester/Test.class
+de/ttsa/console/Compiler/Compiler/CompileTools/GameBuilder.class
+de/ttsa/console/Compiler/Compiler/TestC/Test.class
+de/ttsa/console/Compiler/Compiler/CompileTools/CFileReader.class
+de/ttsa/console/Compiler/Compiler/CompileTools/Merger.class
+de/ttsa/console/Compiler/App.class
+de/ttsa/console/Compiler/Compiler/CompileTools/Sorter.class
+de/ttsa/console/Compiler/Tester/CCodeTest.class
+de/ttsa/console/Compiler/Compiler/CompileC/Compiler.class
+de/ttsa/console/Compiler/Compiler/StartCompiler.class
