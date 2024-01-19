@@ -40,4 +40,14 @@ public class TesterSayTest {
             fail();
         }
     }
+
+    @Test
+    public void testSayFixNumber() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixNumber");
+        assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
 }
