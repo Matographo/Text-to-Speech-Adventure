@@ -15,6 +15,16 @@ public class TesterRoomJumperTest {
     public void testRoomJumperWithoutRoom() {
         try {
             OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithoutRoom");
+            assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testRoomJumperWithRoom() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithRoom");
             assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -22,9 +32,9 @@ public class TesterRoomJumperTest {
     }
 
     @Test
-    public void testRoomJumperWithoutRoomAndSpaceInName() {
+    public void testRoomJumperAndSpaceInName() {
         try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithoutRoomAndSpaceInName");
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperSpaceInName");
             assertEquals(false, test.start());
         } catch (Exception e) {
             fail();
@@ -32,9 +42,9 @@ public class TesterRoomJumperTest {
     }
 
     @Test
-    public void testRoomJumperWithoutRoomAsString() {
+    public void testRoomJumperAsString() {
         try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithoutRoomAsString");
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperAsString");
             assertEquals(false, test.start());
         } catch (Exception e) {
             fail();
@@ -42,9 +52,9 @@ public class TesterRoomJumperTest {
     }
 
     @Test
-    public void testRoomJumperWithoutRoomWithSpecialChar() {
+    public void testRoomJumperWithSpecialChar() {
         try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithoutRoomWithSpecialChar");
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomJumperWithSpecialChar");
             assertEquals(false, test.start());
         } catch (Exception e) {
             fail();

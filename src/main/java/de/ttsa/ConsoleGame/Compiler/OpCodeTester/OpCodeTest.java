@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class OpCodeTest {
 
@@ -22,7 +23,11 @@ public class OpCodeTest {
     private final String INDEX_ROOM = "01";
     private final String INDEX_ROOM_JUMPER = "02";
 
+// ------------------ Variables Memory --------------------
 
+    private HashSet<String> roomNames = new HashSet<String>();
+
+// -------------------- Constructor -----------------------
 
     public OpCodeTest(String file) {
         this.file = new File(file);
@@ -30,6 +35,10 @@ public class OpCodeTest {
             throw new IllegalArgumentException("The file " + file + " does not exist.");
         }
     }
+
+
+// ----------------------- Start --------------------------
+
 
     public boolean start() {
         boolean testResult = true;
@@ -45,6 +54,7 @@ public class OpCodeTest {
     }
 
 
+// -------------------- Load Data ------------------------
 
 
     private ArrayList<String> getContent() throws IOException {
@@ -57,6 +67,10 @@ public class OpCodeTest {
         reader.close();
         return content;
     }
+
+
+// ----------------- Test All Syntax ---------------------
+
 
     private boolean testSyntax(ArrayList<String> content) {
         boolean testResult = true;
@@ -85,9 +99,35 @@ public class OpCodeTest {
         return testResult;
     }
 
+
+// ----------------- Test All Variables ----------------------
+
+
     private boolean testVariables(ArrayList<String> content) {
-        return true;
+        boolean testResult = true;
+        String command = "";
+        String args = "";
+        for(int i = 0; i < content.size(); i++) {
+            command = content.get(i).split(COMMAND_SEPERATOR)[0];
+            args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
+
+            switch(command) {
+                case INDEX_ROOM:
+                    testResult = testResult && testRoomVariable(args);
+                    break;
+                case INDEX_ROOM_JUMPER:
+                    testResult = testResult && testRoomJumperVariable(args);
+                    break;
+                default:
+                    continue;
+            }
+        }
+        return testResult;
     }
+
+
+// ------------------ Test All Blocks -----------------------
+
 
     private boolean testBlocks(ArrayList<String> content) {
         boolean testResult = true;
@@ -158,8 +198,30 @@ public class OpCodeTest {
         return true;
     }
 
+// ------------------ Test Functions Variables -------------------
+
+
+    private boolean testRoomVariable(String args) {
+        String[] arg = args.split(ROOM_SEPERATOR);
+        if(roomNames.contains(arg[0])) {
+            return false;
+        }
+        roomNames.add(arg[0]);
+        return true;
+    }
+
+    private boolean testRoomJumperVariable(String args) {
+        if(roomNames.contains(args)) {
+            return true;
+        }
+        return false;
+    }
+
+
 
 // ------------------ Test Functions Blocks ----------------------
+
+
 
     private boolean testRoomBlock(String args, ArrayList<String> content) {
         String[] arg = args.split(ROOM_SEPERATOR);
