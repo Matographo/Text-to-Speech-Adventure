@@ -8,7 +8,7 @@ import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterFunctionTest {
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Functioning/";
 
     @Test
     public void testEmptyFile() {

@@ -7,6 +7,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
+import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameScriptBuilder {
 
@@ -17,10 +18,12 @@ public class GameScriptBuilder {
 
 private final String COMMAND_SEPERATOR = "::";
 private final String SAY_SEPERATOR = ",";
+private final String ROOM_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
 
 private final String INDEX_SAY = "00";
+private final String INDEX_ROOM = "01";
 
 
 
@@ -36,8 +39,11 @@ private final String INDEX_SAY = "00";
     public Scriptable loadGame(ArrayList<String> game) {
         String opCode = "";
         String args = "";
+        String line = "";
         Script gameScript = new Script();
-        for(String line : game) {
+        ArrayList<String> roomContent;
+        for(int i = 0; i < game.size(); i++) {
+            line = game.get(i);
             opCode = line.split(COMMAND_SEPERATOR)[0];
             args = line.substring(line.indexOf(COMMAND_SEPERATOR) + opCode.length()).strip();
 
@@ -45,12 +51,26 @@ private final String INDEX_SAY = "00";
                 case INDEX_SAY:
                     gameScript.add(say(args));
                     break;
+                case INDEX_ROOM:
+                    int roomSize = getRoomSize(args);
+                    roomContent = new ArrayList<String>(roomSize);
+                    game.set(i, args);
+                    for(int j = 0; j <= roomSize; j++) {
+                        roomContent.add(game.get(i));
+                        game.remove(i);
+                    }
+                    room(roomContent);
+                    break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
         }
         return gameScript;
     }
+
+
+// ------------------ Command Functions -------------------
+
 
     private Scriptable say(String args) {
         String[] sayArgs = args.split(SAY_SEPERATOR);
@@ -66,4 +86,24 @@ private final String INDEX_SAY = "00";
         }
         return new Printer(printables);
     }
+
+
+    private void room(ArrayList<String> roomContent) {
+        String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
+        String roomName = roomArgs[0];
+        roomContent.remove(0);
+        Scriptable roomScript = loadGame(roomContent);
+        GameManager.rooms.put(roomName, new Room(roomScript));
+    }
+
+
+
+
+
+// ------------------ Helper Functions -------------------
+    
+        private int getRoomSize(String args) {
+            String[] roomArgs = args.split(ROOM_SEPERATOR);
+            return Integer.parseInt(roomArgs[1]);
+        }
 }

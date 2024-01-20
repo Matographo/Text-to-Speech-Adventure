@@ -9,12 +9,12 @@ import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 public class TesterSayTest {
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Say/";
     
     @Test
     public void testSayFixString() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixString");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixStringWithoutRoom");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -24,7 +24,7 @@ public class TesterSayTest {
     @Test
     public void testSayMultipleFixString() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleFixStringsAtOnce");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleFixStringsAtOnceWithoutRoom");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -34,7 +34,7 @@ public class TesterSayTest {
     @Test
     public void testSayMultipleSaysFixStrings() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleSaysFixStrings");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayMultipleSaysFixStringsWithoutRoom");
         assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
@@ -44,7 +44,7 @@ public class TesterSayTest {
     @Test
     public void testSayFixNumber() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixNumber");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixNumberWithoutRoom");
         assertEquals(false, test.start());
         } catch (Exception e) {
             fail();

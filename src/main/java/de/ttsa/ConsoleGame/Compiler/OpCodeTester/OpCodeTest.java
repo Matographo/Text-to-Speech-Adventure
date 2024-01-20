@@ -15,9 +15,11 @@ public class OpCodeTest {
 
     private final String COMMAND_SEPERATOR = "::";
     private final String SAY_SEPERATOR = ",";
+    private final String ROOM_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
+    private final String INDEX_ROOM = "01";
 
 
 
@@ -32,9 +34,9 @@ public class OpCodeTest {
         boolean testResult = true;
         try {
             ArrayList<String> content = getContent();
-            testResult = testResult && testSyntax(content);
-            testResult = testResult && testVariables(content);
-            testResult = testResult && testBlocks(content);
+            testResult = testResult && testSyntax(new ArrayList<String>(content));
+            testResult = testResult && testVariables(new ArrayList<String>(content));
+            testResult = testResult && testBlocks(new ArrayList<String>(content));
         } catch(Exception e) {
             return false;
         }
@@ -65,14 +67,16 @@ public class OpCodeTest {
 
             switch(command) {
                 case INDEX_SAY:
-                    testResult = testResult && testSay(args);
+                    testResult = testResult && testSaySyntax(args);
+                    break;
+                case INDEX_ROOM:
+                    testResult = testResult && testRoomSyntax(args);
                     break;
                 default:
                     testResult = false;
                     break;
             }
         }
-
 
         return testResult;
     }
@@ -82,12 +86,33 @@ public class OpCodeTest {
     }
 
     private boolean testBlocks(ArrayList<String> content) {
-        return true;
+        boolean testResult = true;
+        String command = "";
+        String args = "";
+        for(int i = 0; i < content.size(); i++) {
+            command = content.get(i).split(COMMAND_SEPERATOR)[0];
+            args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
+
+            switch(command) {
+                case INDEX_ROOM:
+                    testResult = testResult && testRoomBlock(args, new ArrayList<String>(content.subList(i, content.size())));
+                    break;
+                default:
+                    continue;
+            }
+        }
+
+        return testResult;
     }
 
 
 
-    private boolean testSay(String args) {
+
+// ------------------ Test Functions Syntax ----------------------
+
+
+
+    private boolean testSaySyntax(String args) {
         String[] allArgs = args.split(SAY_SEPERATOR);
         boolean testResult = true;
         if(allArgs.length == 0) {
@@ -103,12 +128,32 @@ public class OpCodeTest {
         return testResult;
     }
 
-
-
-
-
-
-    public String getOutput() {
-        return "";
+    private boolean testRoomSyntax(String args) {
+        String[] arg = args.split(ROOM_SEPERATOR);
+        if(arg.length != 2) {
+            return false;
+        }
+        if(Character.isDigit(arg[0].charAt(0))) {
+            return false;
+        } else if (arg[0].contains(" ")) {
+            return false;
+        } else if(!arg[1].matches("\\d+")) {
+            return false;
+        }
+        return true;
     }
+
+
+// ------------------ Test Functions Blocks ----------------------
+
+    private boolean testRoomBlock(String args, ArrayList<String> content) {
+        String[] arg = args.split(ROOM_SEPERATOR);
+        if(Integer.parseInt(arg[1]) > content.size()) {
+            return false;
+        }
+        return true;
+    }
+
+    
+
 }

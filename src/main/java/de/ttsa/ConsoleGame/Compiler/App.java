@@ -78,7 +78,6 @@ public class App
         try {
             OpCodeTest test = new OpCodeTest(file);
             test.start();
-            System.out.println(test.getOutput());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

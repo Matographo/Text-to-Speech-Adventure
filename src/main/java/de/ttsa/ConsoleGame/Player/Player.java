@@ -7,6 +7,8 @@ public class Player {
     private Scriptable game;
     private GameBuilder gameBuilder;
 
+    private final String START_ROOM = "START";
+
 
     public Player(String gameFile) {
         this.gameBuilder = new GameBuilder(gameFile);
@@ -14,11 +16,14 @@ public class Player {
 
     public void play() {
         game = gameBuilder.build();
-        start();
+        startGame();
     }
 
-    private void start() {
-        game.run();
+    public static void startGame() {
+        GameManager.nextRoom = "START";
+        while(GameManager.nextRoom != null) {
+            GameManager.getNextRoom().play();
+        }
     }
     
 }

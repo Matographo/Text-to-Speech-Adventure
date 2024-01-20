@@ -10,7 +10,7 @@ import de.ttsa.ConsoleGame.Player.Player;
 
 public class PlayerSayTest {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Say/";
 
     @Test
     public void testSayFixString() {
