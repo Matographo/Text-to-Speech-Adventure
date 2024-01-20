@@ -17,15 +17,18 @@ public class OpCodeTest {
     private final String COMMAND_SEPERATOR = "::";
     private final String SAY_SEPERATOR = ",";
     private final String ROOM_SEPERATOR = ":";
+    private final String NUMBER_VARIABLE_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
     private final String INDEX_ROOM = "01";
     private final String INDEX_ROOM_JUMPER = "02";
+    private final String INDEX_NUMBER_VARIABLE = "03";
 
 // ------------------ Variables Memory --------------------
 
     private HashSet<String> roomNames = new HashSet<String>();
+    private HashSet<String> numNames = new HashSet<String>();
 
 // -------------------- Constructor -----------------------
 
@@ -90,6 +93,9 @@ public class OpCodeTest {
                 case INDEX_ROOM_JUMPER:
                     testResult = testResult && testRoomJumperSyntax(args);
                     break;
+                case INDEX_NUMBER_VARIABLE:
+                    testResult = testResult && testNumberVariableSyntax(args);
+                    break;
                 default:
                     testResult = false;
                     break;
@@ -113,10 +119,13 @@ public class OpCodeTest {
 
             switch(command) {
                 case INDEX_ROOM:
-                    testResult = testResult && testRoomVariable(args);
+                    testResult = testResult && testRoomVar(args);
                     break;
                 case INDEX_ROOM_JUMPER:
-                    testResult = testResult && testRoomJumperVariable(args);
+                    testResult = testResult && testRoomJumperVar(args);
+                    break;
+                case INDEX_NUMBER_VARIABLE:
+                    testResult = testResult && testNumberVariableVar(args);
                     break;
                 default:
                     continue;
@@ -165,56 +174,54 @@ public class OpCodeTest {
         for(String arg : allArgs) {
             if(arg.startsWith("\"") && arg.endsWith("\"")) {
                 testResult = testResult && true;
-            } else {
-                testResult = false;
-            }
+            } else testResult = false;
         }
         return testResult;
     }
 
     private boolean testRoomSyntax(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
-        if(arg.length != 2) {
-            return false;
-        }
-        if(Character.isDigit(arg[0].charAt(0))) {
-            return false;
-        } else if (arg[0].contains(" ")) {
-            return false;
-        } else if(!arg[1].matches("\\d+")) {
-            return false;
-        }
+        if(arg.length != 2) return false;
+        else if(!isValidName(arg[0])) return false;
+        else if (!isNumber(arg[1])) return false;
         return true;
     }
 
     private boolean testRoomJumperSyntax(String args) {
-        if(Character.isDigit(args.charAt(0))) {
-            return false;
-        } else if (args.contains(" ")) {
-            return false;
-        } else if (!args.matches("^[a-zA-Z0-9]*$")) {
-            return false;
-        }
+        if(isValidName(args)) return true;
+        return true;
+    }
+
+    private boolean testNumberVariableSyntax(String args) {
+        String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
+        if(arg.length != 2) return false;
+        else if(!isValidName(arg[0])) return false;
+        else if (!isNumber(arg[1])) return false;
         return true;
     }
 
 // ------------------ Test Functions Variables -------------------
 
 
-    private boolean testRoomVariable(String args) {
+    private boolean testRoomVar(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
-        if(roomNames.contains(arg[0])) {
-            return false;
-        }
+        if(roomNames.contains(arg[0])) return false;
         roomNames.add(arg[0]);
         return true;
     }
 
-    private boolean testRoomJumperVariable(String args) {
+    private boolean testRoomJumperVar(String args) {
         if(roomNames.contains(args)) {
             return true;
         }
         return false;
+    }
+
+    private boolean testNumberVariableVar(String args) {
+        String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
+        if(numNames.contains(arg[0])) return false;
+        numNames.add(arg[0]);
+        return true;
     }
 
 
@@ -231,6 +238,28 @@ public class OpCodeTest {
         return true;
     }
 
+
+
+// ------------------ Test Help Functions ----------------------
+
+
+    private boolean isValidName(String name) {
+        if(Character.isDigit(name.charAt(0))) {
+            return false;
+        } else if (name.contains(" ")) {
+            return false;
+        } else if (!name.matches("^[a-zA-Z0-9]*$")) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isNumber(String number) {
+        if(number.matches("\\d+")) {
+            return true;
+        }
+        return false;
+    }
     
 
 }
