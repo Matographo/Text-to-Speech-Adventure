@@ -20,6 +20,7 @@ public class OpCodeTest {
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
     private final String INDEX_ROOM = "01";
+    private final String INDEX_ROOM_JUMPER = "02";
 
 
 
@@ -71,6 +72,9 @@ public class OpCodeTest {
                     break;
                 case INDEX_ROOM:
                     testResult = testResult && testRoomSyntax(args);
+                    break;
+                case INDEX_ROOM_JUMPER:
+                    testResult = testResult && testRoomJumperSyntax(args);
                     break;
                 default:
                     testResult = false;
@@ -138,6 +142,17 @@ public class OpCodeTest {
         } else if (arg[0].contains(" ")) {
             return false;
         } else if(!arg[1].matches("\\d+")) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean testRoomJumperSyntax(String args) {
+        if(Character.isDigit(args.charAt(0))) {
+            return false;
+        } else if (args.contains(" ")) {
+            return false;
+        } else if (!args.matches("^[a-zA-Z0-9]*$")) {
             return false;
         }
         return true;
