@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class OpCodeTest {
 
-    File file;
+    private File file;
 
 
 // ------------------ Command Seperators ------------------
