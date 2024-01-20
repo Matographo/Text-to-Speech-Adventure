@@ -22,4 +22,9 @@ public class GameManager {
         return room;
     }
 
+    public static void clear() {
+        rooms.clear();
+        nextRoom = null;
+    }
+
 }

@@ -7,6 +7,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
+import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameScriptBuilder {
@@ -24,6 +25,7 @@ private final String ROOM_SEPERATOR = ":";
 
 private final String INDEX_SAY = "00";
 private final String INDEX_ROOM = "01";
+private final String INDEX_ROOM_JUMPER = "02";
 
 
 
@@ -60,6 +62,10 @@ private final String INDEX_ROOM = "01";
                         game.remove(i);
                     }
                     room(roomContent);
+                    i--;
+                    break;
+                case INDEX_ROOM_JUMPER:
+                    gameScript.add(new RoomJumper(args));
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
