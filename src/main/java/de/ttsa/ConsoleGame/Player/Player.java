@@ -1,13 +1,10 @@
 package de.ttsa.ConsoleGame.Player;
 
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
-
 public class Player {
 
-    private Scriptable game;
     private GameBuilder gameBuilder;
 
-    private final String START_ROOM = "START";
+    private static final String START_ROOM = "START";
 
 
     public Player(String gameFile) {
@@ -15,12 +12,12 @@ public class Player {
     }
 
     public void play() {
-        game = gameBuilder.build();
+        gameBuilder.build();
         startGame();
     }
 
     public static void startGame() {
-        GameManager.nextRoom = "START";
+        GameManager.nextRoom = START_ROOM;
         while(GameManager.nextRoom != null) {
             GameManager.getNextRoom().play();
         }

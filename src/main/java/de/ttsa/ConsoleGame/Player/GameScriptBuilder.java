@@ -2,6 +2,7 @@ package de.ttsa.ConsoleGame.Player;
 
 import java.util.ArrayList;
 
+import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
@@ -26,6 +27,7 @@ private final String ROOM_SEPERATOR = ":";
 private final String INDEX_SAY = "00";
 private final String INDEX_ROOM = "01";
 private final String INDEX_ROOM_JUMPER = "02";
+private final String INDEX_NUMVAR = "03";
 
 
 
@@ -67,6 +69,9 @@ private final String INDEX_ROOM_JUMPER = "02";
                 case INDEX_ROOM_JUMPER:
                     gameScript.add(new RoomJumper(args));
                     break;
+                case INDEX_NUMVAR:
+                    numVars(args);
+                    break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
@@ -102,6 +107,16 @@ private final String INDEX_ROOM_JUMPER = "02";
         GameManager.rooms.put(roomName, new Room(roomScript));
     }
 
+    private void numVars(String args) {
+        String[] numVarArgs = args.split(ROOM_SEPERATOR);
+        String numVarName = numVarArgs[0];
+        if(!isValidName(numVarName)) {
+            throw new RuntimeException("NumVar name " + numVarName + " is not valid!");
+        }
+        int numVarValue = Integer.parseInt(numVarArgs[1]);
+        GameManager.numVars.put(numVarName, new INT(numVarValue));
+    }
+
 
 
 
@@ -111,5 +126,16 @@ private final String INDEX_ROOM_JUMPER = "02";
         private int getRoomSize(String args) {
             String[] roomArgs = args.split(ROOM_SEPERATOR);
             return Integer.parseInt(roomArgs[1]);
+        }
+
+        private boolean isValidName(String name) {
+            if(Character.isDigit(name.charAt(0))) {
+                return false;
+            } else if (name.contains(" ")) {
+                return false;
+            } else if (!name.matches("^[a-zA-Z0-9]*$")) {
+                return false;
+            }
+            return true;
         }
 }

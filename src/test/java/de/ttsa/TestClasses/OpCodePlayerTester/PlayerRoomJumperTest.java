@@ -15,7 +15,7 @@ public class PlayerRoomJumperTest {
     private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/RoomJumper/";
 
     @Test
-    public void testSayFixString() {
+    public void testRoomJumperSwitchToRoom() {
         String expected = "Test Finished";
         GetOutput output = new GetOutput();
         try {
