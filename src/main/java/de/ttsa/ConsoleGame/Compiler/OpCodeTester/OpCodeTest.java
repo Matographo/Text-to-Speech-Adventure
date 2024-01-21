@@ -293,9 +293,12 @@ public class OpCodeTest {
         String numName = arg[0];
         String value = arg[1];
         if(!varNames.contains(numName)) return false;
-        if(!isNumber(value) && !varNames.contains(value)) return false;
-        if(!numNames.contains(value)) return false;
-        return true;
+
+        if(!value.matches("[\\+\\-\\*/\\(\\)]")) {
+            if(!isNumber(value) && !isNumVar(value)) return false;
+            else return true;
+        }
+        return isCalculatable(value);
     }
 
 
@@ -333,6 +336,25 @@ public class OpCodeTest {
             return true;
         }
         return false;
+    }
+
+    private boolean isNumVar(String name) {
+        if(!isNumber(name) && numNames.contains(name)) return true;
+        return false;
+    }
+
+    private boolean isStrVar(String name) {
+        if(!isNumber(name) && strNames.contains(name)) return true;
+        return false;
+    }
+
+    private boolean isCalculatable(String value) {
+        String[] values = value.split("[\\+\\-\\*/\\(\\)]");
+        for(String val : values) {
+            if(val == null) return false;
+            if(!isNumber(val) || !isNumVar(val)) return false;
+        }
+        return true;
     }
     
 
