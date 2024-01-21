@@ -10,6 +10,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
 import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
+import de.ttsa.ConsoleGame.Player.Functions.VarDec;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameScriptBuilder {
@@ -31,6 +32,7 @@ private final String INDEX_ROOM = "01";
 private final String INDEX_ROOM_JUMPER = "02";
 private final String INDEX_NUMVAR = "03";
 private final String INDEX_STRVAR = "04";
+private final String INDEX_NUMDEC = "05";
 
 
 
@@ -78,6 +80,8 @@ private final String INDEX_STRVAR = "04";
                 case INDEX_STRVAR:
                     strVars(args);
                     break;
+                case INDEX_NUMDEC:
+                    gameScript.add(varDec(args));
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
@@ -139,6 +143,16 @@ private final String INDEX_STRVAR = "04";
         }
         String strVarValue = strVarArgs[1];
         GameManager.strVars.put(strVarName, new STRING(strVarValue));
+    }
+
+    private Scriptable varDec(String args) {
+        String[] varDecArgs = args.split(VAR_SEPERATOR);
+        String varDecName = varDecArgs[0];
+        if(!isValidName(varDecName)) {
+            throw new RuntimeException("VarDec name " + varDecName + " is not valid!");
+        }
+        String varDecValue = varDecArgs[1];
+        return new VarDec(varDecName, varDecValue);
     }
 
 
