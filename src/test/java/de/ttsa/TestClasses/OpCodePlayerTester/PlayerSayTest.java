@@ -62,7 +62,6 @@ public class PlayerSayTest {
 
     @Test
     public void testSayFixNumber() {
-        String expected = "6";
         GetOutput output = new GetOutput();
         try {
             Player player = new Player(TEST_FILE_PATH + "testSayFixNumber");

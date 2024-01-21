@@ -13,7 +13,7 @@ public class TesterFunctionTest {
     @Test
     public void testEmptyFile() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testEmptyFile");
+        new OpCodeTest(TEST_FILE_PATH + "testEmptyFile");
         } catch (Exception e) {
             fail();
         }
@@ -22,7 +22,7 @@ public class TesterFunctionTest {
     @Test
     public void testNoneExistingFile() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
+        new OpCodeTest(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
         fail();
         } catch (Exception e) {
         }

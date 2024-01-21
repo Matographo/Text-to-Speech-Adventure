@@ -13,7 +13,7 @@ public class PlayerFunktionTest {
     @Test
     public void testEmptyFile() {
         try {
-            Player player = new Player(TEST_FILE_PATH + "testEmptyFile");
+            new Player(TEST_FILE_PATH + "testEmptyFile");
         } catch (Exception e) {
             fail();
         }
@@ -22,7 +22,7 @@ public class PlayerFunktionTest {
     @Test
     public void testNoneExistingFile() {
         try {
-        Player test = new Player(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
+        new Player(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
         fail();
         } catch (Exception e) {
         }

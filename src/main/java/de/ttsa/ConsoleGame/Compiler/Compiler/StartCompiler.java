@@ -1,6 +1,5 @@
 package de.ttsa.ConsoleGame.Compiler.Compiler;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import de.ttsa.ConsoleGame.Compiler.Compiler.CompileC.Compiler;
@@ -82,10 +81,6 @@ public class StartCompiler {
         builder.build();
         output("Building finished.");
         return false;
-    }
-    
-    private void throwError() {
-        throw new IllegalArgumentException(errorText);
     }
     
     private void output(String output) {
