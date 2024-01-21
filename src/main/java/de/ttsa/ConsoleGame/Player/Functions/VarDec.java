@@ -18,16 +18,11 @@ public class VarDec implements Scriptable {
     @Override
     public boolean run() {
         INT var = GameManager.numVars.get(varName);
+        Calculator calc = new Calculator();
         if (var == null) {
             throw new RuntimeException("Variable " + varName + " not found!");
         }
-        if(isNumber(operation)) {
-            var.setValue(Integer.parseInt(operation));
-        } else if (isValidName(operation) && GameManager.numVars.get(operation) != null) {
-            var.setValue(GameManager.numVars.get(operation).getValue());
-        } else {
-            throw new RuntimeException("Invalid operation!");
-        }
+        var.setValue(calc.calc(operation));
         return true;
     }
 
