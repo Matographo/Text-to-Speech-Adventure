@@ -182,7 +182,11 @@ public class OpCodeTest {
         for(String arg : allArgs) {
             if(arg.startsWith("\"") && arg.endsWith("\"")) {
                 testResult = testResult && true;
-            } else testResult = false;
+            } else if (isValidName(arg)) {
+                testResult = testResult && true;
+            } else {
+                testResult = false;
+            }
         }
         return testResult;
     }

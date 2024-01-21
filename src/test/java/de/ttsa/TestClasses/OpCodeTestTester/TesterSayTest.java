@@ -44,10 +44,32 @@ public class TesterSayTest {
     @Test
     public void testSayFixNumber() {
         try {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixNumberWithoutRoom");
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixNumber");
         assertEquals(false, test.start());
         } catch (Exception e) {
             fail();
         }
     }
+
+    @Test
+    public void testSayNumVar() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayNumVar");
+        assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testSayStrVar() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayStrVar");
+        assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+    
+
 }
