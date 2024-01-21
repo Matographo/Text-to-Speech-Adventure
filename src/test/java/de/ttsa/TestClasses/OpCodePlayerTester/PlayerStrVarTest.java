@@ -12,41 +12,55 @@ public class PlayerStrVarTest {
     
     private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/StrVar/";
 
-    // @Test
-    // public void testNumVar() {
-    //     try {
-    //         Player player = new Player(TEST_FILE_PATH + "testNumVar");
-    //         player.play();
-    //         assertEquals(true, GameManager.numVars.containsKey("Hallo"));
-    //         assertEquals(5, GameManager.numVars.get("Hallo").getValue());
-    //     } catch (Exception e) {
-    //         fail();
-    //     } finally {
-    //         GameManager.clear();
-    //     }
-    // }
+    @Test
+    public void testStrVarOneWord() {
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testStrVarOneWord");
+            player.play();
+            assertEquals(true, GameManager.strVars.containsKey("Hallo"));
+            assertEquals("Einzeiler", GameManager.strVars.get("Hallo").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
 
-    // @Test
-    // public void testNumVarFalseSyntax() {
-    //     try {
-    //         Player player = new Player(TEST_FILE_PATH + "testNumVarFalseSyntax");
-    //         player.play();
-    //         fail();
-    //     } catch (Exception e) {
-    //     } finally {
-    //         GameManager.clear();
-    //     }
-    // }
+    @Test
+    public void testStrVarMultipleWords() {
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testStrVarMultipleWords");
+            player.play();
+            assertEquals(true, GameManager.strVars.containsKey("Hallo"));
+            assertEquals("Das ist doch toll", GameManager.strVars.get("Hallo").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
 
-    // @Test
-    // public void testNumVarInvalideName() {
-    //     try {
-    //         Player player = new Player(TEST_FILE_PATH + "testNumVarInvalideName");
-    //         player.play();
-    //         fail();
-    //     } catch (Exception e) {
-    //     } finally {
-    //         GameManager.clear();
-    //     }
-    // }
+    @Test
+    public void testNumVarFalseName() {
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testNumVarFalseName");
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            GameManager.clear();
+        }
+    }
+
+    @Test
+    public void testNumVarDoubleName() {
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testNumVarDoubleName");
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            GameManager.clear();
+        }
+    }
 }
