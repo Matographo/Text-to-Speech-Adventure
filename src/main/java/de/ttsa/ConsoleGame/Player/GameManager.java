@@ -3,6 +3,7 @@ package de.ttsa.ConsoleGame.Player;
 import java.util.HashMap;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
+import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameManager {
@@ -10,6 +11,7 @@ public class GameManager {
 
     public static HashMap<String, Room> rooms = new HashMap<>();
     public static HashMap<String, INT> numVars = new HashMap<>();
+    public static HashMap<String, STRING> strVars = new HashMap<>();
 
     public static String nextRoom;
 
@@ -26,6 +28,8 @@ public class GameManager {
 
     public static void clear() {
         rooms.clear();
+        numVars.clear();
+        strVars.clear();
         nextRoom = null;
     }
 

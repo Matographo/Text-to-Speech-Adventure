@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
+import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
@@ -21,6 +22,7 @@ public class GameScriptBuilder {
 private final String COMMAND_SEPERATOR = "::";
 private final String SAY_SEPERATOR = ",";
 private final String ROOM_SEPERATOR = ":";
+private final String VAR_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
 
@@ -28,6 +30,7 @@ private final String INDEX_SAY = "00";
 private final String INDEX_ROOM = "01";
 private final String INDEX_ROOM_JUMPER = "02";
 private final String INDEX_NUMVAR = "03";
+private final String INDEX_STRVAR = "04";
 
 
 
@@ -72,6 +75,9 @@ private final String INDEX_NUMVAR = "03";
                 case INDEX_NUMVAR:
                     numVars(args);
                     break;
+                case INDEX_STRVAR:
+                    strVars(args);
+                    break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
@@ -108,13 +114,23 @@ private final String INDEX_NUMVAR = "03";
     }
 
     private void numVars(String args) {
-        String[] numVarArgs = args.split(ROOM_SEPERATOR);
+        String[] numVarArgs = args.split(VAR_SEPERATOR);
         String numVarName = numVarArgs[0];
         if(!isValidName(numVarName)) {
             throw new RuntimeException("NumVar name " + numVarName + " is not valid!");
         }
         int numVarValue = Integer.parseInt(numVarArgs[1]);
         GameManager.numVars.put(numVarName, new INT(numVarValue));
+    }
+
+    private void strVars(String args) {
+        String[] strVarArgs = args.split(VAR_SEPERATOR);
+        String strVarName = strVarArgs[0];
+        if(!isValidName(strVarName)) {
+            throw new RuntimeException("StrVar name " + strVarName + " is not valid!");
+        }
+        String strVarValue = strVarArgs[1];
+        GameManager.strVars.put(strVarName, new STRING(strVarValue));
     }
 
 
