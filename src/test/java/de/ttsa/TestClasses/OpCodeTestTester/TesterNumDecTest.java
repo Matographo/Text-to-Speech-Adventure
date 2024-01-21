@@ -54,6 +54,88 @@ public class TesterNumDecTest {
         }
     }
 
+    @Test
+    public void testNumDecCalcNegativeNumber() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecCalcNegativeNumber");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecCalcNumberAndVar() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecCalcNumberAndVar");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecCalcTwoNumbers() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecCalcTwoNumbers");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecCalcWithBreckeds() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecCalcWithBreckeds");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecCalcWithDoublePlus() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecCalcWithDoublePlus");
+            assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecNegativeNumber() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecNegativeNumber");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+
+        }
+        finally {
+            resetTest();
+        }
+    }
+
 
 
 

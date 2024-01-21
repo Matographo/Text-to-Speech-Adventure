@@ -10,6 +10,9 @@ import java.util.HashSet;
 public class OpCodeTest {
 
     private File file;
+// ------------------ Attributs ---------------------------
+
+    private final String CALCULATABLE = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
 
 
 // ------------------ Command Seperators ------------------
@@ -234,10 +237,14 @@ public class OpCodeTest {
 
     private boolean testNumberDecSyntax(String args) {
         String[] arg = args.split(NUMBER_DEC_SEPERATOR);
+        String value = arg[1];
         if(arg.length != 2) return false;
         else if(!isValidName(arg[0])) return false;
-        else if (!isNumber(arg[1]) && !isValidName(arg[1])) return false;
-        return true;
+        if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
+            if(!isNumber(value) && !isNumVar(value)) return false;
+            else return true;
+        }
+        return isCalculatable(value);
     }
 
 // ------------------ Test Functions Variables -------------------
@@ -293,12 +300,11 @@ public class OpCodeTest {
         String numName = arg[0];
         String value = arg[1];
         if(!varNames.contains(numName)) return false;
-
-        if(!value.matches("[\\+\\-\\*/\\(\\)]")) {
+        if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
             if(!isNumber(value) && !isNumVar(value)) return false;
             else return true;
         }
-        return isCalculatable(value);
+        return isCalculatableVar(value);
     }
 
 
@@ -349,13 +355,47 @@ public class OpCodeTest {
     }
 
     private boolean isCalculatable(String value) {
+        return testBreacketsCount(value) && testBreackets(value);
+    }
+
+    private boolean isCalculatableVar(String value) {
         String[] values = value.split("[\\+\\-\\*/\\(\\)]");
+        String[] ops = value.split("[a-zA-Z0-9]");
+        
         for(String val : values) {
-            if(val == null) return false;
-            if(!isNumber(val) || !isNumVar(val)) return false;
+            if(val.equals("")) continue;
+            if(!isNumber(val) && !isNumVar(val)) return false;
         }
         return true;
     }
-    
+
+    private boolean testBreacketsCount(String value) {
+        int count = 0;
+        for(int i = 0; i < value.length(); i++) {
+            if(value.charAt(i) == '(') count++;
+            else if (value.charAt(i) == ')') count--;
+        }
+        return count == 0;
+    }
+
+    private boolean testBreackets(String value) {
+        boolean testResult = true;
+        String toTest = "";
+        int begin;
+        int end;
+        if(value.contains("(") && value.contains(")")) {
+            while (value.contains("(") && value.contains(")")) {
+                begin = value.lastIndexOf("(");
+                end = value.lastIndexOf(toTest, value.indexOf(")"));
+                toTest = value.substring(begin+1, end);
+                value = value.substring(0, begin) + 1 + value.substring(end+1, value.length());
+                testResult = testResult && testBreackets(toTest);
+            }
+        } 
+        if (value.contains("(") || value.contains(")")) {
+            return false;
+        }
+        return value.matches(CALCULATABLE);
+    }
 
 }
