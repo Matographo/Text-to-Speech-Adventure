@@ -42,4 +42,14 @@ public class TesterStrVarTest {
         }
     }
 
+    @Test
+    public void testStrVarDoubleName() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarDoubleName");
+            assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
 }
