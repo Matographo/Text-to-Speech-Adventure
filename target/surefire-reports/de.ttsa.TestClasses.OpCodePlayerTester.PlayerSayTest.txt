@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest
+testSayStrVar(de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Hallo Welt!]> but was:<[5]>
+	at de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest.testSayStrVar(PlayerSayTest.java:101)
+

@@ -123,6 +123,9 @@ public class OpCodeTest {
             args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
+                case INDEX_SAY:
+                    testResult = testResult && testSayVar(args);
+                    break;
                 case INDEX_ROOM:
                     testResult = testResult && testRoomVar(args);
                     break;
@@ -221,6 +224,23 @@ public class OpCodeTest {
 
 // ------------------ Test Functions Variables -------------------
 
+
+    private boolean testSayVar(String args) {
+        String[] allArgs = args.split(SAY_SEPERATOR);
+        boolean testResult = true;
+        for(String arg : allArgs) {
+            if(arg.startsWith("\"") && arg.endsWith("\"")) {
+                continue;
+            } else if (isValidName(arg)) {
+                if(!varNames.contains(arg)) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        return testResult;
+    }
 
     private boolean testRoomVar(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);

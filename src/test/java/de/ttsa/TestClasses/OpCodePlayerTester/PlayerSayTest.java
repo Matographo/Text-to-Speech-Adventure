@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import de.ttsa.GetOutput;
+import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
 
 public class PlayerSayTest {
@@ -25,6 +26,7 @@ public class PlayerSayTest {
             fail();
         } finally {
             output.reinit();
+            resetTest();
         }
     }
 
@@ -41,6 +43,7 @@ public class PlayerSayTest {
             fail();
         } finally {
             output.reinit();
+            resetTest();
         }
     }
 
@@ -57,6 +60,7 @@ public class PlayerSayTest {
             fail();
         } finally {
             output.reinit();
+            resetTest();
         }
     }
 
@@ -71,6 +75,7 @@ public class PlayerSayTest {
         } catch (Exception e) {
         } finally {
             output.reinit();
+            resetTest();
         }
     }
 
@@ -87,6 +92,7 @@ public class PlayerSayTest {
             fail();
         } finally {
             output.reinit();
+            resetTest();
         }
     }
 
@@ -103,7 +109,80 @@ public class PlayerSayTest {
             fail();
         } finally {
             output.reinit();
+            resetTest();
         }
+    }
+
+    @Test
+    public void testSayFixStringAndStrVar() {
+        String expected = "Hallo Welt!";
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testSayFixStringAndStrVar");
+            output.init();
+            player.play();
+            assertEquals(expected, output.getTerminalOutput());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            output.reinit();
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testSayNonExistingVar() {
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testSayNonExistingVar");
+            output.init();
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            output.reinit();
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testSayNumVarAndFixString() {
+        String expected = "5Hallo";
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testSayNumVarAndFixString");
+            output.init();
+            player.play();
+            assertEquals(expected, output.getTerminalOutput());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            output.reinit();
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testSayStrVarAndNumVar() {
+        String expected = "Hallo 5";
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testSayStrVarAndNumVar");
+            output.init();
+            player.play();
+            assertEquals(expected, output.getTerminalOutput());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            output.reinit();
+            resetTest();
+        }
+    }
+
+
+
+    private void resetTest() {
+        GameManager.clear();
     }
 
 }

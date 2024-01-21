@@ -70,6 +70,46 @@ public class TesterSayTest {
             fail();
         }
     }
+
+    @Test
+    public void testSayFixStringAndStrVar() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayFixStringAndStrVar");
+        assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testSayNumVarAndFixString() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayNumVarAndFixString");
+        assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testSayStrVarAndNumVar() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayStrVarAndNumVar");
+        assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testSayNonExistingVar() {
+        try {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSayNonExistingVar");
+        assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+    }
     
 
 }
