@@ -33,6 +33,8 @@ public class OpCodeTest {
 
     private HashSet<String> roomNames = new HashSet<String>();
     private HashSet<String> varNames = new HashSet<String>();
+    private HashSet<String> numNames = new HashSet<String>();
+    private HashSet<String> strNames = new HashSet<String>();
 
 // -------------------- Constructor -----------------------
 
@@ -234,7 +236,7 @@ public class OpCodeTest {
         String[] arg = args.split(NUMBER_DEC_SEPERATOR);
         if(arg.length != 2) return false;
         else if(!isValidName(arg[0])) return false;
-        else if (!isNumber(arg[1])) return false;
+        else if (!isNumber(arg[1]) && !isValidName(arg[1])) return false;
         return true;
     }
 
@@ -274,6 +276,7 @@ public class OpCodeTest {
         String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
         if(varNames.contains(arg[0])) return false;
         varNames.add(arg[0]);
+        numNames.add(arg[0]);
         return true;
     }
 
@@ -281,12 +284,17 @@ public class OpCodeTest {
         String[] arg = args.split(NUMBER_STRING_SEPERATOR);
         if(varNames.contains(arg[0])) return false;
         varNames.add(arg[0]);
+        strNames.add(arg[0]);
         return true;
     }
 
     private boolean testNumberDecVar(String args) {
         String[] arg = args.split(NUMBER_DEC_SEPERATOR);
-        if(!varNames.contains(arg[0])) return false;
+        String numName = arg[0];
+        String value = arg[1];
+        if(!varNames.contains(numName)) return false;
+        if(!isNumber(value) && !varNames.contains(value)) return false;
+        if(!numNames.contains(value)) return false;
         return true;
     }
 

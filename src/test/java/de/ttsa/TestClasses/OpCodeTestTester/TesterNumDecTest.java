@@ -40,6 +40,22 @@ public class TesterNumDecTest {
         }
     }
 
+    @Test
+    public void testNumDecWithStrVar() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumDecWithStrVar");
+            assertEquals(false, test.start());
+        } catch (Exception e) {
+            fail();
+
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+
+
 
 
 
