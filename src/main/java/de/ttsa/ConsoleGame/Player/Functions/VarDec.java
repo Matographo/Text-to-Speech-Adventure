@@ -21,7 +21,31 @@ public class VarDec implements Scriptable {
         if (var == null) {
             throw new RuntimeException("Variable " + varName + " not found!");
         }
-        var.setValue(Integer.parseInt(operation));
+        if(isNumber(operation)) {
+            var.setValue(Integer.parseInt(operation));
+        } else if (isValidName(operation) && GameManager.numVars.get(operation) != null) {
+            var.setValue(GameManager.numVars.get(operation).getValue());
+        } else {
+            throw new RuntimeException("Invalid operation!");
+        }
         return true;
+    }
+
+    private boolean isValidName(String name) {
+        if(Character.isDigit(name.charAt(0))) {
+            return false;
+        } else if (name.contains(" ")) {
+            return false;
+        } else if (!name.matches("^[a-zA-Z0-9]*$")) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isNumber(String number) {
+        if(number.matches("\\d+")) {
+            return true;
+        }
+        return false;
     }
 }
