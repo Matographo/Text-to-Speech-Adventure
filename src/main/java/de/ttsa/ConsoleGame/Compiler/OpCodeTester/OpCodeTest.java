@@ -18,17 +18,19 @@ public class OpCodeTest {
     private final String SAY_SEPERATOR = ",";
     private final String ROOM_SEPERATOR = ":";
     private final String NUMBER_VARIABLE_SEPERATOR = ":";
+    private final String NUMBER_STRING_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
     private final String INDEX_ROOM = "01";
     private final String INDEX_ROOM_JUMPER = "02";
     private final String INDEX_NUMBER_VARIABLE = "03";
+    private final String INDEX_NUMBER_STRING = "04";
 
 // ------------------ Variables Memory --------------------
 
     private HashSet<String> roomNames = new HashSet<String>();
-    private HashSet<String> numNames = new HashSet<String>();
+    private HashSet<String> varNames = new HashSet<String>();
 
 // -------------------- Constructor -----------------------
 
@@ -96,6 +98,9 @@ public class OpCodeTest {
                 case INDEX_NUMBER_VARIABLE:
                     testResult = testResult && testNumberVariableSyntax(args);
                     break;
+                case INDEX_NUMBER_STRING:
+                    testResult = testResult && testStringVariableSyntax(args);
+                    break;
                 default:
                     testResult = false;
                     break;
@@ -126,6 +131,9 @@ public class OpCodeTest {
                     break;
                 case INDEX_NUMBER_VARIABLE:
                     testResult = testResult && testNumberVariableVar(args);
+                    break;
+                case INDEX_NUMBER_STRING:
+                    testResult = testResult && testStringVariableVar(args);
                     break;
                 default:
                     continue;
@@ -200,6 +208,13 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testStringVariableSyntax(String args) {
+        String[] arg = args.split(NUMBER_STRING_SEPERATOR);
+        if(arg.length != 2) return false;
+        else if(!isValidName(arg[0])) return false;
+        return true;
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -219,8 +234,15 @@ public class OpCodeTest {
 
     private boolean testNumberVariableVar(String args) {
         String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
-        if(numNames.contains(arg[0])) return false;
-        numNames.add(arg[0]);
+        if(varNames.contains(arg[0])) return false;
+        varNames.add(arg[0]);
+        return true;
+    }
+
+    private boolean testStringVariableVar(String args) {
+        String[] arg = args.split(NUMBER_STRING_SEPERATOR);
+        if(varNames.contains(arg[0])) return false;
+        varNames.add(arg[0]);
         return true;
     }
 
