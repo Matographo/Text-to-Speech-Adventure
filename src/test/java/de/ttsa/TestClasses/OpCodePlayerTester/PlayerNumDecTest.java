@@ -39,4 +39,31 @@ public class PlayerNumDecTest {
             GameManager.clear();
         }
     }
+
+    @Test
+    public void testNumDecWithStrVar() {
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testNumDecWithStrVar");
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            GameManager.clear();
+        }
+    }
+
+    @Test
+    public void testNumDecWithOtherNum() {
+        int expected = 10;
+        try {
+            Player player = new Player(TEST_FILE_PATH + "testNumDecWithOtherNum");
+            player.play();
+            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
 }
