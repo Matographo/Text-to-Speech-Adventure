@@ -82,6 +82,7 @@ private final String INDEX_NUMDEC = "05";
                     break;
                 case INDEX_NUMDEC:
                     gameScript.add(varDec(args));
+                    break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
