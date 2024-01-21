@@ -97,6 +97,14 @@ private final String INDEX_STRVAR = "04";
             arg = sayArgs[i];
             if(arg.startsWith("\"") && arg.endsWith("\"")) {
                 printables[i] = new PrintText(arg.substring(1, arg.length() - 1));
+            } else if (isValidName(arg)) {
+                if(GameManager.numVars.containsKey(arg)) {
+                    printables[i] = GameManager.numVars.get(arg);
+                } else if (GameManager.strVars.containsKey(arg)) {
+                    printables[i] = GameManager.strVars.get(arg);
+                } else {
+                    throw new RuntimeException("Say argument " + arg + " is not valid!");
+                }
             } else {
                 throw new RuntimeException("Say argument " + arg + " is not valid!");
             }
@@ -132,9 +140,6 @@ private final String INDEX_STRVAR = "04";
         String strVarValue = strVarArgs[1];
         GameManager.strVars.put(strVarName, new STRING(strVarValue));
     }
-
-
-
 
 
 // ------------------ Helper Functions -------------------
