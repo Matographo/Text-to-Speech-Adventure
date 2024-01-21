@@ -19,6 +19,7 @@ public class OpCodeTest {
     private final String ROOM_SEPERATOR = ":";
     private final String NUMBER_VARIABLE_SEPERATOR = ":";
     private final String NUMBER_STRING_SEPERATOR = ":";
+    private final String NUMBER_DEC_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -26,6 +27,7 @@ public class OpCodeTest {
     private final String INDEX_ROOM_JUMPER = "02";
     private final String INDEX_NUMBER_VARIABLE = "03";
     private final String INDEX_NUMBER_STRING = "04";
+    private final String INDEX_NUM_VARDEC = "05";
 
 // ------------------ Variables Memory --------------------
 
@@ -101,6 +103,9 @@ public class OpCodeTest {
                 case INDEX_NUMBER_STRING:
                     testResult = testResult && testStringVariableSyntax(args);
                     break;
+                case INDEX_NUM_VARDEC:
+                    testResult = testResult && testNumberDecSyntax(args);
+                    break;
                 default:
                     testResult = false;
                     break;
@@ -137,6 +142,9 @@ public class OpCodeTest {
                     break;
                 case INDEX_NUMBER_STRING:
                     testResult = testResult && testStringVariableVar(args);
+                    break;
+                case INDEX_NUM_VARDEC:
+                    testResult = testResult && testNumberDecVar(args);
                     break;
                 default:
                     continue;
@@ -222,6 +230,14 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testNumberDecSyntax(String args) {
+        String[] arg = args.split(NUMBER_DEC_SEPERATOR);
+        if(arg.length != 2) return false;
+        else if(!isValidName(arg[0])) return false;
+        else if (!isNumber(arg[1])) return false;
+        return true;
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -250,9 +266,7 @@ public class OpCodeTest {
     }
 
     private boolean testRoomJumperVar(String args) {
-        if(roomNames.contains(args)) {
-            return true;
-        }
+        if(!roomNames.contains(args)) return true;
         return false;
     }
 
@@ -267,6 +281,12 @@ public class OpCodeTest {
         String[] arg = args.split(NUMBER_STRING_SEPERATOR);
         if(varNames.contains(arg[0])) return false;
         varNames.add(arg[0]);
+        return true;
+    }
+
+    private boolean testNumberDecVar(String args) {
+        String[] arg = args.split(NUMBER_DEC_SEPERATOR);
+        if(!varNames.contains(arg[0])) return false;
         return true;
     }
 

@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class TesterNumVarTest {
     
@@ -19,6 +20,8 @@ public class TesterNumVarTest {
             assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
+        } finally {
+            resetTest();
         }
     }
 
@@ -29,6 +32,8 @@ public class TesterNumVarTest {
             assertEquals(false, test.start());
         } catch (Exception e) {
             fail();
+        } finally {
+            resetTest();
         }
     }
 
@@ -39,7 +44,14 @@ public class TesterNumVarTest {
             assertEquals(false, test.start());
         } catch (Exception e) {
             fail();
+        } finally {
+            resetTest();
         }
+    }
+
+
+    private void resetTest() {
+        GameManager.clear();
     }
 
 }
