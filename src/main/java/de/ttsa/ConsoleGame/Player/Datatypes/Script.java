@@ -1,32 +1,21 @@
 package de.ttsa.ConsoleGame.Player.Datatypes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class Script implements Scriptable{
 
-    private ArrayList<Scriptable> script;
-    
-    public Script() {
-        script = new ArrayList<>();
-    }
+    private Scriptable[] script;
 
     public Script(Scriptable script) {
-        this.script = new ArrayList<>();
-        this.script.add(script);
+        this.script = new Scriptable[]{script};
     }
 
-    public Script(ArrayList<Scriptable> script) {
-        this.script = script;
+    public Script(List<Scriptable> script) {
+        this.script = script.toArray(new Scriptable[0]);
     }
 
     public Script(Scriptable... script) {
-        this.script = new ArrayList<>();
-        this.script.addAll(Arrays.asList(script));
-    }
-
-    public void add(Scriptable script) {
-        this.script.add(script);
+        this.script = script;
     }
 
     @Override

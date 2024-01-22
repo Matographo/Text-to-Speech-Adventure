@@ -49,7 +49,7 @@ private final String INDEX_NUMDEC = "05";
         String opCode = "";
         String args = "";
         String line = "";
-        Script gameScript = new Script();
+        ArrayList<Scriptable> gameScript = new ArrayList<Scriptable>();
         ArrayList<String> roomContent;
         for(int i = 0; i < game.size(); i++) {
             line = game.get(i);
@@ -87,7 +87,7 @@ private final String INDEX_NUMDEC = "05";
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
             }
         }
-        return gameScript;
+        return new Script(gameScript);
     }
 
 
