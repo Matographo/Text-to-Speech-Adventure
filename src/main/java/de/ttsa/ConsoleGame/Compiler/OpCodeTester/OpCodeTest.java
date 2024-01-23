@@ -232,7 +232,7 @@ public class OpCodeTest {
     }
 
     private boolean testRoomJumperSyntax(String args) {
-        if(isValidName(args)) return true;
+        if(!isValidName(args)) return false;
         return true;
     }
 
@@ -309,8 +309,8 @@ public class OpCodeTest {
     }
 
     private boolean testRoomJumperVar(String args) {
-        if(!roomNames.contains(args)) return true;
-        return false;
+        if(!roomNames.contains(args)) return false;
+        return true;
     }
 
     private boolean testNumberVariableVar(String args) {
