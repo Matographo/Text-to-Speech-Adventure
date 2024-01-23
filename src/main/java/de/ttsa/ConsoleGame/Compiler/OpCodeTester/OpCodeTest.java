@@ -13,6 +13,9 @@ public class OpCodeTest {
 // ------------------ Attributs ---------------------------
 
     private final String CALCULATABLE = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
+    private final String AND = "&&";
+    private final String OR = "||";
+    private final String NOT = "!";
 
 
 // ------------------ Command Seperators ------------------
@@ -23,6 +26,7 @@ public class OpCodeTest {
     private final String NUMBER_VARIABLE_SEPERATOR = ":";
     private final String NUMBER_STRING_SEPERATOR = ":";
     private final String NUMBER_DEC_SEPERATOR = ":";
+    private final String IF_SEPERATOR = "::";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -31,6 +35,7 @@ public class OpCodeTest {
     private final String INDEX_NUMBER_VARIABLE = "03";
     private final String INDEX_NUMBER_STRING = "04";
     private final String INDEX_NUM_VARDEC = "05";
+    private final String INDEX_IF = "06";
 
 // ------------------ Variables Memory --------------------
 
@@ -111,6 +116,9 @@ public class OpCodeTest {
                 case INDEX_NUM_VARDEC:
                     testResult = testResult && testNumberDecSyntax(args);
                     break;
+                case INDEX_IF:
+                    testResult = testResult && testIfSyntax(args);
+                    break;
                 default:
                     testResult = false;
                     break;
@@ -151,6 +159,9 @@ public class OpCodeTest {
                 case INDEX_NUM_VARDEC:
                     testResult = testResult && testNumberDecVar(args);
                     break;
+                case INDEX_IF:
+                    testResult = testResult && testIfVar(args);
+                    break;
                 default:
                     continue;
             }
@@ -166,13 +177,18 @@ public class OpCodeTest {
         boolean testResult = true;
         String command = "";
         String args = "";
+        int lastRoomLength = -1;
         for(int i = 0; i < content.size(); i++) {
             command = content.get(i).split(COMMAND_SEPERATOR)[0];
             args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
                 case INDEX_ROOM:
-                    testResult = testResult && testRoomBlock(args, new ArrayList<String>(content.subList(i, content.size())));
+                    lastRoomLength = getRoomBlockLength(args);
+                    testResult = testResult && testRoomBlock(args, content.size() - i);
+                    break;
+                case INDEX_IF:
+                    testResult = testResult && testIfBlock(args, i, lastRoomLength);
                     break;
                 default:
                     continue;
@@ -247,6 +263,24 @@ public class OpCodeTest {
         return isCalculatable(value);
     }
 
+    private boolean testIfSyntax(String args) {
+        String[] toTest = args.split(INDEX_IF);
+        boolean testResult = true;
+        for(String test : toTest) {
+            if(!test.contains("\"")) return false;
+            if(test.indexOf("\"") == test.lastIndexOf("\"")) return false;
+            if(!test.startsWith("\"")) return false;
+            if(test.substring(test.lastIndexOf("\"")).length() == 0) return false;
+            boolean testResult2 = !isNumber(test.substring(test.lastIndexOf("\"")+1));
+            if(testResult2) return false;
+            String[] toTestBig = test.substring(1, test.lastIndexOf("\"")).split("[&]{2} | [|]{2}");
+            for (String tests : toTestBig) {
+                testResult = testResult && isTestable(tests);
+            }
+        }
+        return testResult;
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -307,21 +341,33 @@ public class OpCodeTest {
         return isCalculatableVar(value);
     }
 
+    private boolean testIfVar(String args) {
+        String[] tests = args.split(INDEX_IF);
+        boolean testResult = true;
+        for(String singleTest : tests) {
+            singleTest = singleTest.substring(1, singleTest.lastIndexOf("\""));
+            String[] toTest = singleTest.split("[&]{2} | [|]{2}");
+            for (String test : toTest) {
+                testResult = testResult && isTestableVar(test);
+            }
+        }
+        return testResult;
+    }
+
 
 
 // ------------------ Test Functions Blocks ----------------------
 
 
 
-    private boolean testRoomBlock(String args, ArrayList<String> content) {
-        String[] arg = args.split(ROOM_SEPERATOR);
-        if(Integer.parseInt(arg[1]) > content.size()) {
-            return false;
-        }
-        return true;
+    private boolean testRoomBlock(String args, int nextCodeLines) {
+        if(getRoomBlockLength(args) <= nextCodeLines) return true;
+        return false;
     }
 
-
+    private boolean testIfBlock(String args, int ifPosition, int endOfRoom) {
+        return ifPosition + getIfBlockLength(args) <= endOfRoom;
+    }
 
 // ------------------ Test Help Functions ----------------------
 
@@ -396,6 +442,40 @@ public class OpCodeTest {
             return false;
         }
         return value.matches(CALCULATABLE);
+    }
+
+    private boolean isTestable(String test) {
+        if(test.contains("=") || test.contains("<") || test.contains(">")) {
+            String[] toTest = test.split("[=<>]");
+            if(toTest.length != 2) return false;
+            return isCalculatable(toTest[0]) && isCalculatable(toTest[1]);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isTestableVar(String test) {
+        if(test.contains("=") || test.contains("<") || test.contains(">")) {
+            String[] toTest = test.split("[=<>]");
+            if(toTest.length != 2) return false;
+            return isCalculatableVar(toTest[0]) && isCalculatableVar(toTest[1]);
+        } else {
+            return false;
+        }
+    }
+
+    private int getIfBlockLength(String args) {
+        String[] arg = args.split(INDEX_IF);
+        int argLength = 0;
+        for(String argument : arg) {
+            argLength += Integer.parseInt(argument.substring(argument.lastIndexOf("\"")+1));
+        }
+        return argLength;
+    }
+
+    private int getRoomBlockLength(String args) {
+        String[] arg = args.split(ROOM_SEPERATOR);
+        return Integer.parseInt(arg[1]);
     }
 
 }
