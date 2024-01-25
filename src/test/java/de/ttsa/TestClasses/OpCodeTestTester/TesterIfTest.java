@@ -21,7 +21,32 @@ public class TesterIfTest {
             assertEquals(true, test.start());
         } catch (Exception e) {
             fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
 
+    @Test
+    public void testIfWithVar() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithVar");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testIfWithTwoVars() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithTwoVars");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
         }
         finally {
             resetTest();

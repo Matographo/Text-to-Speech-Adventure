@@ -188,7 +188,7 @@ public class OpCodeTest {
                     testResult = testResult && testRoomBlock(args, content.size() - i);
                     break;
                 case INDEX_IF:
-                    testResult = testResult && testIfBlock(args, i, lastRoomLength);
+                    testResult = testResult && testIfBlock(args, i, i + lastRoomLength);
                     break;
                 default:
                     continue;
