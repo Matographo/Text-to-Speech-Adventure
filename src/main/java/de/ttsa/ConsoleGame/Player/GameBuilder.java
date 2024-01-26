@@ -2,7 +2,7 @@ package de.ttsa.ConsoleGame.Player;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 
-public class GameBuilder {
+class GameBuilder {
 
     private GameLoader gameLoader;
     private GameScriptBuilder gameScriptBuilder;

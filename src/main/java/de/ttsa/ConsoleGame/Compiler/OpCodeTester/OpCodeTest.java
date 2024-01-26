@@ -98,30 +98,14 @@ public class OpCodeTest {
             args = line.substring(line.indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
-                case INDEX_SAY:
-                    testResult = testResult && testSaySyntax(args);
-                    break;
-                case INDEX_ROOM:
-                    testResult = testResult && testRoomSyntax(args);
-                    break;
-                case INDEX_ROOM_JUMPER:
-                    testResult = testResult && testRoomJumperSyntax(args);
-                    break;
-                case INDEX_NUMBER_VARIABLE:
-                    testResult = testResult && testNumberVariableSyntax(args);
-                    break;
-                case INDEX_NUMBER_STRING:
-                    testResult = testResult && testStringVariableSyntax(args);
-                    break;
-                case INDEX_NUM_VARDEC:
-                    testResult = testResult && testNumberDecSyntax(args);
-                    break;
-                case INDEX_IF:
-                    testResult = testResult && testIfSyntax(args);
-                    break;
-                default:
-                    testResult = false;
-                    break;
+                case INDEX_SAY -> testResult = testResult && testSaySyntax(args);
+                case INDEX_ROOM -> testResult = testResult && testRoomSyntax(args);
+                case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperSyntax(args);
+                case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableSyntax(args);
+                case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableSyntax(args);
+                case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecSyntax(args);
+                case INDEX_IF -> testResult = testResult && testIfSyntax(args);
+                default -> testResult = false;
             }
         }
 
@@ -141,29 +125,13 @@ public class OpCodeTest {
             args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
-                case INDEX_SAY:
-                    testResult = testResult && testSayVar(args);
-                    break;
-                case INDEX_ROOM:
-                    testResult = testResult && testRoomVar(args);
-                    break;
-                case INDEX_ROOM_JUMPER:
-                    testResult = testResult && testRoomJumperVar(args);
-                    break;
-                case INDEX_NUMBER_VARIABLE:
-                    testResult = testResult && testNumberVariableVar(args);
-                    break;
-                case INDEX_NUMBER_STRING:
-                    testResult = testResult && testStringVariableVar(args);
-                    break;
-                case INDEX_NUM_VARDEC:
-                    testResult = testResult && testNumberDecVar(args);
-                    break;
-                case INDEX_IF:
-                    testResult = testResult && testIfVar(args);
-                    break;
-                default:
-                    continue;
+                case INDEX_SAY -> testResult = testResult && testSayVar(args);
+                case INDEX_ROOM -> testResult = testResult && testRoomVar(args);
+                case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperVar(args);
+                case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableVar(args);
+                case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableVar(args);
+                case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
+                case INDEX_IF -> testResult = testResult && testIfVar(args);
             }
         }
         return testResult;
@@ -397,7 +365,6 @@ public class OpCodeTest {
 
     private boolean isCalculatableVar(String value) {
         String[] values = value.split("[\\+\\-\\*/\\(\\)]");
-        String[] ops = value.split("[a-zA-Z0-9]");
         
         for(String val : values) {
             if(val.equals("")) continue;

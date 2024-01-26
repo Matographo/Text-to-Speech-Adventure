@@ -14,7 +14,7 @@ import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Functions.VarDec;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
-public class GameScriptBuilder {
+class GameScriptBuilder {
 
 
     private ArrayList<String> game;
