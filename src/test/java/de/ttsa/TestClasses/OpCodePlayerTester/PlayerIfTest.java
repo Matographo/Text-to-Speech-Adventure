@@ -101,4 +101,34 @@ public class PlayerIfTest {
             GameManager.clear();
         }
     }
+
+    @Test
+    public void testIfWithCalc() {
+        final int expected = 1;
+        try {
+            
+            Player player = new Player(TEST_FILE_PATH + "testIfWithCalc");
+            player.play();
+            assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
+
+    @Test
+    public void testIfWithCalcVar() {
+        final int expected = 1;
+        try {
+            
+            Player player = new Player(TEST_FILE_PATH + "testIfWithCalcVar");
+            player.play();
+            assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
 }

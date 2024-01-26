@@ -102,8 +102,9 @@ public class Calculator {
             toCalculate = toCalculate.substring(start);
             match.reset();
             match = ops.matcher(toCalculate);
+
             if(match.find()) {
-                int end = ops.matcher(toCalculate).start();
+                int end = match.start();
                 String varName = toCalculate.substring(0, end);
                 finalString += GameManager.numVars.get(varName).getValue();
                 finalString += toCalculate.substring(end);

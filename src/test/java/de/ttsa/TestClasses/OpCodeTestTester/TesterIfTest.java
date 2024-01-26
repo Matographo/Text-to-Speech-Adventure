@@ -92,6 +92,32 @@ public class TesterIfTest {
         }
     }
 
+    @Test
+    public void testIfWithCalc() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalc");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testIfWithCalcVar() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalcVar");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
 
     private void resetTest() {
         GameManager.clear();
