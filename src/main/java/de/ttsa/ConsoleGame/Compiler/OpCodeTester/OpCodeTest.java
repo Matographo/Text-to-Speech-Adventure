@@ -404,8 +404,9 @@ public class OpCodeTest {
 
     private boolean isTestable(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
-            String[] toTest = test.split("[=<>]");
-            if(toTest.length != 3) return false;
+            String[] toTest = test.split("[=<>!]");
+            toTest = removeEmpty(toTest);
+            if(toTest.length != 2) return false;
             return isCalculatable(toTest[0]) && isCalculatable(toTest[1]);
         } else {
             return false;
@@ -414,9 +415,10 @@ public class OpCodeTest {
 
     private boolean isTestableVar(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
-            String[] toTest = test.split("[=<>]");
-            if(toTest.length != 3) return false;
-            return isCalculatableVar(toTest[0]) && isCalculatableVar(toTest[2]);
+            String[] toTest = test.split("[=<>!]");
+            toTest = removeEmpty(toTest);
+            if(toTest.length != 2) return false;
+            return isCalculatableVar(toTest[0]) && isCalculatableVar(toTest[1]);
         } else {
             return false;
         }
@@ -430,6 +432,16 @@ public class OpCodeTest {
     private int getRoomBlockLength(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
         return Integer.parseInt(arg[1]);
+    }
+
+    private String[] removeEmpty(String[] toTest) {
+        ArrayList<String> list = new ArrayList<String>(toTest.length);
+        for(String test : toTest) {
+            if(!test.strip().isEmpty()) {
+                list.add(test);
+            }
+        }
+        return list.toArray(new String[list.size()]);
     }
 
 }

@@ -53,6 +53,45 @@ public class TesterIfTest {
         }
     }
 
+    @Test
+    public void testIfLeftLowerRight() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftLowerRight");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testIfLeftNERight() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftNERight");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testIfLeftGERight() {
+        try {
+            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftGERight");
+            assertEquals(true, test.start());
+        } catch (Exception e) {
+            fail();
+        }
+        finally {
+            resetTest();
+        }
+    }
+
 
     private void resetTest() {
         GameManager.clear();
