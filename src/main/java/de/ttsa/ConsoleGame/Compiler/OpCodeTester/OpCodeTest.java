@@ -16,6 +16,8 @@ public class OpCodeTest {
     private final String AND = "&&";
     private final String OR = "||";
     private final String NOT = "!";
+    private final char IF_NUMBER = 'n';
+    private final char IF_STRING = 's';
 
 
 // ------------------ Command Seperators ------------------
@@ -239,7 +241,7 @@ public class OpCodeTest {
             if(i == toTest.length - 1) {
                 testResult = testResult && isTestableElse(toTest[i]);
             } else {
-                testResult = testResult && testIfSyntax2(toTest[i]);
+                testResult = testResult && testIfSyntaxSwitch(toTest[i]);
             }
         }
         return testResult;
@@ -247,10 +249,21 @@ public class OpCodeTest {
 
     private boolean isTestableElse(String test) {
         if(test.startsWith(":") && isNumber(test.substring(1))) return true;
-        return testIfSyntax2(test);
+        return testIfSyntaxSwitch(test);
     }
 
-    private boolean testIfSyntax2(String args) {
+    private boolean testIfSyntaxSwitch(String args) {
+        char i = args.charAt(0);
+        boolean testResult;
+        switch(i) {
+            case IF_NUMBER -> testResult = testIfSyntaxNum(args.substring(1));
+            case IF_STRING -> testResult = testIfSyntaxStr(args.substring(1));
+            default -> testResult = false;
+        }
+        return testResult;
+    }
+
+    private boolean testIfSyntaxNum(String args) {
         String[] toTest = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
         if(toTest.length != 2) return false;
@@ -260,6 +273,18 @@ public class OpCodeTest {
             testResult = testResult && isTestable(test);
         }
         return testResult;
+    }
+
+    private boolean testIfSyntaxStr(String args) {
+        if(!args.contains("==")) return false;
+        if(!args.contains(":")) return false;
+        if(!isNumber(args.substring(args.indexOf(":")+1))) return false;
+        args = args.substring(0, args.indexOf(":"));
+        String[] arg = args.split("==");
+        if(arg.length != 2) return false;
+        if(!isValidName(arg[0]) && !(arg[0].startsWith("\"") && arg[0].endsWith("\""))) return false;
+        if(!isValidName(arg[1]) && !(arg[1].startsWith("\"") && arg[1].endsWith("\""))) return false;
+        return true; 
     }
 
 // ------------------ Test Functions Variables -------------------
@@ -323,6 +348,20 @@ public class OpCodeTest {
     }
 
     private boolean testIfVar(String args) {
+        String[] toTest = args.split(IF_ELSE_SEPERATOR);
+        boolean testResult = true;
+        char i;
+        for(String test : toTest) {
+            i = test.charAt(0);
+            switch(i) {
+                case IF_NUMBER -> testResult = testResult && testIfVarNum(test.substring(1));
+                case IF_STRING -> testResult = testResult && testIfVarStr(test.substring(1));
+            }
+        }
+        return testResult;
+    }
+
+    private boolean testIfVarNum(String args) {
         String[] tests = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
         String[] toTest = tests[0].split("[&]{2} | [|]{2}");
@@ -331,6 +370,15 @@ public class OpCodeTest {
         }
         return testResult;
     }
+
+    private boolean testIfVarStr(String args) {
+        args = args.substring(0, args.indexOf(":"));
+        String[] tests = args.split("==");
+        if(!strNames.contains(tests[0]) && !tests[0].startsWith("\"") && !tests[0].endsWith("\"")) return false;
+        if(!strNames.contains(tests[1]) && !tests[1].startsWith("\"") && !tests[1].endsWith("\"")) return false;
+        return true;
+    }
+
 
 
 
@@ -438,6 +486,20 @@ public class OpCodeTest {
     }
 
     private boolean isTestableVar(String test) {
+        String[] tests = test.split(IF_ELSE_SEPERATOR);
+        boolean testResult = true;
+        char i;
+        for(String toTest : tests) {
+            i = toTest.charAt(0);
+            switch(i) {
+                case IF_NUMBER -> testResult = testResult && isTestableVarNum(toTest.substring(1));
+                case IF_STRING -> testResult = testResult && isTestableVarStr(toTest.substring(1));
+            }
+        }
+        return testResult;
+    }
+
+    private boolean isTestableVarNum(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
             String[] toTest = test.split("[=<>!]");
             toTest = removeEmpty(toTest);
@@ -446,6 +508,13 @@ public class OpCodeTest {
         } else {
             return false;
         }
+    }
+
+    private boolean isTestableVarStr(String test) {
+        String[] arg = test.split("==");
+        if(!strNames.contains(arg[0]) && !arg[0].startsWith("\"") && !arg[0].endsWith("\"")) return false;
+        if(!strNames.contains(arg[1]) && !arg[0].startsWith("\"") && !arg[0].endsWith("\"")) return false;
+        return true;
     }
 
     private int getIfBlockLength(String args) {

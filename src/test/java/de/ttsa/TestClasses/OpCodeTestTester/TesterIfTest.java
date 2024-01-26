@@ -83,6 +83,20 @@ public class TesterIfTest {
         resetTest();
     }
 
+    @Test
+    public void testIfWithStrVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithStrVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testIfWithStrVarEQStrVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithStrVarEQStrVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
 
 
 

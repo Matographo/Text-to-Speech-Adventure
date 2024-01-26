@@ -184,7 +184,12 @@ private final String INDEX_IF = "06";
                 code.add(ifContent.get(0));
                 ifContent.remove(0);
             }
-            ifArgs[i] = con;
+            if(i == ifArgs.length - 1 && con.strip().isEmpty()) {
+                ifArgs[i] = con;
+                scripts[i] = loadGame(code);
+                break;
+            }
+            ifArgs[i] = con.substring(1);
             scripts[i] = loadGame(code);
         }
         return new If(ifArgs, scripts);
