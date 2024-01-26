@@ -56,4 +56,49 @@ public class PlayerIfTest {
             GameManager.clear();
         }
     }
+
+    @Test
+    public void testIfLeftGERight() {
+        final int expected = 1;
+        try {
+            
+            Player player = new Player(TEST_FILE_PATH + "testIfLeftGERight");
+            player.play();
+            assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
+
+    @Test
+    public void testIfLeftLowerRight() {
+        final int expected = 1;
+        try {
+            
+            Player player = new Player(TEST_FILE_PATH + "testIfLeftLowerRight");
+            player.play();
+            assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
+
+    @Test
+    public void testIfLeftNERight() {
+        final int expected = 1;
+        try {
+            
+            Player player = new Player(TEST_FILE_PATH + "testIfLeftNERight");
+            player.play();
+            assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        } catch (Exception e) {
+            fail();
+        } finally {
+            GameManager.clear();
+        }
+    }
 }

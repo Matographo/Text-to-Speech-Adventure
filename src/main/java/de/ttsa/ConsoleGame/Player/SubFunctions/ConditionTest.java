@@ -14,16 +14,7 @@ public class ConditionTest {
     private final String AND = "&&";
     private final String OR = "!!";
     private final String INPUT = "input";
-    private final HashSet<String> OPERATORS = new HashSet<String>() {
-        {
-            add("==");
-            add("!=");
-            add("<");
-            add(">");
-            add("<=");
-            add(">=");
-        }
-    };
+    private final String[] OPERATORS = new String[] { "==", "!=", "<=", ">=", "<", ">" };
 
     public static boolean test(String conditionString) {
         testString = conditionString;
