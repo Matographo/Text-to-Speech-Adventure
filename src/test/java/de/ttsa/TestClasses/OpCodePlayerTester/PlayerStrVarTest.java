@@ -14,30 +14,20 @@ public class PlayerStrVarTest {
 
     @Test
     public void testStrVarOneWord() {
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testStrVarOneWord");
-            player.play();
-            assertEquals(true, GameManager.strVars.containsKey("Hallo"));
-            assertEquals("Einzeiler", GameManager.strVars.get("Hallo").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testStrVarOneWord");
+        player.play();
+        assertEquals(true, GameManager.strVars.containsKey("Hallo"));
+        assertEquals("Einzeiler", GameManager.strVars.get("Hallo").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testStrVarMultipleWords() {
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testStrVarMultipleWords");
-            player.play();
-            assertEquals(true, GameManager.strVars.containsKey("Hallo"));
-            assertEquals("Das ist doch toll", GameManager.strVars.get("Hallo").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testStrVarMultipleWords");
+        player.play();
+        assertEquals(true, GameManager.strVars.containsKey("Hallo"));
+        assertEquals("Das ist doch toll", GameManager.strVars.get("Hallo").getValue());
+        GameManager.clear();
     }
 
     @Test
@@ -47,6 +37,7 @@ public class PlayerStrVarTest {
             player.play();
             fail();
         } catch (Exception e) {
+            assertEquals(true, true);
         } finally {
             GameManager.clear();
         }
@@ -59,6 +50,7 @@ public class PlayerStrVarTest {
             player.play();
             fail();
         } catch (Exception e) {
+            assertEquals(true, true);
         } finally {
             GameManager.clear();
         }

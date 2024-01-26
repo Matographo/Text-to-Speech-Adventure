@@ -19,7 +19,7 @@ public class TesterRoomTest {
     @Test
     public void testRoomNameWithSpace() {
         OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testRoomEmptyNameWithSpace");
-        assertEquals(false, test.start());
+        assertEquals(true, test.start());
     }
 
     @Test

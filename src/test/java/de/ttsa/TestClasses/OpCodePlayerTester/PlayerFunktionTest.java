@@ -12,11 +12,7 @@ public class PlayerFunktionTest {
 
     @Test
     public void testEmptyFile() {
-        try {
             new Player(TEST_FILE_PATH + "testEmptyFile");
-        } catch (Exception e) {
-            fail();
-        }
     }
 
     @Test

@@ -194,7 +194,7 @@ public class OpCodeTest {
     private boolean testRoomSyntax(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
         if(arg.length != 2) return false;
-        else if(!isValidName(arg[0])) return false;
+        else if(!isValideRoomName(arg[0])) return false;
         else if (!isNumber(arg[1])) return false;
         return true;
     }
@@ -442,6 +442,14 @@ public class OpCodeTest {
             }
         }
         return list.toArray(new String[list.size()]);
+    }
+
+    private boolean isValideRoomName(String name) {
+        String[] names = name.split(" ");
+        for(String n : names) {
+            if(!isValidName(n)) return false;
+        }
+        return true;
     }
 
 }

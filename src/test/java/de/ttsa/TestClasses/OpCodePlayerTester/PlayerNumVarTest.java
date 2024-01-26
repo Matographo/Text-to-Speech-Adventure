@@ -14,16 +14,11 @@ public class PlayerNumVarTest {
 
     @Test
     public void testNumVar() {
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumVar");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Hallo"));
-            assertEquals(5, GameManager.numVars.get("Hallo").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumVar");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Hallo"));
+        assertEquals(5, GameManager.numVars.get("Hallo").getValue());
+        GameManager.clear();
     }
 
     @Test

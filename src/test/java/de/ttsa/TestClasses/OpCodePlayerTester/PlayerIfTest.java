@@ -1,7 +1,6 @@
 package de.ttsa.TestClasses.OpCodePlayerTester;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -15,120 +14,72 @@ public class PlayerIfTest {
     @Test
     public void testIf() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIf");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Hi").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIf");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Hi").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfWithTwoVars() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfWithTwoVars");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfWithTwoVars");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfWithVar() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfWithVar");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfWithVar");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfLeftGERight() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfLeftGERight");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfLeftGERight");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfLeftLowerRight() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfLeftLowerRight");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfLeftLowerRight");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfLeftNERight() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfLeftNERight");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfLeftNERight");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfWithCalc() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfWithCalc");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfWithCalc");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testIfWithCalcVar() {
         final int expected = 1;
-        try {
-            
-            Player player = new Player(TEST_FILE_PATH + "testIfWithCalcVar");
-            player.play();
-            assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testIfWithCalcVar");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
     }
 }

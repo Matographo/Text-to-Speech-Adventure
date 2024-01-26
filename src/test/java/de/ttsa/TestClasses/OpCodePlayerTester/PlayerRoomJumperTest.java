@@ -18,17 +18,12 @@ public class PlayerRoomJumperTest {
     public void testRoomJumperSwitchToRoom() {
         String expected = "Test Finished";
         GetOutput output = new GetOutput();
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testRoomJumperSwitchToRoom");
-            output.init();
-            player.play();
-            assertEquals(expected, output.getTerminalOutput());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            output.reinit();
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testRoomJumperSwitchToRoom");
+        output.init();
+        player.play();
+        assertEquals(expected, output.getTerminalOutput());
+        output.reinit();
+        GameManager.clear();
     }
 
 }

@@ -14,16 +14,11 @@ public class PlayerNumDecTest {
 
     @Test
     public void testNumDec() {
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDec");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(10, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDec");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(10, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
@@ -55,91 +50,61 @@ public class PlayerNumDecTest {
     @Test
     public void testNumDecWithOtherNum() {
         int expected = 10;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecWithOtherNum");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecWithOtherNum");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testNumDecNegativeNumber() {
         int expected = -1;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecNegativeNumber");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecNegativeNumber");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testNumDecCalcNegativeNumber() {
         int expected = -15;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecCalcNegativeNumber");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecCalcNegativeNumber");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testNumDecCalcNumberAndVar() {
         int expected = 10;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecCalcNumberAndVar");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecCalcNumberAndVar");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testNumDecCalcTwoNumbers() {
         int expected = 10;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecCalcTwoNumbers");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecCalcTwoNumbers");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
     public void testNumDecCalcWithBreckeds() {
         int expected = 50;
-        try {
-            Player player = new Player(TEST_FILE_PATH + "testNumDecCalcWithBreckeds");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            GameManager.clear();
-        }
+        Player player = new Player(TEST_FILE_PATH + "testNumDecCalcWithBreckeds");
+        player.play();
+        assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+        assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
+        GameManager.clear();
     }
 
     @Test
