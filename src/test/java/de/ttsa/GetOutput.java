@@ -19,5 +19,4 @@ public class GetOutput {
     public void reinit() {
         System.setOut(originalOut);
     }
-    //Hallo du kleiner Mongo
 }

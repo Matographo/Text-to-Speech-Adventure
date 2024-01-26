@@ -39,6 +39,7 @@ public class OpCodeTest {
     private final String INDEX_NUMBER_STRING = "04";
     private final String INDEX_NUM_VARDEC = "05";
     private final String INDEX_IF = "06";
+    private final String INDEX_INPUT = "07";
 
 // ------------------ Variables Memory --------------------
 
@@ -108,6 +109,7 @@ public class OpCodeTest {
                 case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableSyntax(args);
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecSyntax(args);
                 case INDEX_IF -> testResult = testResult && testIfSyntax(args);
+                case INDEX_INPUT -> testResult = testResult && true;
                 default -> testResult = false;
             }
         }

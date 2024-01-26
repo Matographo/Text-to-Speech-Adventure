@@ -14,6 +14,7 @@ public class GameManager {
     public static HashMap<String, STRING> strVars = new HashMap<>();
 
     public static String nextRoom;
+    public static String input;
 
 
     public static void addRoom(String name, Room room) {

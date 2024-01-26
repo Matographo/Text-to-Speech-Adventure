@@ -9,6 +9,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.If;
+import de.ttsa.ConsoleGame.Player.Functions.Input;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
 import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Functions.VarDec;
@@ -36,6 +37,7 @@ private final String INDEX_NUMVAR = "03";
 private final String INDEX_STRVAR = "04";
 private final String INDEX_NUMDEC = "05";
 private final String INDEX_IF = "06";
+private final String INDEX_INPUT = "07";
 
 
 
@@ -96,6 +98,9 @@ private final String INDEX_IF = "06";
                     }
                     gameScript.add(ifCalc(blockContent));
                     i--;
+                    break;
+                case INDEX_INPUT:
+                    gameScript.add(new Input());
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
