@@ -1,7 +1,5 @@
-de/ttsa/ConsoleGame/Player/Functions/If.class
 de/ttsa/ConsoleGame/Player/Datatypes/Scriptable.class
 de/ttsa/ConsoleGame/Player/Datatypes/Printablable.class
-de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest$1.class
 de/ttsa/ConsoleGame/Player/Structures/Room.class
 de/ttsa/ConsoleGame/Player/Functions/Printer.class
 de/ttsa/ConsoleGame/Player/GameBuilder.class

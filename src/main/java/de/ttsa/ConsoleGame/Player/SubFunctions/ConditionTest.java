@@ -12,7 +12,7 @@ public class ConditionTest {
 
     private static String testString;
     private final String AND = "&&";
-    private final String OR = "!!";
+    private final String OR = ";;";
     private final String INPUT = "input";
     private final String[] OPERATORS = new String[] { "==", "!=", "<=", ">=", "<", ">" };
 

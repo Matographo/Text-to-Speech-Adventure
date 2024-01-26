@@ -20,6 +20,50 @@ public class TesterInputTest {
         resetTest();
     }
 
+    @Test
+    public void testInputEQStr() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputEQStr");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testInputInOrderDoubleOffOrder() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputInOrderDoubleOffOrder");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testInputInOrderOffOrderStr() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputInOrderOffOrderStr");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testInputOffOrderStr() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputOffOrderStr");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testInputEQStrVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputEQStrVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testInputOffOrderStrAndStrVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testInputOffOrderStrAndStrVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+
+
 
     private void resetTest() {
         GameManager.clear();

@@ -8,11 +8,11 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
-import de.ttsa.ConsoleGame.Player.Functions.If;
 import de.ttsa.ConsoleGame.Player.Functions.Input;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
 import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Functions.VarDec;
+import de.ttsa.ConsoleGame.Player.Structures.If;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 class GameScriptBuilder {
@@ -26,7 +26,7 @@ private final String COMMAND_SEPERATOR = "::";
 private final String SAY_SEPERATOR = ",";
 private final String ROOM_SEPERATOR = ":";
 private final String VAR_SEPERATOR = ":";
-private final String IF_ELSE_SEPERATOR = "!!";
+private final String IF_ELSE_SEPERATOR = ";;";
 
 // ------------------ Command Inizes ----------------------
 

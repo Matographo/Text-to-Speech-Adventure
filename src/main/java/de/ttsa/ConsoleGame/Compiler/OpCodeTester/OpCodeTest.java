@@ -18,6 +18,7 @@ public class OpCodeTest {
     private final String NOT = "!";
     private final char IF_NUMBER = 'n';
     private final char IF_STRING = 's';
+    private final char IF_INPUT = 'i';
 
 
 // ------------------ Command Seperators ------------------
@@ -29,7 +30,9 @@ public class OpCodeTest {
     private final String NUMBER_STRING_SEPERATOR = ":";
     private final String NUMBER_DEC_SEPERATOR = ":";
     private final String IF_NUM_SEPERATOR = ":";
-    private final String IF_ELSE_SEPERATOR = "!!";
+    private final String IF_ELSE_SEPERATOR = ";;";
+    private final String OFFORDER_SEPERATOR = "!!!";
+    private final String VALUE_SEPERATOR = "!!";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -109,7 +112,7 @@ public class OpCodeTest {
                 case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableSyntax(args);
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecSyntax(args);
                 case INDEX_IF -> testResult = testResult && testIfSyntax(args);
-                case INDEX_INPUT -> testResult = testResult && true;
+                case INDEX_INPUT -> testResult = testResult && testInputSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -260,6 +263,7 @@ public class OpCodeTest {
         switch(i) {
             case IF_NUMBER -> testResult = testIfSyntaxNum(args.substring(1));
             case IF_STRING -> testResult = testIfSyntaxStr(args.substring(1));
+            case IF_INPUT -> testResult = testIfSyntaxIn(args.substring(1));
             default -> testResult = false;
         }
         return testResult;
@@ -287,6 +291,15 @@ public class OpCodeTest {
         if(!isValidName(arg[0]) && !(arg[0].startsWith("\"") && arg[0].endsWith("\""))) return false;
         if(!isValidName(arg[1]) && !(arg[1].startsWith("\"") && arg[1].endsWith("\""))) return false;
         return true; 
+    }
+
+    private boolean testIfSyntaxIn(String args) {
+        return checkOrderSyntax(args);
+    }
+
+    private boolean testInputSyntax(String args) {
+        if(!args.strip().isEmpty()) return false;
+        return true;
     }
 
 // ------------------ Test Functions Variables -------------------
@@ -543,6 +556,42 @@ public class OpCodeTest {
         String[] names = name.split(" ");
         for(String n : names) {
             if(!isValidName(n)) return false;
+        }
+        return true;
+    }
+
+    private boolean checkOrderSyntax(String args) {
+        boolean testResult = true;
+        if(args.startsWith("(") && args.endsWith(")")) {
+            args = args.substring(1, args.length()-1);
+            String[] offOrder = args.split(OFFORDER_SEPERATOR);
+            for(String order : offOrder) {
+                testResult = testResult && checkOffOrderSyntax(order);
+            }
+        } else {
+            testResult = testResult && checkOffOrderSyntax(args);
+        }
+        return testResult;
+    }
+
+    private boolean checkOffOrderSyntax(String args) {
+        boolean testResult = true;
+        if(args.startsWith("\"") && args.endsWith("\"")) {
+            args = args.substring(1, args.length()-1);
+            String[] values = args.split(VALUE_SEPERATOR);
+            for(String value : values) {
+                testResult = testResult && checkValueSyntax(value);
+            }
+        } else {
+            testResult = testResult && checkValueSyntax(args);
+        }
+        return testResult;
+    }
+
+    private boolean checkValueSyntax(String args) {
+        if(args.startsWith("'") && args.endsWith("'")) {
+            args = args.substring(1, args.length()-1);
+            if(!isValidName(args)) return false;
         }
         return true;
     }
