@@ -1,0 +1,17 @@
+de/ttsa/TestClasses/OpCodeTestTester/TesterRoomJumperTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomJumperTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterNumDecTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumDecTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterNumVarTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerFunktionTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumVarTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterFunctionTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerSayTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterSayTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrVarTest.class
+de/ttsa/GetOutput.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterIfTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterStrVarTest.class
+de/ttsa/TestClasses/OpCodePlayerTester/PlayerIfTest.class
+de/ttsa/TestClasses/OpCodeTestTester/TesterRoomTest.class

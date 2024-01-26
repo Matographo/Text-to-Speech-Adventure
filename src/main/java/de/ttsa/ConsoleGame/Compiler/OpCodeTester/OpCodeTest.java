@@ -26,7 +26,7 @@ public class OpCodeTest {
     private final String NUMBER_VARIABLE_SEPERATOR = ":";
     private final String NUMBER_STRING_SEPERATOR = ":";
     private final String NUMBER_DEC_SEPERATOR = ":";
-    private final String IF_SEPERATOR = "::";
+    private final String IF_NUM_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -264,19 +264,13 @@ public class OpCodeTest {
     }
 
     private boolean testIfSyntax(String args) {
-        String[] toTest = args.split(INDEX_IF);
+        String[] toTest = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
-        for(String test : toTest) {
-            if(!test.contains("\"")) return false;
-            if(test.indexOf("\"") == test.lastIndexOf("\"")) return false;
-            if(!test.startsWith("\"")) return false;
-            if(test.substring(test.lastIndexOf("\"")).length() == 0) return false;
-            boolean testResult2 = !isNumber(test.substring(test.lastIndexOf("\"")+1));
-            if(testResult2) return false;
-            String[] toTestBig = test.substring(1, test.lastIndexOf("\"")).split("[&]{2} | [|]{2}");
-            for (String tests : toTestBig) {
-                testResult = testResult && isTestable(tests);
-            }
+        if(toTest.length != 2) return false;
+        if(!isNumber(toTest[1])) return false;
+        String[] toTestBig = toTest[0].split("[&]{2} | [|]{2}");
+        for (String test : toTestBig) {
+            testResult = testResult && isTestable(test);
         }
         return testResult;
     }
@@ -342,14 +336,11 @@ public class OpCodeTest {
     }
 
     private boolean testIfVar(String args) {
-        String[] tests = args.split(INDEX_IF);
+        String[] tests = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
-        for(String singleTest : tests) {
-            singleTest = singleTest.substring(1, singleTest.lastIndexOf("\""));
-            String[] toTest = singleTest.split("[&]{2} | [|]{2}");
-            for (String test : toTest) {
-                testResult = testResult && isTestableVar(test);
-            }
+        String[] toTest = tests[0].split("[&]{2} | [|]{2}");
+        for (String test : toTest) {
+            testResult = testResult && isTestableVar(test);
         }
         return testResult;
     }
@@ -366,7 +357,7 @@ public class OpCodeTest {
     }
 
     private boolean testIfBlock(String args, int ifPosition, int endOfRoom) {
-        return ifPosition + getIfBlockLength(args) <= endOfRoom;
+        return ifPosition + getIfBlockLength(args) + 1 <= endOfRoom;
     }
 
 // ------------------ Test Help Functions ----------------------
@@ -447,7 +438,7 @@ public class OpCodeTest {
     private boolean isTestable(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
             String[] toTest = test.split("[=<>]");
-            if(toTest.length != 2) return false;
+            if(toTest.length != 3) return false;
             return isCalculatable(toTest[0]) && isCalculatable(toTest[1]);
         } else {
             return false;
@@ -457,20 +448,16 @@ public class OpCodeTest {
     private boolean isTestableVar(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
             String[] toTest = test.split("[=<>]");
-            if(toTest.length != 2) return false;
-            return isCalculatableVar(toTest[0]) && isCalculatableVar(toTest[1]);
+            if(toTest.length != 3) return false;
+            return isCalculatableVar(toTest[0]) && isCalculatableVar(toTest[2]);
         } else {
             return false;
         }
     }
 
     private int getIfBlockLength(String args) {
-        String[] arg = args.split(INDEX_IF);
-        int argLength = 0;
-        for(String argument : arg) {
-            argLength += Integer.parseInt(argument.substring(argument.lastIndexOf("\"")+1));
-        }
-        return argLength;
+        String[] arg = args.split(IF_NUM_SEPERATOR);
+        return Integer.parseInt(arg[1]);
     }
 
     private int getRoomBlockLength(String args) {

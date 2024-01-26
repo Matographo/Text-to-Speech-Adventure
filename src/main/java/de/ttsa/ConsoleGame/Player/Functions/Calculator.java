@@ -12,12 +12,18 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class Calculator {
 
-    private Pattern varName = Pattern.compile("[a-zA-Z]+[a-zA-Z0-9]*");
-    private Pattern ops = Pattern.compile("[\\+\\-\\*\\/]");
-    private Matcher match;
+    private static Pattern varName = Pattern.compile("[a-zA-Z]+[a-zA-Z0-9]*");
+    private static Pattern ops = Pattern.compile("[\\+\\-\\*\\/]");
+    private static Matcher match;
+    private static String toCalculate;
 
     public Calculator() {
 
+    }
+
+    public static int calc(String toCalculate) {
+        Calculator.toCalculate = toCalculate;
+        return new Calculator().calc();
     }
 
     /**
@@ -26,7 +32,7 @@ public class Calculator {
      * @param toCalculate The String with the mathmatical expression
      * @return The result of the calculation
      */
-    public int calc(String toCalculate) {
+    private int calc() {
         String calc = "";
         String result = toCalculate;
 

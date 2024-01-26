@@ -8,6 +8,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Script;
 import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
+import de.ttsa.ConsoleGame.Player.Functions.If;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
 import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Functions.VarDec;
@@ -33,6 +34,7 @@ private final String INDEX_ROOM_JUMPER = "02";
 private final String INDEX_NUMVAR = "03";
 private final String INDEX_STRVAR = "04";
 private final String INDEX_NUMDEC = "05";
+private final String INDEX_IF = "06";
 
 
 
@@ -50,7 +52,7 @@ private final String INDEX_NUMDEC = "05";
         String args = "";
         String line = "";
         ArrayList<Scriptable> gameScript = new ArrayList<Scriptable>();
-        ArrayList<String> roomContent;
+        ArrayList<String> blockContent;
         for(int i = 0; i < game.size(); i++) {
             line = game.get(i);
             opCode = line.split(COMMAND_SEPERATOR)[0];
@@ -62,13 +64,13 @@ private final String INDEX_NUMDEC = "05";
                     break;
                 case INDEX_ROOM:
                     int roomSize = getRoomSize(args);
-                    roomContent = new ArrayList<String>(roomSize);
+                    blockContent = new ArrayList<String>(roomSize);
                     game.set(i, args);
                     for(int j = 0; j <= roomSize; j++) {
-                        roomContent.add(game.get(i));
+                        blockContent.add(game.get(i));
                         game.remove(i);
                     }
-                    room(roomContent);
+                    room(blockContent);
                     i--;
                     break;
                 case INDEX_ROOM_JUMPER:
@@ -82,6 +84,17 @@ private final String INDEX_NUMDEC = "05";
                     break;
                 case INDEX_NUMDEC:
                     gameScript.add(varDec(args));
+                    break;
+                case INDEX_IF:
+                    int ifSize = getIfSize(args);
+                    blockContent = new ArrayList<String>(ifSize);
+                    game.set(i, args);
+                    for(int j = 0; j <= ifSize; j++) {
+                        blockContent.add(game.get(i));
+                        game.remove(i);
+                    }
+                    gameScript.add(ifCalc(blockContent));
+                    i--;
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -156,6 +169,12 @@ private final String INDEX_NUMDEC = "05";
         return new VarDec(varDecName, varDecValue);
     }
 
+    private Scriptable ifCalc(ArrayList<String> ifContent) {
+        String ifArgs = ifContent.get(0);
+        ifContent.remove(0);
+        return new If(ifArgs.substring(0, ifArgs.indexOf(":")), loadGame(ifContent));
+    }
+
 
 // ------------------ Helper Functions -------------------
     
@@ -173,5 +192,9 @@ private final String INDEX_NUMDEC = "05";
                 return false;
             }
             return true;
+        }
+
+        private int getIfSize(String args) {
+            return Integer.parseInt(args.substring(args.lastIndexOf(":") + 1));
         }
 }
