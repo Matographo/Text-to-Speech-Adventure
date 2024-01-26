@@ -27,6 +27,7 @@ public class OpCodeTest {
     private final String NUMBER_STRING_SEPERATOR = ":";
     private final String NUMBER_DEC_SEPERATOR = ":";
     private final String IF_NUM_SEPERATOR = ":";
+    private final String IF_ELSE_SEPERATOR = "!!";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -232,6 +233,24 @@ public class OpCodeTest {
     }
 
     private boolean testIfSyntax(String args) {
+        String[] toTest = args.split(IF_ELSE_SEPERATOR);
+        boolean testResult = true;
+        for(int i=0; i < toTest.length; i++) {
+            if(i == toTest.length - 1) {
+                testResult = testResult && isTestableElse(toTest[i]);
+            } else {
+                testResult = testResult && testIfSyntax2(toTest[i]);
+            }
+        }
+        return testResult;
+    }
+
+    private boolean isTestableElse(String test) {
+        if(test.startsWith(":") && isNumber(test.substring(1))) return true;
+        return testIfSyntax2(test);
+    }
+
+    private boolean testIfSyntax2(String args) {
         String[] toTest = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
         if(toTest.length != 2) return false;
@@ -325,7 +344,12 @@ public class OpCodeTest {
     }
 
     private boolean testIfBlock(String args, int ifPosition, int endOfRoom) {
-        return ifPosition + getIfBlockLength(args) + 1 <= endOfRoom;
+        String[] toTest = args.split(IF_ELSE_SEPERATOR);
+        int blockLenght = 0;
+        for(String test : toTest) {
+            blockLenght += getIfBlockLength(test);
+        }
+        return ifPosition + blockLenght + 1 <= endOfRoom;
     }
 
 // ------------------ Test Help Functions ----------------------

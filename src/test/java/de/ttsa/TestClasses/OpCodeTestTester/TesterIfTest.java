@@ -15,59 +15,75 @@ public class TesterIfTest {
 
     @Test
     public void testIf() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIf");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIf");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfWithVar() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithVar");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithVar");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfWithTwoVars() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithTwoVars");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithTwoVars");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfLeftLowerRight() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftLowerRight");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftLowerRight");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfLeftNERight() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftNERight");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftNERight");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfLeftGERight() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftGERight");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftGERight");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfWithCalc() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalc");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalc");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testIfWithCalcVar() {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalcVar");
-            assertEquals(true, test.start());
-            resetTest();
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalcVar");
+        assertEquals(true, test.start());
+        resetTest();
     }
+
+    @Test
+    public void testIfWithElse() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithElse");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testIfWithElseIf() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithElseIf");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+
 
 
     private void resetTest() {
