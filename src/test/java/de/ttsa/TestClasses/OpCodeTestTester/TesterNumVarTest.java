@@ -1,7 +1,6 @@
 package de.ttsa.TestClasses.OpCodeTestTester;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -15,38 +14,23 @@ public class TesterNumVarTest {
 
     @Test
     public void testNumVar() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVar");
-            assertEquals(true, test.start());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            resetTest();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVar");
+        assertEquals(true, test.start());
+        resetTest();
     }
 
     @Test
     public void testNumVarInvalideName() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVarInvalideName");
-            assertEquals(false, test.start());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            resetTest();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVarInvalideName");
+        assertEquals(false, test.start());
+        resetTest();
     }
 
     @Test
     public void testNumVarFalseSyntax() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVarFalseSyntax");
-            assertEquals(false, test.start());
-        } catch (Exception e) {
-            fail();
-        } finally {
-            resetTest();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testNumVarFalseSyntax");
+        assertEquals(false, test.start());
+        resetTest();
     }
 
 

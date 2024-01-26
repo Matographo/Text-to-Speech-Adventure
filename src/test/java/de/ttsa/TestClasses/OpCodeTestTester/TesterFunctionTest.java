@@ -1,5 +1,6 @@
 package de.ttsa.TestClasses.OpCodeTestTester;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -12,11 +13,7 @@ public class TesterFunctionTest {
 
     @Test
     public void testEmptyFile() {
-        try {
         new OpCodeTest(TEST_FILE_PATH + "testEmptyFile");
-        } catch (Exception e) {
-            fail();
-        }
     }
 
     @Test
@@ -25,6 +22,7 @@ public class TesterFunctionTest {
         new OpCodeTest(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
         fail();
         } catch (Exception e) {
+            assertEquals(true, true);
         }
     }
     

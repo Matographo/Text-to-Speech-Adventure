@@ -1,7 +1,6 @@
 package de.ttsa.TestClasses.OpCodeTestTester;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -14,42 +13,26 @@ public class TesterStrVarTest {
 
     @Test
     public void testStrVarOneWord() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarOneWord");
-            assertEquals(true, test.start());
-        } catch (Exception e) {
-            fail();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarOneWord");
+        assertEquals(true, test.start());
     }
 
     @Test
     public void testStrVarMultipleWords() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarMultipleWords");
-            assertEquals(true, test.start());
-        } catch (Exception e) {
-            fail();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarMultipleWords");
+        assertEquals(true, test.start());
     }
 
     @Test
     public void testStrVarFalseName() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarFalseName");
-            assertEquals(false, test.start());
-        } catch (Exception e) {
-            fail();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarFalseName");
+        assertEquals(false, test.start());
     }
 
     @Test
     public void testStrVarDoubleName() {
-        try {
-            OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarDoubleName");
-            assertEquals(false, test.start());
-        } catch (Exception e) {
-            fail();
-        }
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testStrVarDoubleName");
+        assertEquals(false, test.start());
     }
 
 }
