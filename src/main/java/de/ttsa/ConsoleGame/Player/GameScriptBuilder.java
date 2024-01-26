@@ -25,6 +25,7 @@ private final String COMMAND_SEPERATOR = "::";
 private final String SAY_SEPERATOR = ",";
 private final String ROOM_SEPERATOR = ":";
 private final String VAR_SEPERATOR = ":";
+private final String IF_ELSE_SEPERATOR = "!!";
 
 // ------------------ Command Inizes ----------------------
 
@@ -170,9 +171,23 @@ private final String INDEX_IF = "06";
     }
 
     private Scriptable ifCalc(ArrayList<String> ifContent) {
-        String ifArgs = ifContent.get(0);
+        String ifBlockArg = ifContent.get(0);
         ifContent.remove(0);
-        return new If(ifArgs.substring(0, ifArgs.indexOf(":")), loadGame(ifContent));
+        String[] ifArgs = ifBlockArg.split(IF_ELSE_SEPERATOR);
+        Scriptable[] scripts = new Scriptable[ifArgs.length];
+        ArrayList<String> code;
+        for(int i=0; i < ifArgs.length; i++) {
+            String con = ifArgs[i].substring(0, ifArgs[i].lastIndexOf(":"));
+            int length = Integer.parseInt(ifArgs[i].substring(ifArgs[i].lastIndexOf(":") + 1));
+            code = new ArrayList<>(length);
+            for(int j=0; j < length; j++) {
+                code.add(ifContent.get(0));
+                ifContent.remove(0);
+            }
+            ifArgs[i] = con;
+            scripts[i] = loadGame(code);
+        }
+        return new If(ifArgs, scripts);
     }
 
 
@@ -195,6 +210,11 @@ private final String INDEX_IF = "06";
         }
 
         private int getIfSize(String args) {
-            return Integer.parseInt(args.substring(args.lastIndexOf(":") + 1));
+            String[] lengthS = args.split(IF_ELSE_SEPERATOR);
+            int length = 0;
+            for(String l : lengthS) {
+                length += Integer.parseInt(l.substring(l.lastIndexOf(":") + 1));
+            }
+            return length;
         }
 }

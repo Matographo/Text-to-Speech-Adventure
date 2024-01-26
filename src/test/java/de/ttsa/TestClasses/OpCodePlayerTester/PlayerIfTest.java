@@ -82,4 +82,22 @@ public class PlayerIfTest {
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         GameManager.clear();
     }
+
+    @Test
+    public void testIfWithElse() {
+        final int expected = 2;
+        Player player = new Player(TEST_FILE_PATH + "testIfWithElse");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
+
+    @Test
+    public void testIfWithElseIf() {
+        final int expected = 2;
+        Player player = new Player(TEST_FILE_PATH + "testIfWithElseIf");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
 }
