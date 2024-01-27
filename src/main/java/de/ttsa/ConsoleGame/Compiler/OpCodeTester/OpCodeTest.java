@@ -45,6 +45,7 @@ public class OpCodeTest {
     private final String INDEX_IF = "06";
     private final String INDEX_INPUT = "07";
     private final String INDEX_STR_VARDEC = "08";
+    private final String INDEX_DEBUG = "09";
 
 // ------------------ Variables Memory --------------------
 
@@ -116,6 +117,7 @@ public class OpCodeTest {
                 case INDEX_IF -> testResult = testResult && testIfSyntax(args);
                 case INDEX_INPUT -> testResult = testResult && testInputSyntax(args);
                 case INDEX_STR_VARDEC -> testResult = testResult && testStrDecSyntax(args);
+                case INDEX_DEBUG -> testResult = testResult && testDebugInputSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -143,6 +145,7 @@ public class OpCodeTest {
                 case INDEX_STRING_VARIABLE -> testResult = testResult && testStringVariableVar(args);
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
                 case INDEX_IF -> testResult = testResult && testIfVar(args);
+                case INDEX_DEBUG -> testResult = testResult && testDebugInputVar(args);
             }
         }
         return testResult;
@@ -315,6 +318,12 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testDebugInputSyntax(String args) {
+        if(args.strip().isEmpty()) return false;
+        if(!isValidName(args) && !args.startsWith("\"") && !args.endsWith("\"")) return true;
+        return true;
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -404,6 +413,14 @@ public class OpCodeTest {
         String[] tests = args.split("==");
         if(!strNames.contains(tests[0]) && !tests[0].startsWith("\"") && !tests[0].endsWith("\"")) return false;
         if(!strNames.contains(tests[1]) && !tests[1].startsWith("\"") && !tests[1].endsWith("\"")) return false;
+        return true;
+    }
+
+
+    private boolean testDebugInputVar(String args) {
+        if(isValidName(args)) {
+            if(!strNames.contains(args)) return false;
+        }
         return true;
     }
 

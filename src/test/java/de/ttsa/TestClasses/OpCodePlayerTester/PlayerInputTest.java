@@ -28,13 +28,13 @@ public class PlayerInputTest {
     @Test
     public void testInputEQStr() {
         final String expected = "hallo";
-        SetInput input = new SetInput();
-        input.makeInput(expected);
+        //SetInput input = new SetInput();
+        //input.makeInput(expected);
         Player player = new Player(TEST_FILE_PATH + "testInputEQStr");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         GameManager.clear();
-        input.reinit();
+        //input.reinit();
     }
 
     @Test
