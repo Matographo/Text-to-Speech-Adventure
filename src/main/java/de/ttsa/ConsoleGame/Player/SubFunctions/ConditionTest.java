@@ -1,5 +1,6 @@
 package de.ttsa.ConsoleGame.Player.SubFunctions;
 
+import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Functions.Calculator;
 
 /**
@@ -54,6 +55,26 @@ public class ConditionTest {
     }
 
     private boolean testCondition(String condition) {
+        char conType = condition.charAt(0);
+        condition = condition.substring(1);
+        boolean result = false;
+        switch (conType) {
+            case VAR_CON -> result = testNumCondition(condition);
+            case STRING_CON -> result = testStringCondition(condition);
+            case INPUT_CON -> result = testInputCondition(condition);
+            default -> throw new RuntimeException("Condition type " + conType + " is not valid!");
+        }
+        return result;
+    }
+
+
+
+// ----------------------- Number Conditions -----------------------
+    
+
+
+
+    private boolean testNumCondition(String condition) {
         boolean result = false;
         for (String op : OPERATORS) {
             if (condition.contains(op)) {
@@ -88,6 +109,30 @@ public class ConditionTest {
     }
 
 
+
+// ----------------------- String Conditions -----------------------
+
+
+    private boolean testStringCondition(String condition) {
+        String[] con = condition.split("==");
+        for(int i=0; i < con.length; i++) {
+            if(con[i].startsWith("\"") && con[i].endsWith("\"")) {
+                con[i] = con[i].substring(1, con[i].length() - 1);
+            } else {
+                con[i] = GameManager.strVars.get(con[i]).getValue();
+            }
+        }
+        return con[0].equals(con[1]);
+    }
+
+
+
+// ----------------------- Input Conditions -----------------------
+
+
+    private boolean testInputCondition(String condition) {
+        return new OrderChecker().check(condition);
+    }
 
 
 }

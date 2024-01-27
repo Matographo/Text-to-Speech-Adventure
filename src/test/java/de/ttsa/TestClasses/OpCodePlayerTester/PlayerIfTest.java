@@ -100,4 +100,22 @@ public class PlayerIfTest {
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         GameManager.clear();
     }
+
+    @Test
+    public void testIfWithStrVar() {
+        final int expected = 1;
+        Player player = new Player(TEST_FILE_PATH + "testIfWithStrVar");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
+
+    @Test
+    public void testIfWithStrVarEQStrVar() {
+        final int expected = 1;
+        Player player = new Player(TEST_FILE_PATH + "testIfWithStrVarEQStrVar");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
 }

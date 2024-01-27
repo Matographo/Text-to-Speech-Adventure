@@ -1,6 +1,6 @@
 03::Var:0
 04::Varr:Hallo
 01::START:3
-07::
-06::i("hallo!!Varr"!!!"hallo!!Varr"):1
+09::"hallo Hallo Hallo hallo"
+06::i("hallo!!'Varr'""hallo!!'Varr'"):1
 05::Var:1

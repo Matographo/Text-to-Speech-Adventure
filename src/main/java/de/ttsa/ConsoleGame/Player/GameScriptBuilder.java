@@ -205,7 +205,7 @@ private final String INDEX_DEBUG_INPUT = "09";
                 scripts[i] = loadGame(code);
                 break;
             }
-            ifArgs[i] = con.substring(1);
+            ifArgs[i] = con;
             scripts[i] = loadGame(code);
         }
         return new If(ifArgs, scripts);
