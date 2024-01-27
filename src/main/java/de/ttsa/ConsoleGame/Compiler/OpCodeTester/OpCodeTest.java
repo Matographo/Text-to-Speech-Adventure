@@ -33,16 +33,18 @@ public class OpCodeTest {
     private final String IF_ELSE_SEPERATOR = ";;";
     private final String OFFORDER_SEPERATOR = "!!!";
     private final String VALUE_SEPERATOR = "!!";
+    private final String STR_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
     private final String INDEX_ROOM = "01";
     private final String INDEX_ROOM_JUMPER = "02";
     private final String INDEX_NUMBER_VARIABLE = "03";
-    private final String INDEX_NUMBER_STRING = "04";
+    private final String INDEX_STRING_VARIABLE = "04";
     private final String INDEX_NUM_VARDEC = "05";
     private final String INDEX_IF = "06";
     private final String INDEX_INPUT = "07";
+    private final String INDEX_STR_VARDEC = "08";
 
 // ------------------ Variables Memory --------------------
 
@@ -109,10 +111,11 @@ public class OpCodeTest {
                 case INDEX_ROOM -> testResult = testResult && testRoomSyntax(args);
                 case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperSyntax(args);
                 case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableSyntax(args);
-                case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableSyntax(args);
+                case INDEX_STRING_VARIABLE -> testResult = testResult && testStringVariableSyntax(args);
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecSyntax(args);
                 case INDEX_IF -> testResult = testResult && testIfSyntax(args);
                 case INDEX_INPUT -> testResult = testResult && testInputSyntax(args);
+                case INDEX_STR_VARDEC -> testResult = testResult && testStrDecSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -137,7 +140,7 @@ public class OpCodeTest {
                 case INDEX_ROOM -> testResult = testResult && testRoomVar(args);
                 case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperVar(args);
                 case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableVar(args);
-                case INDEX_NUMBER_STRING -> testResult = testResult && testStringVariableVar(args);
+                case INDEX_STRING_VARIABLE -> testResult = testResult && testStringVariableVar(args);
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
                 case INDEX_IF -> testResult = testResult && testIfVar(args);
             }
@@ -299,6 +302,16 @@ public class OpCodeTest {
 
     private boolean testInputSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
+        return true;
+    }
+
+    private boolean testStrDecSyntax(String args) {
+        String[] strDecArgs = args.split(STR_SEPERATOR);
+        if(strDecArgs.length != 2) return false;
+        String strDecName = strDecArgs[0];
+        if(!isValidName(strDecName)) return false;
+        String operation = strDecArgs[1];
+        if(!operation.startsWith("\"") && !operation.endsWith("\"") && !isValidName(operation)) return false;
         return true;
     }
 

@@ -11,6 +11,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.Functions.Input;
 import de.ttsa.ConsoleGame.Player.Functions.Printer;
 import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
+import de.ttsa.ConsoleGame.Player.Functions.StrDec;
 import de.ttsa.ConsoleGame.Player.Functions.VarDec;
 import de.ttsa.ConsoleGame.Player.Structures.If;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
@@ -38,6 +39,7 @@ private final String INDEX_STRVAR = "04";
 private final String INDEX_NUMDEC = "05";
 private final String INDEX_IF = "06";
 private final String INDEX_INPUT = "07";
+private final String INDEX_STRDEC = "08";
 
 
 
@@ -51,6 +53,7 @@ private final String INDEX_INPUT = "07";
 
 
     public Scriptable loadGame(ArrayList<String> game) {
+        Input input = new Input(); //for better performance (not creating input every time)
         String opCode = "";
         String args = "";
         String line = "";
@@ -100,7 +103,10 @@ private final String INDEX_INPUT = "07";
                     i--;
                     break;
                 case INDEX_INPUT:
-                    gameScript.add(new Input());
+                    gameScript.add(input);
+                    break;
+                case INDEX_STRDEC:
+                    gameScript.add(strDec(args));
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -198,6 +204,16 @@ private final String INDEX_INPUT = "07";
             scripts[i] = loadGame(code);
         }
         return new If(ifArgs, scripts);
+    }
+
+    private Scriptable strDec(String args) {
+        String[] strDecArgs = args.split(VAR_SEPERATOR);
+        String strDecName = strDecArgs[0];
+        if(!isValidName(strDecName)) {
+            throw new RuntimeException("StrDec name " + strDecName + " is not valid!");
+        }
+        String operation = strDecArgs[1];
+        return new StrDec(strDecName, operation);
     }
 
 

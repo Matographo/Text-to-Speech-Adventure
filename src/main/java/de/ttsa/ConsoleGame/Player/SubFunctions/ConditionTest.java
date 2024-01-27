@@ -1,7 +1,5 @@
 package de.ttsa.ConsoleGame.Player.SubFunctions;
 
-import java.util.HashSet;
-
 import de.ttsa.ConsoleGame.Player.Functions.Calculator;
 
 /**
@@ -13,7 +11,9 @@ public class ConditionTest {
     private static String testString;
     private final String AND = "&&";
     private final String OR = ";;";
-    private final String INPUT = "input";
+    private final char INPUT_CON = 'i';
+    private final char STRING_CON = 's';
+    private final char VAR_CON = 'n';
     private final String[] OPERATORS = new String[] { "==", "!=", "<=", ">=", "<", ">" };
 
     public static boolean test(String conditionString) {
