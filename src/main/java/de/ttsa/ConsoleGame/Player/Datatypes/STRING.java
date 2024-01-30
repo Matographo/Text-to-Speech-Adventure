@@ -21,6 +21,9 @@ public class STRING implements Printablable {
         return value;
     }
 
-
+    @Override
+    public String toString() {
+        return print();
+    }
     
 }

@@ -12,4 +12,9 @@ public class PrintText implements Printablable{
     public String print() {
         return text;
     }
+
+    @Override
+    public String toString() {
+        return print();
+    }
 }

@@ -21,4 +21,9 @@ public class INT implements Printablable {
         return value + "";
     }
 
+    @Override
+    public String toString() {
+        return print();
+    }
+
 }
