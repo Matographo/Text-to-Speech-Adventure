@@ -1,9 +1,8 @@
-package de.ttsa.ConsoleGame.Player.Functions;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
 import java.util.Scanner;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 
 public class Input implements Scriptable {
     

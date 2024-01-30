@@ -6,16 +6,16 @@ import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
-import de.ttsa.ConsoleGame.Player.Datatypes.Script;
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
-import de.ttsa.ConsoleGame.Player.Functions.DebugInput;
-import de.ttsa.ConsoleGame.Player.Functions.GameSavingScript;
-import de.ttsa.ConsoleGame.Player.Functions.Input;
-import de.ttsa.ConsoleGame.Player.Functions.Printer;
-import de.ttsa.ConsoleGame.Player.Functions.RoomJumper;
-import de.ttsa.ConsoleGame.Player.Functions.StrDec;
-import de.ttsa.ConsoleGame.Player.Functions.VarDec;
-import de.ttsa.ConsoleGame.Player.Structures.If;
+import de.ttsa.ConsoleGame.Player.Scriptables.DebugInput;
+import de.ttsa.ConsoleGame.Player.Scriptables.GameSavingScript;
+import de.ttsa.ConsoleGame.Player.Scriptables.If;
+import de.ttsa.ConsoleGame.Player.Scriptables.Input;
+import de.ttsa.ConsoleGame.Player.Scriptables.Printer;
+import de.ttsa.ConsoleGame.Player.Scriptables.RoomJumper;
+import de.ttsa.ConsoleGame.Player.Scriptables.Script;
+import de.ttsa.ConsoleGame.Player.Scriptables.Scriptable;
+import de.ttsa.ConsoleGame.Player.Scriptables.StrDec;
+import de.ttsa.ConsoleGame.Player.Scriptables.VarDec;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 class GameScriptBuilder {

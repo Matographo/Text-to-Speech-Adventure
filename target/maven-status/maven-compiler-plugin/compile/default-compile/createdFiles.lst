@@ -1,7 +1,5 @@
-de/ttsa/ConsoleGame/Player/Datatypes/Scriptable.class
 de/ttsa/ConsoleGame/Player/Datatypes/Printablable.class
 de/ttsa/ConsoleGame/Player/Structures/Room.class
-de/ttsa/ConsoleGame/Player/Functions/Printer.class
 de/ttsa/ConsoleGame/Player/GameBuilder.class
 de/ttsa/ConsoleGame/Compiler/Compiler/TestC/Test.class
 de/ttsa/ConsoleGame/Player/GameScriptBuilder.class
@@ -11,10 +9,7 @@ de/ttsa/ConsoleGame/Player/Datatypes/STRING.class
 de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest.class
 de/ttsa/ConsoleGame/Player/GameManager.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileC/Compiler.class
-de/ttsa/ConsoleGame/Player/Functions/VarDec.class
-de/ttsa/ConsoleGame/Player/Datatypes/Script.class
 de/ttsa/ConsoleGame/Compiler/App.class
-de/ttsa/ConsoleGame/Player/Functions/RoomJumper.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/CFileReader.class
 de/ttsa/ConsoleGame/Player/Player.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/GameBuilder.class

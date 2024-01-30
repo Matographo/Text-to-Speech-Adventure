@@ -1,8 +1,8 @@
-package de.ttsa.ConsoleGame.Player.Functions;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
+import de.ttsa.ConsoleGame.Player.Functions.Calculator;
 
 public class VarDec implements Scriptable {
     

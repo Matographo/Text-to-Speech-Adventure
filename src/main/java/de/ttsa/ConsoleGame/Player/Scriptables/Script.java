@@ -1,4 +1,4 @@
-package de.ttsa.ConsoleGame.Player.Datatypes;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package de.ttsa.ConsoleGame.Player;
 
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
+import de.ttsa.ConsoleGame.Player.Scriptables.Scriptable;
 
 class GameBuilder {
 

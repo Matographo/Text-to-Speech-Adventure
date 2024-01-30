@@ -1,6 +1,5 @@
-package de.ttsa.ConsoleGame.Player.Structures;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 import de.ttsa.ConsoleGame.Player.SubFunctions.ConditionTest;
 
 public class If implements Scriptable {

@@ -1,4 +1,4 @@
-package de.ttsa.ConsoleGame.Player.Datatypes;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
 public interface Scriptable {
 

@@ -1,7 +1,6 @@
-package de.ttsa.ConsoleGame.Player.Functions;
+package de.ttsa.ConsoleGame.Player.Scriptables;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
-import de.ttsa.ConsoleGame.Player.Datatypes.Scriptable;
 
 public class Printer implements Scriptable {
 
