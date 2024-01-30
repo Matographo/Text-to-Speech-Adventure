@@ -48,4 +48,11 @@ public class GameManager {
         GameSaver.loadGame();
     }
 
+    public static void exitGame(boolean save) {
+        if(save) {
+            saveGame();
+        }
+        System.exit(0);
+    }
+
 }

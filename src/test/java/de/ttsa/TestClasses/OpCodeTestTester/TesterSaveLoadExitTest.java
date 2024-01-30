@@ -24,4 +24,16 @@ public class TesterSaveLoadExitTest {
         OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoadSimpleGame");
         assertEquals(true, test.start());
     }
+
+    @Test
+    public void testExitSimpleGameWithoutSave() throws IOException {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testExitSimpleGameWithoutSave");
+        assertEquals(true, test.start());
+    }
+
+    @Test
+    public void testExitSimpleGameWithSave() throws IOException {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testExitSimpleGameWithSave");
+        assertEquals(true, test.start());
+    }
 }

@@ -48,6 +48,7 @@ public class OpCodeTest {
     private final String INDEX_DEBUG = "09";
     private final String INDEX_SAVE = "0A";
     private final String INDEX_LOAD = "0B";
+    private final String INDEX_EXIT = "0C";
 
 // ------------------ Variables Memory --------------------
 
@@ -122,6 +123,7 @@ public class OpCodeTest {
                 case INDEX_DEBUG -> testResult = testResult && testDebugInputSyntax(args);
                 case INDEX_SAVE -> testResult = testResult && testSaveSyntax(args);
                 case INDEX_LOAD -> testResult = testResult && testLoadSyntax(args);
+                case INDEX_EXIT -> testResult = testResult && testExitSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -335,6 +337,11 @@ public class OpCodeTest {
 
     private boolean testLoadSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
+        return true;
+    }
+
+    private boolean testExitSyntax(String args) {
+        if(!args.equals("0") && !args.equals("1")) return false;
         return true;
     }
 

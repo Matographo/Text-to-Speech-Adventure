@@ -7,6 +7,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Scriptables.DebugInput;
+import de.ttsa.ConsoleGame.Player.Scriptables.GameExitScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameLoaderScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameSavingScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.If;
@@ -46,6 +47,7 @@ private final String INDEX_STRDEC = "08";
 private final String INDEX_DEBUG_INPUT = "09";
 private final String INDEX_SAVE = "0A";
 private final String INDEX_LOAD = "0B";
+private final String INDEX_EXIT = "0C";
 
 
 
@@ -122,6 +124,9 @@ private final String INDEX_LOAD = "0B";
                     break;
                 case INDEX_LOAD:
                     gameScript.add(new GameLoaderScript());
+                    break;
+                case INDEX_EXIT:
+                    gameScript.add(new GameExitScript(args));
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
