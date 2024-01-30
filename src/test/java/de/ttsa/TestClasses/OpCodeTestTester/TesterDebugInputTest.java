@@ -7,7 +7,7 @@ import org.junit.Test;
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
 
-public class TesterDebugInput {
+public class TesterDebugInputTest {
     
     private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/DebugInput/";
 

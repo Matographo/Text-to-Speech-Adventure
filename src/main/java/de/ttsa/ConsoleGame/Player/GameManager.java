@@ -43,4 +43,9 @@ public class GameManager {
         GameSaver.saveGame();
     }
 
+    public static void loadGame() {
+        new GameSaver(savePath);
+        GameSaver.loadGame();
+    }
+
 }

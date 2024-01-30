@@ -6,16 +6,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
 
-public class PlayerSaveFile {
+public class PlayerSaveLoadExitTest {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/GameSaver/";
+    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/SaveLoadExit/";
 
     @Test
     public void testSaveSimpleGame() throws IOException {
@@ -23,9 +22,16 @@ public class PlayerSaveFile {
         GameManager.savePath = TEST_FILE_PATH + "testSaveSimpleGame.save";
         player.play();
         assertEquals(5, getLines(TEST_FILE_PATH + "testSaveSimpleGame.save"));
-
-        
     }
+
+    @Test
+    public void testLoadSimpleGame() throws IOException {
+        Player player = new Player(TEST_FILE_PATH + "testLoadSimpleGame");
+        GameManager.savePath = TEST_FILE_PATH + "testLoadSimpleGame.save";
+        player.play();
+        assertEquals(20, GameManager.numVars.get("Var").getValue());
+    }
+
 
     private int getLines(String path) throws IOException {
         File file = new File(path);

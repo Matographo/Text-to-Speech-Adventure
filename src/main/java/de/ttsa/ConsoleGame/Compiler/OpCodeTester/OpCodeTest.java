@@ -47,6 +47,7 @@ public class OpCodeTest {
     private final String INDEX_STR_VARDEC = "08";
     private final String INDEX_DEBUG = "09";
     private final String INDEX_SAVE = "0A";
+    private final String INDEX_LOAD = "0B";
 
 // ------------------ Variables Memory --------------------
 
@@ -120,6 +121,7 @@ public class OpCodeTest {
                 case INDEX_STR_VARDEC -> testResult = testResult && testStrDecSyntax(args);
                 case INDEX_DEBUG -> testResult = testResult && testDebugInputSyntax(args);
                 case INDEX_SAVE -> testResult = testResult && testSaveSyntax(args);
+                case INDEX_LOAD -> testResult = testResult && testLoadSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -327,6 +329,11 @@ public class OpCodeTest {
     }
 
     private boolean testSaveSyntax(String args) {
+        if(!args.strip().isEmpty()) return false;
+        return true;
+    }
+
+    private boolean testLoadSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
         return true;
     }
