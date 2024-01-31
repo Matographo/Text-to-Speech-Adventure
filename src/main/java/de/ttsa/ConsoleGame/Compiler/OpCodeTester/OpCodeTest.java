@@ -34,6 +34,8 @@ public class OpCodeTest {
     private final String OFFORDER_SEPERATOR = "!!!";
     private final String VALUE_SEPERATOR = "!!";
     private final String STR_SEPERATOR = ":";
+    private final String SET_SEPERATOR = ",";
+    private final String SET_NAME_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -51,6 +53,7 @@ public class OpCodeTest {
     private final String INDEX_EXIT = "0C";
     private final String INDEX_LOOP = "0D";
     private final String INDEX_LOOP_BREAKER = "0E";
+    private final String INDEX_SET = "0F";
 
 // ------------------ Variables Memory --------------------
 
@@ -128,6 +131,7 @@ public class OpCodeTest {
                 case INDEX_EXIT -> testResult = testResult && testExitSyntax(args);
                 case INDEX_LOOP -> testResult = testResult && testLoopSyntax(args);
                 case INDEX_LOOP_BREAKER -> testResult = testResult && testLoopBreakerSyntax(args);
+                case INDEX_SET -> testResult = testResult && testSetSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -186,6 +190,8 @@ public class OpCodeTest {
                 case INDEX_LOOP:
                     testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
                     break;
+                case INDEX_SET:
+                    testResult = testResult && testSetBlock(args, content.size() - i);
                 default:
                     continue;
             }
@@ -363,6 +369,18 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testSetSyntax(String args) {
+        String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
+        if(!isValidName(setName)) return false;
+        args = args.substring(args.indexOf(SET_NAME_SEPERATOR) + SET_NAME_SEPERATOR.length());
+        String[] arg = args.split(SET_SEPERATOR);
+        for(String set : arg) {
+            set = set.substring(1, set.length()-1);
+            if(!isValideSetContent(set)) return false;
+        }
+        return true;
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -490,6 +508,11 @@ public class OpCodeTest {
 
     private boolean testLoopBlock(String args, int loopPosition, int endOfRoom) {
         return testIfBlock(args, loopPosition, endOfRoom);
+    }
+
+    private boolean testSetBlock(String args, int nextCodeLines) {
+        if(getSetLength(args) <= nextCodeLines) return true;
+        return false;
     }
 
 // ------------------ Test Help Functions ----------------------
@@ -671,6 +694,19 @@ public class OpCodeTest {
             if(!isValidName(args)) return false;
         }
         return true;
+    }
+
+    private boolean isValideSetContent(String args) {
+        if (args.contains(" ")) {
+            return false;
+        } else if (!args.matches("^[a-zA-Z]+$")) {
+            return false;
+        }
+        return true;
+    }
+
+    private int getSetLength(String arg) {
+        return Integer.parseInt(arg.substring(0, arg.indexOf(SET_NAME_SEPERATOR)));
     }
 
 }
