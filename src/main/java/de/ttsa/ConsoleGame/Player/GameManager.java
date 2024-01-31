@@ -18,6 +18,7 @@ public class GameManager {
     public static String currentRoom;
     public static String nextRoom;
     public static String input;
+    public static boolean running;
 
 
     public static void addRoom(String name, Room room) {
@@ -52,7 +53,7 @@ public class GameManager {
         if(save) {
             saveGame();
         }
-        System.exit(0);
+        running = false;
     }
 
 }

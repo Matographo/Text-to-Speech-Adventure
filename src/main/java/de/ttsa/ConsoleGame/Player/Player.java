@@ -17,8 +17,9 @@ public class Player {
     }
 
     public static void startGame() {
+        GameManager.running = true;
         GameManager.nextRoom = START_ROOM;
-        while(GameManager.nextRoom != null) {
+        while(GameManager.nextRoom != null && GameManager.running) {
             GameManager.getNextRoom().play();
         }
     }

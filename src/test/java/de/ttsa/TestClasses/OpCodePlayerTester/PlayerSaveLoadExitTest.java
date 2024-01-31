@@ -34,21 +34,21 @@ public class PlayerSaveLoadExitTest {
 
 // konnte nicht wirklich getestet werden, da es nach dem exit der test selbst beendet wird
 
-    // @Test
-    // public void testExitSimpleGameWithoutSave() throws IOException {
-    //     Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithoutSave");
-    //     GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithoutSave.save";
-    //     player.play();
-    //     assertEquals(0, getLines(TEST_FILE_PATH + "testExitSimpleGameWithoutSave.save"));
-    // }
+    @Test
+    public void testExitSimpleGameWithoutSave() throws IOException {
+        Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithoutSave");
+        GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithoutSave.save";
+        player.play();
+        assertEquals(false, GameManager.running);
+    }
 
-    // @Test
-    // public void testExitSimpleGameWithSave() throws IOException {
-    //     Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithSave");
-    //     GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithSave.save";
-    //     player.play();
-    //     assertEquals(5, getLines(TEST_FILE_PATH + "testExitSimpleGameWithSave.save"));
-    // }
+    @Test
+    public void testExitSimpleGameWithSave() throws IOException {
+        Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithSave");
+        GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithSave.save";
+        player.play();
+        assertEquals(3, getLines(TEST_FILE_PATH + "testExitSimpleGameWithSave.save"));
+    }
 
 
     private int getLines(String path) throws IOException {
