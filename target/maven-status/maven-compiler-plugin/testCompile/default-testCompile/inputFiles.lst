@@ -1,28 +1,29 @@
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterFunctionTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterRoomJumperTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterSaveLoadExitTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterSayTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerLoopTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\SetInput.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterIfTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\GetOutput.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerNumDecTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerDebugInputTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerIfTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerSayTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerNumVarTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterNumDecTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerInputTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterDebugInputTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerRoomJumperTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerStrDecTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterRoomTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerStrVarTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerRoomTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterNumVarTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerFunktionTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodePlayerTester\PlayerSaveLoadExitTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterStrDecTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterInputTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterLoopTest.java
-C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\test\java\de\ttsa\TestClasses\OpCodeTestTester\TesterStrVarTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterStrDecTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSayTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterLoopTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerDebugInputTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrDecTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumDecTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomJumperTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterRoomTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterInputTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumVarTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerInputTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSetTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/SetInput.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterStrVarTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSaveLoadExitTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterFunctionTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterRoomJumperTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerSayTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterDebugInputTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerSaveLoadExitTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterIfTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterNumDecTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterNumVarTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerIfTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerLoopTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/GetOutput.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerFunktionTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrVarTest.java

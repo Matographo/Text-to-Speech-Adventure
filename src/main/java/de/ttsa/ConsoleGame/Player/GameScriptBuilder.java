@@ -1,11 +1,13 @@
 package de.ttsa.ConsoleGame.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
+import de.ttsa.ConsoleGame.Player.Datatypes.Set;
 import de.ttsa.ConsoleGame.Player.Scriptables.DebugInput;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameExitScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameLoaderScript;
@@ -33,6 +35,8 @@ private final String SAY_SEPERATOR = ",";
 private final String ROOM_SEPERATOR = ":";
 private final String VAR_SEPERATOR = ":";
 private final String IF_ELSE_SEPERATOR = ";;";
+private final String SET_SEPERATOR = ",";
+private final String SET_NAME_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
 
@@ -51,6 +55,7 @@ private final String INDEX_LOAD = "0B";
 private final String INDEX_EXIT = "0C";
 private final String INDEX_LOOP = "0D";
 private final String INDEX_LOOP_BREAKER = "0E";
+private final String INXEX_SET = "0F";
 
 
 
@@ -144,6 +149,9 @@ private final String INDEX_LOOP_BREAKER = "0E";
                     break;
                 case INDEX_LOOP_BREAKER:
                     gameScript.add(new LoopBreaker());
+                    break;
+                case INXEX_SET:
+                    set(args);
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -268,6 +276,25 @@ private final String INDEX_LOOP_BREAKER = "0E";
         }
         Scriptable script = loadGame(code);
         return new de.ttsa.ConsoleGame.Player.Scriptables.Loop(condition, conditionType, script);
+    }
+
+    private void set(String args) {
+        String[] setArgs = args.split(SET_NAME_SEPERATOR);
+        String setName = setArgs[0];
+        String[] setVariables = setArgs[1].split(SET_SEPERATOR);
+        if(!isValidName(setName)) {
+            throw new RuntimeException("Set name " + setName + " is not valid!");
+        }
+        HashSet<String> strValues = new HashSet<>();
+        HashSet<String> varValues = new HashSet<>();
+        for(String value : setVariables) {
+            if(value.startsWith("\"") && value.endsWith("\"")) {
+                strValues.add(value.substring(1, value.length() - 1));
+            } else {
+                varValues.add(value);
+            }
+        }
+        GameManager.sets.put(setName, new Set(strValues, varValues));
     }
 
 

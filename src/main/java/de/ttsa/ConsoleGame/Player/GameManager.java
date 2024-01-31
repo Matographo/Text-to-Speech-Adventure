@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
+import de.ttsa.ConsoleGame.Player.Datatypes.Set;
 import de.ttsa.ConsoleGame.Player.Functions.GameSaver;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
@@ -14,6 +15,7 @@ public class GameManager {
     public static HashMap<String, Room> rooms = new HashMap<>();
     public static HashMap<String, INT> numVars = new HashMap<>();
     public static HashMap<String, STRING> strVars = new HashMap<>();
+    public static HashMap<String, Set> sets = new HashMap<>();
 
     public static String currentRoom;
     public static String nextRoom;

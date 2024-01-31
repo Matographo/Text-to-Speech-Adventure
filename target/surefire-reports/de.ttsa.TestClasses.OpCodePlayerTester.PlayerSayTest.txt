@@ -1,13 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! - in de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest
-testSayMultipleSaysFixStrings(de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest)  Time elapsed: 0.006 s  <<< FAILURE!
-org.junit.ComparisonFailure: 
-expected:<Hello[
-World]
-This is cool> but was:<Hello[
-World]
-This is cool>
-	at de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest.testSayMultipleSaysFixStrings(PlayerSayTest.java:47)
-
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in de.ttsa.TestClasses.OpCodePlayerTester.PlayerSayTest

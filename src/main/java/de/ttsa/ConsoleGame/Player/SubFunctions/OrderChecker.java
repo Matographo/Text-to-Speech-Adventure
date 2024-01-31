@@ -1,6 +1,7 @@
 package de.ttsa.ConsoleGame.Player.SubFunctions;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 
@@ -44,6 +45,9 @@ public class OrderChecker extends StringMethodes {
             if(word.startsWith("'")) {
                 word = deleteFirstAndLast("'", word);
                 checkResult = checkResult && checkVar(word);
+            } else if (checkFirstAndLast("[", "]", toCheck)){
+                word = deleteFirstAndLast("[", "]", word);
+                checkResult = checkResult && checkSet(word);
             } else {
                 checkResult = checkResult && checkWord(word);
             }
@@ -79,6 +83,20 @@ public class OrderChecker extends StringMethodes {
         }
         return checkResult;
     }
+
+    private boolean checkSet(String toCheck) {
+        HashSet<String> strings = GameManager.sets.get(toCheck).getStr();
+        HashSet<String> vars = GameManager.sets.get(toCheck).getVar();
+        boolean checkResult = false;
+        for(String string : strings) {
+            checkResult = checkResult || checkWord(string);
+        }
+        for(String var : vars) {
+            checkResult = checkResult || checkVar(var);
+        }
+        return checkResult;
+    }
+
 
 
     private String[] getInput() {

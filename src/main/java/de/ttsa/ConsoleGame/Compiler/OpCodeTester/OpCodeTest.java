@@ -190,8 +190,6 @@ public class OpCodeTest {
                 case INDEX_LOOP:
                     testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
                     break;
-                case INDEX_SET:
-                    testResult = testResult && testSetBlock(args, content.size() - i);
                 default:
                     continue;
             }
@@ -510,11 +508,6 @@ public class OpCodeTest {
         return testIfBlock(args, loopPosition, endOfRoom);
     }
 
-    private boolean testSetBlock(String args, int nextCodeLines) {
-        if(getSetLength(args) <= nextCodeLines) return true;
-        return false;
-    }
-
 // ------------------ Test Help Functions ----------------------
 
 
@@ -703,10 +696,6 @@ public class OpCodeTest {
             return false;
         }
         return true;
-    }
-
-    private int getSetLength(String arg) {
-        return Integer.parseInt(arg.substring(0, arg.indexOf(SET_NAME_SEPERATOR)));
     }
 
 }

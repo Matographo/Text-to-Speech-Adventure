@@ -30,6 +30,7 @@ public class Loop implements Scriptable {
         while(getResult() && !GameManager.loopBreak) {
             script.run();
         }
+        GameManager.loopBreak = false;
         return true;
     }
 
