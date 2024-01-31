@@ -1,35 +1,38 @@
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Structures/Room.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/RoomJumper.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Functions/Calculator.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Datatypes/Printablable.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Player.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Functions/GameSaver.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/CFileReader.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/OrderCheck.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/StrDec.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Datatypes/PrintText.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/GameScriptBuilder.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/StartCompiler.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Datatypes/STRING.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/TestC/Test.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/OpCodeTester/OpCodeTest.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/Printer.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/Input.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/Scriptable.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/GameBuilder.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/CompileC/Compiler.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/StringMethodes.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/VarDec.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Merger.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/App.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/GameManager.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Sorter.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Datatypes/INT.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/Script.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/GameLoader.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/OrderChecker.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/If.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/GameSavingScript.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/DebugInput.java
-/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/GameBuilder.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\GameBuilder.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\SubFunctions\StringMethodes.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\App.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\CompileTools\GameBuilder.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\CompileC\Compiler.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Functions\GameSaver.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\CompileTools\Sorter.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\CompileTools\CFileReader.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\StartCompiler.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Structures\Room.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\VarDec.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\Script.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\SubFunctions\ConditionTest.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\RoomJumper.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\If.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\GameScriptBuilder.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\Input.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Datatypes\PrintText.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\GameSavingScript.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\Printer.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\SubFunctions\OrderChecker.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\GameExitScript.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\DebugInput.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\CompileTools\Merger.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\Compiler\TestC\Test.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\GameLoaderScript.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Functions\Calculator.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Datatypes\STRING.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\Loop.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Compiler\OpCodeTester\OpCodeTest.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Datatypes\INT.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\GameLoader.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Datatypes\Printablable.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\StrDec.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Player.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\GameManager.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\Scriptables\Scriptable.java
+C:\Users\Uni\Documents\Dev Private\Text-to-Speech-Adventure\src\main\java\de\ttsa\ConsoleGame\Player\SubFunctions\OrderCheck.java

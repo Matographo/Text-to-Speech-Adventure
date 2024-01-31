@@ -48,6 +48,7 @@ private final String INDEX_DEBUG_INPUT = "09";
 private final String INDEX_SAVE = "0A";
 private final String INDEX_LOAD = "0B";
 private final String INDEX_EXIT = "0C";
+private final String INDEX_LOOP = "0D";
 
 
 
@@ -127,6 +128,17 @@ private final String INDEX_EXIT = "0C";
                     break;
                 case INDEX_EXIT:
                     gameScript.add(new GameExitScript(args));
+                    break;
+                case INDEX_LOOP:
+                    int loopSize = getLoopSize(args);
+                    blockContent = new ArrayList<String>(loopSize);
+                    game.set(i, args);
+                    for(int j = 0; j <= loopSize; j++) {
+                        blockContent.add(game.get(i));
+                        game.remove(i);
+                    }
+                    gameScript.add(loop(blockContent));
+                    i--;
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -236,6 +248,23 @@ private final String INDEX_EXIT = "0C";
         return new StrDec(strDecName, operation);
     }
 
+    private Scriptable loop(ArrayList<String> args) {
+        String loopArg = args.get(0);
+        ArrayList<String> code = new ArrayList<String>();
+        char conditionType;
+        args.remove(0);
+        String[] loopArgs = loopArg.split(":");
+        String condition = loopArgs[0];
+        if(isNumber(condition)) conditionType = 'i';
+        else if(condition.equals("true")) conditionType = 't';
+        else conditionType = 'c';
+        for(String codeLine : args) {
+            code.add(codeLine);
+        }
+        Scriptable script = loadGame(code);
+        return new de.ttsa.ConsoleGame.Player.Scriptables.Loop(condition, conditionType, script);
+    }
+
 
 // ------------------ Helper Functions -------------------
     
@@ -255,6 +284,15 @@ private final String INDEX_EXIT = "0C";
             return true;
         }
 
+        private boolean isNumber(String num) {
+            try {
+                Integer.parseInt(num);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+
         private int getIfSize(String args) {
             String[] lengthS = args.split(IF_ELSE_SEPERATOR);
             int length = 0;
@@ -262,5 +300,10 @@ private final String INDEX_EXIT = "0C";
                 length += Integer.parseInt(l.substring(l.lastIndexOf(":") + 1));
             }
             return length;
+        }
+
+        private int getLoopSize(String args) {
+            String[] loopArgs = args.split(":");
+            return Integer.parseInt(loopArgs[1]);
         }
 }

@@ -49,6 +49,7 @@ public class OpCodeTest {
     private final String INDEX_SAVE = "0A";
     private final String INDEX_LOAD = "0B";
     private final String INDEX_EXIT = "0C";
+    private final String INDEX_LOOP = "0D";
 
 // ------------------ Variables Memory --------------------
 
@@ -124,6 +125,7 @@ public class OpCodeTest {
                 case INDEX_SAVE -> testResult = testResult && testSaveSyntax(args);
                 case INDEX_LOAD -> testResult = testResult && testLoadSyntax(args);
                 case INDEX_EXIT -> testResult = testResult && testExitSyntax(args);
+                case INDEX_LOOP -> testResult = testResult && testLoopSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -152,6 +154,7 @@ public class OpCodeTest {
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
                 case INDEX_IF -> testResult = testResult && testIfVar(args);
                 case INDEX_DEBUG -> testResult = testResult && testDebugInputVar(args);
+                case INDEX_STR_VARDEC -> testResult = testResult && testLoopVar(args);
             }
         }
         return testResult;
@@ -177,6 +180,9 @@ public class OpCodeTest {
                     break;
                 case INDEX_IF:
                     testResult = testResult && testIfBlock(args, i, i + lastRoomLength);
+                    break;
+                case INDEX_LOOP:
+                    testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
                     break;
                 default:
                     continue;
@@ -345,6 +351,11 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testLoopSyntax(String args) {
+        String argsTyp2 = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
+        return testIfSyntaxSwitch(args) || isNumber(argsTyp2) || isValidName(argsTyp2) || argsTyp2.equals("true");
+    }
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -445,6 +456,10 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testLoopVar(String args) {
+        return testIfVar(args);
+    }
+
 
 
 
@@ -464,6 +479,10 @@ public class OpCodeTest {
             blockLenght += getIfBlockLength(test);
         }
         return ifPosition + blockLenght + 1 <= endOfRoom;
+    }
+
+    private boolean testLoopBlock(String args, int loopPosition, int endOfRoom) {
+        return testIfBlock(args, loopPosition, endOfRoom);
     }
 
 // ------------------ Test Help Functions ----------------------
