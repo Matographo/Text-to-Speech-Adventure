@@ -50,6 +50,7 @@ public class OpCodeTest {
     private final String INDEX_LOAD = "0B";
     private final String INDEX_EXIT = "0C";
     private final String INDEX_LOOP = "0D";
+    private final String INDEX_LOOP_BREAKER = "0E";
 
 // ------------------ Variables Memory --------------------
 
@@ -126,6 +127,7 @@ public class OpCodeTest {
                 case INDEX_LOAD -> testResult = testResult && testLoadSyntax(args);
                 case INDEX_EXIT -> testResult = testResult && testExitSyntax(args);
                 case INDEX_LOOP -> testResult = testResult && testLoopSyntax(args);
+                case INDEX_LOOP_BREAKER -> testResult = testResult && testLoopBreakerSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -354,6 +356,11 @@ public class OpCodeTest {
     private boolean testLoopSyntax(String args) {
         String argsTyp2 = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
         return testIfSyntaxSwitch(args) || isNumber(argsTyp2) || isValidName(argsTyp2) || argsTyp2.equals("true");
+    }
+
+    private boolean testLoopBreakerSyntax(String args) {
+        if(!args.strip().isEmpty()) return false;
+        return true;
     }
 
 // ------------------ Test Functions Variables -------------------

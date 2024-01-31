@@ -19,6 +19,7 @@ public class GameManager {
     public static String nextRoom;
     public static String input;
     public static boolean running;
+    public static boolean loopBreak = false;
 
 
     public static void addRoom(String name, Room room) {

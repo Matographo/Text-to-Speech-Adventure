@@ -22,6 +22,24 @@ public class PlayerLoopTest {
     }
 
     @Test
+    public void testLoopWihleTrue() {
+        final int expected = 1;
+        Player player = new Player(TEST_FILE_PATH + "testLoopWhileTrue");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
+
+    @Test
+    public void testLoopWithBreaker() {
+        final int expected = 1;
+        Player player = new Player(TEST_FILE_PATH + "testLoopWithBreaker");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        GameManager.clear();
+    }
+
+    @Test
     public void testLoopJustNumber() {
         final int expected = 5;
         Player player = new Player(TEST_FILE_PATH + "testLoopJustNumber");

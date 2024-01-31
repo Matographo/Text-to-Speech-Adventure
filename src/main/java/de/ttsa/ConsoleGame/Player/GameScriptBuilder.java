@@ -12,6 +12,7 @@ import de.ttsa.ConsoleGame.Player.Scriptables.GameLoaderScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameSavingScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.If;
 import de.ttsa.ConsoleGame.Player.Scriptables.Input;
+import de.ttsa.ConsoleGame.Player.Scriptables.LoopBreaker;
 import de.ttsa.ConsoleGame.Player.Scriptables.Printer;
 import de.ttsa.ConsoleGame.Player.Scriptables.RoomJumper;
 import de.ttsa.ConsoleGame.Player.Scriptables.Script;
@@ -49,6 +50,7 @@ private final String INDEX_SAVE = "0A";
 private final String INDEX_LOAD = "0B";
 private final String INDEX_EXIT = "0C";
 private final String INDEX_LOOP = "0D";
+private final String INDEX_LOOP_BREAKER = "0E";
 
 
 
@@ -139,6 +141,9 @@ private final String INDEX_LOOP = "0D";
                     }
                     gameScript.add(loop(blockContent));
                     i--;
+                    break;
+                case INDEX_LOOP_BREAKER:
+                    gameScript.add(new LoopBreaker());
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");

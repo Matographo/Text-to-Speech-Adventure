@@ -26,10 +26,17 @@ public class TesterLoopTest {
         assertEquals(true, test.start());
         resetTest();
     }
+    
     @Test
-
     public void testLoopWhileTrue() {
         OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoopWhileTrue");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testLoopWithBreaker() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoopWithBreaker");
         assertEquals(true, test.start());
         resetTest();
     }

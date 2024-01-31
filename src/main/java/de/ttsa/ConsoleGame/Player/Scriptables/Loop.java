@@ -1,5 +1,6 @@
 package de.ttsa.ConsoleGame.Player.Scriptables;
 
+import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.SubFunctions.ConditionTest;
 
 public class Loop implements Scriptable {
@@ -26,7 +27,7 @@ public class Loop implements Scriptable {
     public boolean run() {
         if(conditionType == ITERATIONS) maxCounter = Integer.parseInt(condition);
         counter = 0;
-        while(getResult()) {
+        while(getResult() && !GameManager.loopBreak) {
             script.run();
         }
         return true;
