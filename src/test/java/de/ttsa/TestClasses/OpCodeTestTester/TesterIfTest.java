@@ -6,93 +6,94 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterIfTest {
+public class TesterIfTest extends OpCodeTestTesterClass {
     
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/If/";
+    private final String PATH = TEST_FILE_PATH + "If/";
 
 
     @Test
     public void testIf() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIf");
+        OpCodeTest test = new OpCodeTest(PATH + "testIf");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithVar");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithTwoVars() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithTwoVars");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithTwoVars");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfLeftLowerRight() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftLowerRight");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfLeftLowerRight");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfLeftNERight() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftNERight");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfLeftNERight");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfLeftGERight() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfLeftGERight");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfLeftGERight");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithCalc() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalc");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithCalc");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithCalcVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithCalcVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithCalcVar");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithElse() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithElse");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithElse");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithElseIf() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithElseIf");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithElseIf");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithStrVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithStrVar");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testIfWithStrVarEQStrVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testIfWithStrVarEQStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testIfWithStrVarEQStrVar");
         assertEquals(true, test.start());
         resetTest();
     }

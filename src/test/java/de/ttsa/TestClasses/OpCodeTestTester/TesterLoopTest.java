@@ -6,37 +6,38 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterLoopTest {
+public class TesterLoopTest extends OpCodeTestTesterClass {
     
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Loop/";
+    private final String PATH = TEST_FILE_PATH + "Loop/";
 
 
     @Test
     public void testLoop() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoop");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoop");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testLoopJustNumber() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoopJustNumber");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustNumber");
         assertEquals(true, test.start());
         resetTest();
     }
     
     @Test
     public void testLoopWhileTrue() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoopWhileTrue");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopWhileTrue");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testLoopWithBreaker() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoopWithBreaker");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopWithBreaker");
         assertEquals(true, test.start());
         resetTest();
     }

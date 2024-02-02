@@ -7,33 +7,34 @@ import java.io.IOException;
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterSaveLoadExitTest {
+public class TesterSaveLoadExitTest extends OpCodeTestTesterClass {
     
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/SaveLoadExit/";
+    private final String PATH = TEST_FILE_PATH + "SaveLoadExit/";
 
     @Test
     public void testSaveSimpleGame() throws IOException {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSaveSimpleGame");
+        OpCodeTest test = new OpCodeTest(PATH + "testSaveSimpleGame");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testLoadSimpleGame() throws IOException {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testLoadSimpleGame");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoadSimpleGame");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testExitSimpleGameWithoutSave() throws IOException {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testExitSimpleGameWithoutSave");
+        OpCodeTest test = new OpCodeTest(PATH + "testExitSimpleGameWithoutSave");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testExitSimpleGameWithSave() throws IOException {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testExitSimpleGameWithSave");
+        OpCodeTest test = new OpCodeTest(PATH + "testExitSimpleGameWithSave");
         assertEquals(true, test.start());
     }
 }

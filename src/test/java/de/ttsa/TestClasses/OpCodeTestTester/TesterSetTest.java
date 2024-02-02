@@ -6,23 +6,24 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterSetTest {
+public class TesterSetTest extends OpCodeTestTesterClass {
     
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Set/";
+    private final String PATH = TEST_FILE_PATH + "Set/";
 
 
     @Test
     public void testSetJustSet() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSetJustSet");
+        OpCodeTest test = new OpCodeTest(PATH + "testSetJustSet");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testSetWithRoom() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testSetWithRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testSetWithRoom");
         assertEquals(true, test.start());
         resetTest();
     }

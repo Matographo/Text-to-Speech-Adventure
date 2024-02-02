@@ -6,64 +6,65 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterActionTest {
+public class TesterActionTest extends OpCodeTestTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Action/";
+    private final String PATH = TEST_FILE_PATH + "Action/";
 
 
     @Test
     public void testAction() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testAction");
+        OpCodeTest test = new OpCodeTest(PATH + "testAction");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionWithActionCall() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionWithActionCall");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionWithActionCall");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionWithNumArg() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionWithNumArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionWithNumArg");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionUseNumArg() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseNumArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumArg");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionUseStrArg() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseStrArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrArg");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionUseNumVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseNumVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumVar");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionUseStrVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrVar");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testActionUseMultipleArgVars() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseMultipleArgVars");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseMultipleArgVars");
         assertEquals(true, test.start());
         resetTest();
     }

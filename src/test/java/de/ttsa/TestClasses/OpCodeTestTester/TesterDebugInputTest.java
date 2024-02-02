@@ -6,22 +6,23 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Player.GameManager;
+import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
-public class TesterDebugInputTest {
+public class TesterDebugInputTest extends OpCodeTestTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/DebugInput/";
+    private final String PATH = TEST_FILE_PATH + "DebugInput/";
 
 
     @Test
     public void testDebugInput() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testDebugInput");
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInput");
         assertEquals(true, test.start());
         resetTest();
     }
 
     @Test
     public void testDebugInputWithStrVar() {
-        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testDebugInputWithStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVar");
         assertEquals(true, test.start());
         resetTest();
     }
