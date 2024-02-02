@@ -4,6 +4,7 @@
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerDebugInputTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrDecTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumDecTest.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerActionTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomJumperTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterRoomTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterInputTest.java

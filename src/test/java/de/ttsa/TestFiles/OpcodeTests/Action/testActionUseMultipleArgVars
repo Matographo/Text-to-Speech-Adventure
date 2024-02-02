@@ -1,0 +1,7 @@
+03::Var:0
+04::Varr:Hallo
+10::Attack:sAngriff,nSchaden:2
+08::Varr:"Bye"
+05::Var:Schaden
+01::START:1
+11::Attack:Varr,1

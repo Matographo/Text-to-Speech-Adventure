@@ -26,6 +26,48 @@ public class TesterActionTest {
         resetTest();
     }
 
+    @Test
+    public void testActionWithNumArg() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionWithNumArg");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testActionUseNumArg() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseNumArg");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testActionUseStrArg() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseStrArg");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testActionUseNumVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseNumVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testActionUseStrVar() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseStrVar");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
+    @Test
+    public void testActionUseMultipleArgVars() {
+        OpCodeTest test = new OpCodeTest(TEST_FILE_PATH + "testActionUseMultipleArgVars");
+        assertEquals(true, test.start());
+        resetTest();
+    }
+
     private void resetTest() {
         GameManager.clear();
     }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class OpCodeTest {
@@ -34,6 +35,7 @@ public class OpCodeTest {
     private final String SET_SEPERATOR = ",";
     private final String SET_NAME_SEPERATOR = ":";
     private final String ACTION_SEPERATOR = ":";
+    private final String ACTION_ARGS_SEPERATOR = ",";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -63,6 +65,7 @@ public class OpCodeTest {
     private HashSet<String> strNames = new HashSet<String>();
     private HashSet<String> actionNames = new HashSet<String>();
     private HashSet<String> setNames = new HashSet<String>();
+    private HashMap<String, String> actionArgs = new HashMap<>();
 
 // -------------------- Constructor -----------------------
 
@@ -81,9 +84,9 @@ public class OpCodeTest {
         boolean testResult = true;
         try {
             ArrayList<String> content = getContent();
-            testResult = testResult && testSyntax(new ArrayList<String>(content));
-            testResult = testResult && testVariables(new ArrayList<String>(content));
-            testResult = testResult && testBlocks(new ArrayList<String>(content));
+            testResult = testSyntax(new ArrayList<String>(content)) && testResult;
+            testResult = testVariables(new ArrayList<String>(content)) && testResult;
+            testResult = testBlocks(new ArrayList<String>(content)) && testResult;
         } catch(Exception e) {
             return false;
         }
@@ -268,7 +271,7 @@ public class OpCodeTest {
         if(arg.length != 2) return false;
         else if(!isValidName(arg[0])) return false;
         if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
-            if(!isNumber(value) && !isNumVar(value)) return false;
+            if(!isNumber(value) && !isValidName(value)) return false;
             else return true;
         }
         return isCalculatable(value);
@@ -392,16 +395,29 @@ public class OpCodeTest {
 
     private boolean testActionSyntax(String arg) {
         String[] args = arg.split(ACTION_SEPERATOR);
-        if(args.length != 2) return false;
+        char type;
+        if(args.length != 3) return false;
         String actionName = args[0];
-        String codeLines = args[1];
+        String[] actionArgs = args[1].split(ACTION_ARGS_SEPERATOR);
+        String codeLines = args[2];
         if(!isValidName(actionName)) return false;
+        for(String actionArg : actionArgs) {
+            if(isEmptyArg(actionArg)) continue;
+            type = actionArg.charAt(0);
+            actionArg = actionArg.substring(1);
+            if(!isArgType(type)) return false;
+            if(!isValidName(actionArg)) return false;
+        }
         if(!isNumber(codeLines)) return false;
         return true;
     }
 
     private boolean testActionCallSyntax(String arg) {
-        if(!isValidName(arg)) return false;
+        String[] args = arg.split(ACTION_SEPERATOR);
+        String actionName = args[0];
+        String actionArgs = args[1];
+        if(!isValidName(actionName)) return false;
+        if(!isActionArgs(actionArgs)) return false;
         return true;
     }
 
@@ -519,14 +535,53 @@ public class OpCodeTest {
     }
 
     private boolean testActionCallVar(String args) {
-        if(!actionNames.contains(args)) return false;
+        String[] actions = args.split(ACTION_SEPERATOR);
+        String actionName = actions[0];
+        String[] actionArgs = actions[1].split(ACTION_ARGS_SEPERATOR);
+        if(!actionNames.contains(actionName)) return false;
+        String[] mainActionArgs = this.actionArgs.get(actionName).split(ACTION_ARGS_SEPERATOR);
+        if(!actionNames.contains(actionName)) return false;
+        for(int i=0; i < actionArgs.length; i++) {
+            if(isEmptyArg(actionArgs[i])) continue;
+            if(isValidName(actionArgs[i])) {
+                if(mainActionArgs[i].charAt(0) == IF_STRING) {
+                    if(!strNames.contains(actionArgs[i])) return false;
+                } else if (mainActionArgs[i].charAt(0) == IF_NUMBER) {
+                    if(!numNames.contains(actionArgs[i])) return false;
+                }
+            } else {
+                if(isNumber(actionArgs[i])) {
+                    if(mainActionArgs[i].charAt(0) != IF_NUMBER) return false;
+                } else {
+                    if(mainActionArgs[i].charAt(0) != IF_STRING) return false;
+                }
+            }
+        }
+
         return true;
     }
 
     private boolean testActionVar(String args) {
-        args = args.split(ACTION_SEPERATOR)[0];
-        if(actionNames.contains(args)) return false;
-        actionNames.add(args);
+        String[] actionArgs = args.split(ACTION_SEPERATOR);
+        if(actionNames.contains(actionArgs[0])) return false;
+        actionNames.add(actionArgs[0]);
+        char type;
+        String[] actionArgss = actionArgs[1].split(ACTION_ARGS_SEPERATOR);
+        for(String actionArg : actionArgss) {
+            type = actionArg.charAt(0);
+            if(type == '-') continue;
+            actionArg = actionArg.substring(1);
+            if(!isArgType(type)) return false;
+            if(!isValidName(actionArg)) return false;
+            if(type == IF_STRING) {
+                if(strNames.contains(actionArg)) return false;
+                strNames.add(actionArg);
+            } else if (type == IF_NUMBER) {
+                if(numNames.contains(actionArg)) return false;
+                numNames.add(actionArg);
+            }
+        }
+        this.actionArgs.put(actionArgs[0], actionArgs[1]);
         return true;
     }
 
@@ -757,12 +812,31 @@ public class OpCodeTest {
     }
 
     private int getActionBlockLength(String args) {
-        return Integer.parseInt(args.split(ACTION_SEPERATOR)[1]);
+        return Integer.parseInt(args.split(ACTION_SEPERATOR)[2]);
     }
 
     private boolean isStr(String name) {
         if(name.startsWith("\"") && name.endsWith("\"")) return true;
         return false;
+    }
+
+    private boolean isEmptyArg(String name) {
+        if(name.equals("-")) return true;
+        return false;
+    }
+
+    private boolean isArgType(char type) {
+        if(type == IF_NUMBER || type == IF_STRING) return true;
+        return false;
+    }
+
+    private boolean isActionArgs(String args) {
+        String[] actionArgs = args.split(ACTION_ARGS_SEPERATOR);
+        for(String actionArg : actionArgs) {
+            if(isEmptyArg(actionArg)) continue;
+            if(!isValidName(actionArg) && !isNumber(actionArg) && !isStr(actionArg)) return false;
+        }
+        return true;
     }
 
 }

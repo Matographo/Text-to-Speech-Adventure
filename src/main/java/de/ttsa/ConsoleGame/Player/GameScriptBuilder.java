@@ -39,6 +39,8 @@ private final String VAR_SEPERATOR = ":";
 private final String IF_ELSE_SEPERATOR = ";;";
 private final String SET_SEPERATOR = ",";
 private final String SET_NAME_SEPERATOR = ":";
+private final String ACTION_SEPERATOR = ":";
+private final String ACTION_PARAM_SEPERATOR = ",";
 
 // ------------------ Command Inizes ----------------------
 
@@ -169,7 +171,7 @@ private final String INDEX_ACTION_CALL = "11";
                     i--;
                     break;
                 case INDEX_ACTION_CALL:
-                    gameScript.add(new ActionCall(args));
+                    gameScript.add(actionCall(args));
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -316,11 +318,19 @@ private final String INDEX_ACTION_CALL = "11";
     }
 
     private void action(ArrayList<String> actionContent) {
-        String actionName = actionContent.get(0);
-        actionName = actionName.split(":")[0];
+        String[] actionArgs = actionContent.get(0).split(ACTION_SEPERATOR);
+        String actionName = actionArgs[0];
+        String[] actionParams = actionArgs[1].split(ACTION_PARAM_SEPERATOR);
         actionContent.remove(0);
         Scriptable actionScript = loadGame(actionContent);
-        GameManager.actions.put(actionName, new Action(actionScript));
+        GameManager.actions.put(actionName, new Action(actionScript, actionParams));
+    }
+
+    private Scriptable actionCall(String args) {
+        String[] actionCallArgs = args.split(ACTION_SEPERATOR);
+        String actionName = actionCallArgs[0];
+        String[] actionParams = actionCallArgs[1].split(ACTION_PARAM_SEPERATOR);
+        return new ActionCall(actionName, actionParams);
     }
 
 
@@ -367,6 +377,6 @@ private final String INDEX_ACTION_CALL = "11";
 
         private int getActionSize(String args) {
             String[] actionArgs = args.split(":");
-            return Integer.parseInt(actionArgs[1]);
+            return Integer.parseInt(actionArgs[2]);
         }
 }
