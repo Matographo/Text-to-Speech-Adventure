@@ -13,9 +13,6 @@ public class OpCodeTest {
 // ------------------ Attributs ---------------------------
 
     private final String CALCULATABLE = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
-    private final String AND = "&&";
-    private final String OR = "||";
-    private final String NOT = "!";
     private final char IF_NUMBER = 'n';
     private final char IF_STRING = 's';
     private final char IF_INPUT = 'i';
@@ -408,20 +405,6 @@ public class OpCodeTest {
         return true;
     }
 
-    private boolean testActionVar(String args) {
-        args = args.split(ACTION_SEPERATOR)[0];
-        if(actionNames.contains(args)) return false;
-        actionNames.add(args);
-        return true;
-    }
-
-    private boolean testSetVar(String args) {
-        String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
-        if(setNames.contains(setName)) return false;
-        setNames.add(setName);
-        return true;
-    }
-
 
 // ------------------ Test Functions Variables -------------------
 
@@ -540,6 +523,19 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testActionVar(String args) {
+        args = args.split(ACTION_SEPERATOR)[0];
+        if(actionNames.contains(args)) return false;
+        actionNames.add(args);
+        return true;
+    }
+
+    private boolean testSetVar(String args) {
+        String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
+        if(setNames.contains(setName)) return false;
+        setNames.add(setName);
+        return true;
+    }
 
 
 
