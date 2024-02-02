@@ -7,41 +7,42 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerNumVarTest {
+public class PlayerNumVarTest extends OpCodePlayerTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/NumVar/";
+    private final String PATH = TEST_FILE_PATH + "NumVar/";
 
     @Test
     public void testNumVar() {
-        Player player = new Player(TEST_FILE_PATH + "testNumVar");
+        Player player = new Player(PATH + "testNumVar");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Hallo"));
         assertEquals(5, GameManager.numVars.get("Hallo").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testNumVarFalseSyntax() {
         try {
-            Player player = new Player(TEST_FILE_PATH + "testNumVarFalseSyntax");
+            Player player = new Player(PATH + "testNumVarFalseSyntax");
             player.play();
             fail();
         } catch (Exception e) {
         } finally {
-            GameManager.clear();
+            resetTest();
         }
     }
 
     @Test
     public void testNumVarInvalideName() {
         try {
-            Player player = new Player(TEST_FILE_PATH + "testNumVarInvalideName");
+            Player player = new Player(PATH + "testNumVarInvalideName");
             player.play();
             fail();
         } catch (Exception e) {
         } finally {
-            GameManager.clear();
+            resetTest();
         }
     }
 

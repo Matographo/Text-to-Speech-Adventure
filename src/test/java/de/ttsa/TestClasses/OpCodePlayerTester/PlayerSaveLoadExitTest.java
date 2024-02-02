@@ -11,43 +11,46 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerSaveLoadExitTest {
+public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/SaveLoadExit/";
+    private final String PATH = TEST_FILE_PATH + "SaveLoadExit/";
 
     @Test
     public void testSaveSimpleGame() throws IOException {
-        Player player = new Player(TEST_FILE_PATH + "testSaveSimpleGame");
-        GameManager.savePath = TEST_FILE_PATH + "testSaveSimpleGame.save";
+        Player player = new Player(PATH + "testSaveSimpleGame");
+        GameManager.savePath = PATH + "testSaveSimpleGame.save";
         player.play();
-        assertEquals(5, getLines(TEST_FILE_PATH + "testSaveSimpleGame.save"));
+        assertEquals(5, getLines(PATH + "testSaveSimpleGame.save"));
+        resetTest();
     }
 
     @Test
     public void testLoadSimpleGame() throws IOException {
-        Player player = new Player(TEST_FILE_PATH + "testLoadSimpleGame");
-        GameManager.savePath = TEST_FILE_PATH + "testLoadSimpleGame.save";
+        Player player = new Player(PATH + "testLoadSimpleGame");
+        GameManager.savePath = PATH + "testLoadSimpleGame.save";
         player.play();
         assertEquals(20, GameManager.numVars.get("Var").getValue());
+        resetTest();
     }
-
-// konnte nicht wirklich getestet werden, da es nach dem exit der test selbst beendet wird
 
     @Test
     public void testExitSimpleGameWithoutSave() throws IOException {
-        Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithoutSave");
-        GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithoutSave.save";
+        Player player = new Player(PATH + "testExitSimpleGameWithoutSave");
+        GameManager.savePath = PATH + "testExitSimpleGameWithoutSave.save";
         player.play();
         assertEquals(false, GameManager.running);
+        resetTest();
     }
 
     @Test
     public void testExitSimpleGameWithSave() throws IOException {
-        Player player = new Player(TEST_FILE_PATH + "testExitSimpleGameWithSave");
-        GameManager.savePath = TEST_FILE_PATH + "testExitSimpleGameWithSave.save";
+        Player player = new Player(PATH + "testExitSimpleGameWithSave");
+        GameManager.savePath = PATH + "testExitSimpleGameWithSave.save";
         player.play();
-        assertEquals(3, getLines(TEST_FILE_PATH + "testExitSimpleGameWithSave.save"));
+        assertEquals(3, getLines(PATH + "testExitSimpleGameWithSave.save"));
+        resetTest();
     }
 
 

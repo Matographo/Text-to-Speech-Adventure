@@ -5,20 +5,21 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerFunktionTest {
+public class PlayerFunktionTest extends OpCodePlayerTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Functioning/";
+    private final String PATH = TEST_FILE_PATH + "Funktion/";
 
     @Test
     public void testEmptyFile() {
-            new Player(TEST_FILE_PATH + "testEmptyFile");
+            new Player(PATH + "testEmptyFile");
     }
 
     @Test
     public void testNoneExistingFile() {
         try {
-        new Player(TEST_FILE_PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
+        new Player(PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
         fail();
         } catch (Exception e) {
         }

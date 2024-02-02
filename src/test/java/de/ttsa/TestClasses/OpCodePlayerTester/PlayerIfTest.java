@@ -6,116 +6,117 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerIfTest {
+public class PlayerIfTest extends OpCodePlayerTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/If/";
+    private final String PATH = TEST_FILE_PATH + "If/";
 
     @Test
     public void testIf() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIf");
+        Player player = new Player(PATH + "testIf");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Hi").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithTwoVars() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithTwoVars");
+        Player player = new Player(PATH + "testIfWithTwoVars");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithVar() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithVar");
+        Player player = new Player(PATH + "testIfWithVar");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfLeftGERight() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfLeftGERight");
+        Player player = new Player(PATH + "testIfLeftGERight");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfLeftLowerRight() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfLeftLowerRight");
+        Player player = new Player(PATH + "testIfLeftLowerRight");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfLeftNERight() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfLeftNERight");
+        Player player = new Player(PATH + "testIfLeftNERight");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithCalc() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithCalc");
+        Player player = new Player(PATH + "testIfWithCalc");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithCalcVar() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithCalcVar");
+        Player player = new Player(PATH + "testIfWithCalcVar");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithElse() {
         final int expected = 2;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithElse");
+        Player player = new Player(PATH + "testIfWithElse");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithElseIf() {
         final int expected = 2;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithElseIf");
+        Player player = new Player(PATH + "testIfWithElseIf");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithStrVar() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithStrVar");
+        Player player = new Player(PATH + "testIfWithStrVar");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testIfWithStrVarEQStrVar() {
         final int expected = 1;
-        Player player = new Player(TEST_FILE_PATH + "testIfWithStrVarEQStrVar");
+        Player player = new Player(PATH + "testIfWithStrVarEQStrVar");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 }

@@ -6,27 +6,28 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerStrDecTest {
+public class PlayerStrDecTest extends OpCodePlayerTesterClass {
     
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/StrDec/";
+    private final String PATH = TEST_FILE_PATH + "StrDec/";
 
     @Test
     public void testStrDec() {
-        Player player = new Player(TEST_FILE_PATH + "testStrDec");
+        Player player = new Player(PATH + "testStrDec");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Var"));
         assertEquals("all", GameManager.strVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testStrDecWithOtherStrVar() {
-        Player player = new Player(TEST_FILE_PATH + "testStrDecWithOtherStrVar");
+        Player player = new Player(PATH + "testStrDecWithOtherStrVar");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Var"));
         assertEquals("all", GameManager.strVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 }

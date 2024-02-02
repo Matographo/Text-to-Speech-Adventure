@@ -6,79 +6,80 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerActionTest {
+public class PlayerActionTest extends OpCodePlayerTesterClass {
 
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Action/";
+    private final String PATH = TEST_FILE_PATH + "Action/";
 
     @Test
     public void testAction() {
-        Player player = new Player(TEST_FILE_PATH + "testAction");
+        Player player = new Player(PATH + "testAction");
         player.play();
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionWithActionCall() {
-        Player player = new Player(TEST_FILE_PATH + "testActionWithActionCall");
+        Player player = new Player(PATH + "testActionWithActionCall");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionCallOtherAction() {
-        Player player = new Player(TEST_FILE_PATH + "testActionCallOtherAction");
+        Player player = new Player(PATH + "testActionCallOtherAction");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionUseMultipleArgVars() {
-        Player player = new Player(TEST_FILE_PATH + "testActionUseMultipleArgVars");
+        Player player = new Player(PATH + "testActionUseMultipleArgVars");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Varr").getValue());
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionUseNumArg() {
-        Player player = new Player(TEST_FILE_PATH + "testActionUseNumArg");
+        Player player = new Player(PATH + "testActionUseNumArg");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionUseNumVar() {
-        Player player = new Player(TEST_FILE_PATH + "testActionUseNumVar");
+        Player player = new Player(PATH + "testActionUseNumVar");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionUseStrArg() {
-        Player player = new Player(TEST_FILE_PATH + "testActionUseStrArg");
+        Player player = new Player(PATH + "testActionUseStrArg");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionUseStrVar() {
-        Player player = new Player(TEST_FILE_PATH + "testActionUseStrVar");
+        Player player = new Player(PATH + "testActionUseStrVar");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Varr").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testActionWithNumArg() {
-        Player player = new Player(TEST_FILE_PATH + "testActionWithNumArg");
+        Player player = new Player(PATH + "testActionWithNumArg");
         player.play();
-        GameManager.clear();
+        resetTest();
     }
 }

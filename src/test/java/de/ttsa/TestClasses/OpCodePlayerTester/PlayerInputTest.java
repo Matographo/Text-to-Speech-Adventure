@@ -6,57 +6,58 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerInputTest {
+public class PlayerInputTest extends OpCodePlayerTesterClass {
     
-    private final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/OpcodeTests/Input/";
+    private final String PATH = TEST_FILE_PATH + "Input/";
 
     @Test
     public void testInputEQStr() {
-        Player player = new Player(TEST_FILE_PATH + "testInputEQStr");
+        Player player = new Player(PATH + "testInputEQStr");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testInputEQStrVar() {
-        Player player = new Player(TEST_FILE_PATH + "testInputEQStrVar");
+        Player player = new Player(PATH + "testInputEQStrVar");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testInputInOrderDoubleOffOrder() {
-        Player player = new Player(TEST_FILE_PATH + "testInputInOrderDoubleOffOrder");
+        Player player = new Player(PATH + "testInputInOrderDoubleOffOrder");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testInputInOrderOffOrderStr() {
-        Player player = new Player(TEST_FILE_PATH + "testInputInOrderOffOrderStr");
+        Player player = new Player(PATH + "testInputInOrderOffOrderStr");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testInputOffOrderStr() {
-        Player player = new Player(TEST_FILE_PATH + "testInputOffOrderStr");
+        Player player = new Player(PATH + "testInputOffOrderStr");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
     @Test
     public void testInputOffOrderStrAndStrVar() {
-        Player player = new Player(TEST_FILE_PATH + "testInputOffOrderStrAndStrVar");
+        Player player = new Player(PATH + "testInputOffOrderStrAndStrVar");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
-        GameManager.clear();
+        resetTest();
     }
 
 }
