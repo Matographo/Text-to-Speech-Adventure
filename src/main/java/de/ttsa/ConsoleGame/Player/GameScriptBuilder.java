@@ -8,6 +8,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Set;
+import de.ttsa.ConsoleGame.Player.Scriptables.ActionCall;
 import de.ttsa.ConsoleGame.Player.Scriptables.DebugInput;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameExitScript;
 import de.ttsa.ConsoleGame.Player.Scriptables.GameLoaderScript;
@@ -21,6 +22,7 @@ import de.ttsa.ConsoleGame.Player.Scriptables.Script;
 import de.ttsa.ConsoleGame.Player.Scriptables.Scriptable;
 import de.ttsa.ConsoleGame.Player.Scriptables.StrDec;
 import de.ttsa.ConsoleGame.Player.Scriptables.VarDec;
+import de.ttsa.ConsoleGame.Player.Structures.Action;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 class GameScriptBuilder {
@@ -56,6 +58,8 @@ private final String INDEX_EXIT = "0C";
 private final String INDEX_LOOP = "0D";
 private final String INDEX_LOOP_BREAKER = "0E";
 private final String INXEX_SET = "0F";
+private final String INDEX_ACTION = "10";
+private final String INDEX_ACTION_CALL = "11";
 
 
 
@@ -152,6 +156,20 @@ private final String INXEX_SET = "0F";
                     break;
                 case INXEX_SET:
                     set(args);
+                    break;
+                case INDEX_ACTION:
+                    int actionSize = getActionSize(args);
+                    blockContent = new ArrayList<String>(actionSize);
+                    game.set(i, args);
+                    for(int j = 0; j <= actionSize; j++) {
+                        blockContent.add(game.get(i));
+                        game.remove(i);
+                    }
+                    action(blockContent);
+                    i--;
+                    break;
+                case INDEX_ACTION_CALL:
+                    gameScript.add(new ActionCall(args));
                     break;
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -297,6 +315,14 @@ private final String INXEX_SET = "0F";
         GameManager.sets.put(setName, new Set(strValues, varValues));
     }
 
+    private void action(ArrayList<String> actionContent) {
+        String actionName = actionContent.get(0);
+        actionName = actionName.split(":")[0];
+        actionContent.remove(0);
+        Scriptable actionScript = loadGame(actionContent);
+        GameManager.actions.put(actionName, new Action(actionScript));
+    }
+
 
 // ------------------ Helper Functions -------------------
     
@@ -337,5 +363,10 @@ private final String INXEX_SET = "0F";
         private int getLoopSize(String args) {
             String[] loopArgs = args.split(":");
             return Integer.parseInt(loopArgs[1]);
+        }
+
+        private int getActionSize(String args) {
+            String[] actionArgs = args.split(":");
+            return Integer.parseInt(actionArgs[1]);
         }
 }

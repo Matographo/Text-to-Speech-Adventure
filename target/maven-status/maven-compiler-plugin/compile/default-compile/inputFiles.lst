@@ -32,6 +32,7 @@
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/SubFunctions/OrderChecker.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/LoopBreaker.java
+/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Datatypes/Set.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/If.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/GameSavingScript.java
 /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/src/main/java/de/ttsa/ConsoleGame/Player/Scriptables/DebugInput.java

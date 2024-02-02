@@ -36,6 +36,7 @@ public class OpCodeTest {
     private final String STR_SEPERATOR = ":";
     private final String SET_SEPERATOR = ",";
     private final String SET_NAME_SEPERATOR = ":";
+    private final String ACTION_SEPERATOR = ":";
 
 // ------------------ Command Inizes ----------------------
     private final String INDEX_SAY = "00";
@@ -54,6 +55,8 @@ public class OpCodeTest {
     private final String INDEX_LOOP = "0D";
     private final String INDEX_LOOP_BREAKER = "0E";
     private final String INDEX_SET = "0F";
+    private final String INDEX_ACTION = "10";
+    private final String INDEX_ACTION_CALL = "11";
 
 // ------------------ Variables Memory --------------------
 
@@ -61,6 +64,8 @@ public class OpCodeTest {
     private HashSet<String> varNames = new HashSet<String>();
     private HashSet<String> numNames = new HashSet<String>();
     private HashSet<String> strNames = new HashSet<String>();
+    private HashSet<String> actionNames = new HashSet<String>();
+    private HashSet<String> setNames = new HashSet<String>();
 
 // -------------------- Constructor -----------------------
 
@@ -132,6 +137,8 @@ public class OpCodeTest {
                 case INDEX_LOOP -> testResult = testResult && testLoopSyntax(args);
                 case INDEX_LOOP_BREAKER -> testResult = testResult && testLoopBreakerSyntax(args);
                 case INDEX_SET -> testResult = testResult && testSetSyntax(args);
+                case INDEX_ACTION -> testResult = testResult && testActionSyntax(args);
+                case INDEX_ACTION_CALL -> testResult = testResult && testActionCallSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -160,7 +167,11 @@ public class OpCodeTest {
                 case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
                 case INDEX_IF -> testResult = testResult && testIfVar(args);
                 case INDEX_DEBUG -> testResult = testResult && testDebugInputVar(args);
-                case INDEX_STR_VARDEC -> testResult = testResult && testLoopVar(args);
+                case INDEX_STR_VARDEC -> testResult = testResult && testStrVarDec(args);
+                case INDEX_LOOP -> testResult = testResult && testLoopVar(args);
+                case INDEX_SET -> testResult = testResult && testSetVar(args);
+                case INDEX_ACTION -> testResult = testResult && testActionVar(args);
+                case INDEX_ACTION_CALL -> testResult = testResult && testActionCallVar(args);
             }
         }
         return testResult;
@@ -189,6 +200,9 @@ public class OpCodeTest {
                     break;
                 case INDEX_LOOP:
                     testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
+                    break;
+                case INDEX_ACTION:
+                    testResult = testResult && testActionBlock(args, content.size() - i);
                     break;
                 default:
                     continue;
@@ -379,6 +393,36 @@ public class OpCodeTest {
         return true;
     }
 
+    private boolean testActionSyntax(String arg) {
+        String[] args = arg.split(ACTION_SEPERATOR);
+        if(args.length != 2) return false;
+        String actionName = args[0];
+        String codeLines = args[1];
+        if(!isValidName(actionName)) return false;
+        if(!isNumber(codeLines)) return false;
+        return true;
+    }
+
+    private boolean testActionCallSyntax(String arg) {
+        if(!isValidName(arg)) return false;
+        return true;
+    }
+
+    private boolean testActionVar(String args) {
+        args = args.split(ACTION_SEPERATOR)[0];
+        if(actionNames.contains(args)) return false;
+        actionNames.add(args);
+        return true;
+    }
+
+    private boolean testSetVar(String args) {
+        String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
+        if(setNames.contains(setName)) return false;
+        setNames.add(setName);
+        return true;
+    }
+
+
 // ------------------ Test Functions Variables -------------------
 
 
@@ -483,6 +527,19 @@ public class OpCodeTest {
         return testIfVar(args);
     }
 
+    private boolean testStrVarDec(String args) {
+        String[] strDecArgs = args.split(STR_SEPERATOR);
+        if(!isStrVar(strDecArgs[0])) return false;
+        if(!isStrVar(strDecArgs[1]) && !isStr(strDecArgs[1])) return false;
+        strNames.add(strDecArgs[0]);
+        return true;
+    }
+
+    private boolean testActionCallVar(String args) {
+        if(!actionNames.contains(args)) return false;
+        return true;
+    }
+
 
 
 
@@ -506,6 +563,11 @@ public class OpCodeTest {
 
     private boolean testLoopBlock(String args, int loopPosition, int endOfRoom) {
         return testIfBlock(args, loopPosition, endOfRoom);
+    }
+
+    private boolean testActionBlock(String args, int nextCodeLines) {
+        if(getActionBlockLength(args) <= nextCodeLines) return true;
+        return false;
     }
 
 // ------------------ Test Help Functions ----------------------
@@ -696,6 +758,15 @@ public class OpCodeTest {
             return false;
         }
         return true;
+    }
+
+    private int getActionBlockLength(String args) {
+        return Integer.parseInt(args.split(ACTION_SEPERATOR)[1]);
+    }
+
+    private boolean isStr(String name) {
+        if(name.startsWith("\"") && name.endsWith("\"")) return true;
+        return false;
     }
 
 }

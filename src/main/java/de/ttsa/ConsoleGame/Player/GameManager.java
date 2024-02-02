@@ -6,6 +6,7 @@ import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 import de.ttsa.ConsoleGame.Player.Datatypes.Set;
 import de.ttsa.ConsoleGame.Player.Functions.GameSaver;
+import de.ttsa.ConsoleGame.Player.Structures.Action;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameManager {
@@ -16,6 +17,7 @@ public class GameManager {
     public static HashMap<String, INT> numVars = new HashMap<>();
     public static HashMap<String, STRING> strVars = new HashMap<>();
     public static HashMap<String, Set> sets = new HashMap<>();
+    public static HashMap<String, Action> actions = new HashMap<>();
 
     public static String currentRoom;
     public static String nextRoom;
@@ -39,6 +41,9 @@ public class GameManager {
         rooms.clear();
         numVars.clear();
         strVars.clear();
+        sets.clear();
+        actions.clear();
+        currentRoom = null;
         nextRoom = null;
     }
 

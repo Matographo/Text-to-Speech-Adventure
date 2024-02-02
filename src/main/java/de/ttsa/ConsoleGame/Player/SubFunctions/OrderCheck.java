@@ -1,7 +1,5 @@
 package de.ttsa.ConsoleGame.Player.SubFunctions;
 
-import java.util.HashSet;
-
 import de.ttsa.ConsoleGame.Player.GameManager;
 
 /**
