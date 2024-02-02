@@ -13,32 +13,32 @@ public class TesterRoomJumperTest extends OpCodeTestTesterClass {
 
     @Test
     public void testRoomJumperWithoutRoom() {
-            OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom");
-            assertEquals(false, test.start());
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom");
+        assertEquals(false, test.start());
     }
 
     @Test
     public void testRoomJumperWithRoom() {
-            OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithRoom");
-            assertEquals(true, test.start());
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithRoom");
+        assertEquals(true, test.start());
     }
 
     @Test
     public void testRoomJumperAndSpaceInName() {
-            OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperSpaceInName");
-            assertEquals(false, test.start());
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperSpaceInName");
+        assertEquals(false, test.start());
     }
 
     @Test
     public void testRoomJumperAsString() {
-            OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperAsString");
-            assertEquals(false, test.start());
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperAsString");
+        assertEquals(false, test.start());
     }
 
     @Test
     public void testRoomJumperWithSpecialChar() {
-            OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithSpecialChar");
-            assertEquals(false, test.start());
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithSpecialChar");
+        assertEquals(false, test.start());
     }
     
 }

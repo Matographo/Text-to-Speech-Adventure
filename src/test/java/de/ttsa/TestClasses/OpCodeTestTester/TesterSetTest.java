@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
-import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterSetTest extends OpCodeTestTesterClass {
@@ -18,17 +17,11 @@ public class TesterSetTest extends OpCodeTestTesterClass {
     public void testSetJustSet() {
         OpCodeTest test = new OpCodeTest(PATH + "testSetJustSet");
         assertEquals(true, test.start());
-        resetTest();
     }
 
     @Test
     public void testSetWithRoom() {
         OpCodeTest test = new OpCodeTest(PATH + "testSetWithRoom");
         assertEquals(true, test.start());
-        resetTest();
-    }
-
-    private void resetTest() {
-        GameManager.clear();
     }
 }

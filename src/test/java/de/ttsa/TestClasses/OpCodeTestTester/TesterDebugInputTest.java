@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
-import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterDebugInputTest extends OpCodeTestTesterClass {
@@ -17,17 +16,11 @@ public class TesterDebugInputTest extends OpCodeTestTesterClass {
     public void testDebugInput() {
         OpCodeTest test = new OpCodeTest(PATH + "testDebugInput");
         assertEquals(true, test.start());
-        resetTest();
     }
 
     @Test
     public void testDebugInputWithStrVar() {
         OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVar");
         assertEquals(true, test.start());
-        resetTest();
-    }
-
-    private void resetTest() {
-        GameManager.clear();
     }
 }
