@@ -217,9 +217,5 @@ public class Calculator {
             }
             return newV;
         }
-
-        public double sqr(double zahl) {
-            return Math.sqrt(zahl);
-        }
     }
 }
