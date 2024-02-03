@@ -303,37 +303,13 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testIfSyntaxNum(String args) {
-        String[] toTest    = args.split(IF_NUM_SEPERATOR);
-        boolean testResult = true;
-
-
-        if(toTest.length != 2)   return false;
-        if(!isNumber(toTest[1])) return false;
-
-        String[] toTestBig = toTest[0].split("[&]{2} | [|]{2}");
-
-        for (String test : toTestBig) {
-            testResult = testResult && isTestable(test);
-        }
-
-        return testResult;
+        args = args.substring(0, args.indexOf(":"));
+        return args.matches(REGEX_IF_NUMBER);
     }
 
 
     private boolean testIfSyntaxStr(String args) {
         args = args.substring(0, args.indexOf(":"));
-        // if(!args.contains("=="))                           return false;
-        // if(!args.contains(":"))                            return false;
-        // if(!isNumber(args.substring(args.indexOf(":")+1))) return false;
-
-        // args         = args.substring(0, args.indexOf(":"));
-        // String[] arg = args.split("==");
-
-        // if(arg.length != 2) return false;
-        // if(!isValidName(arg[0]) && !(arg[0].startsWith("\"") && arg[0].endsWith("\""))) return false;
-        // if(!isValidName(arg[1]) && !(arg[1].startsWith("\"") && arg[1].endsWith("\""))) return false;
-
-        // return true; 
         return args.matches(REGEX_IF_STRING);
     }
 
