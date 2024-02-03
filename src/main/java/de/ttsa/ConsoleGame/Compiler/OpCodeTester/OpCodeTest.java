@@ -362,7 +362,7 @@ public class OpCodeTest extends OpCode{
         String argsTyp2 = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
 
 
-        return testIfSyntaxSwitch(args) || isNumber(argsTyp2) || isValidName(argsTyp2) || argsTyp2.equals("true");
+        return testIfSyntaxSwitch(args) || argsTyp2.matches(REGEX_LOOP);
     }
 
 
