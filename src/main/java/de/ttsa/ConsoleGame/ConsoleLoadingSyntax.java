@@ -55,7 +55,7 @@ public class ConsoleLoadingSyntax {
 
     protected final char IF_NUMBER = 'n';
     protected final char IF_STRING = 's';
-    protected final char IF_INPUT = 'i';
+    protected final char IF_INPUT  = 'i';
 
 
     

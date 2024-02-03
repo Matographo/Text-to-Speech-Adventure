@@ -23,6 +23,7 @@ public class Script implements Scriptable{
         for (Scriptable subScript : script) {
             if(!subScript.run()) return false;
         }
+        
         return true;
     }
 }

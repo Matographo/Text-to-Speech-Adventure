@@ -8,15 +8,15 @@ public class If implements Scriptable {
     private final Scriptable[] script;
     
     public If(String condition, Scriptable script) {
-        this.condition = new String[1];
+        this.condition    = new String[1];
         this.condition[0] = condition;
-        this.script = new Scriptable[1];
-        this.script[0] = script;
+        this.script       = new Scriptable[1];
+        this.script[0]    = script;
     }
 
     public If(String[] condition, Scriptable[] script) {
         this.condition = condition;
-        this.script = script;
+        this.script    = script;
     }
 
     @Override
@@ -27,6 +27,7 @@ public class If implements Scriptable {
                 return true;
             }
         }
+        
         return false;
     }
 

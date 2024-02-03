@@ -13,7 +13,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class Calculator {
 
     private static Pattern varName = Pattern.compile("[a-zA-Z]+[a-zA-Z0-9]*");
-    private static Pattern ops = Pattern.compile("[\\+\\-\\*\\/]");
+    private static Pattern ops     = Pattern.compile("[\\+\\-\\*\\/]");
     private static Matcher match;
     private static String toCalculate;
 
@@ -33,12 +33,12 @@ public class Calculator {
      * @return The result of the calculation
      */
     private int calc() {
-        String calc = "";
+        String calc   = "";
         String result = toCalculate;
 
         while (result.contains("(")) {
-            calc = result.substring(0, result.indexOf(")"));
-            calc = calc.substring(calc.lastIndexOf("(") + 1);
+            calc   = result.substring(0, result.indexOf(")"));
+            calc   = calc.substring(calc.lastIndexOf("(") + 1);
             result = result.replace("(" + calc + ")", calcFormula(calc) + "");
         }
         return calcFormula(result);
@@ -46,14 +46,19 @@ public class Calculator {
 
     private int calcFormula(String toCalculate) {
         toCalculate = variableReplacer(toCalculate);
+
+
         if (toCalculate.startsWith("-") || toCalculate.startsWith("+")) {
             toCalculate = "0" + toCalculate;
         }
-        toCalculate = toCalculate.replaceAll(" ", "");
-        ArrayList<Integer> zahlen = new ArrayList<Integer>();
+
+
+        toCalculate                  = toCalculate.replaceAll(" ", "");
+        ArrayList<Integer> zahlen    = new ArrayList<Integer>();
         ArrayList<String> operatoren = new ArrayList<String>();
-        String[] zahlenCut = toCalculate.split("[\\+\\-\\*\\/\\^]");
-        String[] operatorenCut = toCalculate.split("[0-z]+");
+        String[] zahlenCut           = toCalculate.split("[\\+\\-\\*\\/\\^]");
+        String[] operatorenCut       = toCalculate.split("[0-z]+");
+
 
         for (String z : zahlenCut) {
             if (!z.equals("")) {
@@ -68,14 +73,17 @@ public class Calculator {
                 }
             }
         }
+
         for (String o : operatorenCut) {
             if (!o.equals("")) {
                 if(!(o.length() == 1) && !(o.length() == 2 && o.charAt(1) == '-')) {
                     throw new RuntimeException("Invalid mathmatical expression");
                 }
+
                 operatoren.add(o);
             }
         }
+
         return verrechnen(zahlen, operatoren);
     }
 
@@ -90,28 +98,35 @@ public class Calculator {
         while(varName.matcher(toCalculate).find()) {
             toCalculate = replaceFirstVariableString(toCalculate);
         }
+
         return toCalculate;
     }
 
     private String replaceFirstVariableString(String toCalculate) {
         String finalString = "";
-        match = varName.matcher(toCalculate);
+        match              = varName.matcher(toCalculate);
+
         if(match.find()) {
-            int start = match.start();
+            int start   = match.start();
             finalString = toCalculate.substring(0, start);
             toCalculate = toCalculate.substring(start);
             match.reset();
-            match = ops.matcher(toCalculate);
+            match       = ops.matcher(toCalculate);
 
             if(match.find()) {
+
                 int end = match.start();
                 String varName = toCalculate.substring(0, end);
-                finalString += GameManager.numVars.get(varName).getValue();
-                finalString += toCalculate.substring(end);
+                finalString   += GameManager.numVars.get(varName).getValue();
+                finalString   += toCalculate.substring(end);
+
             } else {
+
                 String varName = toCalculate;
-                finalString += GameManager.numVars.get(varName).getValue();
+                finalString   += GameManager.numVars.get(varName).getValue();
+            
             }
+
             return finalString;
         }
         return toCalculate;        
@@ -153,6 +168,7 @@ public class Calculator {
                 i++;
             }
         }
+
         i = 1;
         while (i <= operatoren.size()) {
             switch (operatoren.get(i - 1)) {
@@ -170,6 +186,7 @@ public class Calculator {
                     i++;
             }
         }
+
         i = 1;
         while (i <= operatoren.size()) {
             switch (operatoren.get(i - 1)) {
@@ -212,9 +229,12 @@ public class Calculator {
 
         public int sqe(Integer zahl1, Integer zahl2) {
             int newV = zahl1;
+
+
             for (int i = 1; i < zahl2; i++) {
                 newV *= zahl1;
             }
+            
             return newV;
         }
     }

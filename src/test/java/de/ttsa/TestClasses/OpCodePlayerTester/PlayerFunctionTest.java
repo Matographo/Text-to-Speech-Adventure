@@ -7,9 +7,9 @@ import org.junit.Test;
 import de.ttsa.ConsoleGame.Player.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
-public class PlayerFunktionTest extends OpCodePlayerTesterClass {
+public class PlayerFunctionTest extends OpCodePlayerTesterClass {
     
-    private final String PATH = TEST_FILE_PATH + "Funktion/";
+    private final String PATH = TEST_FILE_PATH + "Function/";
 
     @Test
     public void testEmptyFile() {

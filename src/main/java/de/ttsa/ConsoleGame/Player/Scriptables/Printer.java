@@ -14,11 +14,13 @@ public class Printer implements Scriptable {
     @Override
     public boolean run() {
         String text = "";
+
+
         for (Printablable printablable : textToPrint) {
             text += printablable.print();
         }
-        System.out.println(text);
 
+        System.out.println(text);
         return true;
     }
 }

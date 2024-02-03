@@ -27,6 +27,8 @@ public class GameSaver {
     public static void saveGame() {
         try {
             File file = new File(savePath);
+
+
             if(!file.exists())   throw new RuntimeException("File not found");
             if(!file.isFile())   throw new RuntimeException("File is not a file");
             if(!file.canWrite()) throw new RuntimeException("File is not writable");
@@ -37,7 +39,7 @@ public class GameSaver {
     }
 
     private void save() throws IOException {
-        File file = new File(savePath);
+        File file             = new File(savePath);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
         writer.write("::VARS::" + GameManager.numVars.size() + "\n");
@@ -52,18 +54,23 @@ public class GameSaver {
 
     private BufferedWriter saveHashMap(BufferedWriter writer, HashMap<String, ?> map) throws IOException {
         HashSet<String> keys = new HashSet<>(map.keySet());
+    
         for (String key : keys) {
             writer.write(key + "::" + map.get(key).toString() + "\n");
         }
+
         return writer;
     }
 
     public static void loadGame() {
         try {
             File file = new File(savePath);
+
+
             if(!file.exists())   throw new RuntimeException("File not found");
             if(!file.isFile())   throw new RuntimeException("File is not a file");
             if(!file.canRead()) throw new RuntimeException("File is not readable");
+
             new GameSaver().load();
         } catch (IOException e) {
             throw new RuntimeException("Error while loading game");
@@ -71,10 +78,12 @@ public class GameSaver {
     }
 
     private void load() throws IOException {
-        File file = new File(savePath);
-        BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
+        File file               = new File(savePath);
+        BufferedReader reader   = new BufferedReader(new java.io.FileReader(file));
         ArrayList<String> lines = new ArrayList<>();
-        String line = "";
+        String line             = "";
+
+
         while((line = reader.readLine()) != null) {
             lines.add(line);
         }
@@ -85,24 +94,30 @@ public class GameSaver {
     private void loadData(ArrayList<String> lines) {
         String line;
         int counter = 0;
-        char type = ' ';
+        char type   = ' ';
+
+
         for(int i = 0; i < lines.size(); i++) {
             line = lines.get(i);
+
+
             if(line.startsWith("::")) {
                 line = line.substring(2);
                 if(line.startsWith("VARS::") && counter == 0) {
                     counter = Integer.parseInt(line.substring(line.indexOf("::") + 2));
-                    type = 'N';
+                    type    = 'N';
                     continue;
                 } else if(line.startsWith("STRINGS::") && counter == 0) {
                     counter = Integer.parseInt(line.substring(line.indexOf("::") + 2));
-                    type = 'S';
+                    type    = 'S';
                     continue;
                 } else if(line.startsWith("CURRENTROOM::") && counter == 0) {
                     GameManager.currentRoom = line.substring(line.indexOf("::") + 2);
-                    type = 'R';
+                    type     = 'R';
                     continue;
                 }
+
+
             } else if(counter > 0) {
                 if(type == 'N') {
                     String[] parts = line.split("::");

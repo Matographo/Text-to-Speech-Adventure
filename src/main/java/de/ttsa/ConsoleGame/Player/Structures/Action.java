@@ -15,9 +15,13 @@ public class Action {
         this.script = script;
         this.params = params;
         char paramType;
+
+
         for(String param : params) {
             paramType = param.charAt(0);
-            param = param.substring(1);
+            param     = param.substring(1);
+
+
             switch (paramType) {
                 case 's':
                         GameManager.strVars.put(param, new STRING(""));
@@ -31,18 +35,20 @@ public class Action {
         }
     }
 
+
     public Action(Scriptable script, String[] params) {
         this(new Scriptable[]{script}, params);
     }
 
+
     public boolean run() {
         for (Scriptable s : script) {
-            if (!s.run()) {
-                return false;
-            }
+            if (!s.run()) return false;
         }
+
         return true;
     }
+
 
     public String[] getParams() {
         return params;

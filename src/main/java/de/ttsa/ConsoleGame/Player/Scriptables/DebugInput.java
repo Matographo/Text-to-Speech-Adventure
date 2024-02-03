@@ -14,11 +14,13 @@ public class DebugInput implements Scriptable {
     @Override
     public boolean run() {
         if(input == null) return false;
+
         if(input.startsWith("\"") && input.endsWith("\"")) {
             input = input.substring(1, input.length() - 1);
         } else {
             input = GameManager.strVars.get(input).getValue();
         }
+        
         GameManager.input = input;
         return true;
     }

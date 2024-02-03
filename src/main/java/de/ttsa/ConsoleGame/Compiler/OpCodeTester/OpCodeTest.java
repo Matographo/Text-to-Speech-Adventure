@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import de.ttsa.ConsoleGame.ConsoleLoadingSyntax;
+import de.ttsa.ConsoleGame.OpCode;
 
-public class OpCodeTest extends ConsoleLoadingSyntax{
+public class OpCodeTest extends OpCode{
 
 
 
@@ -219,25 +219,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
 
 
     private boolean testSaySyntax(String args) {
-        String[] allArgs   = args.split(SAY_SEPERATOR);
-        boolean testResult = true;
-
-
-        if(allArgs.length == 0) {
-            return false;
-        }
-
-        for(String arg : allArgs) {
-            if(arg.startsWith("\"") && arg.endsWith("\"")) {
-                testResult = testResult && true;
-            } else if (isValidName(arg)) {
-                testResult = testResult && true;
-            } else {
-                testResult = false;
-            }
-        }
-
-        return testResult;
+        return args.matches(REGEX_SAY);
     }
 
 

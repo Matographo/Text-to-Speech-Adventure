@@ -14,43 +14,61 @@ public class OrderChecker extends StringMethodes {
 
     public boolean check(String toCheck) {
         input = getInput();
+
         if(checkFirstAndLast("(", ")", toCheck)) {
             return checkInorder(toCheck);
         }
+
         return false;
     }
 
 
     private boolean checkInorder(String toCheck) {
-        boolean checkResult = true;
-        toCheck = deleteFirstAndLast("(", ")", toCheck);
+        boolean checkResult         = true;
+        toCheck                     = deleteFirstAndLast("(", ")", toCheck);
         ArrayList<String> offOrders = new ArrayList<>();
+
+
         while(hasBlock("\"", toCheck)) {
+
             offOrders.add(getNextSubstring("\"", toCheck));
             toCheck = deleteUntilAfterSubstring("\"", toCheck);
+
         }
         for(String offOrder : offOrders) {
+
             checkResult = checkResult && checkOffOrder(offOrder);
             toCheck = deleteUntilSubstring("\"", toCheck);
+
         }
+
         return checkResult;
     }
 
 
     private boolean checkOffOrder(String toCheck) {
         if(input == null || input.length == 0) return false;
-        String[] words = toCheck.split(WORD_VAR_SEPARATOR);
+
+        String[] words      = toCheck.split(WORD_VAR_SEPARATOR);
         boolean checkResult = true;
+
+
         for(String word : words) {
+
             if(word.startsWith("'")) {
-                word = deleteFirstAndLast("'", word);
+
+                word        = deleteFirstAndLast("'", word);
                 checkResult = checkResult && checkVar(word);
+
             } else if (checkFirstAndLast("[", "]", toCheck)){
-                word = deleteFirstAndLast("[", "]", word);
+
+                word        = deleteFirstAndLast("[", "]", word);
                 checkResult = checkResult && checkSet(word);
+
             } else {
                 checkResult = checkResult && checkWord(word);
             }
+
         }
 
         input = getNewInput();
@@ -60,24 +78,29 @@ public class OrderChecker extends StringMethodes {
 
     private boolean checkVar(String toCheck) {
         boolean checkResult = false;
-        toCheck = GameManager.strVars.get(toCheck).getValue();
+        toCheck             = GameManager.strVars.get(toCheck).getValue();
+
         for(int i=0; i < input.length; i++) {
+
             if(input[i].equals(toCheck)) {
                 if(i > lastFoundet) lastFoundet = i;
+
                 checkResult = true;
                 break;
             }
         }
+
         return checkResult;
     }
 
 
     private boolean checkWord(String toCheck) {
         boolean checkResult = false;
+
         for(int i=0; i < input.length; i++) {
             if(input[i].equals(toCheck)) {
                 if(i > lastFoundet) lastFoundet = i;
-                checkResult = true;
+                checkResult                     = true;
                 break;
             }
         }
@@ -86,8 +109,10 @@ public class OrderChecker extends StringMethodes {
 
     private boolean checkSet(String toCheck) {
         HashSet<String> strings = GameManager.sets.get(toCheck).getStr();
-        HashSet<String> vars = GameManager.sets.get(toCheck).getVar();
-        boolean checkResult = false;
+        HashSet<String> vars    = GameManager.sets.get(toCheck).getVar();
+        boolean checkResult     = false;
+
+
         for(String string : strings) {
             checkResult = checkResult || checkWord(string);
         }
@@ -105,9 +130,12 @@ public class OrderChecker extends StringMethodes {
 
     private String[] getNewInput() {
         String[] newInput = new String[input.length - lastFoundet - 1];
+
+
         for(int i=0; i < newInput.length; i++) {
             newInput[i] = input[i + lastFoundet + 1];
         }
+        
         return newInput;
     }
 }

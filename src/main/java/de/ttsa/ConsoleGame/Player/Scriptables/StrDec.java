@@ -10,7 +10,7 @@ public class StrDec implements Scriptable {
     private String operation;
 
     public StrDec(String varName, String operation) {
-        this.varName = varName;
+        this.varName   = varName;
         this.operation = operation;
     }
 

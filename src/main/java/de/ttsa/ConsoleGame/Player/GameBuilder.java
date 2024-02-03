@@ -8,7 +8,7 @@ class GameBuilder {
     private GameScriptBuilder gameScriptBuilder;
     
     public GameBuilder(String gamePath) {
-        this.gameLoader = new GameLoader(gamePath);
+        this.gameLoader        = new GameLoader(gamePath);
         this.gameScriptBuilder = new GameScriptBuilder(gameLoader.loadGameData());
     }
 

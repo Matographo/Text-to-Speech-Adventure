@@ -13,6 +13,7 @@ public class RoomJumper implements Scriptable {
     @Override
     public boolean run() {
         if(!GameManager.rooms.containsKey(roomName)) return false;
+        
         GameManager.nextRoom = roomName;
         return true;
     }
