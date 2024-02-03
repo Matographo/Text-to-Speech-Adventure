@@ -8,54 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class OpCodeTest {
+import de.ttsa.ConsoleGame.ConsoleLoadingSyntax;
+
+public class OpCodeTest extends ConsoleLoadingSyntax{
 
     private File file;
-// ------------------ Attributs ---------------------------
 
     private final String CALCULATABLE = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
-    private final char IF_NUMBER = 'n';
-    private final char IF_STRING = 's';
-    private final char IF_INPUT = 'i';
-
-
-// ------------------ Command Seperators ------------------
-
-    private final String COMMAND_SEPERATOR = "::";
-    private final String SAY_SEPERATOR = ",";
-    private final String ROOM_SEPERATOR = ":";
-    private final String NUMBER_VARIABLE_SEPERATOR = ":";
-    private final String NUMBER_STRING_SEPERATOR = ":";
-    private final String NUMBER_DEC_SEPERATOR = ":";
-    private final String IF_NUM_SEPERATOR = ":";
-    private final String IF_ELSE_SEPERATOR = ";;";
-    private final String OFFORDER_SEPERATOR = "!!!";
-    private final String VALUE_SEPERATOR = "!!";
-    private final String STR_SEPERATOR = ":";
-    private final String SET_SEPERATOR = ",";
-    private final String SET_NAME_SEPERATOR = ":";
-    private final String ACTION_SEPERATOR = ":";
-    private final String ACTION_ARGS_SEPERATOR = ",";
-
-// ------------------ Command Inizes ----------------------
-    private final String INDEX_SAY = "00";
-    private final String INDEX_ROOM = "01";
-    private final String INDEX_ROOM_JUMPER = "02";
-    private final String INDEX_NUMBER_VARIABLE = "03";
-    private final String INDEX_STRING_VARIABLE = "04";
-    private final String INDEX_NUM_VARDEC = "05";
-    private final String INDEX_IF = "06";
-    private final String INDEX_INPUT = "07";
-    private final String INDEX_STR_VARDEC = "08";
-    private final String INDEX_DEBUG = "09";
-    private final String INDEX_SAVE = "0A";
-    private final String INDEX_LOAD = "0B";
-    private final String INDEX_EXIT = "0C";
-    private final String INDEX_LOOP = "0D";
-    private final String INDEX_LOOP_BREAKER = "0E";
-    private final String INDEX_SET = "0F";
-    private final String INDEX_ACTION = "10";
-    private final String INDEX_ACTION_CALL = "11";
 
 // ------------------ Variables Memory --------------------
 

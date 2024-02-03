@@ -3,6 +3,7 @@ package de.ttsa.ConsoleGame.Player;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import de.ttsa.ConsoleGame.ConsoleLoadingSyntax;
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
 import de.ttsa.ConsoleGame.Player.Datatypes.PrintText;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
@@ -25,44 +26,10 @@ import de.ttsa.ConsoleGame.Player.Scriptables.VarDec;
 import de.ttsa.ConsoleGame.Player.Structures.Action;
 import de.ttsa.ConsoleGame.Player.Structures.Room;
 
-class GameScriptBuilder {
+class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
     private ArrayList<String> game;
-
-// ------------------ Command Seperators ------------------
-
-private final String COMMAND_SEPERATOR = "::";
-private final String SAY_SEPERATOR = ",";
-private final String ROOM_SEPERATOR = ":";
-private final String VAR_SEPERATOR = ":";
-private final String IF_ELSE_SEPERATOR = ";;";
-private final String SET_SEPERATOR = ",";
-private final String SET_NAME_SEPERATOR = ":";
-private final String ACTION_SEPERATOR = ":";
-private final String ACTION_PARAM_SEPERATOR = ",";
-
-// ------------------ Command Inizes ----------------------
-
-private final String INDEX_SAY = "00";
-private final String INDEX_ROOM = "01";
-private final String INDEX_ROOM_JUMPER = "02";
-private final String INDEX_NUMVAR = "03";
-private final String INDEX_STRVAR = "04";
-private final String INDEX_NUMDEC = "05";
-private final String INDEX_IF = "06";
-private final String INDEX_INPUT = "07";
-private final String INDEX_STRDEC = "08";
-private final String INDEX_DEBUG_INPUT = "09";
-private final String INDEX_SAVE = "0A";
-private final String INDEX_LOAD = "0B";
-private final String INDEX_EXIT = "0C";
-private final String INDEX_LOOP = "0D";
-private final String INDEX_LOOP_BREAKER = "0E";
-private final String INXEX_SET = "0F";
-private final String INDEX_ACTION = "10";
-private final String INDEX_ACTION_CALL = "11";
-
 
 
     public GameScriptBuilder(ArrayList<String> gameContent) {
@@ -104,13 +71,13 @@ private final String INDEX_ACTION_CALL = "11";
                 case INDEX_ROOM_JUMPER:
                     gameScript.add(new RoomJumper(args));
                     break;
-                case INDEX_NUMVAR:
+                case INDEX_NUMBER_VARIABLE:
                     numVars(args);
                     break;
-                case INDEX_STRVAR:
+                case INDEX_STRING_VARIABLE:
                     strVars(args);
                     break;
-                case INDEX_NUMDEC:
+                case INDEX_NUM_VARDEC:
                     gameScript.add(varDec(args));
                     break;
                 case INDEX_IF:
@@ -127,10 +94,10 @@ private final String INDEX_ACTION_CALL = "11";
                 case INDEX_INPUT:
                     gameScript.add(input);
                     break;
-                case INDEX_STRDEC:
+                case INDEX_STR_VARDEC:
                     gameScript.add(strDec(args));
                     break;
-                case INDEX_DEBUG_INPUT:
+                case INDEX_DEBUG:
                     gameScript.add(new DebugInput(args));
                     break;
                 case INDEX_SAVE:
@@ -156,7 +123,7 @@ private final String INDEX_ACTION_CALL = "11";
                 case INDEX_LOOP_BREAKER:
                     gameScript.add(new LoopBreaker());
                     break;
-                case INXEX_SET:
+                case INDEX_SET:
                     set(args);
                     break;
                 case INDEX_ACTION:
@@ -217,7 +184,7 @@ private final String INDEX_ACTION_CALL = "11";
     }
 
     private void numVars(String args) {
-        String[] numVarArgs = args.split(VAR_SEPERATOR);
+        String[] numVarArgs = args.split(NUMBER_VARIABLE_SEPERATOR);
         String numVarName = numVarArgs[0];
         if(!isValidName(numVarName)) {
             throw new RuntimeException("NumVar name " + numVarName + " is not valid!");
@@ -227,7 +194,7 @@ private final String INDEX_ACTION_CALL = "11";
     }
 
     private void strVars(String args) {
-        String[] strVarArgs = args.split(VAR_SEPERATOR);
+        String[] strVarArgs = args.split(NUMBER_STRING_SEPERATOR);
         String strVarName = strVarArgs[0];
         if(!isValidName(strVarName)) {
             throw new RuntimeException("StrVar name " + strVarName + " is not valid!");
@@ -237,7 +204,7 @@ private final String INDEX_ACTION_CALL = "11";
     }
 
     private Scriptable varDec(String args) {
-        String[] varDecArgs = args.split(VAR_SEPERATOR);
+        String[] varDecArgs = args.split(NUMBER_DEC_SEPERATOR);
         String varDecName = varDecArgs[0];
         if(!isValidName(varDecName)) {
             throw new RuntimeException("VarDec name " + varDecName + " is not valid!");
@@ -272,7 +239,7 @@ private final String INDEX_ACTION_CALL = "11";
     }
 
     private Scriptable strDec(String args) {
-        String[] strDecArgs = args.split(VAR_SEPERATOR);
+        String[] strDecArgs = args.split(STR_SEPERATOR);
         String strDecName = strDecArgs[0];
         if(!isValidName(strDecName)) {
             throw new RuntimeException("StrDec name " + strDecName + " is not valid!");
@@ -320,7 +287,7 @@ private final String INDEX_ACTION_CALL = "11";
     private void action(ArrayList<String> actionContent) {
         String[] actionArgs = actionContent.get(0).split(ACTION_SEPERATOR);
         String actionName = actionArgs[0];
-        String[] actionParams = actionArgs[1].split(ACTION_PARAM_SEPERATOR);
+        String[] actionParams = actionArgs[1].split(ACTION_ARGS_SEPERATOR);
         actionContent.remove(0);
         Scriptable actionScript = loadGame(actionContent);
         GameManager.actions.put(actionName, new Action(actionScript, actionParams));
@@ -329,7 +296,7 @@ private final String INDEX_ACTION_CALL = "11";
     private Scriptable actionCall(String args) {
         String[] actionCallArgs = args.split(ACTION_SEPERATOR);
         String actionName = actionCallArgs[0];
-        String[] actionParams = actionCallArgs[1].split(ACTION_PARAM_SEPERATOR);
+        String[] actionParams = actionCallArgs[1].split(ACTION_ARGS_SEPERATOR);
         return new ActionCall(actionName, actionParams);
     }
 
