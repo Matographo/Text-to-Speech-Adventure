@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.036" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.005" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64/lib"/>
-    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter2692858780862586385.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-03T03-32-11_966-jvmRun1 surefire7252435095806498029tmp surefire_09487582453245825836tmp"/>
+    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter8097492275408189090.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-03T11-13-20_906-jvmRun1 surefire3731726082854302708tmp surefire_07000493590932248404tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter2692858780862586385.jar"/>
+    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter8097492275408189090.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
     <property name="user.name" value="leodora"/>
@@ -52,16 +52,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testIfLeftLowerRight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.009"/>
-  <testcase name="testIfWithElseIf" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.003"/>
-  <testcase name="testIfLeftNERight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.003"/>
-  <testcase name="testIfWithTwoVars" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfWithStrVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIf" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfWithStrVarEQStrVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfWithCalc" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfWithElse" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.003"/>
-  <testcase name="testIfWithCalcVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfWithVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
-  <testcase name="testIfLeftGERight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.002"/>
+  <testcase name="testIfLeftLowerRight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithElseIf" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfLeftNERight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithTwoVars" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithStrVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIf" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithStrVarEQStrVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithCalc" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithElse" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0"/>
+  <testcase name="testIfWithCalcVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.001"/>
+  <testcase name="testIfWithVar" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.001"/>
+  <testcase name="testIfLeftGERight" classname="de.ttsa.TestClasses.OpCodePlayerTester.PlayerIfTest" time="0.001"/>
 </testsuite>

@@ -13,7 +13,7 @@ public class OpCode extends ConsoleLoadingSyntax {
     // protected final String REGEX_DEBUG;
     protected final String REGEX_EXIT = "[0]|[1]";
     // protected final String REGEX_LOOP;
-    // protected final String REGEX_SET;
+    protected final String REGEX_SET = "^([a-zA-Z][\\w]*)[\\:]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w*])([\\,]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w]*))*";
     // protected final String REGEX_ACTION;
     // protected final String REGEX_ACTION_CALL;
     
