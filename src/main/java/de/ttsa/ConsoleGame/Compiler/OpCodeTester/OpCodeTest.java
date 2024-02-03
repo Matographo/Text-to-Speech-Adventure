@@ -12,11 +12,21 @@ import de.ttsa.ConsoleGame.ConsoleLoadingSyntax;
 
 public class OpCodeTest extends ConsoleLoadingSyntax{
 
+
+
+// ---------------------- Attributes -----------------------
+
+
+
     private File file;
 
     private final String CALCULATABLE = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
 
+
+
 // ------------------ Variables Memory --------------------
+
+
 
     private HashSet<String> roomNames = new HashSet<String>();
     private HashSet<String> varNames = new HashSet<String>();
@@ -26,7 +36,11 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     private HashSet<String> setNames = new HashSet<String>();
     private HashMap<String, String> actionArgs = new HashMap<>();
 
+
+
 // -------------------- Constructor -----------------------
+
+
 
     public OpCodeTest(String file) {
         this.file = new File(file);
@@ -36,7 +50,9 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     }
 
 
+
 // ----------------------- Start --------------------------
+
 
 
     public boolean start() {
@@ -53,7 +69,9 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     }
 
 
+
 // -------------------- Load Data ------------------------
+
 
 
     private ArrayList<String> getContent() throws IOException {
@@ -68,7 +86,9 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     }
 
 
+
 // ----------------- Test All Syntax ---------------------
+
 
 
     private boolean testSyntax(ArrayList<String> content) {
@@ -80,24 +100,24 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
             args = line.substring(line.indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
-                case INDEX_SAY -> testResult = testResult && testSaySyntax(args);
-                case INDEX_ROOM -> testResult = testResult && testRoomSyntax(args);
-                case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperSyntax(args);
-                case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableSyntax(args);
-                case INDEX_STRING_VARIABLE -> testResult = testResult && testStringVariableSyntax(args);
-                case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecSyntax(args);
-                case INDEX_IF -> testResult = testResult && testIfSyntax(args);
-                case INDEX_INPUT -> testResult = testResult && testInputSyntax(args);
-                case INDEX_STR_VARDEC -> testResult = testResult && testStrDecSyntax(args);
-                case INDEX_DEBUG -> testResult = testResult && testDebugInputSyntax(args);
-                case INDEX_SAVE -> testResult = testResult && testSaveSyntax(args);
-                case INDEX_LOAD -> testResult = testResult && testLoadSyntax(args);
-                case INDEX_EXIT -> testResult = testResult && testExitSyntax(args);
-                case INDEX_LOOP -> testResult = testResult && testLoopSyntax(args);
-                case INDEX_LOOP_BREAKER -> testResult = testResult && testLoopBreakerSyntax(args);
-                case INDEX_SET -> testResult = testResult && testSetSyntax(args);
-                case INDEX_ACTION -> testResult = testResult && testActionSyntax(args);
-                case INDEX_ACTION_CALL -> testResult = testResult && testActionCallSyntax(args);
+                case INDEX_SAY  ->              testResult = testResult && testSaySyntax(args);
+                case INDEX_ROOM ->              testResult = testResult && testRoomSyntax(args);
+                case INDEX_ROOM_JUMPER ->       testResult = testResult && testRoomJumperSyntax(args);
+                case INDEX_NUMBER_VARIABLE ->   testResult = testResult && testNumberVariableSyntax(args);
+                case INDEX_STRING_VARIABLE ->   testResult = testResult && testStringVariableSyntax(args);
+                case INDEX_NUM_VARDEC ->        testResult = testResult && testNumberDecSyntax(args);
+                case INDEX_IF ->                testResult = testResult && testIfSyntax(args);
+                case INDEX_INPUT ->             testResult = testResult && testInputSyntax(args);
+                case INDEX_STR_VARDEC ->        testResult = testResult && testStrDecSyntax(args);
+                case INDEX_DEBUG ->             testResult = testResult && testDebugInputSyntax(args);
+                case INDEX_SAVE ->              testResult = testResult && testSaveSyntax(args);
+                case INDEX_LOAD ->              testResult = testResult && testLoadSyntax(args);
+                case INDEX_EXIT ->              testResult = testResult && testExitSyntax(args);
+                case INDEX_LOOP ->              testResult = testResult && testLoopSyntax(args);
+                case INDEX_LOOP_BREAKER ->      testResult = testResult && testLoopBreakerSyntax(args);
+                case INDEX_SET ->               testResult = testResult && testSetSyntax(args);
+                case INDEX_ACTION ->            testResult = testResult && testActionSyntax(args);
+                case INDEX_ACTION_CALL ->       testResult = testResult && testActionCallSyntax(args);
                 default -> testResult = false;
             }
         }
@@ -106,7 +126,9 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     }
 
 
+
 // ----------------- Test All Variables ----------------------
+
 
 
     private boolean testVariables(ArrayList<String> content) {
@@ -118,26 +140,28 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
             args = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
             switch(command) {
-                case INDEX_SAY -> testResult = testResult && testSayVar(args);
-                case INDEX_ROOM -> testResult = testResult && testRoomVar(args);
-                case INDEX_ROOM_JUMPER -> testResult = testResult && testRoomJumperVar(args);
-                case INDEX_NUMBER_VARIABLE -> testResult = testResult && testNumberVariableVar(args);
-                case INDEX_STRING_VARIABLE -> testResult = testResult && testStringVariableVar(args);
-                case INDEX_NUM_VARDEC -> testResult = testResult && testNumberDecVar(args);
-                case INDEX_IF -> testResult = testResult && testIfVar(args);
-                case INDEX_DEBUG -> testResult = testResult && testDebugInputVar(args);
-                case INDEX_STR_VARDEC -> testResult = testResult && testStrVarDec(args);
-                case INDEX_LOOP -> testResult = testResult && testLoopVar(args);
-                case INDEX_SET -> testResult = testResult && testSetVar(args);
-                case INDEX_ACTION -> testResult = testResult && testActionVar(args);
-                case INDEX_ACTION_CALL -> testResult = testResult && testActionCallVar(args);
+                case INDEX_SAY ->               testResult = testResult && testSayVar(args);
+                case INDEX_ROOM ->              testResult = testResult && testRoomVar(args);
+                case INDEX_ROOM_JUMPER ->       testResult = testResult && testRoomJumperVar(args);
+                case INDEX_NUMBER_VARIABLE ->   testResult = testResult && testNumberVariableVar(args);
+                case INDEX_STRING_VARIABLE ->   testResult = testResult && testStringVariableVar(args);
+                case INDEX_NUM_VARDEC ->        testResult = testResult && testNumberDecVar(args);
+                case INDEX_IF ->                testResult = testResult && testIfVar(args);
+                case INDEX_DEBUG ->             testResult = testResult && testDebugInputVar(args);
+                case INDEX_STR_VARDEC ->        testResult = testResult && testStrVarDec(args);
+                case INDEX_LOOP ->              testResult = testResult && testLoopVar(args);
+                case INDEX_SET ->               testResult = testResult && testSetVar(args);
+                case INDEX_ACTION ->            testResult = testResult && testActionVar(args);
+                case INDEX_ACTION_CALL ->       testResult = testResult && testActionCallVar(args);
             }
         }
         return testResult;
     }
 
 
+
 // ------------------ Test All Blocks -----------------------
+
 
 
     private boolean testBlocks(ArrayList<String> content) {
@@ -173,7 +197,6 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
 
 
 
-
 // ------------------ Test Functions Syntax ----------------------
 
 
@@ -196,6 +219,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean testRoomSyntax(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
         if(arg.length != 2) return false;
@@ -204,10 +228,12 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testRoomJumperSyntax(String args) {
         if(!isValidName(args)) return false;
         return true;
     }
+
 
     private boolean testNumberVariableSyntax(String args) {
         String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
@@ -217,12 +243,14 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testStringVariableSyntax(String args) {
         String[] arg = args.split(NUMBER_STRING_SEPERATOR);
         if(arg.length != 2) return false;
         else if(!isValidName(arg[0])) return false;
         return true;
     }
+
 
     private boolean testNumberDecSyntax(String args) {
         String[] arg = args.split(NUMBER_DEC_SEPERATOR);
@@ -235,6 +263,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return isCalculatable(value);
     }
+
 
     private boolean testIfSyntax(String args) {
         String[] toTest = args.split(IF_ELSE_SEPERATOR);
@@ -249,10 +278,12 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean isTestableElse(String test) {
         if(test.startsWith(":") && isNumber(test.substring(1))) return true;
         return testIfSyntaxSwitch(test);
     }
+
 
     private boolean testIfSyntaxSwitch(String args) {
         char i = args.charAt(0);
@@ -266,6 +297,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean testIfSyntaxNum(String args) {
         String[] toTest = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
@@ -277,6 +309,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return testResult;
     }
+
 
     private boolean testIfSyntaxStr(String args) {
         if(!args.contains("==")) return false;
@@ -290,14 +323,17 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true; 
     }
 
+
     private boolean testIfSyntaxIn(String args) {
         return checkOrderSyntax(args);
     }
+
 
     private boolean testInputSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
         return true;
     }
+
 
     private boolean testStrDecSyntax(String args) {
         String[] strDecArgs = args.split(STR_SEPERATOR);
@@ -309,36 +345,43 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testDebugInputSyntax(String args) {
         if(args.strip().isEmpty()) return false;
         if(!isValidName(args) && !args.startsWith("\"") && !args.endsWith("\"")) return true;
         return true;
     }
 
+
     private boolean testSaveSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
         return true;
     }
+
 
     private boolean testLoadSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
         return true;
     }
 
+
     private boolean testExitSyntax(String args) {
         if(!args.equals("0") && !args.equals("1")) return false;
         return true;
     }
+
 
     private boolean testLoopSyntax(String args) {
         String argsTyp2 = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
         return testIfSyntaxSwitch(args) || isNumber(argsTyp2) || isValidName(argsTyp2) || argsTyp2.equals("true");
     }
 
+
     private boolean testLoopBreakerSyntax(String args) {
         if(!args.strip().isEmpty()) return false;
         return true;
     }
+
 
     private boolean testSetSyntax(String args) {
         String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
@@ -351,6 +394,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return true;
     }
+
 
     private boolean testActionSyntax(String arg) {
         String[] args = arg.split(ACTION_SEPERATOR);
@@ -371,6 +415,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testActionCallSyntax(String arg) {
         String[] args = arg.split(ACTION_SEPERATOR);
         String actionName = args[0];
@@ -381,7 +426,9 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
     }
 
 
+
 // ------------------ Test Functions Variables -------------------
+
 
 
     private boolean testSayVar(String args) {
@@ -401,6 +448,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean testRoomVar(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
         if(roomNames.contains(arg[0])) return false;
@@ -408,10 +456,12 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testRoomJumperVar(String args) {
         if(!roomNames.contains(args)) return false;
         return true;
     }
+
 
     private boolean testNumberVariableVar(String args) {
         String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
@@ -421,6 +471,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testStringVariableVar(String args) {
         String[] arg = args.split(NUMBER_STRING_SEPERATOR);
         if(varNames.contains(arg[0])) return false;
@@ -428,6 +479,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         strNames.add(arg[0]);
         return true;
     }
+
 
     private boolean testNumberDecVar(String args) {
         String[] arg = args.split(NUMBER_DEC_SEPERATOR);
@@ -440,6 +492,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return isCalculatableVar(value);
     }
+
 
     private boolean testIfVar(String args) {
         String[] toTest = args.split(IF_ELSE_SEPERATOR);
@@ -455,6 +508,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean testIfVarNum(String args) {
         String[] tests = args.split(IF_NUM_SEPERATOR);
         boolean testResult = true;
@@ -464,6 +518,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return testResult;
     }
+
 
     private boolean testIfVarStr(String args) {
         args = args.substring(0, args.indexOf(":"));
@@ -481,9 +536,11 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testLoopVar(String args) {
         return testIfVar(args);
     }
+
 
     private boolean testStrVarDec(String args) {
         String[] strDecArgs = args.split(STR_SEPERATOR);
@@ -492,6 +549,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         strNames.add(strDecArgs[0]);
         return true;
     }
+
 
     private boolean testActionCallVar(String args) {
         String[] actions = args.split(ACTION_SEPERATOR);
@@ -520,6 +578,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testActionVar(String args) {
         String[] actionArgs = args.split(ACTION_SEPERATOR);
         if(actionNames.contains(actionArgs[0])) return false;
@@ -544,6 +603,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testSetVar(String args) {
         String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
         if(setNames.contains(setName)) return false;
@@ -553,7 +613,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
 
 
 
-// ------------------ Test Functions Blocks ----------------------
+// ----------------------- Test Functions Blocks ---------------------------
 
 
 
@@ -561,6 +621,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         if(getRoomBlockLength(args) <= nextCodeLines) return true;
         return false;
     }
+
 
     private boolean testIfBlock(String args, int ifPosition, int endOfRoom) {
         String[] toTest = args.split(IF_ELSE_SEPERATOR);
@@ -571,16 +632,21 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return ifPosition + blockLenght + 1 <= endOfRoom;
     }
 
+
     private boolean testLoopBlock(String args, int loopPosition, int endOfRoom) {
         return testIfBlock(args, loopPosition, endOfRoom);
     }
+
 
     private boolean testActionBlock(String args, int nextCodeLines) {
         if(getActionBlockLength(args) <= nextCodeLines) return true;
         return false;
     }
 
-// ------------------ Test Help Functions ----------------------
+
+
+// ------------------------- Test Help Functions ------------------------------
+
 
 
     private boolean isValidName(String name) {
@@ -594,6 +660,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean isNumber(String number) {
         if(number.matches("\\d+")) {
             return true;
@@ -601,19 +668,23 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return false;
     }
 
+
     private boolean isNumVar(String name) {
         if(!isNumber(name) && numNames.contains(name)) return true;
         return false;
     }
+
 
     private boolean isStrVar(String name) {
         if(!isNumber(name) && strNames.contains(name)) return true;
         return false;
     }
 
+
     private boolean isCalculatable(String value) {
         return testBreacketsCount(value) && testBreackets(value);
     }
+
 
     private boolean isCalculatableVar(String value) {
         String[] values = value.split("[\\+\\-\\*/\\(\\)]");
@@ -625,6 +696,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private boolean testBreacketsCount(String value) {
         int count = 0;
         for(int i = 0; i < value.length(); i++) {
@@ -633,6 +705,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return count == 0;
     }
+
 
     private boolean testBreackets(String value) {
         boolean testResult = true;
@@ -654,6 +727,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return value.matches(CALCULATABLE);
     }
 
+
     private boolean isTestable(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
             String[] toTest = test.split("[=<>!]");
@@ -664,6 +738,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
             return false;
         }
     }
+
 
     private boolean isTestableVar(String test) {
         String[] tests = test.split(IF_ELSE_SEPERATOR);
@@ -679,6 +754,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean isTestableVarNum(String test) {
         if(test.contains("=") || test.contains("<") || test.contains(">")) {
             String[] toTest = test.split("[=<>!]");
@@ -690,6 +766,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
     }
 
+
     private boolean isTestableVarStr(String test) {
         String[] arg = test.split("==");
         if(!strNames.contains(arg[0]) && !arg[0].startsWith("\"") && !arg[0].endsWith("\"")) return false;
@@ -697,15 +774,18 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private int getIfBlockLength(String args) {
         String[] arg = args.split(IF_NUM_SEPERATOR);
         return Integer.parseInt(arg[1]);
     }
 
+
     private int getRoomBlockLength(String args) {
         String[] arg = args.split(ROOM_SEPERATOR);
         return Integer.parseInt(arg[1]);
     }
+
 
     private String[] removeEmpty(String[] toTest) {
         ArrayList<String> list = new ArrayList<String>(toTest.length);
@@ -717,6 +797,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return list.toArray(new String[list.size()]);
     }
 
+
     private boolean isValideRoomName(String name) {
         String[] names = name.split(" ");
         for(String n : names) {
@@ -724,6 +805,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return true;
     }
+
 
     private boolean checkOrderSyntax(String args) {
         boolean testResult = true;
@@ -739,6 +821,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean checkOffOrderSyntax(String args) {
         boolean testResult = true;
         if(args.startsWith("\"") && args.endsWith("\"")) {
@@ -753,6 +836,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return testResult;
     }
 
+
     private boolean checkValueSyntax(String args) {
         if(args.startsWith("'") && args.endsWith("'")) {
             args = args.substring(1, args.length()-1);
@@ -760,6 +844,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return true;
     }
+
 
     private boolean isValideSetContent(String args) {
         if (args.contains(" ")) {
@@ -770,24 +855,29 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         return true;
     }
 
+
     private int getActionBlockLength(String args) {
         return Integer.parseInt(args.split(ACTION_SEPERATOR)[2]);
     }
+
 
     private boolean isStr(String name) {
         if(name.startsWith("\"") && name.endsWith("\"")) return true;
         return false;
     }
 
+
     private boolean isEmptyArg(String name) {
         if(name.equals("-")) return true;
         return false;
     }
 
+
     private boolean isArgType(char type) {
         if(type == IF_NUMBER || type == IF_STRING) return true;
         return false;
     }
+
 
     private boolean isActionArgs(String args) {
         String[] actionArgs = args.split(ACTION_ARGS_SEPERATOR);
@@ -797,5 +887,7 @@ public class OpCodeTest extends ConsoleLoadingSyntax{
         }
         return true;
     }
+
+
 
 }
