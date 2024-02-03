@@ -7,11 +7,25 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class OrderChecker extends StringMethodes {
 
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private String[] input;
-    private int lastFoundet = -1;
+    private int lastFoundet                 = -1;
     private final String WORD_VAR_SEPARATOR = "!!";
     
 
+
+// ----------------------------- Methods -----------------------------
+
+
+    /**
+     * Check if the given String is a valid order
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     public boolean check(String toCheck) {
         input = getInput();
 
@@ -22,7 +36,11 @@ public class OrderChecker extends StringMethodes {
         return false;
     }
 
-
+    /**
+     * Check if the given String is in the right order
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     private boolean checkInorder(String toCheck) {
         boolean checkResult         = true;
         toCheck                     = deleteFirstAndLast("(", ")", toCheck);
@@ -45,7 +63,11 @@ public class OrderChecker extends StringMethodes {
         return checkResult;
     }
 
-
+    /**
+     * Check if the given String has the components in the input
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     private boolean checkOffOrder(String toCheck) {
         if(input == null || input.length == 0) return false;
 
@@ -75,7 +97,11 @@ public class OrderChecker extends StringMethodes {
         return checkResult;
     }
 
-
+    /**
+     * Check if the given String is a variable an exists in the input
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     private boolean checkVar(String toCheck) {
         boolean checkResult = false;
         toCheck             = GameManager.strVars.get(toCheck).getValue();
@@ -93,7 +119,11 @@ public class OrderChecker extends StringMethodes {
         return checkResult;
     }
 
-
+    /**
+     * Check if the given String is a word and exists in the input
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     private boolean checkWord(String toCheck) {
         boolean checkResult = false;
 
@@ -107,6 +137,11 @@ public class OrderChecker extends StringMethodes {
         return checkResult;
     }
 
+    /**
+     * Check if the given String is a set and exists in the input
+     * @param toCheck the String that should be checked
+     * @return true if the String is a valid order
+     */
     private boolean checkSet(String toCheck) {
         HashSet<String> strings = GameManager.sets.get(toCheck).getStr();
         HashSet<String> vars    = GameManager.sets.get(toCheck).getVar();
@@ -124,10 +159,21 @@ public class OrderChecker extends StringMethodes {
 
 
 
+// ----------------------- Getter and Setter -----------------------
+
+
+    /**
+     * Get the input from the User
+     * @return the input
+     */
     private String[] getInput() {
         return GameManager.input.split(" ");
     }
 
+    /**
+     * Get the new input after the last foundet word and delete until the last foundet word
+     * @return the new input
+     */
     private String[] getNewInput() {
         String[] newInput = new String[input.length - lastFoundet - 1];
 
@@ -138,4 +184,6 @@ public class OrderChecker extends StringMethodes {
         
         return newInput;
     }
+
+    
 }

@@ -9,6 +9,11 @@ import de.ttsa.ConsoleGame.Player.Functions.Calculator;
 
 public class ConditionTest {
 
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private static String testString;
     private final String AND         = "&&";
     private final String OR          = ";;";
@@ -17,12 +22,27 @@ public class ConditionTest {
     private final char VAR_CON       = 'n';
     private final String[] OPERATORS = new String[] { "==", "!=", "<=", ">=", "<", ">" };
 
+
+
+// --------------------------- Start Tester ---------------------------
+
+
+    /**
+     * Test a condition
+     * @param conditionString the condition that should be tested
+     * @return true if the condition is true
+     */
     public static boolean test(String conditionString) {
         testString = conditionString;
 
         return new ConditionTest().test();
     }
-
+    
+    /**
+     * Test a condition
+     * @param conditionString the condition that should be tested
+     * @return true if the condition is true
+     */
     public boolean test() {
         if (testString.strip().isEmpty()) {
             return true;
@@ -31,12 +51,25 @@ public class ConditionTest {
         }
     }
 
+    /**
+     * Test starts OrTester
+     * @return true if the condition is true
+     */
     private boolean tester() {
         return testOr(testString);
     }
 
 
 
+// -------------------------- Boolean Algebra --------------------------
+
+
+
+    /**
+     * Test the or condition
+     * @param condition with the Or condition
+     * @return true if the condition is true
+     */
     private boolean testOr(String condition) {
         boolean result = false;
         String[] orCon = condition.split(OR);
@@ -49,6 +82,11 @@ public class ConditionTest {
         return result;
     }
 
+    /**
+     * Test the and condition
+     * @param condition with the And condition
+     * @return true if the condition is true
+     */
     private boolean testAnd(String condition) {
         boolean result  = true;
         String[] andCon = condition.split(AND);
@@ -61,6 +99,11 @@ public class ConditionTest {
         return result;
     }
 
+    /**
+     * Test the condition
+     * @param condition the condition that should be tested
+     * @return true if the condition is true
+     */
     private boolean testCondition(String condition) {
         char conType   = condition.charAt(0);
         condition      = condition.substring(1);
@@ -83,7 +126,11 @@ public class ConditionTest {
     
 
 
-
+    /**
+     * Test the number condition
+     * @param condition the condition that tests number operations
+     * @return true if the condition is true
+     */
     private boolean testNumCondition(String condition) {
         boolean result = false;
 
@@ -105,7 +152,13 @@ public class ConditionTest {
         return result;
     }
 
-    
+    /**
+     * Test the operator compare the left and right number with the operator
+     * @param leftNum the left number
+     * @param op the operator
+     * @param rightNum the right number
+     * @return true if the condition is true
+     */
     private boolean testOperator(String leftNum, String op, String rightNum) {
         boolean result = false;
         int left       = getNumber(leftNum);
@@ -124,6 +177,11 @@ public class ConditionTest {
         return result;
     }
 
+    /**
+     * Get the Calcolated number
+     * @param num the String to calculate
+     * @return the number with the calculated value
+     */
     private int getNumber(String num) {
         return Calculator.calc(num);
     }
@@ -133,7 +191,11 @@ public class ConditionTest {
 // ----------------------- String Conditions -----------------------
 
 
-
+    /**
+     * Test the string condition
+     * @param condition the condition that tests string operations
+     * @return true if the condition is true
+     */
     private boolean testStringCondition(String condition) {
         String[] con = condition.split("==");
 
@@ -156,7 +218,11 @@ public class ConditionTest {
 // ----------------------- Input Conditions -----------------------
 
 
-
+    /**
+     * Test the input condition
+     * @param condition the condition that tests input operations
+     * @return true if the condition is true
+     */
     private boolean testInputCondition(String condition) {
         return new OrderChecker().check(condition);
     }
