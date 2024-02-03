@@ -11,7 +11,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerSayTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Say/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testSayFixString() {
@@ -47,21 +59,6 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
         assertEquals(expected, output.getTerminalOutput());
         output.reinit();
         resetTest();
-    }
-
-    @Test
-    public void testSayFixNumber() {
-        GetOutput output = new GetOutput();
-        try {
-            Player player = new Player(PATH + "testSayFixNumber");
-            output.init();
-            player.play();
-            fail();
-        } catch (Exception e) {
-        } finally {
-            output.reinit();
-            resetTest();
-        }
     }
 
     @Test
@@ -101,21 +98,6 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     }
 
     @Test
-    public void testSayNonExistingVar() {
-        GetOutput output = new GetOutput();
-        try {
-            Player player = new Player(PATH + "testSayNonExistingVar");
-            output.init();
-            player.play();
-            fail();
-        } catch (Exception e) {
-        } finally {
-            output.reinit();
-            resetTest();
-        }
-    }
-
-    @Test
     public void testSayNumVarAndFixString() {
         String expected = "5Hallo";
         GetOutput output = new GetOutput();
@@ -137,6 +119,40 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
         assertEquals(expected, output.getTerminalOutput());
         output.reinit();
         resetTest();
+    }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+    @Test
+    public void testSayNonExistingVar() {
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(PATH + "testSayNonExistingVar");
+            output.init();
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            output.reinit();
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testSayFixNumber() {
+        GetOutput output = new GetOutput();
+        try {
+            Player player = new Player(PATH + "testSayFixNumber");
+            output.init();
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            output.reinit();
+            resetTest();
+        }
     }
 
 }

@@ -12,7 +12,17 @@ import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 public class TesterStrVarTest extends OpCodeTestTesterClass {
 
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "StrVar/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -27,6 +37,12 @@ public class TesterStrVarTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
     @Test
     public void testStrVarFalseName() {
         OpCodeTest test = new OpCodeTest(PATH + "testStrVarFalseName");
@@ -39,4 +55,6 @@ public class TesterStrVarTest extends OpCodeTestTesterClass {
         assertEquals(false, test.start());
     }
 
+
+    
 }

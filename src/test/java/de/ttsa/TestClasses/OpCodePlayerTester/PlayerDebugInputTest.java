@@ -11,7 +11,18 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "DebugInput/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testDebugInput() {
@@ -28,6 +39,11 @@ public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
         assertEquals("input", GameManager.input);
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
 
 
 }

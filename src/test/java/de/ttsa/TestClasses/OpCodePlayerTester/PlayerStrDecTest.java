@@ -11,7 +11,18 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 public class PlayerStrDecTest extends OpCodePlayerTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "StrDec/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testStrDec() {
@@ -30,4 +41,10 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
         assertEquals("all", GameManager.strVars.get("Var").getValue());
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

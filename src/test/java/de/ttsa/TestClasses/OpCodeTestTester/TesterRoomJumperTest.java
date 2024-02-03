@@ -9,19 +9,29 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterRoomJumperTest extends OpCodeTestTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "RoomJumper/";
 
-    @Test
-    public void testRoomJumperWithoutRoom() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom");
-        assertEquals(false, test.start());
-    }
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
     @Test
     public void testRoomJumperWithRoom() {
         OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithRoom");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
 
     @Test
     public void testRoomJumperAndSpaceInName() {
@@ -38,6 +48,13 @@ public class TesterRoomJumperTest extends OpCodeTestTesterClass {
     @Test
     public void testRoomJumperWithSpecialChar() {
         OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithSpecialChar");
+        assertEquals(false, test.start());
+    }
+
+
+    @Test
+    public void testRoomJumperWithoutRoom() {
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom");
         assertEquals(false, test.start());
     }
     

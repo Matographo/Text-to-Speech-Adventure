@@ -12,7 +12,17 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterSaveLoadExitTest extends OpCodeTestTesterClass {
     
 
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "SaveLoadExit/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testSaveSimpleGame() throws IOException {
@@ -37,4 +47,10 @@ public class TesterSaveLoadExitTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testExitSimpleGameWithSave");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

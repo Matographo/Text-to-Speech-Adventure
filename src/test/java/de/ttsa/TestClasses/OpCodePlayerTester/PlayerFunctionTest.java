@@ -9,12 +9,29 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerFunctionTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Function/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testEmptyFile() {
             new Player(PATH + "testEmptyFile");
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
 
     @Test
     public void testNoneExistingFile() {
@@ -24,4 +41,7 @@ public class PlayerFunctionTest extends OpCodePlayerTesterClass {
         } catch (Exception e) {
         }
     }
+
+
+
 }

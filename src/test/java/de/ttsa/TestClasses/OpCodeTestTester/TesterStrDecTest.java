@@ -9,7 +9,19 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterStrDecTest extends OpCodeTestTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "StrDec/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testStrDec() {
@@ -22,4 +34,10 @@ public class TesterStrDecTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testStrDecWithOtherStrVar");
         assertEquals(true, test.start());
     }
+
+
+    // ------------------------- Fail Tests -------------------------
+
+
+    
 }

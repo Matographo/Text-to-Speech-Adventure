@@ -10,7 +10,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerActionTest extends OpCodePlayerTesterClass {
 
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Action/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testAction() {
@@ -82,4 +94,10 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
         player.play();
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

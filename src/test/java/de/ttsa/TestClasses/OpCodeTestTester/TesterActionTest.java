@@ -9,7 +9,17 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterActionTest extends OpCodeTestTesterClass {
     
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Action/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -59,4 +69,10 @@ public class TesterActionTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testActionUseMultipleArgVars");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

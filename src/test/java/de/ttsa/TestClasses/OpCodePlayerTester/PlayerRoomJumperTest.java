@@ -11,7 +11,18 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 public class PlayerRoomJumperTest extends OpCodePlayerTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "RoomJumper/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testRoomJumperSwitchToRoom() {
@@ -24,5 +35,11 @@ public class PlayerRoomJumperTest extends OpCodePlayerTesterClass {
         output.reinit();
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 
 }

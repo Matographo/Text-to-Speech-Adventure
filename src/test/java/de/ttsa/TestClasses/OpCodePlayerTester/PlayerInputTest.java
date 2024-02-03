@@ -10,7 +10,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerInputTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Input/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testInputEQStr() {
@@ -59,5 +71,11 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 
 }

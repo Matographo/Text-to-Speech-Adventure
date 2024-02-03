@@ -10,7 +10,16 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterInputTest extends OpCodeTestTesterClass {
     
 
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Input/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -54,4 +63,10 @@ public class TesterInputTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testInputOffOrderStrAndStrVar");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

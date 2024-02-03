@@ -10,7 +10,17 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterSetTest extends OpCodeTestTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Set/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -24,4 +34,10 @@ public class TesterSetTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testSetWithRoom");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

@@ -15,7 +15,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "SaveLoadExit/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testSaveSimpleGame() throws IOException {
@@ -54,6 +66,19 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
     }
 
 
+    
+    
+// ---------------------------- Fail Tests -----------------------------
+    
+    
+    
+
+
+
+// ------------------------------ HELPERS ------------------------------
+
+
+
     private int getLines(String path) throws IOException {
         File file = new File(path);
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -62,4 +87,7 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
         reader.close();
         return lines;
     }
+
+
+
 }

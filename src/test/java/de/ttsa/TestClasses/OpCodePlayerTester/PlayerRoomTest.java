@@ -11,7 +11,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerRoomTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Room/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testRoomEmpty() {
@@ -28,6 +40,23 @@ public class PlayerRoomTest extends OpCodePlayerTesterClass {
     }
 
     @Test
+    public void testRoomWithSay() {
+        String expected = "Hallo Welt";
+        GetOutput output = new GetOutput();
+        Player player = new Player(PATH + "testRoomWithSay");
+        output.init();
+        player.play();
+        assertEquals(expected, output.getTerminalOutput());
+        output.reinit();
+        resetTest();
+    }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
+    @Test
     public void testRoomEmptyWithCharAsNumber() {
         GetOutput output = new GetOutput();
         try {
@@ -41,7 +70,7 @@ public class PlayerRoomTest extends OpCodePlayerTesterClass {
             resetTest();
         }
     }
-
+    
     @Test
     public void testRoomEmptyWithUnvalideRange() {
         GetOutput output = new GetOutput();
@@ -57,16 +86,5 @@ public class PlayerRoomTest extends OpCodePlayerTesterClass {
         }
     }
 
-    @Test
-    public void testRoomWithSay() {
-        String expected = "Hallo Welt";
-        GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testRoomWithSay");
-        output.init();
-        player.play();
-        assertEquals(expected, output.getTerminalOutput());
-        output.reinit();
-        resetTest();
-    }
 
 }

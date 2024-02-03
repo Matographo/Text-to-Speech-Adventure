@@ -9,7 +9,18 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterNumVarTest extends OpCodeTestTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "NumVar/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -18,15 +29,21 @@ public class TesterNumVarTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+
+
+
+// ------------------------- Fail Tests -------------------------
+
     @Test
     public void testNumVarInvalideName() {
         OpCodeTest test = new OpCodeTest(PATH + "testNumVarInvalideName");
         assertEquals(false, test.start());
     }
-
+    
     @Test
     public void testNumVarFalseSyntax() {
         OpCodeTest test = new OpCodeTest(PATH + "testNumVarFalseSyntax");
         assertEquals(false, test.start());
     }
+
 }

@@ -10,7 +10,16 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterLoopTest extends OpCodeTestTesterClass {
     
 
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Loop/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -36,4 +45,10 @@ public class TesterLoopTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testLoopWithBreaker");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

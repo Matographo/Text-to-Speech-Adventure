@@ -9,7 +9,19 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterRoomTest extends OpCodeTestTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Room/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testRoomEmpty() {
@@ -23,15 +35,22 @@ public class TesterRoomTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+
+// ------------------------- Fail Tests -------------------------
+
+
+
     @Test
     public void testRoomWithCharAsNumber() {
         OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithCharAsNumber");
         assertEquals(false, test.start());
     }
-
+    
     @Test
     public void testRoomWithUnvalideRange() {
         OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithUnvalideRange");
         assertEquals(false, test.start());
     }
+
+
 }

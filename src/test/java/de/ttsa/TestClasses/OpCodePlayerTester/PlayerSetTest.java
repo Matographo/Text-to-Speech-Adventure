@@ -11,7 +11,18 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 public class PlayerSetTest extends OpCodePlayerTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Set/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testSetJustSet() {
@@ -45,4 +56,10 @@ public class PlayerSetTest extends OpCodePlayerTesterClass {
         assertEquals(1, GameManager.numVars.get("Varr").getValue());
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

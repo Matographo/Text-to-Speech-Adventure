@@ -11,7 +11,18 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 public class PlayerLoopTest extends OpCodePlayerTesterClass {
     
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Loop/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testLoop() {
@@ -48,4 +59,10 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

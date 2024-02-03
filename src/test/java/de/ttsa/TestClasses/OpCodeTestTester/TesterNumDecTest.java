@@ -10,25 +10,22 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterNumDecTest extends OpCodeTestTesterClass {
     
 
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "NumDec/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
     public void testNumDec() {
         OpCodeTest test = new OpCodeTest(PATH + "testNumDec");
         assertEquals(true, test.start());
-    }
-
-    @Test
-    public void testNumDecWithString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumDecWithString");
-        assertEquals(false, test.start());
-    }
-
-    @Test
-    public void testNumDecWithStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumDecWithStrVar");
-        assertEquals(false, test.start());
     }
 
     @Test
@@ -56,14 +53,32 @@ public class TesterNumDecTest extends OpCodeTestTesterClass {
     }
 
     @Test
+    public void testNumDecNegativeNumber() {
+        OpCodeTest test = new OpCodeTest(PATH + "testNumDecNegativeNumber");
+        assertEquals(true, test.start());
+    }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
+    @Test
+    public void testNumDecWithString() {
+        OpCodeTest test = new OpCodeTest(PATH + "testNumDecWithString");
+        assertEquals(false, test.start());
+    }
+
+    @Test
+    public void testNumDecWithStrVar() {
+        OpCodeTest test = new OpCodeTest(PATH + "testNumDecWithStrVar");
+        assertEquals(false, test.start());
+    }
+
+    @Test
     public void testNumDecCalcWithDoublePlus() {
         OpCodeTest test = new OpCodeTest(PATH + "testNumDecCalcWithDoublePlus");
         assertEquals(false, test.start());
     }
 
-    @Test
-    public void testNumDecNegativeNumber() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumDecNegativeNumber");
-        assertEquals(true, test.start());
-    }
 }

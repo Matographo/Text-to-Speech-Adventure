@@ -11,7 +11,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerNumDecTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "NumDec/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testNumDec() {
@@ -20,32 +32,6 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(10, GameManager.numVars.get("Zahl").getValue());
         resetTest();
-    }
-
-    @Test
-    public void testNumDecWithString() {
-        try {
-            Player player = new Player(PATH + "testNumDecWithString");
-            player.play();
-            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
-            assertEquals(10, GameManager.numVars.get("Zahl").getValue());
-            fail();
-        } catch (Exception e) {
-        } finally {
-            resetTest();
-        }
-    }
-
-    @Test
-    public void testNumDecWithStrVar() {
-        try {
-            Player player = new Player(PATH + "testNumDecWithStrVar");
-            player.play();
-            fail();
-        } catch (Exception e) {
-        } finally {
-            resetTest();
-        }
     }
 
     @Test
@@ -108,6 +94,12 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
     @Test
     public void testNumDecCalcWithDoublePlus() {
         try {
@@ -119,6 +111,33 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
             resetTest();
         }
     }
+
+    @Test
+    public void testNumDecWithString() {
+        try {
+            Player player = new Player(PATH + "testNumDecWithString");
+            player.play();
+            assertEquals(true, GameManager.numVars.containsKey("Zahl"));
+            assertEquals(10, GameManager.numVars.get("Zahl").getValue());
+            fail();
+        } catch (Exception e) {
+        } finally {
+            resetTest();
+        }
+    }
+
+    @Test
+    public void testNumDecWithStrVar() {
+        try {
+            Player player = new Player(PATH + "testNumDecWithStrVar");
+            player.play();
+            fail();
+        } catch (Exception e) {
+        } finally {
+            resetTest();
+        }
+    }
+
 
 
 }

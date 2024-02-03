@@ -9,8 +9,19 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterSayTest extends OpCodeTestTesterClass {
 
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "Say/";
     
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
+
     @Test
     public void testSayFixString() {
         OpCodeTest test = new OpCodeTest(PATH + "testSayFixStringWithoutRoom");
@@ -27,12 +38,6 @@ public class TesterSayTest extends OpCodeTestTesterClass {
     public void testSayMultipleSaysFixStrings() {
         OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleSaysFixStringsWithoutRoom");
         assertEquals(true, test.start());
-    }
-
-    @Test
-    public void testSayFixNumber() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayFixNumber");
-        assertEquals(false, test.start());
     }
 
     @Test
@@ -64,12 +69,22 @@ public class TesterSayTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testSayStrVarAndNumVar");
         assertEquals(true, test.start());
     }
+    
+
+
+// ------------------------- Fail Tests -------------------------
+
 
     @Test
     public void testSayNonExistingVar() {
         OpCodeTest test = new OpCodeTest(PATH + "testSayNonExistingVar");
         assertEquals(false, test.start());
     }
-    
+
+    @Test
+    public void testSayFixNumber() {
+        OpCodeTest test = new OpCodeTest(PATH + "testSayFixNumber");
+        assertEquals(false, test.start());
+    }
 
 }

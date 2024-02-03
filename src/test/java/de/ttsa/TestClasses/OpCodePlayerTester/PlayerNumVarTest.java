@@ -11,7 +11,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerNumVarTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "NumVar/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testNumVar() {
@@ -21,6 +33,12 @@ public class PlayerNumVarTest extends OpCodePlayerTesterClass {
         assertEquals(5, GameManager.numVars.get("Hallo").getValue());
         resetTest();
     }
+
+
+
+// ------------------------- Fail Tests -------------------------
+
+
 
     @Test
     public void testNumVarFalseSyntax() {
@@ -45,5 +63,7 @@ public class PlayerNumVarTest extends OpCodePlayerTesterClass {
             resetTest();
         }
     }
+
+
 
 }

@@ -10,7 +10,16 @@ import de.ttsa.TestClasses.OpCodeTestTesterClass;
 public class TesterIfTest extends OpCodeTestTesterClass {
     
 
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "If/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
 
 
     @Test
@@ -84,4 +93,10 @@ public class TesterIfTest extends OpCodeTestTesterClass {
         OpCodeTest test = new OpCodeTest(PATH + "testIfWithStrVarEQStrVar");
         assertEquals(true, test.start());
     }
+
+
+// ------------------------- Fail Tests -------------------------
+
+
+
 }

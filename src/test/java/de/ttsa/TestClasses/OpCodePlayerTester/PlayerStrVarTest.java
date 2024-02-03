@@ -11,7 +11,19 @@ import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerStrVarTest extends OpCodePlayerTesterClass {
     
+
+
+// ------------------------------ PATHS ------------------------------
+
+
+
     private final String PATH = TEST_FILE_PATH + "StrVar/";
+
+
+
+// ------------------------- Accepted Tests -------------------------
+
+
 
     @Test
     public void testStrVarOneWord() {
@@ -31,19 +43,22 @@ public class PlayerStrVarTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
-    @Test
+
+// ------------------------- Fail Tests -------------------------
+
+
+@Test
     public void testNumVarFalseName() {
         try {
             Player player = new Player(PATH + "testNumVarFalseName");
             player.play();
             fail();
         } catch (Exception e) {
-            assertEquals(true, true);
         } finally {
             resetTest();
         }
     }
-
+    
     @Test
     public void testNumVarDoubleName() {
         try {
@@ -51,9 +66,11 @@ public class PlayerStrVarTest extends OpCodePlayerTesterClass {
             player.play();
             fail();
         } catch (Exception e) {
-            assertEquals(true, true);
         } finally {
             resetTest();
         }
     }
+
+
+
 }
