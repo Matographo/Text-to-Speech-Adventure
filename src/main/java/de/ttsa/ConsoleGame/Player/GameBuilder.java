@@ -7,7 +7,6 @@ class GameBuilder {
 
 
 
-    private GameLoader gameLoader;
     private GameScriptBuilder gameScriptBuilder;
     
 
@@ -20,7 +19,7 @@ class GameBuilder {
      * @param gamePath the path to the game
      */
     public GameBuilder(String gamePath) {
-        this.gameLoader        = new GameLoader(gamePath);
+        GameLoader gameLoader  = new GameLoader(gamePath);
         this.gameScriptBuilder = new GameScriptBuilder(gameLoader.loadGameData());
     }
 

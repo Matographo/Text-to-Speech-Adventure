@@ -3,7 +3,7 @@ package de.ttsa.ConsoleGame.Player;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import de.ttsa.ConsoleGame.ConsoleLoadingSyntax;
+import de.ttsa.ConsoleGame.ClassTools.ConsoleLoadingSyntax;
 import de.ttsa.ConsoleGame.Player.Datatypes.*;
 import de.ttsa.ConsoleGame.Player.Scriptables.*;
 import de.ttsa.ConsoleGame.Player.Structures.*;
@@ -251,6 +251,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @param roomContent the room content
      */
     private void room(ArrayList<String> roomContent) {
+        try {
         String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
         String roomName   = roomArgs[0];
 
@@ -259,6 +260,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
         Scriptable roomScript = loadGame(roomContent);
         GameManager.rooms.put(roomName, new Room(roomScript));
+        } catch (Exception e) {
+            GameManager.rooms.size();
+            e.printStackTrace();
+        }
     }
 
     /**

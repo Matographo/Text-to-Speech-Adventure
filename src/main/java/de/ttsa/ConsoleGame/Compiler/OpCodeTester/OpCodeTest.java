@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import de.ttsa.ConsoleGame.OpCode;
+import de.ttsa.ConsoleGame.ClassTools.OpCode;
 
 public class OpCodeTest extends OpCode{
 

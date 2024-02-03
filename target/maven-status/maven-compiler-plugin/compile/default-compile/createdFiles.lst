@@ -1,9 +1,9 @@
 de/ttsa/ConsoleGame/Player/Scriptables/Printer.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameLoaderScript.class
-de/ttsa/ConsoleGame/OpCode.class
 de/ttsa/ConsoleGame/Player/Scriptables/VarDec.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameExitScript.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameSavingScript.class
+de/ttsa/ConsoleGame/ClassTools/OpCode.class
 de/ttsa/ConsoleGame/Player/Structures/Action.class
 de/ttsa/ConsoleGame/Player/Scriptables/DebugInput.class
 de/ttsa/ConsoleGame/Player/Datatypes/Printablable.class
@@ -14,6 +14,7 @@ de/ttsa/ConsoleGame/Player/SubFunctions/OrderChecker.class
 de/ttsa/ConsoleGame/Player/GameScriptBuilder.class
 de/ttsa/ConsoleGame/Compiler/Compiler/TestC/Test.class
 de/ttsa/ConsoleGame/Player/Functions/Calculator.class
+de/ttsa/ConsoleGame/ClassTools/ConsoleLoadingSyntax.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Sorter.class
 de/ttsa/ConsoleGame/Player/Scriptables/Input.class
 de/ttsa/ConsoleGame/Player/Datatypes/STRING.class
@@ -21,11 +22,12 @@ de/ttsa/ConsoleGame/Player/Scriptables/LoopBreaker.class
 de/ttsa/ConsoleGame/Player/Scriptables/If.class
 de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest.class
 de/ttsa/ConsoleGame/Player/Datatypes/Set.class
+de/ttsa/ConsoleGame/CompilerApp.class
 de/ttsa/ConsoleGame/Player/Scriptables/ActionCall.class
 de/ttsa/ConsoleGame/Player/GameManager.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileC/Compiler.class
+de/ttsa/ConsoleGame/PlayerApp.class
 de/ttsa/ConsoleGame/Player/Scriptables/Script.class
-de/ttsa/ConsoleGame/Compiler/App.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/CFileReader.class
 de/ttsa/ConsoleGame/Player/Scriptables/RoomJumper.class
 de/ttsa/ConsoleGame/Player/Player.class
@@ -36,7 +38,6 @@ de/ttsa/ConsoleGame/Player/Datatypes/PrintText.class
 de/ttsa/ConsoleGame/Compiler/Compiler/StartCompiler.class
 de/ttsa/ConsoleGame/Player/Datatypes/INT.class
 de/ttsa/ConsoleGame/Player/SubFunctions/StringMethodes.class
-de/ttsa/ConsoleGame/ConsoleLoadingSyntax.class
 de/ttsa/ConsoleGame/Player/GameLoader.class
 de/ttsa/ConsoleGame/Player/Functions/Calculator$Operationen.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Merger.class

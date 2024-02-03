@@ -1,10 +1,10 @@
-package de.ttsa.ConsoleGame.Compiler;
+package de.ttsa.ConsoleGame;
 
 import de.ttsa.ConsoleGame.Compiler.Compiler.StartCompiler;
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 
-public class App 
+public class CompilerApp 
 {
 
 // ---------------------------- Attributes ----------------------------
@@ -22,8 +22,9 @@ public class App
 
 
     public static void main( String[] args ) {
-        new App().start(args);
+        new CompilerApp().start(args);
     }
+    
 
 
 // ----------------------- Start of Compiler -------------------------
@@ -36,8 +37,8 @@ public class App
         boolean help        = length == 1 && (args[0].equals("-help") || args[0].equals("-h"));
         boolean version     = length == 1 && (args[0].equals("-version") || args[0].equals("-v"));
         boolean compile     = length == 2 && (args[0].equals("-compile") || args[0].equals("-c"));
-        boolean test        = length == 2 && (args[1].endsWith("." + COMPILED_FILE_EXTENSION) && (args[0].equals("test") || args[0].equals("-t")));
-        boolean hideExecute = length == 2 && (args[0].equals("-x") || !args[1].endsWith("." + COMPILED_FILE_EXTENSION));
+        boolean test        = length == 2 && (args[1].endsWith("." + COMPILED_FILE_EXTENSION) && ((args[0].equals("test") || args[0].equals("-t"))));
+        boolean hideExecute = length == 2 && (args[0].equals("-x") && !args[1].endsWith("." + COMPILED_FILE_EXTENSION));
 
 
         if(noArgs) noArgs();
@@ -111,8 +112,15 @@ public class App
         try {
             OpCodeTest test = new OpCodeTest(file);
 
-
-            test.start();
+            long startTime = System.currentTimeMillis();
+            if(test.start()) {
+                long endTime = System.currentTimeMillis();
+                System.out.println("Test passed.");
+                System.out.println("Time: " + (endTime - startTime) + "ms");
+            } else {
+                System.out.println("Test failed.");
+            }
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

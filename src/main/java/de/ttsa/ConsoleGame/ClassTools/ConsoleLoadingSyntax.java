@@ -1,4 +1,4 @@
-package de.ttsa.ConsoleGame;
+package de.ttsa.ConsoleGame.ClassTools;
 
 public class ConsoleLoadingSyntax {
 
