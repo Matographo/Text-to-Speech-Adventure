@@ -4,8 +4,22 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class GameExitScript implements Scriptable {
     
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private boolean saveGame = false;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for GameExitScript
+     * @param arg the argument for the exit game
+     */
     public GameExitScript(String arg) {
         if(arg.equals("0")) {
             this.saveGame = false;
@@ -15,6 +29,12 @@ public class GameExitScript implements Scriptable {
             throw new IllegalArgumentException("Exit Game Argument must be 0 or 1");
         }
     }
+
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {

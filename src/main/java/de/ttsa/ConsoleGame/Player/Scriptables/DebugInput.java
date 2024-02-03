@@ -5,11 +5,30 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class DebugInput implements Scriptable {
 
 
+// ---------------------------- Attributes ----------------------------
+
+
+
     private String input;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for DebugInput
+     * @param input the input that should be set
+     */
     public DebugInput(String input) {
         this.input = input;
     }
+
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {

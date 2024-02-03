@@ -4,6 +4,11 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class GameSavingScript implements Scriptable {
 
+
+// ---------------------------- Methods ----------------------------
+
+
+
     @Override
     public boolean run() {
         try {
@@ -13,5 +18,7 @@ public class GameSavingScript implements Scriptable {
         }
         return true;
     }
+    
+
     
 }

@@ -5,6 +5,11 @@ import de.ttsa.ConsoleGame.Player.SubFunctions.ConditionTest;
 
 public class Loop implements Scriptable {
 
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private final char ITERATIONS = 'i';
     private final char TRUE       = 't';
     private final char CONDITION  = 'c'; 
@@ -16,11 +21,27 @@ public class Loop implements Scriptable {
     private int maxCounter = -1;
 
 
+
+// --------------------------- Constructor ---------------------------
+
+
+
+    /**
+     * Constructor for Loop
+     * @param condition the condition that should be tested
+     * @param conditionType the type of the condition
+     * @param script the script that should be executed if the condition is true
+     */
     public Loop(String condition, char conditionType, Scriptable script) {
         this.condition     = condition;
         this.conditionType = conditionType;
         this.script        = script;
     }
+
+
+
+// ----------------------------- Methods -----------------------------
+
 
 
     @Override
@@ -37,6 +58,10 @@ public class Loop implements Scriptable {
         return true;
     }
 
+    /**
+     * Get the result of the condition
+     * @return the result of the condition
+     */
     private boolean getResult() {
         switch(conditionType) {
             case ITERATIONS:
@@ -50,5 +75,6 @@ public class Loop implements Scriptable {
         }
     }
 
+    
 
 }

@@ -3,15 +3,35 @@ package de.ttsa.ConsoleGame.Player.Scriptables;
 import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class ActionCall implements Scriptable{
+
+
+// ---------------------------- Attributes ----------------------------
     
+
+
     private String actionName;
 
     private String[] params;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for ActionCall
+     * @param actionName the name of the action
+     * @param params the parameters of the action
+     */
     public ActionCall(String actionName, String[] params) {
         this.actionName = actionName;
         this.params     = params;
     }
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {
@@ -19,6 +39,9 @@ public class ActionCall implements Scriptable{
         return GameManager.actions.get(actionName).run();
     }
 
+    /**
+     * Set the values of the parameters
+     */
     private void setValues() {
         String[] actionParams = GameManager.actions.get(actionName).getParams();
         String line;

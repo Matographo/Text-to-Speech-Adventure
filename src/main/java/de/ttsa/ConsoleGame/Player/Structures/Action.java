@@ -7,10 +7,24 @@ import de.ttsa.ConsoleGame.Player.Scriptables.Scriptable;
 
 public class Action {
     
-    private Scriptable[] script;
 
+// ---------------------------- Attributes ----------------------------
+
+
+
+    private Scriptable[] script;
     private String[] params;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for Action
+     * @param script the script that should be executed
+     * @param params the parameters that should be set
+     */
     public Action(Scriptable[] script, String[] params) {
         this.script = script;
         this.params = params;
@@ -35,12 +49,24 @@ public class Action {
         }
     }
 
-
+    /**
+     * Constructor for Action
+     * @param script the script that should be executed
+     * @param params the parameters that should be set
+     */
     public Action(Scriptable script, String[] params) {
         this(new Scriptable[]{script}, params);
     }
 
 
+
+// ----------------------------- Methods -----------------------------
+
+
+    /**
+     * Run the script
+     * @return true if the script was executed successfully
+     */
     public boolean run() {
         for (Scriptable s : script) {
             if (!s.run()) return false;
@@ -49,7 +75,10 @@ public class Action {
         return true;
     }
 
-
+    /**
+     * Get the parameters
+     * @return the parameters
+     */
     public String[] getParams() {
         return params;
     }

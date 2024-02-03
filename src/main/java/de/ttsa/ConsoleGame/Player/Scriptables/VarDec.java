@@ -6,14 +6,34 @@ import de.ttsa.ConsoleGame.Player.Functions.Calculator;
 
 public class VarDec implements Scriptable {
     
-    private String varName;
 
+// ---------------------------- Attributes ----------------------------
+
+
+
+    private String varName;
     private String operation;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for VarDec
+     * @param varName the name of the variable
+     * @param operation the operation that should be executed
+     */
     public VarDec(String varName, String operation) {
         this.varName   = varName;
         this.operation = operation;
     }
+
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {
@@ -27,4 +47,7 @@ public class VarDec implements Scriptable {
         var.setValue(Calculator.calc(operation));
         return true;
     }
+
+
+    
 }

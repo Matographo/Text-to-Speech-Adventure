@@ -4,11 +4,31 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class RoomJumper implements Scriptable {
     
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private String roomName;
 
+
+
+// --------------------------- Constructors ---------------------------
+
+
+    /**
+     * Jump to a room
+     * @param roomName the name of the room
+     */
     public RoomJumper(String roomName) {
         this.roomName = roomName;
     }
+
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {
@@ -17,6 +37,7 @@ public class RoomJumper implements Scriptable {
         GameManager.nextRoom = roomName;
         return true;
     }
+
 
 
 }

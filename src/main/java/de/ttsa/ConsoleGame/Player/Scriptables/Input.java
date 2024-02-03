@@ -6,7 +6,18 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class Input implements Scriptable {
     
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private static Scanner scanner = new Scanner(System.in);
+
+
+
+// ----------------------------- Methods -----------------------------
+
+
 
     @Override
     public boolean run() {
@@ -17,4 +28,6 @@ public class Input implements Scriptable {
         }
         return true;
     }
+
+    
 }
