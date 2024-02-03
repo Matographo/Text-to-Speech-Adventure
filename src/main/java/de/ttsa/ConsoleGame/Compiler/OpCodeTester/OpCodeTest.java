@@ -835,22 +835,6 @@ public class OpCodeTest extends OpCode{
     }
 
 
-    private boolean isTestable(String test) {
-        if(test.contains("=") || test.contains("<") || test.contains(">")) {
-            String[] toTest = test.split("[=<>!]");
-
-
-            toTest = removeEmpty(toTest);
-
-            if(toTest.length != 2) return false;
-
-            return isCalculatable(toTest[0]) && isCalculatable(toTest[1]);
-        } else {
-            return false;
-        }
-    }
-
-
     private boolean isTestableVar(String test) {
         String[] tests     = test.split(IF_ELSE_SEPERATOR);
         boolean testResult = true;
@@ -925,72 +909,6 @@ public class OpCodeTest extends OpCode{
 
         return list.toArray(new String[list.size()]);
     }
-
-
-    private boolean isValideRoomName(String name) {
-        String[] names = name.split(" ");
-
-
-        for(String n : names) {
-            if(!isValidName(n)) return false;
-        }
-
-        return true;
-    }
-
-
-    private boolean checkOrderSyntax(String args) {
-        boolean testResult = true;
-
-
-        if(args.startsWith("(") && args.endsWith(")")) {
-            args = args.substring(1, args.length()-1);
-            String[] offOrder = args.split(OFFORDER_SEPERATOR);
-
-
-            for(String order : offOrder) {
-                testResult = testResult && checkOffOrderSyntax(order);
-            }
-
-        } else {
-            testResult = testResult && checkOffOrderSyntax(args);
-        }
-
-        return testResult;
-    }
-
-
-    private boolean checkOffOrderSyntax(String args) {
-        boolean testResult = true;
-
-
-        if(args.startsWith("\"") && args.endsWith("\"")) {
-            args = args.substring(1, args.length()-1);
-            String[] values = args.split(VALUE_SEPERATOR);
-
-
-            for(String value : values) {
-                testResult = testResult && checkValueSyntax(value);
-            }
-
-        } else {
-            testResult = testResult && checkValueSyntax(args);
-        }
-
-        return testResult;
-    }
-
-
-    private boolean checkValueSyntax(String args) {
-        if(args.startsWith("'") && args.endsWith("'")) {
-            args = args.substring(1, args.length()-1);
-
-            if(!isValidName(args)) return false;
-        }
-
-        return true;
-    }
-
 
     private boolean isValideSetContent(String args) {
         if (args.contains(" ")) {
