@@ -7,12 +7,35 @@ import java.util.ArrayList;
 
 class GameLoader {
     
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private String gameFile;
 
+
+
+// ----------------------------- Constructor -----------------------------
+
+
+    /**
+     * Constructor for GameLoader
+     * @param gamePaht the path to the game
+     */
     public GameLoader(String gamePaht) {
         this.gameFile = gamePaht;
     }
 
+
+
+// ------------------------------- Methods -------------------------------
+
+
+    /**
+     * Load the game data
+     * @return the game data as a list of strings
+     */
     public ArrayList<String> loadGameData() {
         File game = new File(gameFile);
         ArrayList<String> gameContent = new ArrayList<String>();
@@ -27,6 +50,11 @@ class GameLoader {
         return gameContent;
     }
 
+    /**
+     * Load the game file
+     * @param game the game file
+     * @return the game data as a list of strings
+     */
     private ArrayList<String> loadGameFile(File game) {
         try {
             BufferedReader reader         = new BufferedReader(new FileReader(game));

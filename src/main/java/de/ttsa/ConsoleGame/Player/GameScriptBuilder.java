@@ -25,7 +25,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 // --------------------- Constructors ---------------------
 
 
-
+    /**
+     * Constructor for GameScriptBuilder
+     * @param gameContent the game content
+     */
     public GameScriptBuilder(ArrayList<String> gameContent) {
         game = gameContent;
     }
@@ -35,13 +38,19 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 // ----------------------- Loading ----------------------------
 
 
-
-    public Scriptable load() {
-        return loadGame(game);
+    /**
+     * Load the game
+     */
+    public void load() {
+        loadGame(game);
     }
 
-
-    public Scriptable loadGame(ArrayList<String> game) {
+    /**
+     * Load the games Line by Line and create the Scriptables
+     * @param game game Data as a list of strings
+     * @return the game as a scriptable
+     */
+    private Scriptable loadGame(ArrayList<String> game) {
         String opCode = "";
         String args   = "";
         String line   = "";
@@ -203,7 +212,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 // ------------------ Command Functions -------------------
 
 
-
+    /**
+     * Create a say Scriptable
+     * @param args the arguments
+     * @return the say Scriptable
+     */
     private Scriptable say(String args) {
         String[] sayArgs          = args.split(SAY_SEPERATOR);
         Printablable[] printables = new Printablable[sayArgs.length];
@@ -233,7 +246,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return new Printer(printables);
     }
 
-
+    /**
+     * Create a Room and adding it to the GameManager
+     * @param roomContent the room content
+     */
     private void room(ArrayList<String> roomContent) {
         String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
         String roomName   = roomArgs[0];
@@ -245,7 +261,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         GameManager.rooms.put(roomName, new Room(roomScript));
     }
 
-
+    /**
+     * Create a NumVar and adding it to the GameManager
+     * @param args the arguments
+     */
     private void numVars(String args) {
         String[] numVarArgs = args.split(NUMBER_VARIABLE_SEPERATOR);
         String numVarName   = numVarArgs[0];
@@ -259,7 +278,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         GameManager.numVars.put(numVarName, new INT(numVarValue));
     }
 
-
+    /**
+     * Create a StrVar and adding it to the GameManager
+     * @param args the arguments
+     */
     private void strVars(String args) {
         String[] strVarArgs = args.split(NUMBER_STRING_SEPERATOR);
         String strVarName   = strVarArgs[0];
@@ -273,7 +295,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         GameManager.strVars.put(strVarName, new STRING(strVarValue));
     }
 
-
+    /**
+     * Create a VarDec Scriptable
+     * @param args the arguments
+     * @return the VarDec Scriptable
+     */
     private Scriptable varDec(String args) {
         String[] varDecArgs = args.split(NUMBER_DEC_SEPERATOR);
         String varDecName   = varDecArgs[0];
@@ -287,7 +313,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return new VarDec(varDecName, varDecValue);
     }
 
-
+    /**
+     * Create a If Scriptable
+     * @param ifContent the if content
+     * @return the If Scriptable
+     */
     private Scriptable ifCalc(ArrayList<String> ifContent) {
         String ifBlockArg = ifContent.get(0);
 
@@ -324,7 +354,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return new If(ifArgs, scripts);
     }
 
-
+    /**
+     * Create a StrDec Scriptable
+     * @param args the arguments
+     * @return the StrDec Scriptable
+     */
     private Scriptable strDec(String args) {
         String[] strDecArgs = args.split(STR_SEPERATOR);
         String strDecName   = strDecArgs[0];
@@ -338,7 +372,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return new StrDec(strDecName, operation);
     }
 
-
+    /**
+     * Create a Loop Scriptable
+     * @param args the arguments
+     * @return the Loop Scriptable
+     */
     private Scriptable loop(ArrayList<String> args) {
         String loopArg         = args.get(0);
         ArrayList<String> code = new ArrayList<String>();
@@ -363,7 +401,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return new Loop(condition, conditionType, script);
     }
 
-
+    /**
+     * Create a Set and adding it to the GameManager
+     * @param args the arguments
+     */
     private void set(String args) {
         String[] setArgs      = args.split(SET_NAME_SEPERATOR);
         String setName        = setArgs[0];
@@ -391,7 +432,10 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         GameManager.sets.put(setName, new Set(strValues, varValues));
     }
 
-
+    /**
+     * Create a Action and adding it to the GameManager
+     * @param actionContent the action content
+     */
     private void action(ArrayList<String> actionContent) {
         String[] actionArgs   = actionContent.get(0).split(ACTION_SEPERATOR);
         String actionName     = actionArgs[0];
@@ -404,7 +448,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         GameManager.actions.put(actionName, new Action(actionScript, actionParams));
     }
 
-
+    /**
+     * Create a ActionCall Scriptable
+     * @param args the arguments
+     * @return the ActionCall Scriptable
+     */
     private Scriptable actionCall(String args) {
         String[] actionCallArgs = args.split(ACTION_SEPERATOR);
         String actionName       = actionCallArgs[0];
@@ -418,6 +466,12 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 // ------------------ Helper Functions -------------------
     
+
+    /**
+     * Get the size of a room
+     * @param args the arguments
+     * @return the size of the room
+     */
     private int getRoomSize(String args) {
         String[] roomArgs = args.split(ROOM_SEPERATOR);
 
@@ -425,7 +479,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return Integer.parseInt(roomArgs[1]);
     }
 
-
+    /**
+     * Check if a name is valid
+     * @param name the name
+     * @return if the name is valid
+     */
     private boolean isValidName(String name) {
         if(Character.isDigit(name.charAt(0))) {
             return false;
@@ -439,17 +497,20 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
     }
 
 
+    /**
+     * Check if a string is a number
+     * @param num the string
+     * @return if the string is a number
+     */
     private boolean isNumber(String num) {
-        try {
-            Integer.parseInt(num);
-
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        return num.matches("-?\\d+");
     }
 
-
+    /**
+     * Get the size of an if
+     * @param args the arguments
+     * @return the size of the if
+     */
     private int getIfSize(String args) {
         String[] lengthS = args.split(IF_ELSE_SEPERATOR);
         int length       = 0;
@@ -462,7 +523,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return length;
     }
 
-
+    /**
+     * Get the size of a loop
+     * @param args the arguments
+     * @return the size of the loop
+     */
     private int getLoopSize(String args) {
         String[] loopArgs = args.split(":");
 
@@ -470,7 +535,11 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         return Integer.parseInt(loopArgs[1]);
     }
 
-
+    /**
+     * Get the size of an action
+     * @param args the arguments
+     * @return the size of the action
+     */
     private int getActionSize(String args) {
         String[] actionArgs = args.split(":");
 

@@ -11,6 +11,11 @@ import de.ttsa.ConsoleGame.Player.Structures.Room;
 
 public class GameManager {
 
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     public static String savePath;
 
     public static HashMap<String, Room> rooms     = new HashMap<>();
@@ -22,15 +27,28 @@ public class GameManager {
     public static String currentRoom;
     public static String nextRoom;
     public static String input;
+
     public static boolean running;
     public static boolean loopBreak = false;
 
 
+
+// ------------------------------- Methods -------------------------------
+
+
+    /**
+     * Add a room to the game
+     * @param name the name of the room
+     * @param room the room that should be added
+     */
     public static void addRoom(String name, Room room) {
         rooms.put(name, room);
     }
 
-
+    /**
+     * Get the next room
+     * @return the next room
+     */
     public static Room getNextRoom() {
         Room room = rooms.get(nextRoom);
         currentRoom = nextRoom;
@@ -38,7 +56,9 @@ public class GameManager {
         return room;
     }
 
-
+    /**
+     * Clear the game data and reset the game
+     */
     public static void clear() {
         rooms.clear();
         numVars.clear();
@@ -49,19 +69,26 @@ public class GameManager {
         nextRoom = null;
     }
 
-
+    /**
+     * Save the game
+     */
     public static void saveGame() {
         new GameSaver(savePath);
         GameSaver.saveGame();
     }
 
-
+    /**
+     * Load the game
+     */
     public static void loadGame() {
         new GameSaver(savePath);
         GameSaver.loadGame();
     }
 
-
+    /**
+     * Exit the game
+     * @param save if the game should be saved
+     */
     public static void exitGame(boolean save) {
         if(save) {
             saveGame();
