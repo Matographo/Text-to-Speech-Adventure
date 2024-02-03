@@ -15,6 +15,6 @@ public class OpCode extends ConsoleLoadingSyntax {
     protected final String REGEX_LOOP = "(true)|\\d+";
     protected final String REGEX_SET = "^([a-zA-Z][\\w]*)[\\:]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w*])([\\,]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w]*))*";
     protected final String REGEX_ACTION = "([a-zA-Z]\\w*\\:)((-)|([sn][a-zA-Z]\\w*)([\\,]([sn][a-zA-Z]\\w*))*)(\\:\\d*)";
-    // protected final String REGEX_ACTION_CALL;
+    protected final String REGEX_ACTION_CALL = "([a-zA-Z]\\w*\\:)((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*)(\\,((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*))*";
     
 }

@@ -384,15 +384,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testActionCallSyntax(String arg) {
-        String[] args     = arg.split(ACTION_SEPERATOR);
-        String actionName = args[0];
-        String actionArgs = args[1];
-
-
-        if(!isValidName(actionName))  return false;
-        if(!isActionArgs(actionArgs)) return false;
-
-        return true;
+        return arg.matches(REGEX_ACTION_CALL);
     }
 
 
