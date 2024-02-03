@@ -321,18 +321,20 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testIfSyntaxStr(String args) {
-        if(!args.contains("=="))                           return false;
-        if(!args.contains(":"))                            return false;
-        if(!isNumber(args.substring(args.indexOf(":")+1))) return false;
+        args = args.substring(0, args.indexOf(":"));
+        // if(!args.contains("=="))                           return false;
+        // if(!args.contains(":"))                            return false;
+        // if(!isNumber(args.substring(args.indexOf(":")+1))) return false;
 
-        args         = args.substring(0, args.indexOf(":"));
-        String[] arg = args.split("==");
+        // args         = args.substring(0, args.indexOf(":"));
+        // String[] arg = args.split("==");
 
-        if(arg.length != 2) return false;
-        if(!isValidName(arg[0]) && !(arg[0].startsWith("\"") && arg[0].endsWith("\""))) return false;
-        if(!isValidName(arg[1]) && !(arg[1].startsWith("\"") && arg[1].endsWith("\""))) return false;
+        // if(arg.length != 2) return false;
+        // if(!isValidName(arg[0]) && !(arg[0].startsWith("\"") && arg[0].endsWith("\""))) return false;
+        // if(!isValidName(arg[1]) && !(arg[1].startsWith("\"") && arg[1].endsWith("\""))) return false;
 
-        return true; 
+        // return true; 
+        return args.matches(REGEX_IF_STRING);
     }
 
 
