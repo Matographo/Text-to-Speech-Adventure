@@ -337,7 +337,8 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testIfSyntaxIn(String args) {
-        return checkOrderSyntax(args);
+        args = args.substring(0, args.indexOf(":"));
+        return args.matches(REGEX_IF_INPUT);
     }
 
 
