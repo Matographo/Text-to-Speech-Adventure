@@ -15,15 +15,42 @@ import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 
 public class GameSaver {
     
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private static String savePath;
 
+
+
+// --------------------------- Constructor ---------------------------
+
+
+    /**
+     * Constructor for GameSaver
+     * @param path the path to save the game
+     */
     private GameSaver() {
     }
 
+    /**
+     * Constructor for GameSaver (once set, the path will used untill it is changed)
+     * @param path the path to save the game
+     */
     public GameSaver(String path) {
         savePath = path;
     }
 
+
+
+// ---------------------- Methods Save Game Data -----------------------
+
+
+
+    /**
+     * This method checks if the game can be saved and then saves the game
+     */
     public static void saveGame() {
         try {
             File file = new File(savePath);
@@ -38,6 +65,10 @@ public class GameSaver {
         }
     }
 
+    /**
+     * This method saves the game
+     * @throws IOException if an error occurs while saving the game
+     */
     private void save() throws IOException {
         File file             = new File(savePath);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -52,6 +83,13 @@ public class GameSaver {
         writer.close();
     }
 
+    /**
+     * This method saves a HashMap
+     * @param writer the BufferedWriter to save all content in the same File without overwriting
+     * @param map the HashMap to save
+     * @return the BufferedWriter with the saved HashMap
+     * @throws IOException if an error occurs while saving the HashMap
+     */
     private BufferedWriter saveHashMap(BufferedWriter writer, HashMap<String, ?> map) throws IOException {
         HashSet<String> keys = new HashSet<>(map.keySet());
     
@@ -62,6 +100,14 @@ public class GameSaver {
         return writer;
     }
 
+
+
+// ---------------------- Methods Load Game Data -----------------------
+
+
+    /**
+     * This method checks if the game can be loaded and then loads the game
+     */
     public static void loadGame() {
         try {
             File file = new File(savePath);
@@ -77,6 +123,10 @@ public class GameSaver {
         }
     }
 
+    /**
+     * This method loads the save File
+     * @throws IOException if an error occurs while loading the game
+     */
     private void load() throws IOException {
         File file               = new File(savePath);
         BufferedReader reader   = new BufferedReader(new java.io.FileReader(file));
@@ -91,6 +141,10 @@ public class GameSaver {
         loadData(lines);
     }
 
+    /**
+     * This method loads the data from the save File into the game
+     * @param lines the lines of the save File
+     */
     private void loadData(ArrayList<String> lines) {
         String line;
         int counter = 0;

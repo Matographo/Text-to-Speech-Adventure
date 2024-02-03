@@ -12,15 +12,34 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 
 public class Calculator {
 
+
+// ---------------------------- Attributes ----------------------------
+
+
+
     private static Pattern varName = Pattern.compile("[a-zA-Z]+[a-zA-Z0-9]*");
     private static Pattern ops     = Pattern.compile("[\\+\\-\\*\\/]");
     private static Matcher match;
     private static String toCalculate;
 
-    public Calculator() {
 
+
+// --------------------------- Constructor ---------------------------
+
+
+
+    private Calculator() {
     }
 
+
+// --------------------------- Calc Start ----------------------------
+
+
+    /**
+     * This method calculates a String with a mathmatical expression.
+     * @param toCalculate The String with the mathmatical expression
+     * @return The result of the calculation
+     */
     public static int calc(String toCalculate) {
         Calculator.toCalculate = toCalculate;
         return new Calculator().calc();
@@ -41,9 +60,16 @@ public class Calculator {
             calc   = calc.substring(calc.lastIndexOf("(") + 1);
             result = result.replace("(" + calc + ")", calcFormula(calc) + "");
         }
+
         return calcFormula(result);
     }
 
+    /**
+     * This method calculates a String with a mathmatical expression.
+     * 
+     * @param toCalculate The String with the mathmatical expression
+     * @return The result of the calculation
+     */
     private int calcFormula(String toCalculate) {
         toCalculate = variableReplacer(toCalculate);
 
@@ -102,6 +128,13 @@ public class Calculator {
         return toCalculate;
     }
 
+
+    /**
+     * This method replaces the first variable in the String with the value of the
+     * variable.
+     * @param toCalculate The String with the mathmatical expression
+     * @return The String with the replaced variables
+     */
     private String replaceFirstVariableString(String toCalculate) {
         String finalString = "";
         match              = varName.matcher(toCalculate);
