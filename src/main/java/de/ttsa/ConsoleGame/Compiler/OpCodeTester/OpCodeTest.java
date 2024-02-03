@@ -346,10 +346,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testDebugInputSyntax(String args) {
-        if(args.strip().isEmpty())                                               return false;
-        if(!isValidName(args) && !args.startsWith("\"") && !args.endsWith("\"")) return false;
-
-        return true;
+        return args.matches(REGEX_DEBUG);
     }
 
 
@@ -390,21 +387,6 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testSetSyntax(String args) {
-        // String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
-
-
-        // if(!isValidName(setName)) return false;
-
-        // args         = args.substring(args.indexOf(SET_NAME_SEPERATOR) + SET_NAME_SEPERATOR.length());
-        // String[] arg = args.split(SET_SEPERATOR);
-
-        // for(String set : arg) {
-        //     set = set.substring(1, set.length()-1);
-
-        //     if(!isValideSetContent(set)) return false;
-        // }
-
-        // return true;
         return args.matches(REGEX_SET);
     }
 
