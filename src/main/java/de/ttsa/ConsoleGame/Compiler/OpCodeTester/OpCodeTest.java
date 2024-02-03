@@ -229,9 +229,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testRoomJumperSyntax(String args) {
-        if(!isValidName(args)) return false;
-
-        return true;
+        return args.matches(REGEX_ROOM_JUMPER);
     }
 
 
@@ -288,6 +286,7 @@ public class OpCodeTest extends OpCode{
 
     private boolean testIfSyntaxSwitch(String args) {
         char i = args.charAt(0);
+        args = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
         boolean testResult;
 
 
@@ -303,27 +302,22 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testIfSyntaxNum(String args) {
-        args = args.substring(0, args.indexOf(":"));
         return args.matches(REGEX_IF_NUMBER);
     }
 
 
     private boolean testIfSyntaxStr(String args) {
-        args = args.substring(0, args.indexOf(":"));
         return args.matches(REGEX_IF_STRING);
     }
 
 
     private boolean testIfSyntaxIn(String args) {
-        args = args.substring(0, args.indexOf(":"));
         return args.matches(REGEX_IF_INPUT);
     }
 
 
     private boolean testInputSyntax(String args) {
-        if(!args.strip().isEmpty()) return false;
-
-        return true;
+        return args.strip().isEmpty();
     }
 
 
@@ -338,23 +332,17 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testSaveSyntax(String args) {
-        if(!args.strip().isEmpty()) return false;
-
-        return true;
+        return args.strip().isEmpty();
     }
 
 
     private boolean testLoadSyntax(String args) {
-        if(!args.strip().isEmpty()) return false;
-
-        return true;
+        return args.strip().isEmpty();
     }
 
 
     private boolean testExitSyntax(String args) {
-        if(!args.equals("0") && !args.equals("1")) return false;
-
-        return true;
+        return args.matches(REGEX_EXIT);
     }
 
 
@@ -367,9 +355,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testLoopBreakerSyntax(String args) {
-        if(!args.strip().isEmpty()) return false;
-
-        return true;
+        return args.strip().isEmpty();
     }
 
 
@@ -427,9 +413,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testRoomJumperVar(String args) {
-        if(!roomNames.contains(args)) return false;
-
-        return true;
+        return roomNames.contains(args);
     }
 
 
@@ -491,6 +475,7 @@ public class OpCodeTest extends OpCode{
             }
 
         }
+
         return testResult;
     }
 
@@ -522,11 +507,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testDebugInputVar(String args) {
-        if(isValidName(args)) {
-            if(!strNames.contains(args)) return false;
-        }
-
-        return true;
+        return isValidName(args) && strNames.contains(args) || !isValidName(args);
     }
 
 
@@ -645,9 +626,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testRoomBlock(String args, int nextCodeLines) {
-        if(getRoomBlockLength(args) <= nextCodeLines) return true;
-
-        return false;
+        return getRoomBlockLength(args) <= nextCodeLines;
     }
 
 
@@ -669,9 +648,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testActionBlock(String args, int nextCodeLines) {
-        if(getActionBlockLength(args) <= nextCodeLines) return true;
-
-        return false;
+        return getActionBlockLength(args) <= nextCodeLines;
     }
 
 
@@ -681,38 +658,22 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean isValidName(String name) {
-        if(Character.isDigit(name.charAt(0))) {
-            return false;
-        } else if (name.contains(" ")) {
-            return false;
-        } else if (!name.matches("^[a-zA-Z0-9]*$")) {
-            return false;
-        }
-
-        return true;
+        return name.matches(REGEX_VALIDE_NAME);
     }
 
 
     private boolean isNumber(String number) {
-        if(number.matches("\\d+")) {
-            return true;
-        }
-
-        return false;
+        return number.matches(REGEX_VALIDE_NUMBER);
     }
 
 
     private boolean isNumVar(String name) {
-        if(!isNumber(name) && numNames.contains(name)) return true;
-
-        return false;
+        return !isNumber(name) && numNames.contains(name);
     }
 
 
     private boolean isStrVar(String name) {
-        if(!isNumber(name) && strNames.contains(name)) return true;
-
-        return false;
+        return !isNumber(name) && strNames.contains(name);
     }
 
 
@@ -729,6 +690,7 @@ public class OpCodeTest extends OpCode{
             if(val.equals("")) continue;
             if(!isNumber(val) && !isNumVar(val)) return false;
         }
+
         return true;
     }
 
@@ -820,18 +782,12 @@ public class OpCodeTest extends OpCode{
 
 
     private int getIfBlockLength(String args) {
-        String[] arg = args.split(IF_NUM_SEPERATOR);
-
-
-        return Integer.parseInt(arg[1]);
+        return Integer.parseInt(args.split(IF_NUM_SEPERATOR)[1]);
     }
 
 
     private int getRoomBlockLength(String args) {
-        String[] arg = args.split(ROOM_SEPERATOR);
-
-
-        return Integer.parseInt(arg[1]);
+        return Integer.parseInt(args.split(ROOM_SEPERATOR)[1]);
     }
 
 
@@ -848,16 +804,6 @@ public class OpCodeTest extends OpCode{
         return list.toArray(new String[list.size()]);
     }
 
-    private boolean isValideSetContent(String args) {
-        if (args.contains(" ")) {
-            return false;
-        } else if (!args.matches("^[a-zA-Z]+$")) {
-            return false;
-        }
-
-        return true;
-    }
-
 
     private int getActionBlockLength(String args) {
         return Integer.parseInt(args.split(ACTION_SEPERATOR)[2]);
@@ -865,36 +811,18 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean isStr(String name) {
-        if(name.startsWith("\"") && name.endsWith("\"")) return true;
-
-        return false;
+        return name.startsWith("\"") && name.endsWith("\"");
     }
 
 
     private boolean isEmptyArg(String name) {
-        if(name.equals("-")) return true;
-
-        return false;
+        return name.equals("-");
     }
 
 
     private boolean isArgType(char type) {
-        if(type == IF_NUMBER || type == IF_STRING) return true;
-
-        return false;
+        return type == IF_NUMBER || type == IF_STRING;
     }
 
-
-    private boolean isActionArgs(String args) {
-        String[] actionArgs = args.split(ACTION_ARGS_SEPERATOR);
-
-
-        for(String actionArg : actionArgs) {
-            if(isEmptyArg(actionArg)) continue;
-            if(!isValidName(actionArg) && !isNumber(actionArg) && !isStr(actionArg)) return false;
-        }
-
-        return true;
-    }
-
+    
 }

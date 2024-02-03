@@ -4,6 +4,7 @@ public class OpCode extends ConsoleLoadingSyntax {
 
     protected final String REGEX_SAY = "^((\"([a-zA-Z0-9\\s\\?\\!])+\")|([a-zA-Z]+[a-zA-Z0-9]*|[\\d]?)){1}([,]((\"([\\w\\s\\?\\!]?)+\")|([a-zA-Z0-9]+)+))*";
     protected final String REGEX_ROOM = "([a-zA-Z][\\w\\s]*:[\\d]+)";
+    protected final String REGEX_ROOM_JUMPER = "([a-zA-Z]\\w*)";
     protected final String REGEX_NUMBER_VARIABLE = "([a-zA-Z][\\w]*:[\\d]+)";
     protected final String REGEX_STRING_VARIABLE = "([a-zA-Z][\\w]*:[\\w\\s\\!\\?]+)";
     protected final String REGEX_IF_NUMBER = "(^(([a-zA-Z]+[\\w]*)|([\\d]*))([\\<]|[\\>]|[\\<][\\=]|[\\>][=]|[\\=][\\=]|[\\!][\\=])(([a-zA-Z]+[\\w]*)|([\\d]*)){1}(([\\+\\-\\*\\/])(([a-zA-Z]+[\\w]*)|([\\d]*)))*)";
@@ -16,5 +17,7 @@ public class OpCode extends ConsoleLoadingSyntax {
     protected final String REGEX_SET = "^([a-zA-Z][\\w]*)[\\:]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w*])([\\,]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w]*))*";
     protected final String REGEX_ACTION = "([a-zA-Z]\\w*\\:)((-)|([sn][a-zA-Z]\\w*)([\\,]([sn][a-zA-Z]\\w*))*)(\\:\\d*)";
     protected final String REGEX_ACTION_CALL = "([a-zA-Z]\\w*\\:)((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*)(\\,((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*))*";
-    
+    protected final String REGEX_VALIDE_NAME = "([a-zA-Z][\\w]*)";
+    protected final String REGEX_VALIDE_NUMBER = "^[-]?[0-9]+$";
+
 }

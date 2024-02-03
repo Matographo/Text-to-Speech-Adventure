@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64/lib"/>
-    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter8097492275408189090.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-03T11-13-20_906-jvmRun1 surefire3731726082854302708tmp surefire_07000493590932248404tmp"/>
+    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter4643630575911755136.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-03T12-05-33_752-jvmRun1 surefire11382192033054872707tmp surefire_01094883063509456050tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter8097492275408189090.jar"/>
+    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter4643630575911755136.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
     <property name="user.name" value="leodora"/>
@@ -55,6 +55,6 @@
   <testcase name="testRoomJumperAndSpaceInName" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0"/>
   <testcase name="testRoomJumperWithoutRoom" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0.001"/>
   <testcase name="testRoomJumperAsString" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0.001"/>
-  <testcase name="testRoomJumperWithRoom" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0.001"/>
-  <testcase name="testRoomJumperWithSpecialChar" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0"/>
+  <testcase name="testRoomJumperWithRoom" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0"/>
+  <testcase name="testRoomJumperWithSpecialChar" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterRoomJumperTest" time="0.001"/>
 </testsuite>
