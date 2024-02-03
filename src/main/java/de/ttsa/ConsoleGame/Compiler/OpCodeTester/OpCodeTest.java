@@ -328,20 +328,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testStrDecSyntax(String args) {
-        String[] strDecArgs = args.split(STR_SEPERATOR);
-
-
-        if(strDecArgs.length != 2)   return false;
-
-        String strDecName = strDecArgs[0];
-
-        if(!isValidName(strDecName)) return false;
-
-        String operation  = strDecArgs[1];
-
-        if(!operation.startsWith("\"") && !operation.endsWith("\"") && !isValidName(operation)) return false;
-
-        return true;
+        return args.matches(REGEX_STR_VARDEC);
     }
 
 
