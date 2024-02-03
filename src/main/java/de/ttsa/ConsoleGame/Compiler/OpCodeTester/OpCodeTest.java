@@ -379,31 +379,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testActionSyntax(String arg) {
-        String[] args = arg.split(ACTION_SEPERATOR);
-        char type;
-
-
-        if(args.length != 3)            return false;
-
-        String actionName   = args[0];
-        String[] actionArgs = args[1].split(ACTION_ARGS_SEPERATOR);
-        String codeLines    = args[2];
-
-        if(!isValidName(actionName))    return false;
-
-        for(String actionArg : actionArgs) {
-            if(isEmptyArg(actionArg)) continue;
-
-            type      = actionArg.charAt(0);
-            actionArg = actionArg.substring(1);
-
-            if(!isArgType(type))        return false;
-            if(!isValidName(actionArg)) return false;
-        }
-
-        if(!isNumber(codeLines))        return false;
-
-        return true;
+        return arg.matches(REGEX_ACTION);
     }
 
 
