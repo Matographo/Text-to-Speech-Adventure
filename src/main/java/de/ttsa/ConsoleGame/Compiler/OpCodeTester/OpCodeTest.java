@@ -224,14 +224,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testRoomSyntax(String args) {
-        String[] arg = args.split(ROOM_SEPERATOR);
-
-
-        if(arg.length != 2)                return false;
-        else if(!isValideRoomName(arg[0])) return false;
-        else if (!isNumber(arg[1]))        return false;
-
-        return true;
+        return args.matches(REGEX_ROOM);
     }
 
 

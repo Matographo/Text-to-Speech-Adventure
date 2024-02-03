@@ -3,7 +3,7 @@ package de.ttsa.ConsoleGame;
 public class OpCode extends ConsoleLoadingSyntax {
 
     protected final String REGEX_SAY = "^((\"([a-zA-Z0-9\\s\\?\\!])+\")|([a-zA-Z]+[a-zA-Z0-9]*|[\\d]?)){1}([,]((\"([\\w\\s\\?\\!]?)+\")|([a-zA-Z0-9]+)+))*";
-    // protected final String REGEX_ROOM;
+    protected final String REGEX_ROOM = "([a-zA-Z][\\w\\s]*:[\\d]*)";
     // protected final String REGEX_NUMBER_VARIABLE;
     // protected final String REGEX_STRING_VARIABLE;
     // protected final String REGEX_NUM_VARDEC;
