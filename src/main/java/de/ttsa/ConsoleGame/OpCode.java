@@ -5,7 +5,7 @@ public class OpCode extends ConsoleLoadingSyntax {
     protected final String REGEX_SAY = "^((\"([a-zA-Z0-9\\s\\?\\!])+\")|([a-zA-Z]+[a-zA-Z0-9]*|[\\d]?)){1}([,]((\"([\\w\\s\\?\\!]?)+\")|([a-zA-Z0-9]+)+))*";
     protected final String REGEX_ROOM = "([a-zA-Z][\\w\\s]*:[\\d]+)";
     protected final String REGEX_NUMBER_VARIABLE = "([a-zA-Z][\\w]*:[\\d]+)";
-    // protected final String REGEX_STRING_VARIABLE;
+    protected final String REGEX_STRING_VARIABLE = "([a-zA-Z][\\w]*:[\\w\\s\\!\\?]+)";
     // protected final String REGEX_NUM_VARDEC;
     // protected final String REGEX_IF;
     // protected final String REGEX_INPUT;

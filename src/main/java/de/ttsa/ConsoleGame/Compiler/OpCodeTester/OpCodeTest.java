@@ -241,13 +241,7 @@ public class OpCodeTest extends OpCode{
 
 
     private boolean testStringVariableSyntax(String args) {
-        String[] arg = args.split(NUMBER_STRING_SEPERATOR);
-
-
-        if(arg.length != 2)           return false;
-        else if(!isValidName(arg[0])) return false;
-
-        return true;
+        return args.matches(REGEX_STRING_VARIABLE);
     }
 
 
