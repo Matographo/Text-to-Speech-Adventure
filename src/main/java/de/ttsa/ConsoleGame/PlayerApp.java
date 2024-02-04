@@ -10,7 +10,7 @@ public class PlayerApp {
 
 
     public static void main(String[] args) {
-        new PlayerApp().start(args);
+        new PlayerApp().start(args[0]);
     }
 
 
@@ -19,12 +19,9 @@ public class PlayerApp {
 
 
 
-    public void start(String[] args) {
-        long start = System.currentTimeMillis();
-        Player player = new Player(args[0]);
+    private void start(String path) {
+        Player player = new Player(path);
         player.play();
-        long end = System.currentTimeMillis();
-        System.out.println("Time: " + (end - start) + "ms");
     }
 
 

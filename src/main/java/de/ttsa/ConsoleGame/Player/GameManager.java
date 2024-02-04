@@ -1,5 +1,6 @@
 package de.ttsa.ConsoleGame.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import de.ttsa.ConsoleGame.Player.Datatypes.INT;
@@ -28,7 +29,10 @@ public class GameManager {
     public static String nextRoom;
     public static String input;
 
+    public static ArrayList<String> output = new ArrayList<>();
+
     public static boolean running;
+    public static boolean isTerminalGame = true;
     public static boolean loopBreak = false;
 
 
@@ -95,6 +99,7 @@ public class GameManager {
         }
         running = false;
     }
+
 
     
 }

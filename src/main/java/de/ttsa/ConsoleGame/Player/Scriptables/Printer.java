@@ -1,5 +1,6 @@
 package de.ttsa.ConsoleGame.Player.Scriptables;
 
+import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Datatypes.Printablable;
 
 public class Printer implements Scriptable {
@@ -39,7 +40,11 @@ public class Printer implements Scriptable {
             text += printablable.print();
         }
 
-        System.out.println(text);
+        if(GameManager.isTerminalGame) {
+            System.out.println(text);
+        } else {
+            GameManager.output.add(text);
+        }
         return true;
     }
 

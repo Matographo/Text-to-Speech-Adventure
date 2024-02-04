@@ -18,8 +18,10 @@ de/ttsa/ConsoleGame/ClassTools/ConsoleLoadingSyntax.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Sorter.class
 de/ttsa/ConsoleGame/Player/Scriptables/Input.class
 de/ttsa/ConsoleGame/Player/Datatypes/STRING.class
+de/ttsa/App.class
 de/ttsa/ConsoleGame/Player/Scriptables/LoopBreaker.class
 de/ttsa/ConsoleGame/Player/Scriptables/If.class
+de/ttsa/GUI/StartMenue.class
 de/ttsa/ConsoleGame/Player/SubFunctions/ConditionTest.class
 de/ttsa/ConsoleGame/Player/Datatypes/Set.class
 de/ttsa/ConsoleGame/CompilerApp.class

@@ -1,5 +1,7 @@
 package de.ttsa.ConsoleGame.Player;
 
+import java.util.ArrayList;
+
 public class Player {
 
 
@@ -33,10 +35,16 @@ public class Player {
         startGame();
     }
 
+    public void playGame() {
+        GameManager.isTerminalGame = false;
+        gameBuilder.build();
+        startGame();
+    }
+
     /**
      * Start the game
      */
-    public static void startGame() {
+    private void startGame() {
         GameManager.running  = true;
         GameManager.nextRoom = START_ROOM;
 
@@ -44,6 +52,16 @@ public class Player {
         while(GameManager.nextRoom != null && GameManager.running) {
             GameManager.getNextRoom().play();
         }
+    }
+
+    public void makeInput(String input) {
+        GameManager.input = input;
+    }
+
+    public ArrayList<String> getOutput() {
+        ArrayList<String> output = new ArrayList<>(GameManager.output);
+        GameManager.output.clear();
+        return output;
     }
     
     

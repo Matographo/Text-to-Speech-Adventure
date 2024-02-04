@@ -1,8 +1,7 @@
 03::Var:0
-01::START:5
+01::START:4
 00::"Hallo Welt"
 00::"Tschuess"
-02::Raum11
 05::Var:Var+1
 05::Var:Var-1
 01::Raum1:4
