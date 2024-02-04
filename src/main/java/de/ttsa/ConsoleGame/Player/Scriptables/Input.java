@@ -22,7 +22,9 @@ public class Input implements Scriptable {
     @Override
     public boolean run() {
         try {
-            GameManager.input = scanner.nextLine();
+            if(GameManager.isTerminalGame) {
+                GameManager.input = scanner.nextLine();
+            }
         } catch(Exception e) {
             return false;
         }

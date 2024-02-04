@@ -37,8 +37,7 @@ public class Player {
 
     public void playGame() {
         GameManager.isTerminalGame = false;
-        gameBuilder.build();
-        startGame();
+        play();
     }
 
     /**
@@ -55,7 +54,10 @@ public class Player {
     }
 
     public void makeInput(String input) {
-        GameManager.input = input;
+        if(input != null && !input.isEmpty()) {
+            GameManager.isMakedInput = true;
+            GameManager.input = input;
+        }
     }
 
     public ArrayList<String> getOutput() {

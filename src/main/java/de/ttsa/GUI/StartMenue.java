@@ -4,7 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import de.ttsa.ConsoleGame.Player.Player;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +17,9 @@ public class StartMenue implements Initializable {
     
     private FileChooser fileChooser = new FileChooser();
 
-    private Player player;
+    private String[] gameArgs = new String[] {"-cp", "target/ttsa-1.0.jar", "de.ttsa.ConsoleGame.PlayerApp", ""};
+
+    private ProcessDialog game;
 
     @FXML
     private TextArea textArea = new TextArea();
@@ -29,29 +31,47 @@ public class StartMenue implements Initializable {
 
     @FXML
     void makeInput(ActionEvent event) {
-        if(player != null) {
-            player.makeInput(textField.getText());
-            textField.clear();
+        try {
+            game.input(textField.getText());
+            textField.setText("");
+            getOutput();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
 
     @FXML
-    void getText(ActionEvent event) {
-        File file = fileChooser.showOpenDialog(new Stage());
-        if(file.exists() && file.getAbsolutePath().substring(file.getAbsolutePath().length()-5).equals(".ttsa")){
-            player = new Player(file.getAbsolutePath());
-            player.playGame();
-            for(String s : player.getOutput()) {
-                textArea.appendText(s + "\n");
+    void loadGame(ActionEvent event) {
+        try {
+            File file = fileChooser.showOpenDialog(new Stage());
+            if(isPlayable(file)){
+                gameArgs[3] = file.getAbsolutePath();
+                game = new ProcessDialog("java", gameArgs);
+                game.start();
+                getOutput();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fileChooser.setInitialDirectory(new java.io.File("."));
-        textArea.setText("No file selected");
+        textArea.setText("Here is the Game Data: \n");
+    }
+
+    private boolean isPlayable(File file) {
+        return file.exists() && file.getAbsolutePath().substring(file.getAbsolutePath().length()-5).equals(".ttsa");
+
+    }
+
+    private void getOutput() throws InterruptedException {
+        for(String s : game.output()) {
+            textArea.appendText(s + "\n");
+        }
     }
 
 }

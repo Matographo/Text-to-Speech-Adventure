@@ -34,6 +34,7 @@ public class GameManager {
     public static boolean running;
     public static boolean isTerminalGame = true;
     public static boolean loopBreak = false;
+    public static boolean isMakedInput = false;
 
 
 
