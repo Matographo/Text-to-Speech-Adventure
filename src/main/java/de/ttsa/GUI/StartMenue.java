@@ -1,6 +1,7 @@
 package de.ttsa.GUI;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,13 +22,13 @@ public class StartMenue implements Initializable {
 
     private ProcessDialog game;
 
+    private ProcessDialog sprachausgabe;
+
     @FXML
     private TextArea textArea = new TextArea();
 
     @FXML
     private TextField textField = new TextField();
-
-
 
     @FXML
     void makeInput(ActionEvent event) {
@@ -45,10 +46,20 @@ public class StartMenue implements Initializable {
     void loadGame(ActionEvent event) {
         try {
             File file = fileChooser.showOpenDialog(new Stage());
+
+            textField.setOnKeyPressed(e -> {
+                if(e.getCode().toString().equals("ENTER")) {
+                    makeInput(new ActionEvent());
+                }
+            });
+
             if(isPlayable(file)){
+                sprachausgabe = new ProcessDialog("espeak", new String[]{"-v", "de"});
+                sprachausgabe.start();
                 gameArgs[3] = file.getAbsolutePath();
                 game = new ProcessDialog("java", gameArgs);
                 game.start();
+                textArea.clear();
                 getOutput();
             }
         } catch (Exception e) {
@@ -68,9 +79,10 @@ public class StartMenue implements Initializable {
 
     }
 
-    private void getOutput() throws InterruptedException {
+    private void getOutput() throws InterruptedException, IOException {
         for(String s : game.output()) {
             textArea.appendText(s + "\n");
+            sprachausgabe.input(s);
         }
     }
 

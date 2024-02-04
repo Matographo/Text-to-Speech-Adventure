@@ -32,10 +32,10 @@ public class RoomJumper implements Scriptable {
 
     @Override
     public boolean run() {
-        if(!GameManager.rooms.containsKey(roomName)) return false;
+        if(!GameManager.rooms.containsKey(roomName)) return true;
         
         GameManager.nextRoom = roomName;
-        return true;
+        return false;
     }
 
 

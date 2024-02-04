@@ -252,16 +252,15 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      */
     private void room(ArrayList<String> roomContent) {
         try {
-        String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
-        String roomName   = roomArgs[0];
-
-
-        roomContent.remove(0);
-
-        Scriptable roomScript = loadGame(roomContent);
-        GameManager.rooms.put(roomName, new Room(roomScript));
+            String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
+            String roomName   = roomArgs[0];
+            
+            
+            roomContent.remove(0);
+            
+            Scriptable roomScript = loadGame(roomContent);
+            GameManager.rooms.put(roomName, new Room(roomScript));
         } catch (Exception e) {
-            GameManager.rooms.size();
             e.printStackTrace();
         }
     }

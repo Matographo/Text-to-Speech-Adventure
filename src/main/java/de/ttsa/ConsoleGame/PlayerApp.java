@@ -1,5 +1,7 @@
 package de.ttsa.ConsoleGame;
 
+import java.io.IOException;
+
 import de.ttsa.ConsoleGame.Player.Player;
 
 public class PlayerApp {
@@ -9,7 +11,7 @@ public class PlayerApp {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         new PlayerApp().start(args[0]);
     }
 

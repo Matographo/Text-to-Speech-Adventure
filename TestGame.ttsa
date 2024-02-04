@@ -1,4 +1,31 @@
-01::START:3
-00::"Hallo Welt"
+03::Money:0
+03::Multiplyer:1
+03::MultiplyerKosten:10
+03::MultiplyerAnz:0
+01::START:5
+00::"Herzlich Willkommen zu diesem wunderbaren Spiel"
+00::""
+00::"Druecken sie eine Taste um das spiel zu starten..."
 07::
-02::START
+02::MakeCookies
+01::MakeCookies:6
+00::"Du hast ",Money," Kekse"
+07::
+06::i("c"):1;;i("s"):1
+05::Money:Money+(1*Multiplyer)
+02::Shop
+02::MakeCookies
+01::Shop:13
+00::"Du befindest dich im Shop: "
+00::"Der Multiplyer kostet :",MultiplyerKosten," Kekse"
+00::"Du hast gerade ",MultiplyerAnz," Multiplyer"
+00::"Druecke die 1 um einen zu kaufen und 2 um zurueck zu gehen"
+07::
+06::i("1"):5;;i("2"):1
+06::nMoney>=MultiplyerKosten:4
+05::Money:Money-MultiplyerKosten
+05::MultiplyerKosten:MultiplyerKosten*2
+05::Multiplyer:Multiplyer+1
+05::MultiplyerAnz:MultiplyerAnz+1
+02::MakeCookies
+02::Shop

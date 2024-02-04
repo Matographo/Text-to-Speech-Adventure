@@ -53,7 +53,7 @@ public class If implements Scriptable {
             }
         }
         
-        return false;
+        return true;
     }
 
 
