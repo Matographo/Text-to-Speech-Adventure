@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64/lib"/>
-    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter84100131986337823.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-04T18-38-38_803-jvmRun1 surefire10529062966830107281tmp surefire_07628374526864553592tmp"/>
+    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter12224449502478577066.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-04T20-42-47_516-jvmRun1 surefire13936715879588353367tmp surefire_07873761340033291862tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,12 +27,12 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter84100131986337823.jar"/>
+    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter12224449502478577066.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
     <property name="user.name" value="leodora"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="6.6.13-200.fc39.x86_64"/>
+    <property name="os.version" value="6.6.14-200.fc39.x86_64"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
@@ -53,7 +53,7 @@
     <property name="java.class.version" value="61.0"/>
   </properties>
   <testcase name="testStrVarFalseName" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0"/>
-  <testcase name="testStrVarOneWord" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0.001"/>
+  <testcase name="testStrVarOneWord" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0"/>
   <testcase name="testStrVarDoubleName" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0"/>
-  <testcase name="testStrVarMultipleWords" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0.001"/>
+  <testcase name="testStrVarMultipleWords" classname="de.ttsa.TestClasses.OpCodeTestTester.TesterStrVarTest" time="0"/>
 </testsuite>

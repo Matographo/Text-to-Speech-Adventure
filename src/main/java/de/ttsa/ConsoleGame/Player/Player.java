@@ -53,17 +53,9 @@ public class Player {
         }
     }
 
-    public void makeInput(String input) {
-        if(input != null && !input.isEmpty()) {
-            GameManager.isMakedInput = true;
-            GameManager.input = input;
-        }
-    }
 
-    public ArrayList<String> getOutput() {
-        ArrayList<String> output = new ArrayList<>(GameManager.output);
-        GameManager.output.clear();
-        return output;
+    public static String getHelp() {
+        return "[File Path]";
     }
     
     

@@ -46,4 +46,5 @@ de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/GameBuilder.class
 de/ttsa/ConsoleGame/Player/Scriptables/Scriptable.class
 de/ttsa/ConsoleGame/Player/Datatypes/PrintText.class
 de/ttsa/ConsoleGame/Player/GameLoader.class
+de/ttsa/ConsoleGame/ConsoleGame.class
 de/ttsa/ConsoleGame/Player/Functions/GameSaver.class

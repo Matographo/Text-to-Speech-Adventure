@@ -21,7 +21,7 @@ public class PlayerApp {
 
 
 
-    private void start(String path) {
+    public void start(String path) {
         Player player = new Player(path);
         player.play();
     }

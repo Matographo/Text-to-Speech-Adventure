@@ -68,17 +68,22 @@ public class CompilerApp
         System.out.println("No arguments given. Type the extention -h or -help for more information.");
     }
 
-    /**
-     * Print help message.
-     */
+
     private void help() {
-        System.out.println("\nUsage: " + COMPILER_COMMAND + " [options] [file]\n\n" +
-                           "Options:\n" +                
-                           "  -h, -help     Print help message.\n" +
-                           "  -v, -version  Print the version.\n" +
-                           "  -c, -compile  Compile the given file.\n" +
-                           "  -t, -test     Test the given file.\n" +
-                           "  -x            Hide the execution of the given file.\n");
+        System.out.println(getHelp());
+    }
+
+
+    /**
+     * return the help message.
+     */
+    public static String getHelp() {
+        return "Options:\n" +                
+               "  -h, -help     Print help message.\n" +
+               "  -v, -version  Print the version.\n" +
+               "  -c, -compile  Compile the given file.\n" +
+               "  -t, -test     Test the given file.\n" +
+               "  -x            Hide the execution of the given file.\n";
     }
 
     /**
