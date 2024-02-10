@@ -2,7 +2,9 @@ package de.ttsa.ConsoleGame;
 
 import java.io.IOException;
 
+import de.ttsa.ConsoleGame.Player.GameManager;
 import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.Stats.BuildingStats;
 
 public class PlayerApp {
     
@@ -23,6 +25,8 @@ public class PlayerApp {
 
     public void start(String path) {
         Player player = new Player(path);
+        player.buildGame();
+        System.out.println(BuildingStats.gameBuildTime + "ms");
         player.play();
     }
 

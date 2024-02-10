@@ -1,5 +1,6 @@
 package de.ttsa.ConsoleGame;
 
+import de.ttsa.App;
 import de.ttsa.ConsoleGame.Player.Player;
 
 public class ConsoleGame {
@@ -20,7 +21,9 @@ public class ConsoleGame {
             startCompiler(removeFirst(args));
         } else if(mode.equals("help") || mode.equals("h") || mode.equals("-h")) {
             startHelp();
-        } else {
+        } else if(mode.equals("gui")) {
+            App.main(args);
+        }else {
             System.err.println("Unvalid arguments. Type help or -h for help.");
         }
     }

@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import de.ttsa.Stats.BuildingStats;
+
 class GameLoader {
     
 
@@ -37,6 +39,7 @@ class GameLoader {
      * @return the game data as a list of strings
      */
     public ArrayList<String> loadGameData() {
+        Long startTime = System.currentTimeMillis();
         File game = new File(gameFile);
         ArrayList<String> gameContent = new ArrayList<String>();
 
@@ -47,6 +50,7 @@ class GameLoader {
             throw new RuntimeException("Game file is not a file!");
         }
 
+        BuildingStats.gameLoadTime = System.currentTimeMillis() - startTime;
         return gameContent;
     }
 

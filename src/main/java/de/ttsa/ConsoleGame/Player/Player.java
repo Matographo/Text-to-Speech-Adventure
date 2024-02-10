@@ -2,6 +2,8 @@ package de.ttsa.ConsoleGame.Player;
 
 import java.util.ArrayList;
 
+import de.ttsa.Stats.BuildingStats;
+
 public class Player {
 
 
@@ -31,7 +33,16 @@ public class Player {
      * @param gameBuilder the game builder
      */
     public void play() {
+        buildGame();
+        startGame();
+    }
+
+    public void buildGame() {
         gameBuilder.build();
+    }
+
+    public void playGame(boolean isTerminalGame) {
+        GameManager.isTerminalGame = isTerminalGame;
         startGame();
     }
 

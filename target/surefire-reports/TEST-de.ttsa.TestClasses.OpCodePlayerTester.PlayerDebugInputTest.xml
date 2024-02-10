@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="de.ttsa.TestClasses.OpCodePlayerTester.PlayerDebugInputTest" time="0" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="de.ttsa.TestClasses.OpCodePlayerTester.PlayerDebugInputTest" time="0" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:"/>
+    <property name="java.class.path" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:"/>
     <property name="java.vm.vendor" value="Red Hat, Inc."/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://www.redhat.com/"/>
@@ -12,9 +12,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64/lib"/>
-    <property name="sun.java.command" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter12224449502478577066.jar /home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire 2024-02-04T20-42-47_516-jvmRun1 surefire13936715879588353367tmp surefire_07873761340033291862tmp"/>
+    <property name="sun.java.command" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/surefire/surefirebooter-20240210122911862_3.jar /home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/surefire 2024-02-10T12-29-11_752-jvmRun1 surefire-20240210122911862_1tmp surefire_0-20240210122911862_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:"/>
+    <property name="surefire.test.class.path" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/test-classes:/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/classes:/home/leodora/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/leodora/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/leodora/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/leodora"/>
     <property name="user.language" value="en"/>
@@ -22,12 +22,12 @@
     <property name="java.version.date" value="2023-10-17"/>
     <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64"/>
     <property name="file.separator" value="/"/>
-    <property name="basedir" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure"/>
+    <property name="basedir" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure/target/surefire/surefirebooter12224449502478577066.jar"/>
+    <property name="surefire.real.class.path" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure/target/surefire/surefirebooter-20240210122911862_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
     <property name="user.name" value="leodora"/>
@@ -41,7 +41,7 @@
     <property name="java.vendor.url.bug" value="https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&amp;component=java-17-openjdk&amp;version=38"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="java.version" value="17.0.9"/>
-    <property name="user.dir" value="/home/leodora/Documents/Dev/DevProjects/Java/Text to Speech Adventure"/>
+    <property name="user.dir" value="/home/leodora/Documents/Dev/Java/Text to Speech Adventure"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="native.encoding" value="UTF-8"/>

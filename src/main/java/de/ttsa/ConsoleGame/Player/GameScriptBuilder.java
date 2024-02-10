@@ -7,6 +7,7 @@ import de.ttsa.ConsoleGame.ClassTools.ConsoleLoadingSyntax;
 import de.ttsa.ConsoleGame.Player.Datatypes.*;
 import de.ttsa.ConsoleGame.Player.Scriptables.*;
 import de.ttsa.ConsoleGame.Player.Structures.*;
+import de.ttsa.Stats.BuildingStats;
 
 class GameScriptBuilder extends ConsoleLoadingSyntax{
 
@@ -42,7 +43,9 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * Load the game
      */
     public void load() {
+        long startTime = System.currentTimeMillis();
         loadGame(game);
+        BuildingStats.gameBuildTime = System.currentTimeMillis() - startTime;
     }
 
     /**
@@ -54,6 +57,8 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         String opCode = "";
         String args   = "";
         String line   = "";
+
+        long startTime;
 
         ArrayList<Scriptable> gameScript = new ArrayList<Scriptable>();
         ArrayList<String> blockContent;
@@ -72,6 +77,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                 case INDEX_ROOM:
 
+                    startTime = System.currentTimeMillis();
                     int roomSize = getRoomSize(args);
                     blockContent = new ArrayList<String>(roomSize);
                     game.set(i, args);
@@ -84,6 +90,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                     room(blockContent);
                     i--;
+                    BuildingStats.roomBuildTime.add(System.currentTimeMillis() - startTime);
                     break;
 
                 case INDEX_ROOM_JUMPER:
@@ -108,6 +115,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                 case INDEX_IF:
 
+                    startTime = System.currentTimeMillis();
                     int ifSize = getIfSize(args);
                     blockContent = new ArrayList<String>(ifSize);
                     game.set(i, args);
@@ -120,6 +128,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                     gameScript.add(ifCalc(blockContent));
                     i--;
+                    BuildingStats.ifBuildTime.add(System.currentTimeMillis() - startTime);
                     break;
 
                 case INDEX_INPUT:
@@ -154,6 +163,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                 case INDEX_LOOP:
 
+                    startTime = System.currentTimeMillis();
                     int loopSize = getLoopSize(args);
                     blockContent = new ArrayList<String>(loopSize);
                     game.set(i, args);
@@ -166,6 +176,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                     gameScript.add(loop(blockContent));
                     i--;
+                    BuildingStats.loopBuildTime.add(System.currentTimeMillis() - startTime);
                     break;
 
                 case INDEX_LOOP_BREAKER:
@@ -180,6 +191,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                 case INDEX_ACTION:
 
+                    startTime = System.currentTimeMillis();
                     int actionSize = getActionSize(args);
                     blockContent = new ArrayList<String>(actionSize);
                     game.set(i, args);
@@ -192,6 +204,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
                     action(blockContent);
                     i--;
+                    BuildingStats.actionBuildTime.add(System.currentTimeMillis() - startTime);
                     break;
 
                 case INDEX_ACTION_CALL:

@@ -23,13 +23,14 @@ de/ttsa/ConsoleGame/Player/Functions/Calculator$Operationen.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Merger.class
 de/ttsa/ConsoleGame/Player/Scriptables/Loop.class
 de/ttsa/ConsoleGame/Player/Scriptables/Printer.class
-de/ttsa/ConsoleGame/Player/Scriptables/VarDec.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameExitScript.class
+de/ttsa/ConsoleGame/Player/Scriptables/VarDec.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameSavingScript.class
 de/ttsa/ConsoleGame/ClassTools/OpCode.class
 de/ttsa/ConsoleGame/Player/Structures/Action.class
 de/ttsa/ConsoleGame/Player/GameScriptBuilder.class
 de/ttsa/ConsoleGame/Compiler/Compiler/TestC/Test.class
+de/ttsa/Stats/BuildingStats.class
 de/ttsa/ConsoleGame/ClassTools/ConsoleLoadingSyntax.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Sorter.class
 de/ttsa/App.class
