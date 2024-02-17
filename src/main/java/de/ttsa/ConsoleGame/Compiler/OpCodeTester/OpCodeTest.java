@@ -51,6 +51,8 @@ public class OpCodeTest extends OpCode{
         if(!this.file.exists()) throw new IllegalArgumentException("The file " + fileName + " does not exist.");
     }
 
+    private OpCodeTest() {
+    }
 
 
 // ----------------------- Start --------------------------
@@ -78,6 +80,22 @@ public class OpCodeTest extends OpCode{
         return testResult;
     }
 
+    public static boolean test(ArrayList<String> content) {
+        boolean testResult = true;
+        OpCodeTest test = new OpCodeTest();
+
+        testResult = test.testSyntax(new ArrayList<String>(content)) && testResult;
+        testResult = test.testVariables(new ArrayList<String>(content)) && testResult;
+        testResult = test.testBlocks(new ArrayList<String>(content)) && testResult;
+
+        return testResult;
+    }
+
+    public static boolean test(String line) {
+        ArrayList<String> content = new ArrayList<String>();
+        content.add(line);
+        return new OpCodeTest().testSyntax(content);
+    }
 
 
 // -------------------- Load Data ------------------------

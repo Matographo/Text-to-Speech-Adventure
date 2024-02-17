@@ -11,11 +11,11 @@ import de.ttsa.ConsoleGame.Compiler.Compiler.TestC.Test;
 
 public class StartCompiler {
 
-    String filePath;
-    String errorText;
-    boolean isHidden = false;
-    ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
-    ArrayList<String> game = new ArrayList<String>();
+    private String filePath;
+    private String errorText;
+    private boolean isHidden = false;
+    private ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
+    private ArrayList<String> game = new ArrayList<String>();
 
     public StartCompiler(String path, boolean isHidden) {
         this.isHidden = isHidden;
