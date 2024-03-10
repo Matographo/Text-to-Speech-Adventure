@@ -28,17 +28,18 @@ public class Compiler extends CompilerSyntax {
         int blockCount = 0;
         for (int i = 0; i < content.size(); i++) {
             line = content.get(i).strip();
-            if (line.startsWith(SAY_SYNTAX)) {
+            if(line.startsWith("}") && isRoom) {
+                compiled.addAll(compileRoom(block));
+                blockCount--;
+                isRoom = false;
+            } else if(blockCount > 0) {
+                block.add(line);
+            } else if (line.startsWith(SAY_SYNTAX)) {
                 compiled.add(compileSay(line));
             } else if (line.startsWith(ROOM_SYNTAX)) {
                 blockCount++;
                 isRoom = true;
-            } else if (blockCount > 0) {
                 block.add(line);
-            } else if (line.startsWith("}") && isRoom) {
-                compiled.addAll(compileRoom(block));
-                blockCount--;
-                isRoom = false;
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -57,10 +58,10 @@ public class Compiler extends CompilerSyntax {
 
     private ArrayList<String> compileRoom(ArrayList<String> lines) {
         ArrayList<String> compiledRoom = new ArrayList<>(lines.size());
-        String commands = lines.get(0).substring(lines.get(0).indexOf(ROOM_SYNTAX) + 1).strip();
+        String commands = lines.get(0).substring(lines.get(0).indexOf(ROOM_SYNTAX) + ROOM_SYNTAX.length()).strip();
         lines.remove(0);
         if (commands.contains("{")) {
-            commands.substring(0, commands.indexOf(BLOCK_START_SYNTAX)).strip();
+            commands = commands.substring(0, commands.indexOf(BLOCK_START_SYNTAX)).strip();
         }
         String compiled = "";
         compiled += INDEX_ROOM;

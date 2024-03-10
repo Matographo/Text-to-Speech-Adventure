@@ -11,4 +11,6 @@ public class CompilerSyntax extends ConsoleLoadingSyntax {
     protected final String BLOCK_START_SYNTAX = "{";
 
     protected final String BLOCK_END_SYNTAX = "}";
+
+    protected final String COMMENT_SYNTAX = "//";
 }

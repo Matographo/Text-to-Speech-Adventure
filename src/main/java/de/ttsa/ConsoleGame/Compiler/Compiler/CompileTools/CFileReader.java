@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class CFileReader {
+import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
+
+public class CFileReader extends CompilerSyntax {
 
     File data;
 
@@ -48,6 +50,13 @@ public class CFileReader {
             ArrayList<String> readed = new ArrayList<String>();
             String line = "";
             while((line = reader.readLine()) != null) {
+                line = line.strip();
+                if(line.isEmpty()) {
+                    continue;
+                }
+                if(line.startsWith(COMMENT_SYNTAX)) {
+                    continue;
+                }
                 readed.add(line);
             }
             reader.close();
