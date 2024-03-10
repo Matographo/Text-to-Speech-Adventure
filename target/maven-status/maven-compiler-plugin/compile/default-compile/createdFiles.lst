@@ -44,6 +44,7 @@ de/ttsa/ConsoleGame/PlayerApp.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/CFileReader.class
 de/ttsa/ConsoleGame/Player/Scriptables/RoomJumper.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/GameBuilder.class
+de/ttsa/ConsoleGame/ClassTools/CompilerSyntax.class
 de/ttsa/ConsoleGame/Player/Scriptables/Scriptable.class
 de/ttsa/ConsoleGame/Player/Datatypes/PrintText.class
 de/ttsa/ConsoleGame/Player/GameLoader.class

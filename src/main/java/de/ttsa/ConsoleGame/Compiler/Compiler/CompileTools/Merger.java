@@ -11,6 +11,10 @@ public class Merger {
     }
 
     public ArrayList<String> merge() {
-        return null;
+        ArrayList<String> merged = new ArrayList<String>();
+        for (ArrayList<String> file : fileContent) {
+            merged.addAll(file);
+        }
+        return merged;
     }
 }

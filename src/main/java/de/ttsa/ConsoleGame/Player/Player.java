@@ -1,8 +1,5 @@
 package de.ttsa.ConsoleGame.Player;
 
-import java.util.ArrayList;
-
-import de.ttsa.Stats.BuildingStats;
 
 public class Player {
 
