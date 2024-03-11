@@ -34,12 +34,14 @@ public class Compiler extends CompilerSyntax {
                 isRoom = false;
             } else if(blockCount > 0) {
                 block.add(line);
-            } else if (line.startsWith(SAY_SYNTAX)) {
+            } else if (line.startsWith(SYNTAX_SAY)) {
                 compiled.add(compileSay(line));
-            } else if (line.startsWith(ROOM_SYNTAX)) {
+            } else if (line.startsWith(SYNTAX_ROOM)) {
                 blockCount++;
                 isRoom = true;
                 block.add(line);
+            } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
+                compiled.add(compileRoomJumper(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -48,7 +50,7 @@ public class Compiler extends CompilerSyntax {
     }
 
     private String compileSay(String line) {
-        String commands = line.substring(line.indexOf(COMMAND_SYNTAX) + 1).strip();
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
         compiled += INDEX_SAY;
         compiled += COMMAND_SEPERATOR;
@@ -58,10 +60,10 @@ public class Compiler extends CompilerSyntax {
 
     private ArrayList<String> compileRoom(ArrayList<String> lines) {
         ArrayList<String> compiledRoom = new ArrayList<>(lines.size());
-        String commands = lines.get(0).substring(lines.get(0).indexOf(ROOM_SYNTAX) + ROOM_SYNTAX.length()).strip();
+        String commands = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_ROOM) + SYNTAX_ROOM.length()).strip();
         lines.remove(0);
         if (commands.contains("{")) {
-            commands = commands.substring(0, commands.indexOf(BLOCK_START_SYNTAX)).strip();
+            commands = commands.substring(0, commands.indexOf(SYNTAX_BLOCK_START)).strip();
         }
         String compiled = "";
         compiled += INDEX_ROOM;
@@ -72,6 +74,131 @@ public class Compiler extends CompilerSyntax {
         compiledRoom.add(compiled);
         compiledRoom.addAll(compileFile(lines));
         return compiledRoom;
+    }
+
+    private String compileRoomJumper(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += INDEX_ROOM_JUMPER;
+        compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileNum(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileStr(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileNumDec(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileIf(ArrayList<String> lines) {
+        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+        lines.remove(0);
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileStrDec(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileDebug(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileSave(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileLoad(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileExit(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileLoop(ArrayList<String> lines) {
+        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+        lines.remove(0);
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileBreak(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileSet(ArrayList<String> lines) {
+        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+        lines.remove(0);
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileAction(ArrayList<String> lines) {
+        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+        lines.remove(0);
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
+    }
+
+    private String compileDo(String line) {
+        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String compiled = "";
+        compiled += compiled += COMMAND_SEPERATOR;
+        compiled += commands;
+        return compiled;
     }
 
 }

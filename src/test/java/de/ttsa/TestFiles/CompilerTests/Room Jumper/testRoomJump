@@ -1,0 +1,6 @@
+Room Raum1 {
+}
+
+Room Raum2 {
+    Jump: Raum1
+}

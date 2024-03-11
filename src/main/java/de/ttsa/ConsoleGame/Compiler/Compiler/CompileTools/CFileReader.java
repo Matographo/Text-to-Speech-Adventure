@@ -54,7 +54,7 @@ public class CFileReader extends CompilerSyntax {
                 if(line.isEmpty()) {
                     continue;
                 }
-                if(line.startsWith(COMMENT_SYNTAX)) {
+                if(line.startsWith(SYNTAX_COMMENT)) {
                     continue;
                 }
                 readed.add(line);
