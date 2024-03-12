@@ -3,6 +3,7 @@ package de.ttsa.ConsoleGame.Compiler.Compiler.CompileC;
 import java.util.ArrayList;
 
 import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
+import de.ttsa.ConsoleGame.Player.Datatypes.STRING;
 
 public class Compiler extends CompilerSyntax {
 
@@ -52,6 +53,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileInput(line));
             } else if (line.startsWith(SYNTAX_NUMBER_VARIABLE)) {
                 compiled.add(compileNum(line));
+            } else if (line.startsWith(SYNTAX_STRING_VARIABLE)) {
+                compiled.add(compileStr(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -117,9 +120,20 @@ public class Compiler extends CompilerSyntax {
     private String compileStr(String line) {
         String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
-        return compiled;
+        compiled += INDEX_STRING_VARIABLE;
+        compiled += COMMAND_SEPERATOR;
+        if (commands.contains("=")) {
+            String[] parts = commands.split("=");
+            compiled += parts[0].strip();
+            compiled += NUMBER_STRING_SEPERATOR;
+            compiled += parts[1].strip();
+            return compiled;
+        } else {
+            compiled += commands;
+            compiled += NUMBER_STRING_SEPERATOR;
+            compiled += "";
+            return compiled;
+        }
     }
 
     private String compileNumDec(String line) {
