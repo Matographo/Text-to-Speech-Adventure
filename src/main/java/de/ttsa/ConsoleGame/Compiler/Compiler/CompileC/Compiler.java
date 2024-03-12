@@ -42,6 +42,12 @@ public class Compiler extends CompilerSyntax {
                 block.add(line);
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
+            } else if (line.startsWith(SYNTAX_SAVE)) {
+                compiled.add(compileSave(line));
+            } else if (line.startsWith(SYNTAX_LOAD)) {
+                compiled.add(compileLoad(line));
+            } else if (line.startsWith(SYNTAX_EXIT)) {
+                compiled.add(compileExit(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -135,26 +141,24 @@ public class Compiler extends CompilerSyntax {
     }
 
     private String compileSave(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
+        compiled += INDEX_SAVE;
+        compiled += COMMAND_SEPERATOR;
         return compiled;
     }
 
     private String compileLoad(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
+        compiled += INDEX_LOAD;
+        compiled += COMMAND_SEPERATOR;
         return compiled;
     }
 
     private String compileExit(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
+        compiled += INDEX_EXIT;
+        compiled += COMMAND_SEPERATOR;
+        compiled += "0";
         return compiled;
     }
 
