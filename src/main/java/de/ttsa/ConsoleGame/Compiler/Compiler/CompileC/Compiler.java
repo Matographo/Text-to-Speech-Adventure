@@ -50,6 +50,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileExit(line));
             } else if (line.startsWith(SYNTAX_INPUT)) {
                 compiled.add(compileInput(line));
+            } else if (line.startsWith(SYNTAX_NUMBER_VARIABLE)) {
+                compiled.add(compileNum(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -96,9 +98,20 @@ public class Compiler extends CompilerSyntax {
     private String compileNum(String line) {
         String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
-        return compiled;
+        compiled += INDEX_NUMBER_VARIABLE;
+        compiled += COMMAND_SEPERATOR;
+        if (commands.contains("=")) {
+            String[] parts = commands.split("=");
+            compiled += parts[0].strip();
+            compiled += NUMBER_VARIABLE_SEPERATOR;
+            compiled += parts[1].strip();
+            return compiled;
+        } else {
+            compiled += commands;
+            compiled += NUMBER_VARIABLE_SEPERATOR;
+            compiled += "0";
+            return compiled;
+        }
     }
 
     private String compileStr(String line) {
