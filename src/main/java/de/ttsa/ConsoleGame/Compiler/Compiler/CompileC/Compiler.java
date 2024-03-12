@@ -48,6 +48,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileLoad(line));
             } else if (line.startsWith(SYNTAX_EXIT)) {
                 compiled.add(compileExit(line));
+            } else if (line.startsWith(SYNTAX_INPUT)) {
+                compiled.add(compileInput(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -112,6 +114,13 @@ public class Compiler extends CompilerSyntax {
         String compiled = "";
         compiled += compiled += COMMAND_SEPERATOR;
         compiled += commands;
+        return compiled;
+    }
+
+    private String compileInput(String line) {
+        String compiled = "";
+        compiled += INDEX_INPUT;
+        compiled += COMMAND_SEPERATOR;
         return compiled;
     }
 
