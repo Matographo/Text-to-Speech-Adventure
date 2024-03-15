@@ -67,7 +67,7 @@ public class Compiler extends CompilerSyntax {
         String compiled = "";
         compiled += INDEX_SAY;
         compiled += COMMAND_SEPERATOR;
-        compiled += "\"" + commands + "\"";
+        compiled += getSay(commands);
         return compiled;
     }
 
@@ -134,6 +134,7 @@ public class Compiler extends CompilerSyntax {
             compiled += "";
             return compiled;
         }
+
     }
 
     private String compileNumDec(String line) {
@@ -239,6 +240,40 @@ public class Compiler extends CompilerSyntax {
         compiled += compiled += COMMAND_SEPERATOR;
         compiled += commands;
         return compiled;
+    }
+
+    // ------------------------------ Help Methods ------------------------------
+
+    private String getSay(String commands) {
+        String endCommand = "";
+        String subCommand = "";
+        int cutIndex;
+        while (commands.length() > 0) {
+            if (commands.startsWith("\'")) {
+                cutIndex = commands.substring(1).indexOf("\'") + 1;
+                subCommand = commands.substring(1, cutIndex);
+                endCommand += subCommand;
+                commands = commands.substring(cutIndex + 1);
+            } else {
+                cutIndex = commands.indexOf("\'");
+                if (cutIndex != -1) {
+                    subCommand = commands.substring(0, cutIndex);
+                } else {
+                    subCommand = commands;
+                }
+                endCommand += "\"" + subCommand + "\"";
+                if (cutIndex != -1) {
+                    commands = commands.substring(cutIndex);
+                } else {
+                    commands = "";
+                }
+            }
+            if (commands.length() > 0) {
+                endCommand += SAY_SEPERATOR;
+            }
+        }
+
+        return endCommand;
     }
 
 }

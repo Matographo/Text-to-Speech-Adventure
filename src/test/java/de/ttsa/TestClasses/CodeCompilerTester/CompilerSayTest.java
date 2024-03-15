@@ -22,5 +22,50 @@ public class CompilerSayTest extends CodeCompilerTesterClass {
         boolean test = opCodeTest.start(compiled);
         assertEquals(true, test);
     }
-    
+
+    @Test
+    public void testSayNumber() {
+        final String fileName = "testSayNumber";
+        ArrayList<String> compiled = compileFiles(getContent(PATH + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        boolean test = opCodeTest.start(compiled);
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void testSayNumVar() {
+        final String fileName = "testSayNumVar";
+        ArrayList<String> compiled = compileFiles(getContent(PATH + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        boolean test = opCodeTest.start(compiled);
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void testSayMultiple() {
+        final String fileName = "testSayMultiple";
+        ArrayList<String> compiled = compileFiles(getContent(PATH + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        boolean test = opCodeTest.start(compiled);
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void testSayStrVar() {
+        final String fileName = "testSayStrVar";
+        ArrayList<String> compiled = compileFiles(getContent(PATH + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        boolean test = opCodeTest.start(compiled);
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void testSayNumStrVar() {
+        final String fileName = "testSayNumber";
+        ArrayList<String> compiled = compileFiles(getContent(PATH + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        boolean test = opCodeTest.start(compiled);
+        assertEquals(true, test);
+    }
+
 }
