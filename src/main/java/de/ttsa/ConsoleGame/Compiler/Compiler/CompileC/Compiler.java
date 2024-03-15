@@ -55,6 +55,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileNum(line));
             } else if (line.startsWith(SYNTAX_STRING_VARIABLE)) {
                 compiled.add(compileStr(line));
+            } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
+                compiled.add(compileBreak(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -209,10 +211,9 @@ public class Compiler extends CompilerSyntax {
     }
 
     private String compileBreak(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
         String compiled = "";
-        compiled += compiled += COMMAND_SEPERATOR;
-        compiled += commands;
+        compiled += INDEX_LOOP_BREAKER;
+        compiled += COMMAND_SEPERATOR;
         return compiled;
     }
 
