@@ -1,0 +1,9 @@
+Str angrif Attacken
+
+Set angriffsSet {
+    attacke
+    angriff
+    schlag
+    'angrif'
+    töten
+}

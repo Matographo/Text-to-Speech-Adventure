@@ -1,0 +1,3 @@
+Action angriff (Str text, Num zahl) {
+    Say: 'text' und 'zahl'
+}

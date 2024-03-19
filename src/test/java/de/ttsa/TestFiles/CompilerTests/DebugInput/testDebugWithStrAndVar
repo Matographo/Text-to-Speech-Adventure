@@ -1,0 +1,4 @@
+Str zahl = "Huhu"
+Room Raum1 {
+    Debug: zahl, "Halllo mein Name ist Debug"
+}

@@ -1,0 +1,7 @@
+Action angriff (Num zahl) {
+    Say: 'zahl'
+}
+
+Room Raum1 {
+    Do: angriff 5
+}

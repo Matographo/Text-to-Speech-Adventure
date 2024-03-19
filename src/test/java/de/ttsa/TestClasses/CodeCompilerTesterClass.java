@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import de.ttsa.ConsoleGame.Compiler.Compiler.CompileTools.CFileReader;
 import de.ttsa.ConsoleGame.Compiler.Compiler.CompileTools.Merger;
+import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.ConsoleGame.Compiler.Compiler.CompileC.Compiler;
 
 public class CodeCompilerTesterClass {
@@ -33,6 +34,12 @@ public class CodeCompilerTesterClass {
         Compiler compiler = new Compiler(content);
         Merger merger = new Merger(compiler.compile());
         return merger.merge();
+    }
+
+    protected boolean test(String path, String fileName) {
+        ArrayList<String> compiled = compileFiles(getContent(path + fileName));
+        OpCodeTest opCodeTest = new OpCodeTest();
+        return opCodeTest.start(compiled);
     }
 
 

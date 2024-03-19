@@ -1,0 +1,5 @@
+Num var1
+
+Room Raum1 {
+    NumDec: var1 = 1
+}

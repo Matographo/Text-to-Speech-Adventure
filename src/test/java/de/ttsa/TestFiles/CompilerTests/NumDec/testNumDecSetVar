@@ -1,0 +1,6 @@
+Num var1
+Num var2 5
+
+Room Raum1 {
+    NumDec: var1 = var2
+}

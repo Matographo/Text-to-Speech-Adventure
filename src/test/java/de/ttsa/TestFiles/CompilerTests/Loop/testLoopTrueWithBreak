@@ -1,0 +1,6 @@
+Room Raum1 {
+    Loop: true {
+        Say: "Hallo"
+        break:
+    }
+}

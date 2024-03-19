@@ -1,0 +1,7 @@
+Action angriff () {
+
+}
+
+Room Raum1 {
+    Do: angriff
+}

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
-public class CompilerSaveTest extends CompilerRoomJumperTest {
+public class CompilerSaveLoadExitTest extends CompilerRoomJumperTest {
 
     private final String PATH = TEST_FILE_PATH + "SaveLoadExit/";
 

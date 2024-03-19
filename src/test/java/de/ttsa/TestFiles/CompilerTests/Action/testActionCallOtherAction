@@ -1,0 +1,13 @@
+Num zahl1 5
+
+Action angriff2(Num zahl2) {
+    Say: 'zahl2'
+}
+
+Action angriff (Num zahl) {
+    Do: angriff2 zahl
+}
+
+Room Raum1 {
+    Do: angriff zahl1
+}
