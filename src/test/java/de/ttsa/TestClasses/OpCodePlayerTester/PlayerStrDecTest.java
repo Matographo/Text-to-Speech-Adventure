@@ -42,6 +42,15 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
+    @Test
+    public void testStrDecMultipleStringsAndVar() {
+        Player player = new Player(PATH + "testStrDecMultipleStringsAndVar");
+        player.play();
+        assertEquals(true, GameManager.strVars.containsKey("Var"));
+        assertEquals("Hello all", GameManager.strVars.get("Var").getValue());
+        resetTest();
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 

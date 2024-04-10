@@ -50,11 +50,16 @@ public class StrDec implements Scriptable {
      * @return the value
      */
     private String getValue(String operation) {
-        if(operation.startsWith("\"") && operation.endsWith("\"")) {
-            return operation.substring(1, operation.length() - 1);
-        } else {
-            return GameManager.strVars.get(operation).getValue();
+        StringBuilder result = new StringBuilder();
+        String[] parts = operation.split(",");
+        for (String part : parts) {
+            if (part.startsWith("\"") && part.endsWith("\"")) {
+                result.append(part.substring(1, part.length() - 1));
+            } else {
+                result.append(GameManager.strVars.get(part).getValue());
+            }
         }
+        return result.toString();
     }
 
 

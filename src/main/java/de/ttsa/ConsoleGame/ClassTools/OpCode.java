@@ -16,7 +16,7 @@ public class OpCode extends ConsoleLoadingSyntax {
     protected final String REGEX_IF_NUMBER = "(^(([a-zA-Z]+[\\w]*)|([\\d]*))([\\<]|[\\>]|[\\<][\\=]|[\\>][=]|[\\=][\\=]|[\\!][\\=])(([a-zA-Z]+[\\w]*)|([\\d]*)){1}(([\\+\\-\\*\\/])(([a-zA-Z]+[\\w]*)|([\\d]*)))*)";
     protected final String REGEX_IF_STRING = "(^([a-zA-Z]+[\\w]*)([\\=][\\=])(([a-zA-Z]+[\\w]*)|([\"][\\w\\s]*[\"])))";
     protected final String REGEX_IF_INPUT = "(^([\\(]([\"]([a-zA-Z][\\w]*|[\\'][a-zA-Z][\\w]*[\\']|[\\[][a-zA-Z][\\w]*[\\]])+(\\!\\!([a-zA-Z][\\w]*|[\\'][a-zA-Z][\\w]*[\\']|[\\[][a-zA-Z][\\w]*[\\]]))*[\"])+[\\)]))";
-    protected final String REGEX_STR_VARDEC = "([a-zA-Z]\\w*)\\:(([a-zA-Z]\\w*)|(\"[\\w\\s\\?\\!]*\"))";
+    protected final String REGEX_STR_VARDEC = "([a-zA-Z]\\w*)\\:(([a-zA-Z]\\w*)|(\"[\\w\\s\\?\\!]*\"))(\\,([a-zA-Z]\\w*)|\\,(\"[\\w\\s\\?\\!]*\"))*";
     protected final String REGEX_DEBUG = "([a-zA-Z]\\w*)|(\"([a-zA-Z][\\w\\s]*)\")";
     protected final String REGEX_EXIT = "[0]|[1]";
     protected final String REGEX_LOOP = "(true)|\\d+";

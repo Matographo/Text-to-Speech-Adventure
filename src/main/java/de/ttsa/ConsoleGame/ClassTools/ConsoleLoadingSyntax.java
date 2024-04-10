@@ -42,6 +42,7 @@ public class ConsoleLoadingSyntax {
     protected final String OFFORDER_SEPERATOR           = "!!!";
     protected final String VALUE_SEPERATOR              = "!!";
     protected final String STR_SEPERATOR                = ":";
+    protected final String STR_CONTENT_SEPERATOR        = ",";
     protected final String SET_SEPERATOR                = ",";
     protected final String SET_NAME_SEPERATOR           = ":";
     protected final String ACTION_SEPERATOR             = ":";

@@ -715,9 +715,10 @@ public class OpCodeTest extends OpCode{
 
 
         if(!isStrVar(strDecArgs[0]))                          return false;
-        if(!isStrVar(strDecArgs[1]) && !isStr(strDecArgs[1])) return false;
-
-        strNames.add(strDecArgs[0]);
+        String[] tokens = strDecArgs[1].split(STR_CONTENT_SEPERATOR);
+        for(String token : tokens) {
+            if(!isStrVar(token) && !isStr(token)) return false;
+        }
 
         return true;
     }

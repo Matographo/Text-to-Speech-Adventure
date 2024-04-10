@@ -54,6 +54,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileNumDec(line));
             } else if (line.startsWith(SYNTAX_NUMBER_VARIABLE)) {
                 compiled.add(compileNum(line));
+            } else if (line.startsWith(SYNTAX_STR_VARDEC)) {
+                compiled.add(compileStrDec(line));
             } else if (line.startsWith(SYNTAX_STRING_VARIABLE)) {
                 compiled.add(compileStr(line));
             } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
@@ -230,11 +232,36 @@ public class Compiler extends CompilerSyntax {
     private String compileStrDec(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(null);
-        compiled.append(commands);
+        StringBuilder compiled = getStartCode(INDEX_STR_VARDEC);
+        compiled.append(compileStrDecCommand(new StringBuilder(commands)));
         return compiled.toString();
     }
 
+    private String compileStrDecCommand(StringBuilder line) {
+        StringBuilder endString = new StringBuilder();
+
+        endString.append(line.substring(0, line.indexOf("=")).strip());
+        endString.append(STR_SEPERATOR);
+        endString.append(calculateStrDec(new StringBuilder(line.substring(line.indexOf("=") + 1).strip())));
+        return endString.toString();
+    }
+
+    private String calculateStrDec(StringBuilder line) {
+        StringBuilder endString = new StringBuilder();
+        while (line.toString().contains("'")) {
+            endString.append("\"" + line.substring(0, line.indexOf("'")) + "\"");
+            line.delete(0, line.indexOf("'") + 1);
+
+            endString.append(STR_CONTENT_SEPERATOR);
+
+            endString.append(line.substring(0, line.indexOf("'")).strip());
+            line.delete(0, line.indexOf("'") + 1);
+
+            endString.append(STR_CONTENT_SEPERATOR);
+        }
+        endString.append("\"" + line + "\"");
+        return endString.toString();
+    }
 
 // ***************************** DEBUG ******************************************
     private String compileDebug(String line) {

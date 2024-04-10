@@ -35,6 +35,12 @@ public class TesterStrDecTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+    @Test
+    public void testStrDecMultipleStringsAndVar() {
+        OpCodeTest test = new OpCodeTest(PATH + "testStrDecMultipleStringsAndVar");
+        assertEquals(true, test.start());
+    }
+
 
     // ------------------------- Fail Tests -------------------------
 
