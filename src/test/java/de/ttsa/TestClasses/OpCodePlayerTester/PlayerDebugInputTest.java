@@ -40,6 +40,13 @@ public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
+    @Test
+    public void testDebugInputWithStrVarAndString() {
+        Player player = new Player(PATH + "testDebugInputWithStrVarAndString");
+        player.play();
+        assertEquals("Hallo input", GameManager.input);
+        resetTest();
+    }
 
 // ------------------------- Fail Tests -------------------------
 

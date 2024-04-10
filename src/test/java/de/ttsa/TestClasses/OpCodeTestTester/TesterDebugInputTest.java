@@ -34,6 +34,12 @@ public class TesterDebugInputTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+    @Test
+    public void testDebugInputWithStrVarAndString() {
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVarAndString");
+        assertEquals(true, test.start());
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 

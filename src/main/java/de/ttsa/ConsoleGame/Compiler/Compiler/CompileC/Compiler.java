@@ -268,10 +268,26 @@ public class Compiler extends CompilerSyntax {
         String commands = getWithoutCommand(line);
 
         StringBuilder compiled = getStartCode(INDEX_DEBUG);
-        compiled.append(commands);
+        compiled.append(compileDebugCommand(new StringBuilder(commands)));
         return compiled.toString();
     }
 
+    private String compileDebugCommand(StringBuilder line) {
+        StringBuilder endString = new StringBuilder();
+
+        while (line.toString().contains("'")) {
+            endString.append("\"" + line.substring(0, line.indexOf("'")) + "\"");
+            line.delete(0, line.indexOf("'") + 1);
+
+            endString.append(STR_CONTENT_SEPERATOR);
+
+            endString.append(line.substring(0, line.indexOf("'")).strip());
+            line.delete(0, line.indexOf("'") + 1);
+
+            endString.append(STR_CONTENT_SEPERATOR);
+        }
+        return endString.toString();
+    }
 
 // ***************************** SAVE *******************************************
     private String compileSave(String line) {

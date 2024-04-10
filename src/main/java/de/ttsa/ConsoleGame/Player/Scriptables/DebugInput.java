@@ -34,14 +34,22 @@ public class DebugInput implements Scriptable {
     public boolean run() {
         if(input == null) return false;
 
-        if(input.startsWith("\"") && input.endsWith("\"")) {
-            input = input.substring(1, input.length() - 1);
-        } else {
-            input = GameManager.strVars.get(input).getValue();
-        }
-        
-        GameManager.input = input;
+        GameManager.input = getInputString();
         return true;
+    }
+
+    private String getInputString() {
+        StringBuilder result = new StringBuilder();
+        String[] parts = input.split(",");
+        for(String part : parts) {
+            if(part.startsWith("\"") && part.endsWith("\"")) {
+                result.append(part.substring(1, part.length() - 1));
+            } else {
+                result.append(GameManager.strVars.get(part).getValue());
+            }
+        }
+
+        return result.toString();
     }
     
 
