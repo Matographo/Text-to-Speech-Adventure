@@ -40,6 +40,21 @@ public class Compiler extends CompilerSyntax {
                 blockCount++;
                 isRoom = true;
                 block.add(line);
+            } else if (line.startsWith(SYNTAX_SET) && line.endsWith(SYNTAX_BLOCK_START)) {
+                ArrayList<String> setBlock = new ArrayList<>();
+
+                while(!content.get(i).strip().endsWith(SYNTAX_BLOCK_END)) {
+                    setBlock.add(content.get(i));
+                    content.remove(i);
+                }
+                if(content.get(i).strip().equals(SYNTAX_BLOCK_END)) {
+                    content.remove(i);
+                } else {
+                    setBlock.add(content.get(i).substring(0, content.lastIndexOf("}")).strip());
+                    content.remove(i);
+                }
+                compiled.add(compileSet(setBlock));
+                i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
             } else if (line.startsWith(SYNTAX_SAVE)) {
@@ -331,12 +346,29 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** SET ********************************************
     private String compileSet(ArrayList<String> lines) {
-        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+        String setName = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_SET) + SYNTAX_SET.length() +1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip();
         lines.remove(0);
 
         StringBuilder compiled = getStartCode(INDEX_SET);
-        compiled.append(commands);
+        compiled.append(setName);
+        compiled.append(SET_NAME_SEPERATOR);
+        compiled.append(compileSetCommands(lines));
         return compiled.toString();
+    }
+
+    private String compileSetCommands(ArrayList<String> lines) {
+        StringBuilder endString = new StringBuilder();
+        for (String line : lines) {
+            line = line.strip();
+            if(line.startsWith("'") && line.endsWith("'")) {
+                endString.append(line.substring(1, line.length() - 1));
+            } else {
+                endString.append("\"" + line + "\"");
+            }
+            endString.append(SET_SEPERATOR);
+        }
+        endString.deleteCharAt(endString.length() - 1);
+        return endString.toString();
     }
 
 

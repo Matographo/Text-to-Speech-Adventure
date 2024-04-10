@@ -1,9 +1,9 @@
-Str angrif Attacken
+Str: angrif
 
 Set angriffsSet {
     attacke
     angriff
     schlag
     'angrif'
-    töten
+    toeten
 }

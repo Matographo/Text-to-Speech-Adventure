@@ -1,4 +1,4 @@
-Num Var1 5
+Num: Var1 5
 
 Room Raum1 {
     Loop: Var1 = 5 {
