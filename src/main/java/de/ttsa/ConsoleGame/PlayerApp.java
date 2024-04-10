@@ -3,7 +3,6 @@ package de.ttsa.ConsoleGame;
 import java.io.IOException;
 
 import de.ttsa.ConsoleGame.Player.Player;
-import de.ttsa.Stats.BuildingStats;
 
 public class PlayerApp {
     
