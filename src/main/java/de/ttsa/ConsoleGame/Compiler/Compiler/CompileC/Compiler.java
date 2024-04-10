@@ -50,6 +50,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileExit(line));
             } else if (line.startsWith(SYNTAX_INPUT)) {
                 compiled.add(compileInput(line));
+            } else if (line.startsWith(SYNTAX_NUM_VARDEC)) {
+                compiled.add(compileNumDec(line));
             } else if (line.startsWith(SYNTAX_NUMBER_VARIABLE)) {
                 compiled.add(compileNum(line));
             } else if (line.startsWith(SYNTAX_STRING_VARIABLE)) {
@@ -65,47 +67,50 @@ public class Compiler extends CompilerSyntax {
 
 
 
+
 // --------------------------- Compiler Methods ---------------------------------
+
 
 
 // ***************************** SAY ********************************************
     private String compileSay(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_SAY);
-        compiled += getSay(commands);
-        return compiled;
+        StringBuilder commands = new StringBuilder(getWithoutCommand(line));
+
+        StringBuilder compiled = getStartCode(INDEX_SAY);
+        compiled.append(getSay(commands));
+        return compiled.toString();
     }
 
-    private String getSay(String commands) {
-        String endCommand = "";
+    private String getSay(StringBuilder commands) {
+        StringBuilder endCommand = new StringBuilder();
         String subCommand = "";
         int cutIndex;
         while (commands.length() > 0) {
-            if (commands.startsWith("\'")) {
+            if (commands.toString().startsWith("\'")) {
                 cutIndex = commands.substring(1).indexOf("\'") + 1;
                 subCommand = commands.substring(1, cutIndex);
-                endCommand += subCommand;
-                commands = commands.substring(cutIndex + 1);
+                endCommand.append(subCommand);
+                commands.delete(0, cutIndex + 1);
             } else {
                 cutIndex = commands.indexOf("\'");
                 if (cutIndex != -1) {
                     subCommand = commands.substring(0, cutIndex);
                 } else {
-                    subCommand = commands;
+                    subCommand = commands.toString();
                 }
-                endCommand += "\"" + subCommand + "\"";
+                endCommand.append("\"" + subCommand + "\"");
                 if (cutIndex != -1) {
-                    commands = commands.substring(cutIndex);
+                    commands.delete(cutIndex, commands.length());
                 } else {
-                    commands = "";
+                    commands.setLength(0);
                 }
             }
             if (commands.length() > 0) {
-                endCommand += SAY_SEPERATOR;
+                endCommand.append(SAY_SEPERATOR);
             }
         }
 
-        return endCommand;
+        return endCommand.toString();
     }
 
 
@@ -117,11 +122,12 @@ public class Compiler extends CompilerSyntax {
         if (commands.contains("{")) {
             commands = commands.substring(0, commands.indexOf(SYNTAX_BLOCK_START)).strip();
         }
-        String compiled = getStartCode(INDEX_ROOM);
-        compiled += commands;
-        compiled += ROOM_SEPERATOR;
-        compiled += lines.size();
-        compiledRoom.add(compiled);
+
+        StringBuilder compiled = getStartCode(INDEX_ROOM);
+        compiled.append(commands);
+        compiled.append(ROOM_SEPERATOR);
+        compiled.append(lines.size());
+        compiledRoom.add(compiled.toString());
         compiledRoom.addAll(compileFile(lines));
         return compiledRoom;
     }
@@ -129,47 +135,55 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** ROOM JUMPER ************************************
     private String compileRoomJumper(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_ROOM_JUMPER);
-        compiled += commands;
-        return compiled;
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(INDEX_ROOM_JUMPER);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** Num INIT ****************************************
     private String compileNum(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_NUMBER_VARIABLE);
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(INDEX_NUMBER_VARIABLE);
         if (commands.contains("=")) {
             String[] parts = commands.split("=");
-            compiled += parts[0].strip();
-            compiled += NUMBER_VARIABLE_SEPERATOR;
-            compiled += parts[1].strip();
-            return compiled;
+            compiled.append(parts[0].strip());
+            compiled.append(NUMBER_VARIABLE_SEPERATOR);
+            compiled.append(parts[1].strip());
+            return compiled.toString();
+        } else if (commands.contains(" ")) {
+            String[] parts = commands.split(" ");
+            compiled.append(parts[0].strip());
+            compiled.append(NUMBER_VARIABLE_SEPERATOR);
+            compiled.append(parts[1].strip());
+            return compiled.toString();
         } else {
-            compiled += commands;
-            compiled += NUMBER_VARIABLE_SEPERATOR;
-            compiled += "0";
-            return compiled;
+            compiled.append(commands);
+            compiled.append(NUMBER_VARIABLE_SEPERATOR);
+            compiled.append("0");
+            return compiled.toString();
         }
     }
 
 
 // ***************************** STR INIT ****************************************
     private String compileStr(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_STRING_VARIABLE);
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(INDEX_STRING_VARIABLE);
         if (commands.contains("=")) {
             String[] parts = commands.split("=");
-            compiled += parts[0].strip();
-            compiled += NUMBER_STRING_SEPERATOR;
-            compiled += parts[1].strip();
-            return compiled;
+            compiled.append(parts[0].strip());
+            compiled.append(NUMBER_STRING_SEPERATOR);
+            compiled.append(parts[1].strip());
+            return compiled.toString();
         } else {
-            compiled += commands;
-            compiled += NUMBER_STRING_SEPERATOR;
-            compiled += "";
-            return compiled;
+            compiled.append(commands);
+            compiled.append(NUMBER_STRING_SEPERATOR);
+            return compiled.toString();
         }
 
     }
@@ -177,16 +191,27 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** NUM DEC ***************************************
     private String compileNumDec(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(null);
-        compiled += commands;
-        return compiled;
+        StringBuilder commands = new StringBuilder(getWithoutCommand(line));
+
+        StringBuilder compiled = getStartCode(INDEX_NUM_VARDEC);
+        compiled.append(compileNumDecCommand(commands));
+        return compiled.toString();
+    }
+
+    private String compileNumDecCommand(StringBuilder line) {
+        StringBuilder endString = new StringBuilder();
+
+        endString.append(line.substring(0, line.indexOf("=")).strip());
+        endString.append(NUMBER_VARIABLE_SEPERATOR);
+        line.delete(0, line.indexOf("=") + 1);
+        endString.append(line.toString().replaceAll(" ", "").strip());
+        return endString.toString();
     }
 
 
 // ***************************** INPUT ****************************************
     private String compileInput(String line) {
-        return getStartCode(INDEX_INPUT);
+        return getStartCode(INDEX_INPUT).toString();
     }
 
 
@@ -194,47 +219,50 @@ public class Compiler extends CompilerSyntax {
     private String compileIf(ArrayList<String> lines) {
         String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
         lines.remove(0);
-        String compiled = getStartCode(INDEX_IF);
-        compiled += commands;
-        return compiled;
+
+        StringBuilder compiled = getStartCode(INDEX_IF);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** STR DEC ****************************************
     private String compileStrDec(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(null);
-        compiled += commands;
-        return compiled;
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(null);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** DEBUG ******************************************
     private String compileDebug(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_DEBUG);
-        compiled += commands;
-        return compiled;
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(INDEX_DEBUG);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** SAVE *******************************************
     private String compileSave(String line) {
-        return getStartCode(INDEX_SAVE);
+        return getStartCode(INDEX_SAVE).toString();
     }
 
 
 // ***************************** LOAD *******************************************
     private String compileLoad(String line) {
-        return getStartCode(INDEX_LOAD);
+        return getStartCode(INDEX_LOAD).toString();
     }
 
 
 // ***************************** EXIT *******************************************
     private String compileExit(String line) {
-        String compiled = getStartCode(INDEX_EXIT);
-        compiled += "0";
-        return compiled;
+        StringBuilder compiled = getStartCode(INDEX_EXIT);
+        compiled.append("0");
+        return compiled.toString();
     }
 
 
@@ -242,15 +270,16 @@ public class Compiler extends CompilerSyntax {
     private String compileLoop(ArrayList<String> lines) {
         String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
         lines.remove(0);
-        String compiled = getStartCode(INDEX_LOOP);
-        compiled += commands;
-        return compiled;
+
+        StringBuilder compiled = getStartCode(INDEX_LOOP);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** BREAK ******************************************
     private String compileBreak(String line) {
-        return getStartCode(INDEX_LOOP_BREAKER);
+        return getStartCode(INDEX_LOOP_BREAKER).toString();
     }
 
 
@@ -258,9 +287,10 @@ public class Compiler extends CompilerSyntax {
     private String compileSet(ArrayList<String> lines) {
         String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
         lines.remove(0);
-        String compiled = getStartCode(INDEX_SET);
-        compiled += commands;
-        return compiled;
+
+        StringBuilder compiled = getStartCode(INDEX_SET);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
@@ -268,18 +298,20 @@ public class Compiler extends CompilerSyntax {
     private String compileAction(ArrayList<String> lines) {
         String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
         lines.remove(0);
-        String compiled = getStartCode(INDEX_ACTION);
-        compiled += commands;
-        return compiled;
+
+        StringBuilder compiled = getStartCode(INDEX_ACTION);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
 // ***************************** ACTION CALL ************************************
     private String compileActionCall(String line) {
-        String commands = line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
-        String compiled = getStartCode(INDEX_ACTION_CALL);
-        compiled += commands;
-        return compiled;
+        String commands = getWithoutCommand(line);
+
+        StringBuilder compiled = getStartCode(INDEX_ACTION_CALL);
+        compiled.append(commands);
+        return compiled.toString();
     }
 
 
@@ -288,8 +320,12 @@ public class Compiler extends CompilerSyntax {
     // ------------------------------ Help Methods ------------------------------
 
 
-    private String getStartCode(String index) {
-        return index + COMMAND_SEPERATOR;
+    private StringBuilder getStartCode(String index) {
+        return new StringBuilder().append(index + COMMAND_SEPERATOR);
+    }
+
+    private String getWithoutCommand(String line) {
+        return line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
     }
 
 }

@@ -1,4 +1,4 @@
-Num var1
+Num: var1
 
 Room Raum1 {
     NumDec: var1 = var1 + 1
