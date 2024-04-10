@@ -1,4 +1,4 @@
-Str zahl
+Str: zahl
 Room Raum1 {
     Debug: 'zahl'
 }

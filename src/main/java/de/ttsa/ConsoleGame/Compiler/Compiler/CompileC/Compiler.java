@@ -60,6 +60,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileStr(line));
             } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
                 compiled.add(compileBreak(line));
+            } else if (line.startsWith(SYNTAX_DEBUG)) {
+                compiled.add(compileDebug(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -286,6 +288,7 @@ public class Compiler extends CompilerSyntax {
 
             endString.append(STR_CONTENT_SEPERATOR);
         }
+        endString.append("\"" + line + "\"");
         return endString.toString();
     }
 
