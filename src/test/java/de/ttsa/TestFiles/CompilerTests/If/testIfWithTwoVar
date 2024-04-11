@@ -3,7 +3,7 @@ Num: var2 1
 
 Room Raum1 {
    
-    If: var1 = var2 {
+    If: var1 == var2 {
         Say: var1 is 1
     }
 }

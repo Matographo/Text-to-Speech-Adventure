@@ -376,14 +376,13 @@ public class OpCodeTest extends OpCode{
      */
     private boolean testIfSyntaxSwitch(String args) {
         char i = args.charAt(0);
-        args   = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
+        args   = args.substring(1, args.indexOf(IF_NUM_SEPERATOR));
         boolean testResult;
 
-
         switch(i) {
-            case IF_NUMBER -> testResult = testIfSyntaxNum(args.substring(1));
-            case IF_STRING -> testResult = testIfSyntaxStr(args.substring(1));
-            case IF_INPUT ->  testResult = testIfSyntaxIn(args.substring(1));
+            case IF_NUMBER -> testResult = testIfSyntaxNum(args);
+            case IF_STRING -> testResult = testIfSyntaxStr(args);
+            case IF_INPUT ->  testResult = testIfSyntaxIn(args);
             default ->        testResult = false;
         }
 
@@ -396,7 +395,33 @@ public class OpCodeTest extends OpCode{
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxNum(String args) {
+        while(hasBrackets(args)) {
+            if(!testIfSyntaxNumInnerBreckets(getInnerBreckets(args))) return false;
+            args = removeInnerBrecketsAndSubstitut(args, "1");
+        }
         return args.matches(REGEX_IF_NUMBER);
+    }
+
+    private boolean testIfSyntaxNumInnerBreckets(String args) {
+        return args.matches(REGEX_IF_INNER_BRECKETS);
+    }
+
+    private String getInnerBreckets(String args) {
+        int start = args.lastIndexOf("(") + 1;
+        args = args.substring(start);
+        return args.substring(0, args.indexOf(")"));
+    }
+
+    private String removeInnerBrecketsAndSubstitut(String args, String substitut) {
+        int start = args.lastIndexOf("(");
+        String startStr = args.substring(0, start);
+        args = args.substring(start+1);
+        String endStr = args.substring(args.indexOf(")") + 1);
+        return startStr + substitut + endStr;
+    }
+
+    private boolean hasBrackets(String args) {
+        return args.contains("(") || args.contains(")");
     }
 
     /**
@@ -678,7 +703,12 @@ public class OpCodeTest extends OpCode{
      */
     private boolean testIfVarStr(String args) {
         args           = args.substring(0, args.indexOf(":"));
-        String[] tests = args.split("==");
+        String[] tests;
+        if (args.contains("!=")) {
+            tests = args.split("!=");
+        } else {
+            tests = args.split("==");
+        }
 
 
         if(!strNames.contains(tests[0]) && !tests[0].startsWith("\"") && !tests[0].endsWith("\"")) return false;

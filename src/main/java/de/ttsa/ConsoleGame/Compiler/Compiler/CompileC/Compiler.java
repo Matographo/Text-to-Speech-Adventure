@@ -1,15 +1,23 @@
 package de.ttsa.ConsoleGame.Compiler.Compiler.CompileC;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
 
 public class Compiler extends CompilerSyntax {
 
     ArrayList<ArrayList<String>> fileContent;
+    HashMap<String, HashSet<String>> variables;
     
     public Compiler(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
+        variables = new HashMap<>();
+        HashSet<String> strVar = new HashSet<>();
+        HashSet<String> numVar = new HashSet<>();
+        variables.put("STRING", strVar);
+        variables.put("NUMBER", numVar);
     }
 
     public ArrayList<ArrayList<String>> compile() {
@@ -22,38 +30,79 @@ public class Compiler extends CompilerSyntax {
 
     private ArrayList<String> compileFile(ArrayList<String> content) {
         ArrayList<String> compiled = new ArrayList<String>(content.size());
-        ArrayList<String> block = new ArrayList<>();
         String line = "";
-        boolean isRoom = false;
-        int blockCount = 0;
         for (int i = 0; i < content.size(); i++) {
             line = content.get(i).strip();
-            if(line.startsWith("}") && isRoom) {
-                compiled.addAll(compileRoom(block));
-                blockCount--;
-                isRoom = false;
-            } else if(blockCount > 0) {
-                block.add(line);
-            } else if (line.startsWith(SYNTAX_SAY)) {
+            if (line.startsWith(SYNTAX_SAY)) {
                 compiled.add(compileSay(line));
             } else if (line.startsWith(SYNTAX_ROOM)) {
-                blockCount++;
-                isRoom = true;
-                block.add(line);
+                ArrayList<String> roomBlock = new ArrayList<>();
+                int blocks = 1;
+                roomBlock.add(content.get(i));
+                content.remove(i);
+                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
+                    line = content.get(i).strip();
+                    if(line.contains("{")) {
+                        blocks++;
+                    } else if(line.contains("}")) {
+                        blocks--;
+                    }
+                    roomBlock.add(line);
+                    content.remove(i);
+                }
+                if(roomBlock.get(roomBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
+                    roomBlock.remove(roomBlock.size()-1);
+                } else {
+                    roomBlock.set(roomBlock.size()-1, roomBlock.get(roomBlock.size()-1).substring(0, roomBlock.get(roomBlock.size()-1).lastIndexOf("}")).strip());
+                }
+                compiled.addAll(compileRoom(roomBlock));
+                i--;
             } else if (line.startsWith(SYNTAX_SET) && line.endsWith(SYNTAX_BLOCK_START)) {
                 ArrayList<String> setBlock = new ArrayList<>();
+                int blocks = 1;
 
-                while(!content.get(i).strip().endsWith(SYNTAX_BLOCK_END)) {
+                setBlock.add(content.get(i));
+                content.remove(i);
+
+                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
+                    if(content.get(i).contains("{")) {
+                        blocks++;
+                    } else if(content.get(i).contains("}")) {
+                        blocks--;
+                    }
                     setBlock.add(content.get(i));
                     content.remove(i);
                 }
-                if(content.get(i).strip().equals(SYNTAX_BLOCK_END)) {
-                    content.remove(i);
+                if(setBlock.get(setBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
+                    setBlock.remove(setBlock.size()-1);
                 } else {
-                    setBlock.add(content.get(i).substring(0, content.lastIndexOf("}")).strip());
-                    content.remove(i);
+                    setBlock.set(setBlock.size()-1, setBlock.get(setBlock.size()-1).substring(0, setBlock.get(setBlock.size()-1).lastIndexOf("}")).strip());
                 }
                 compiled.add(compileSet(setBlock));
+                i--;
+            } else if (line.startsWith(SYNTAX_IF)) {
+                ArrayList<String> ifBlock = new ArrayList<>();
+                int blocks = 1;
+
+                ifBlock.add(content.get(i));
+                content.remove(i);
+
+                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
+                    if(content.get(i).contains("{")) {
+                        blocks++;
+                    }
+                    if(content.get(i).contains("}")) {
+                        blocks--;
+                    }
+                    ifBlock.add(content.get(i));
+                    content.remove(i);
+                }
+                if(ifBlock.get(ifBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
+                    ifBlock.remove(ifBlock.size()-1);
+                } else {
+                    ifBlock.set(ifBlock.size()-1, ifBlock.get(ifBlock.size()-1).substring(0, ifBlock.get(ifBlock.size()-1).lastIndexOf("}")).strip());
+                }
+                compiled.addAll(compileIf(ifBlock));
                 i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
@@ -136,6 +185,7 @@ public class Compiler extends CompilerSyntax {
 // ***************************** ROOM *******************************************
     private ArrayList<String> compileRoom(ArrayList<String> lines) {
         ArrayList<String> compiledRoom = new ArrayList<>(lines.size());
+        ArrayList<String> roomContent = new ArrayList<>(lines.size());
         String commands = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_ROOM) + SYNTAX_ROOM.length()).strip();
         lines.remove(0);
         if (commands.contains("{")) {
@@ -145,9 +195,12 @@ public class Compiler extends CompilerSyntax {
         StringBuilder compiled = getStartCode(INDEX_ROOM);
         compiled.append(commands);
         compiled.append(ROOM_SEPERATOR);
-        compiled.append(lines.size());
+
+        roomContent.addAll(compileFile(lines));
+
+        compiled.append(roomContent.size());
         compiledRoom.add(compiled.toString());
-        compiledRoom.addAll(compileFile(lines));
+        compiledRoom.addAll(roomContent);
         return compiledRoom;
     }
 
@@ -165,46 +218,58 @@ public class Compiler extends CompilerSyntax {
 // ***************************** Num INIT ****************************************
     private String compileNum(String line) {
         String commands = getWithoutCommand(line);
+        String varName = "";
 
         StringBuilder compiled = getStartCode(INDEX_NUMBER_VARIABLE);
-        if (commands.contains("=")) {
-            String[] parts = commands.split("=");
-            compiled.append(parts[0].strip());
+        if(commands.contains("=") || commands.contains(" ")) {
+            String[] parts;
+
+            if (commands.contains("=")) parts = commands.split("=");
+            else                        parts = commands.split(" ");
+
+            varName = parts[0].strip();
+            compiled.append(varName);
             compiled.append(NUMBER_VARIABLE_SEPERATOR);
             compiled.append(parts[1].strip());
-            return compiled.toString();
-        } else if (commands.contains(" ")) {
-            String[] parts = commands.split(" ");
-            compiled.append(parts[0].strip());
-            compiled.append(NUMBER_VARIABLE_SEPERATOR);
-            compiled.append(parts[1].strip());
-            return compiled.toString();
         } else {
-            compiled.append(commands);
+            varName = commands;
+            compiled.append(varName);
             compiled.append(NUMBER_VARIABLE_SEPERATOR);
             compiled.append("0");
-            return compiled.toString();
         }
+        variables.get("NUMBER").add(varName);
+        return compiled.toString();
     }
 
 
 // ***************************** STR INIT ****************************************
     private String compileStr(String line) {
         String commands = getWithoutCommand(line);
+        String varName = "";
 
         StringBuilder compiled = getStartCode(INDEX_STRING_VARIABLE);
-        if (commands.contains("=")) {
-            String[] parts = commands.split("=");
-            compiled.append(parts[0].strip());
-            compiled.append(NUMBER_STRING_SEPERATOR);
+        if(commands.contains("=") || commands.contains(" ")) {
+            String[] parts;
+
+            if (commands.contains("=")) parts = commands.split("=");
+            else {
+                parts = new String[2];
+                parts[0] = commands.substring(0, commands.indexOf(" "));
+                parts[1] = commands.substring(commands.indexOf(" ") + 1).toString();
+            }
+
+            varName = parts[0].strip();
+            compiled.append(varName);
+            compiled.append(STR_SEPERATOR);
             compiled.append(parts[1].strip());
-            return compiled.toString();
         } else {
-            compiled.append(commands);
+            varName = commands;
+            compiled.append(varName);
             compiled.append(NUMBER_STRING_SEPERATOR);
-            return compiled.toString();
         }
 
+        variables.get("STRING").add(varName);
+        return compiled.toString();
     }
 
 
@@ -235,13 +300,102 @@ public class Compiler extends CompilerSyntax {
 
 
 // ***************************** IF *******************************************
-    private String compileIf(ArrayList<String> lines) {
-        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
-        lines.remove(0);
+    private ArrayList<String> compileIf(ArrayList<String> lines) {
+        String result = getStartCode(INDEX_IF).toString();
 
-        StringBuilder compiled = getStartCode(INDEX_IF);
-        compiled.append(commands);
+        ArrayList<String> content = calculateIfBlocks(getBlocks(lines));
+
+        content.set(0, result + content.get(0));
+        return content;
+    }
+
+    private ArrayList<ArrayList<String>> getBlocks(ArrayList<String> ifBlock) {
+        ArrayList<ArrayList<String>> blocks = new ArrayList<>();
+        ArrayList<String> block = new ArrayList<>();
+        boolean isFirst = true;
+        for (String line : ifBlock) {
+            if ((line.startsWith(SYNTAX_IF) || line.startsWith("} Else If") || line.startsWith("} Else")) && line.endsWith(SYNTAX_BLOCK_START)) {
+                if(!isFirst) {
+                    blocks.add(block);
+                }
+                isFirst = false;
+                block = new ArrayList<>();
+                block.add(line.substring(line.indexOf(SYNTAX_COMMAND) + 1, line.lastIndexOf(SYNTAX_BLOCK_START)).strip());
+            } else if (line.startsWith(SYNTAX_BLOCK_END)) {
+                continue;
+            } else {
+                block.add(line);
+            
+            }
+
+        }
+
+        blocks.add(block);
+        return blocks;
+    }
+
+    private ArrayList<String> calculateIfBlocks(ArrayList<ArrayList<String>> blocks) {
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> compiledFile;
+        StringBuilder compiledIf = new StringBuilder();
+        String condition = "";
+
+
+        for (ArrayList<String> block : blocks) {
+            condition = block.get(0);
+            block.remove(0);
+
+            compiledIf.append(calculateCondition(condition));
+            compiledIf.append(IF_NUM_SEPERATOR);
+            
+            compiledFile = compileFile(block);
+            result.addAll(compiledFile);
+            compiledIf.append(compiledFile.size());
+            compiledIf.append(IF_ELSE_SEPERATOR);
+        }
+        compiledIf.delete(compiledIf.length()-2, compiledIf.length());
+
+        result.add(0, compiledIf.toString());
+        return result;
+    }
+
+    private String calculateCondition(String condition) {
+        condition = condition.replaceAll(" ", "");
+        StringBuilder compiled = new StringBuilder();
+        char mode = calculateConditionMode(condition);
+        
+        compiled.append(mode);
+        switch(mode) {
+            case IF_NUMBER -> compiled.append(calculateIfNumber(condition));
+            case IF_STRING -> compiled.append(calculateIfString(condition));
+            case IF_INPUT -> compiled.append(calculateIfInput(condition));
+            case ' ' -> compiled.deleteCharAt(compiled.length()-1);
+        }
         return compiled.toString();
+    }
+
+    private char calculateConditionMode(String conditionString) {
+        if(conditionString.equals("")) return ' ';
+
+        String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
+
+        if(variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IF_NUMBER;
+        else if(variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IF_STRING;
+        else if(conditionString.startsWith(SYNTAX_INPUT)) return IF_INPUT;
+        throw new IllegalArgumentException("Syntax Error: " + condition);
+    }
+
+    private String calculateIfNumber(String condition) {
+        return condition;
+    }
+
+    private String calculateIfString(String condition) {
+        return condition;
+    }
+
+    private String calculateIfInput(String condition) {
+        //TODO: Implement
+        return null;
     }
 
 
@@ -404,6 +558,15 @@ public class Compiler extends CompilerSyntax {
 
     private String getWithoutCommand(String line) {
         return line.substring(line.indexOf(SYNTAX_COMMAND) + 1).strip();
+    }
+
+    private String splitAtMatch(String toSplit, String[] matches) {
+        for (String match : matches) {
+            if(toSplit.contains(match)) {
+                return toSplit.substring(0, toSplit.indexOf(match));
+            }
+        }
+        return toSplit;
     }
 
 }

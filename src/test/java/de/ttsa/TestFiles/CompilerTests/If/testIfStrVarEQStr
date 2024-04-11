@@ -1,0 +1,8 @@
+Str: var1 Hallo
+
+Room Raum1 {
+   
+    If: var1 == "Hallo" {
+        Say: var1 is 'var1'
+    }
+}

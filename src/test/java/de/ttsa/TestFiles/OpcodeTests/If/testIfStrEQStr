@@ -1,0 +1,4 @@
+04::Var:H
+01::START:2
+06::s"Hallo"=="Hallo":1
+08::Var:"Hallo"

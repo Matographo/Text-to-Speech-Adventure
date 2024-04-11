@@ -3,7 +3,7 @@ Num: var2 1
 
 Room Raum1 {
    
-    If: var1 = 2*(var2-var1)+4/2 {
+    If: var1 == 2*(var2-var1)+4/2 {
         Say: var1 is 1
     }
 }

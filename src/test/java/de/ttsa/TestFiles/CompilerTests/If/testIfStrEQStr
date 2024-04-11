@@ -1,0 +1,6 @@
+Room Raum1 {
+   
+    If: "Hallo" == "Hallo" {
+        Say: Das Klappt Gut
+    }
+}

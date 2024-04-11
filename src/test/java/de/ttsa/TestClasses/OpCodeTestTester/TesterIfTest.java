@@ -94,6 +94,24 @@ public class TesterIfTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+    @Test
+    public void testIfStrEQStr() {
+        OpCodeTest test = new OpCodeTest(PATH + "testIfStrEQStr");
+        assertEquals(true, test.start());
+    }
+
+    @Test
+    public void testIfStrNEStr() {
+        OpCodeTest test = new OpCodeTest(PATH + "testIfStrNEStr");
+        assertEquals(true, test.start());
+    }
+
+    @Test
+    public void testIfStrVarEQStr() {
+        OpCodeTest test = new OpCodeTest(PATH + "testIfStrVarEQStr");
+        assertEquals(true, test.start());
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 

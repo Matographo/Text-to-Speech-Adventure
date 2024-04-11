@@ -132,6 +132,33 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
+    @Test
+    public void testIfStrEQStr() {
+        final String expected = "Hallo";
+        Player player = new Player(PATH + "testIfStrEQStr");
+        player.play();
+        assertEquals(expected, GameManager.strVars.get("Var").getValue());
+        resetTest();
+    }
+
+    @Test
+    public void testIfStrNEStr() {
+        final String expected = "Hallo";
+        Player player = new Player(PATH + "testIfStrNEStr");
+        player.play();
+        assertEquals(expected, GameManager.strVars.get("Var").getValue());
+        resetTest();
+    }
+
+    @Test
+    public void testIfStrVarEQStr() {
+        final String expected = "Hallo";
+        Player player = new Player(PATH + "testIfStrVarEQStr");
+        player.play();
+        assertEquals(expected, GameManager.strVars.get("Var").getValue());
+        resetTest();
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 

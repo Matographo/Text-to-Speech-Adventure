@@ -114,4 +114,20 @@ public class CompilerIfTest extends CodeCompilerTesterClass {
         result = test(PATH, testName);
         assertEquals(true, result);
     }
+
+    @Test
+    public void testIfStrEQStr() {
+        String testName = "testIfStrEQStr";
+        boolean result;
+        result = test(PATH, testName);
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void testIfStrVarEQStr() {
+        String testName = "testIfStrVarEQStr";
+        boolean result;
+        result = test(PATH, testName);
+        assertEquals(true, result);
+    }
 }

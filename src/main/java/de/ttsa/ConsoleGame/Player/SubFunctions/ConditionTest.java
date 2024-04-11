@@ -197,7 +197,17 @@ public class ConditionTest {
      * @return true if the condition is true
      */
     private boolean testStringCondition(String condition) {
-        String[] con = condition.split("==");
+        String[] con;
+        boolean isNQ;
+        
+        if(condition.contains("!=")) {
+            con = condition.split("!=");
+            isNQ = true;
+        } else {
+            con = condition.split("==");
+            isNQ = false;
+        }
+        
 
 
         for(int i=0; i < con.length; i++) {
@@ -210,6 +220,8 @@ public class ConditionTest {
 
         }
 
+        if(isNQ) return !con[0].equals(con[1]);
+        
         return con[0].equals(con[1]);
     }
 
