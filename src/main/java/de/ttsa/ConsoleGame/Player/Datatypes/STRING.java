@@ -3,7 +3,7 @@ package de.ttsa.ConsoleGame.Player.Datatypes;
 public class STRING implements Printablable {
 
 
-// ---------------------------- Attributes ----------------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -11,7 +11,8 @@ public class STRING implements Printablable {
 
 
 
-// --------------------------- Constructor ---------------------------
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
 
 
     /**
@@ -24,7 +25,8 @@ public class STRING implements Printablable {
 
 
 
-// ----------------------------- Methods -----------------------------
+// ----------------------------------------------- Methods ---------------------------------------------------- //
+
 
 
     /**
@@ -54,5 +56,7 @@ public class STRING implements Printablable {
     public String toString() {
         return print();
     }
+    
+
     
 }

@@ -8,9 +8,21 @@ import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
 
 public class Compiler extends CompilerSyntax {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     ArrayList<ArrayList<String>> fileContent;
     HashMap<String, HashSet<String>> variables;
     
+
+
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
+
+
     public Compiler(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
         variables = new HashMap<>();
@@ -20,6 +32,12 @@ public class Compiler extends CompilerSyntax {
         variables.put("NUMBER", numVar);
     }
 
+
+
+// -------------------------------------------- Start Method -------------------------------------------------- //
+
+
+
     public ArrayList<ArrayList<String>> compile() {
         ArrayList<ArrayList<String>> compiled = new ArrayList<ArrayList<String>>();
         for (ArrayList<String> line : fileContent) {
@@ -27,6 +45,12 @@ public class Compiler extends CompilerSyntax {
         }
         return compiled;
     }
+
+
+
+// ------------------------------------------- Compile Chooser ------------------------------------------------ //
+
+
 
     private ArrayList<String> compileFile(ArrayList<String> content) {
         ArrayList<String> compiled = new ArrayList<String>(content.size());
@@ -549,7 +573,7 @@ public class Compiler extends CompilerSyntax {
 
 
 
-    // ------------------------------ Help Methods ------------------------------
+// -------------------------------------------- Help Methods ------------------------------------------------ //
 
 
     private StringBuilder getStartCode(String index) {

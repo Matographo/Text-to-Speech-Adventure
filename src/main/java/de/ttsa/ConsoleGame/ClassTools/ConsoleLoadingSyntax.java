@@ -2,6 +2,8 @@ package de.ttsa.ConsoleGame.ClassTools;
 
 public class ConsoleLoadingSyntax {
 
+
+    
 // ------------------------------ Index Syntax --------------------------------
 
 

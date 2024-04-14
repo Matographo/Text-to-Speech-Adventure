@@ -5,11 +5,29 @@ import java.util.ArrayList;
 
 public class Test {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     ArrayList<ArrayList<String>> fileContent;
+
+
+
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
+
 
     public Test(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
     }
+
+
+
+// ----------------------------------------------- Methods ---------------------------------------------------- //
+
+
 
     public boolean test() {
         return true;

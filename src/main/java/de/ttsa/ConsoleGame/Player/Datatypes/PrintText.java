@@ -10,8 +10,10 @@ public class PrintText implements Printablable{
     private final String text;
 
 
+
 // --------------------------- Constructor ---------------------------
     
+
 
     /**
      * Constructor for PrintText
@@ -20,6 +22,7 @@ public class PrintText implements Printablable{
     public PrintText(String text) {
         this.text = text;
     }
+
 
 
 // ----------------------------- Methods -----------------------------
@@ -35,4 +38,7 @@ public class PrintText implements Printablable{
     public String toString() {
         return print();
     }
+
+
+    
 }

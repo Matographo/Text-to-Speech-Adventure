@@ -11,11 +11,28 @@ import javafx.stage.Stage;
 public class App extends Application {
 
 
+
+// --------------------------------------------- Attributes ------------------------------------------------ //
+
+
+
     private static Scene scene;
+
+
+
+// ------------------------------------------------ Main --------------------------------------------------- //
+
+
 
     public static void main(String[] args) {
         launch(args);
     }
+
+
+
+// ----------------------------------------------- Start -------------------------------------------------- //
+
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,7 +42,12 @@ public class App extends Application {
     }
 
 
-        static void setRoot(String fxml) throws IOException {
+
+// ---------------------------------------------- Methoden ---------------------------------------------- //
+
+
+
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -33,5 +55,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("GUI/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
+    
+
     
 }

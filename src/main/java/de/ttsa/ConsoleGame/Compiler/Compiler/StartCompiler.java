@@ -11,17 +11,34 @@ import de.ttsa.ConsoleGame.Compiler.Compiler.TestC.Test;
 
 public class StartCompiler {
 
-    private String filePath;
-    private String errorText;
-    private boolean isHidden = false;
-    private ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
-    private ArrayList<String> game = new ArrayList<String>();
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
+private ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
+private ArrayList<String> game                   = new ArrayList<String>();
+private boolean isHidden                         = false;
+private String filePath;
+
+
+
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
+
 
     public StartCompiler(String path, boolean isHidden) {
         this.isHidden = isHidden;
         this.filePath = path;
         
     }
+
+
+
+// -------------------------------------- Start Compiler Lifecycle ------------------------------------------- //
+
+
 
     public void compile() {
         startReading();
@@ -33,60 +50,89 @@ public class StartCompiler {
 
     }
 
+
+
+// ---------------------------------------------- Reading -------------------------------------------------- //
+
+
+
     private boolean startReading() {
-        output("Start reading data...");
+        //output("Start reading data...");
         CFileReader reader = new CFileReader(filePath);
         fileContent = reader.read();
-        output("data reading finished.");
+        //output("data reading finished.");
         return false;
     }
     
     
+
+// ---------------------------------------------- Testing -------------------------------------------------- //
+
+
+
     private boolean startTesting() {
-        output("Start testing...");
+        //output("Start testing...");
         Test test = new Test(fileContent);
         boolean testResult = true;
         testResult = test.test();
-        output("Testing finished.");
+        //output("Testing finished.");
         return testResult;
     }
 
+
+
+// ---------------------------------------------- Compiling -------------------------------------------------- //
+
+
+
     private boolean startCompiling() {
-        output("Start compiling...");
+        //output("Start compiling...");
         Compiler compiler = new Compiler(fileContent);
         fileContent = compiler.compile();
-        output("Compiling finished.");
+        //output("Compiling finished.");
         return false;
     }
+
+
+
+// ---------------------------------------------- Sorting -------------------------------------------------- //
+
+
 
     private boolean startSorting() {
-        output("Start sorting...");
+        //output("Start sorting...");
         Sorter sorter = new Sorter(fileContent);
         fileContent = sorter.sort();
-        output("Sorting finished.");
+        //output("Sorting finished.");
         return false;
     }
+
+
+
+// ---------------------------------------------- Merging -------------------------------------------------- //
+
+
 
     private boolean startMerging() {
-        output("Start merging...");
+        //output("Start merging...");
         Merger merger = new Merger(fileContent);
         game = merger.merge();
-        output("Merging finished.");
+        //output("Merging finished.");
         return false;
     }
 
+
+
+// ---------------------------------------------- Building -------------------------------------------------- //
+
+
+
     private boolean startBuilding() {
-        output("Start building...");
+        //output("Start building...");
         GameBuilder builder = new GameBuilder(game);
         builder.build();
-        output("Building finished.");
+        //output("Building finished.");
         return false;
-    }
-    
-    private void output(String output) {
-        if(!isHidden) {
-            System.out.println(output);
-        }
     }
 
 }

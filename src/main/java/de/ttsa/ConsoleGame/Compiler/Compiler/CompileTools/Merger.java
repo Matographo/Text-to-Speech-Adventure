@@ -4,11 +4,29 @@ import java.util.ArrayList;
 
 public class Merger {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     ArrayList<ArrayList<String>> fileContent;
+
+
+
+// ---------------------------------------------- Constructor -------------------------------------------------- //
+
+
 
     public Merger(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
     }
+
+
+
+// ---------------------------------------------- Methods -------------------------------------------------- //
+
+
 
     public ArrayList<String> merge() {
         ArrayList<String> merged = new ArrayList<String>();
@@ -17,4 +35,7 @@ public class Merger {
         }
         return merged;
     }
+
+
+    
 }

@@ -2,7 +2,7 @@ package de.ttsa.ConsoleGame.Player.Datatypes;
 
 public class INT implements Printablable {
     
-// ---------------------------- Attributes ----------------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -10,7 +10,8 @@ public class INT implements Printablable {
 
 
 
-// --------------------------- Constructor ---------------------------
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
 
 
     /**
@@ -23,7 +24,8 @@ public class INT implements Printablable {
 
 
 
-// ----------------------------- Methods -----------------------------
+// ----------------------------------------------- Methods ---------------------------------------------------- //
+
 
 
     /**
@@ -53,4 +55,6 @@ public class INT implements Printablable {
         return print();
     }
 
+
+    
 }

@@ -9,11 +9,29 @@ import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
 
 public class CFileReader extends CompilerSyntax {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     File data;
+
+
+
+// ---------------------------------------------- Constructor ------------------------------------------------- //
+
+
 
     public CFileReader(String path) {
         data = new File(path);
     }
+
+
+
+// ----------------------------------------------- Methods ---------------------------------------------------- //
+
+
 
     public ArrayList<ArrayList<String>> read() {
         if(isFile(data)) {
@@ -69,18 +87,16 @@ public class CFileReader extends CompilerSyntax {
 
     private boolean isFile(File file) {
         if(file.isDirectory()) {
-            output("Path is a directory");
+            //output("Path is a directory");
             return false;
         } else if (file.isFile()){
-            output("Path is a file");
+            //output("Path is a file");
             return true;
         } else {
             throw new IllegalArgumentException("Path is not valid");
         }
     }
+    
 
-    private void output(String message) {
-        System.out.println(message);
-    }
     
 }

@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class BuildingStats {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     public static long gameBuildTime = 0;
 
     public static long gameLoadTime = 0;
@@ -22,6 +28,12 @@ public class BuildingStats {
     public static ArrayList<Long> ifBuildTime = new ArrayList<>();
     public static ArrayList<Long> loopBuildTime = new ArrayList<>();
     public static ArrayList<Long> actionBuildTime = new ArrayList<>();
+
+
+
+// ---------------------------------------------- Calc ------------------------------------------------- //
+
+
 
     public static void calc() {
         roomTime = 0;
@@ -48,6 +60,11 @@ public class BuildingStats {
         if (actionBuildTime.size() > 0 && actionTime > 0)
             actionTime = actionTime / actionBuildTime.size();
     }
+
+
+// ---------------------------------------------- Printer ------------------------------------------------- //
+
+
 
     public static void print() {
         calc();

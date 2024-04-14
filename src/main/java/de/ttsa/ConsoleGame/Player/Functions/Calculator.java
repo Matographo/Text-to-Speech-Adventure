@@ -13,7 +13,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class Calculator {
 
 
-// ---------------------------- Attributes ----------------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -24,7 +24,7 @@ public class Calculator {
 
 
 
-// --------------------------- Constructor ---------------------------
+// ---------------------------------------------- Constructor ------------------------------------------------- //
 
 
 
@@ -32,7 +32,9 @@ public class Calculator {
     }
 
 
-// --------------------------- Calc Start ----------------------------
+
+// ---------------------------------------------- Calc Start --------------------------------------------------- //
+
 
 
     /**
@@ -165,6 +167,9 @@ public class Calculator {
         return toCalculate;        
     }
 
+
+
+// ------------------------------------------- calc together ----------------------------------------------- //
     /**
      * This method calculates the mathmatical expression with the given numbers and
      * operators.
@@ -240,6 +245,12 @@ public class Calculator {
         return zahlen.get(0);
     }
 
+
+
+// ---------------------------------------------- Operationen -------------------------------------------------- //
+
+
+
     /**
      * This class contains all mathmatical operations.
      */
@@ -271,4 +282,7 @@ public class Calculator {
             return newV;
         }
     }
+
+
+
 }

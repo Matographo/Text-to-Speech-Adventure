@@ -5,7 +5,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class GameExitScript implements Scriptable {
     
 
-// ---------------------------- Attributes ----------------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -13,7 +13,7 @@ public class GameExitScript implements Scriptable {
 
 
 
-// --------------------------- Constructor ---------------------------
+// ---------------------------------------------- Constructor ------------------------------------------------- //
 
 
     /**
@@ -32,7 +32,7 @@ public class GameExitScript implements Scriptable {
 
 
 
-// ----------------------------- Methods -----------------------------
+// ---------------------------------------------- Methods ----------------------------------------------------- //
 
 
 

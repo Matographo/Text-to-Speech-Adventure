@@ -8,7 +8,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class OrderChecker extends StringMethodes {
 
 
-// ---------------------------- Attributes ----------------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -18,7 +18,7 @@ public class OrderChecker extends StringMethodes {
     
 
 
-// ----------------------------- Methods -----------------------------
+// -------------------------------------------- Check Methods -------------------------------------------------- //
 
 
     /**
@@ -159,7 +159,8 @@ public class OrderChecker extends StringMethodes {
 
 
 
-// ----------------------- Getter and Setter -----------------------
+// ---------------------------------------------- Getter & Setter -------------------------------------------- //
+
 
 
     /**
@@ -184,6 +185,7 @@ public class OrderChecker extends StringMethodes {
         
         return newInput;
     }
+
 
     
 }

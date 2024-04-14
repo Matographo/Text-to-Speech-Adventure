@@ -13,7 +13,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
 
-// ---------------------- Attributes ----------------------
+// ---------------------------------------------- Attributes -------------------------------------------------- //
 
 
 
@@ -23,7 +23,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
 
-// --------------------- Constructors ---------------------
+// ---------------------------------------------- Constructor ------------------------------------------------- //
 
 
     /**
@@ -36,7 +36,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
 
-// ----------------------- Loading ----------------------------
+// ---------------------------------------------- Loading ----------------------------------------------------- //
 
 
     /**
@@ -222,7 +222,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
 
-// ------------------ Command Functions -------------------
+// ------------------------------------------ Command Functions ---------------------------------------------- //
 
 
     /**
@@ -481,7 +481,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
 
 
-// ------------------ Helper Functions -------------------
+// ---------------------------------------------- Help Functions -------------------------------------------- //
     
 
     /**

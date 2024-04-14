@@ -5,7 +5,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class GameLoaderScript implements Scriptable {
 
 
-// ---------------------------- Methods ----------------------------
+// ---------------------------------------------- Methods ----------------------------------------------------- //
 
 
 

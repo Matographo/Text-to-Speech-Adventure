@@ -15,6 +15,12 @@ import java.util.concurrent.Executors;
 
 public class ProcessDialog {
 
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     int loadingTime = 850;
     ProcessBuilder processBuilder;
     Process process;
@@ -23,6 +29,12 @@ public class ProcessDialog {
     BufferedReader error = null;
     Queue<String> outputQueue = new LinkedList<>();
     long startTime;
+
+
+
+// ---------------------------------------------- Constructors ------------------------------------------------- //
+
+
 
     public ProcessDialog(String programm, String[] commands) throws IOException, InterruptedException {
         this(programm, new ArrayList<>(Arrays.asList(commands)));
@@ -44,6 +56,9 @@ public class ProcessDialog {
         commands.addFirst(programmName);
         processBuilder = new ProcessBuilder(commands);
     }
+
+
+// ---------------------------------------------- Start -------------------------------------------------- //
 
     public void start() throws IOException, InterruptedException {
         process = processBuilder.start();
@@ -82,6 +97,12 @@ public class ProcessDialog {
         executorService.shutdown();
         startTime = System.currentTimeMillis();
     }
+
+
+
+// ---------------------------------------------- Methods ---------------------------------------------------- //
+
+
 
     public void input(String input) throws IOException {
         if (process != null) {
@@ -127,4 +148,7 @@ public class ProcessDialog {
             process.destroy();
         }
     }
+
+
+    
 }

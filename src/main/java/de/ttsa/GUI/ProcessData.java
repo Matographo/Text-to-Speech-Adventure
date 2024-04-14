@@ -2,7 +2,19 @@ package de.ttsa.GUI;
 
 public class ProcessData {
     
+
+
+// ---------------------------------------------- Attributes -------------------------------------------------- //
+
+
+
     public static final String os = System.getProperty("os.name").toLowerCase();
+
+
+
+// ----------------------------------------------- Methods ---------------------------------------------------- //
+
+
 
     public static String getTerminalName() {
         if (os.contains("windows")) {

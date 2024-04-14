@@ -16,19 +16,36 @@ import javafx.stage.Stage;
 
 public class StartMenue implements Initializable {
     
+
+
+// --------------------------------------------- Attributes ------------------------------------------------ //
+
+
+
     private FileChooser fileChooser = new FileChooser();
 
-    private String[] gameArgs = new String[] {"-cp", "target/ttsa-1.0.jar", "de.ttsa.ConsoleGame.PlayerApp", ""};
+    private String[] gameArgs       = new String[] {"-cp", "target/ttsa-1.0.jar", "de.ttsa.ConsoleGame.PlayerApp", ""};
 
     private ProcessDialog game;
-
     private ProcessDialog sprachausgabe;
+
+
+
+// ----------------------------------------- FXML Attribute ----------------------------------------------- //
+
+
 
     @FXML
     private TextArea textArea = new TextArea();
 
     @FXML
     private TextField textField = new TextField();
+
+
+
+// ------------------------------------------- FXML Methods ----------------------------------------------- //
+
+
 
     @FXML
     void makeInput(ActionEvent event) {
@@ -68,11 +85,22 @@ public class StartMenue implements Initializable {
     }
 
 
+
+// ---------------------------------------------- Initializer ------------------------------------------------ //
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fileChooser.setInitialDirectory(new java.io.File("."));
         textArea.setText("Here is the Game Data: \n");
     }
+
+
+
+// ---------------------------------------------- Methods ---------------------------------------------------- //
+
+
 
     private boolean isPlayable(File file) {
         return file.exists() && file.getAbsolutePath().substring(file.getAbsolutePath().length()-5).equals(".ttsa");
@@ -86,4 +114,6 @@ public class StartMenue implements Initializable {
         }
     }
 
+
+    
 }

@@ -5,7 +5,7 @@ import de.ttsa.ConsoleGame.Player.GameManager;
 public class GameSavingScript implements Scriptable {
 
 
-// ---------------------------- Methods ----------------------------
+// ---------------------------------------------- Methods ----------------------------------------------------- //
 
 
 
