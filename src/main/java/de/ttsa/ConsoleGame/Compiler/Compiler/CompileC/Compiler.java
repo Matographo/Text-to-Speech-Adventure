@@ -99,6 +99,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileDebug(line));
             } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
                 compiled.add(compileBreak(line));
+            } else if (line.startsWith(SYNTAX_ACTION_CALL)) {
+                compiled.add(compileActionCall(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -600,8 +602,32 @@ public class Compiler extends CompilerSyntax {
         String commands = getWithoutCommand(line);
 
         StringBuilder compiled = getStartCode(INDEX_ACTION_CALL);
-        compiled.append(commands);
+        if(commands.strip().matches("[a-zA-Z]+\\w*")) {
+            compiled.append(commands.strip());
+            commands = "";
+        } else {
+            compiled.append(commands.substring(0, commands.indexOf(" ")).strip());
+            commands = commands.substring(commands.indexOf(" ") + 1).strip();
+        }
+        
+        compiled.append(ACTION_SEPERATOR);
+
+        compiled.append(getActionCallArgs(commands));
         return compiled.toString();
+    }
+
+    private String getActionCallArgs(String args) {
+        StringBuilder result = new StringBuilder();
+        String[] argsOfCall = args.split(ACTION_ARGS_SEPERATOR);
+        if(args.isBlank()) {
+            return "-";
+        }
+        for(String arg : argsOfCall) {
+            result.append(arg.strip());
+            result.append(ACTION_ARGS_SEPERATOR);
+        }
+        result.deleteCharAt(result.length()-1);
+        return result.toString();
     }
 
 

@@ -16,9 +16,12 @@ de/ttsa/ConsoleGame/Player/Scriptables/Script.class
 de/ttsa/ConsoleGame/Player/Player.class
 de/ttsa/ConsoleGame/Compiler/OpCodeTester/OpCodeTest.class
 de/ttsa/ConsoleGame/Compiler/Compiler/StartCompiler.class
+de/ttsa/Tools/SimpleLog$2.class
+de/ttsa/Tools/SimpleLog.class
 de/ttsa/GUI/ProcessData.class
 de/ttsa/ConsoleGame/Player/Datatypes/INT.class
 de/ttsa/ConsoleGame/Player/SubFunctions/StringMethodes.class
+de/ttsa/Tools/SimpleLog$Color.class
 de/ttsa/ConsoleGame/Player/Functions/Calculator$Operationen.class
 de/ttsa/ConsoleGame/Compiler/Compiler/CompileTools/Merger.class
 de/ttsa/ConsoleGame/Player/Scriptables/Loop.class
@@ -28,6 +31,7 @@ de/ttsa/ConsoleGame/Player/Scriptables/VarDec.class
 de/ttsa/ConsoleGame/Player/Scriptables/GameSavingScript.class
 de/ttsa/ConsoleGame/ClassTools/OpCode.class
 de/ttsa/ConsoleGame/Player/Structures/Action.class
+de/ttsa/Tools/SimpleLog$1.class
 de/ttsa/ConsoleGame/Player/GameScriptBuilder.class
 de/ttsa/ConsoleGame/Compiler/Compiler/TestC/Test.class
 de/ttsa/Stats/BuildingStats.class
