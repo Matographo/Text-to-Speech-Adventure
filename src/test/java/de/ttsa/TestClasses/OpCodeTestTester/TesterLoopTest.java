@@ -46,6 +46,12 @@ public class TesterLoopTest extends OpCodeTestTesterClass {
         assertEquals(true, test.start());
     }
 
+    @Test
+    public void testLoopJustVar() {
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustVar");
+        assertEquals(true, test.start());
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 

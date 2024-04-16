@@ -36,6 +36,7 @@ public class ConsoleLoadingSyntax {
     protected final String COMMAND_SEPERATOR            = "::";
     protected final String SAY_SEPERATOR                = ",";
     protected final String ROOM_SEPERATOR               = ":";
+    protected final String LOOP_SEPERATOR               = ":";
     protected final String NUMBER_VARIABLE_SEPERATOR    = ":";
     protected final String NUMBER_STRING_SEPERATOR      = ":";
     protected final String NUMBER_DEC_SEPERATOR         = ":";

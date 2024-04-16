@@ -3,6 +3,7 @@ package de.ttsa.ConsoleGame.Compiler.Compiler.CompileC;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import de.ttsa.ConsoleGame.ClassTools.CompilerSyntax;
 
@@ -68,7 +69,8 @@ public class Compiler extends CompilerSyntax {
                     line = content.get(i).strip();
                     if(line.contains("{")) {
                         blocks++;
-                    } else if(line.contains("}")) {
+                    }
+                    if(line.contains("}")) {
                         blocks--;
                     }
                     roomBlock.add(line);
@@ -128,6 +130,30 @@ public class Compiler extends CompilerSyntax {
                 }
                 compiled.addAll(compileIf(ifBlock));
                 i--;
+            } else if (line.startsWith(SYNTAX_LOOP) && line.endsWith(SYNTAX_BLOCK_START)) {
+                ArrayList<String> loopBlock = new ArrayList<>();
+                int blocks = 1;
+                
+                loopBlock.add(content.get(i));
+                content.remove(i);
+
+                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
+                    if(content.get(i).contains("{")) {
+                        blocks++;
+                    }
+                    if(content.get(i).contains("}")) {
+                        blocks--;
+                    }
+                    loopBlock.add(content.get(i));
+                    content.remove(i);
+                }
+                if(loopBlock.get(loopBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
+                    loopBlock.remove(loopBlock.size()-1);
+                } else {
+                    loopBlock.set(loopBlock.size()-1, loopBlock.get(loopBlock.size()-1).substring(0, loopBlock.get(loopBlock.size()-1).lastIndexOf("}")).strip());
+                }
+                compiled.addAll(compileLoop(loopBlock));
+                i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
             } else if (line.startsWith(SYNTAX_SAVE)) {
@@ -150,6 +176,8 @@ public class Compiler extends CompilerSyntax {
                 compiled.add(compileBreak(line));
             } else if (line.startsWith(SYNTAX_DEBUG)) {
                 compiled.add(compileDebug(line));
+            } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
+                compiled.add(compileBreak(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }
@@ -506,13 +534,51 @@ public class Compiler extends CompilerSyntax {
 
 
 // ***************************** LOOP *******************************************
-    private String compileLoop(ArrayList<String> lines) {
-        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+    private ArrayList<String> compileLoop(ArrayList<String> lines) {
+        ArrayList<String> result = new ArrayList<>(lines.size());
+    
+        String commands = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_COMMAND) + 1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip();
         lines.remove(0);
 
         StringBuilder compiled = getStartCode(INDEX_LOOP);
-        compiled.append(commands);
-        return compiled.toString();
+
+        switch (getLoopMode(commands)) {
+            case 'n':
+                compiled.append(commands);
+                break;
+            case 't':
+                compiled.append("true");
+                break;
+            case 'v':
+                compiled.append(commands);
+                break;
+            case 'c':
+                compiled.append(calculateCondition(commands));
+                break;
+            default:
+                break;
+        }
+
+        compiled.append(LOOP_SEPERATOR);
+
+        List<String> loopContent = compileFile(lines);
+        compiled.append(loopContent.size());
+        result.add(compiled.toString());
+        result.addAll(loopContent);
+
+        return result;
+    }
+
+    private char getLoopMode(String commands) {
+        if(commands.matches("\\d+")) {
+            return 'n';
+        } else if(commands.equals("true")) {
+            return 't';
+        } else if(commands.matches("[a-zA-Z]+\\w*")) {
+            return 'v';
+        } else {
+            return 'c';
+        }
     }
 
 

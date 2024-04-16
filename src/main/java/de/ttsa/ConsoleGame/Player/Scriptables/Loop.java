@@ -12,7 +12,8 @@ public class Loop implements Scriptable {
 
     private final char ITERATIONS = 'i';
     private final char TRUE       = 't';
-    private final char CONDITION  = 'c'; 
+    private final char CONDITION  = 'c';
+    private final char VAR        = 'v'; 
     
     private String condition;
     private Scriptable script;
@@ -47,6 +48,7 @@ public class Loop implements Scriptable {
     @Override
     public boolean run() {
         if(conditionType == ITERATIONS) maxCounter = Integer.parseInt(condition);
+        if(conditionType == VAR) maxCounter = GameManager.numVars.get(condition).getValue();
         
         counter = 0;
 
@@ -65,6 +67,7 @@ public class Loop implements Scriptable {
     private boolean getResult() {
         switch(conditionType) {
             case ITERATIONS:
+            case VAR:
                 return counter++ < maxCounter;
             case TRUE:
                 return true;

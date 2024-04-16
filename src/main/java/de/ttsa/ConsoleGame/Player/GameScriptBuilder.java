@@ -406,9 +406,12 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         String condition  = loopArgs[0];
 
 
-        if(isNumber(condition)) conditionType           = 'i';
-        else if(condition.equals("true")) conditionType = 't';
-        else conditionType                              = 'c';
+        if(isNumber(condition)) conditionType                      = 'i';
+        else if(condition.equals("true")) conditionType            = 't';
+        else if(condition.matches("[a-zA-Z][\\w]*")) {
+            conditionType = 'v';
+            condition = condition.substring(1);
+        } else conditionType                                       = 'c';
 
         for(String codeLine : args) {
             code.add(codeLine);

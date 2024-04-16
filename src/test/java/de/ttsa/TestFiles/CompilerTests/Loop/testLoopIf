@@ -1,8 +1,8 @@
 Num: Var1 5
 
 Room Raum1 {
-    Loop: Var1 = 5 {
+    Loop: Var1 == 5 {
         NumDec: Var1 = Var1 - 1
-        Say: "Hallo"
+        Say: Hallo
     }
 }

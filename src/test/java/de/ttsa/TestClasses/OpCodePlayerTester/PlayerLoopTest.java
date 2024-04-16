@@ -60,6 +60,15 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
         resetTest();
     }
 
+    @Test
+    public void testLoopJustVar() {
+        final int expected = 10;
+        Player player = new Player(PATH + "testLoopJustVar");
+        player.play();
+        assertEquals(expected, GameManager.numVars.get("Var").getValue());
+        resetTest();
+    }
+
 
 // ------------------------- Fail Tests -------------------------
 
