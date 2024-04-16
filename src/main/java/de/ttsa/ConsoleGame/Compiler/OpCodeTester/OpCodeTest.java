@@ -843,6 +843,8 @@ public class OpCodeTest extends OpCode{
                 numNames.add(actionArg);
 
             }
+
+            varNames.add(actionArg);
         }
 
         this.actionArgs.put(actionArgs[0], actionArgs[1]);

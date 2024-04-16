@@ -72,6 +72,9 @@ public class Compiler extends CompilerSyntax {
             } else if (line.startsWith(SYNTAX_LOOP) && line.endsWith(SYNTAX_BLOCK_START)) {
                 compiled.addAll(compileLoop(getCodeBlock(i, content)));
                 i--;
+            } else if (line.startsWith(SYNTAX_ACTION) && line.endsWith(SYNTAX_BLOCK_START)) {
+                compiled.addAll(compileAction(getCodeBlock(i, content)));
+                i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
             } else if (line.startsWith(SYNTAX_SAVE)) {
@@ -535,13 +538,60 @@ public class Compiler extends CompilerSyntax {
 
 
 // ***************************** ACTION *****************************************
-    private String compileAction(ArrayList<String> lines) {
-        String commands = lines.get(0).substring(lines.indexOf(SYNTAX_COMMAND) + 1).strip();
+    private ArrayList<String> compileAction(ArrayList<String> lines) {
+        ArrayList<String> result = new ArrayList<>(lines.size());
+        StringBuilder commands = new StringBuilder(lines.get(0).substring(lines.get(0).indexOf(SYNTAX_ACTION) + SYNTAX_ACTION.length() + 1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip());
         lines.remove(0);
 
         StringBuilder compiled = getStartCode(INDEX_ACTION);
-        compiled.append(commands);
-        return compiled.toString();
+        compiled.append(commands.substring(0, commands.indexOf("(")).strip());
+        compiled.append(ACTION_SEPERATOR);
+        compiled.append(getActionParams(commands.substring(commands.indexOf("(") + 1, commands.lastIndexOf(")")).strip()));
+        compiled.append(ACTION_SEPERATOR);
+        List<String> actionContent = compileFile(lines);
+        compiled.append(actionContent.size());
+        result.add(compiled.toString());
+        result.addAll(actionContent);
+        return result;
+    }
+
+    private String getActionParams(String commands) {
+        StringBuilder result = new StringBuilder();
+        if(commands.equals("")) return "-";
+        String[] args = commands.split(ACTION_ARGS_SEPERATOR);
+        char argType;
+        for(String arg : args) {
+            arg = arg.strip();
+            switch (argType = getArgType(arg)) {
+                case 'n':
+                    result.append(argType);
+                    result.append(getArgName(arg));
+                    break;
+                case 's':
+                    result.append(argType);
+                    result.append(getArgName(arg));
+                    break;
+                default:
+                    return "-";
+            }
+            result.append(ACTION_ARGS_SEPERATOR);
+        }
+        result.deleteCharAt(result.length()-1);
+        return result.toString();
+    }
+
+    private char getArgType(String arg) {
+        if(arg.substring(0, arg.indexOf(" ")).equals(SYNTAX_NUMBER_VARIABLE)) {
+            return 'n';
+        } else if(arg.substring(0, arg.indexOf(" ")).equals(SYNTAX_STRING_VARIABLE)) {
+            return 's';
+        } else {
+            return '-';
+        }
+    }
+
+    private String getArgName(String arg) {
+        return arg.substring(arg.indexOf(" ") + 1).strip();
     }
 
 

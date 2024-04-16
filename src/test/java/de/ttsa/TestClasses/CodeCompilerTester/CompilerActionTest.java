@@ -61,6 +61,14 @@ public class CompilerActionTest extends CodeCompilerTesterClass {
     }
 
     @Test
+    public void testActionMultipleParamsWithUsage() {
+        String testName = "testActionMultipleParamsWithUsage";
+        boolean result;
+        result = test(PATH, testName);
+        assertEquals(true, result);
+    }
+
+    @Test
     public void testActionWithActionCall() {
         String testName = "testActionWithActionCall";
         boolean result;
@@ -85,8 +93,8 @@ public class CompilerActionTest extends CodeCompilerTesterClass {
     }
 
     @Test
-    public void testActionStrParam() {
-        String testName = "testActionStrParam";
+    public void testActionWithStrParam() {
+        String testName = "testActionWithStrParam";
         boolean result;
         result = test(PATH, testName);
         assertEquals(true, result);
