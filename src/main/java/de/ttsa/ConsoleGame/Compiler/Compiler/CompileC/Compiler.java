@@ -61,98 +61,16 @@ public class Compiler extends CompilerSyntax {
             if (line.startsWith(SYNTAX_SAY)) {
                 compiled.add(compileSay(line));
             } else if (line.startsWith(SYNTAX_ROOM)) {
-                ArrayList<String> roomBlock = new ArrayList<>();
-                int blocks = 1;
-                roomBlock.add(content.get(i));
-                content.remove(i);
-                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
-                    line = content.get(i).strip();
-                    if(line.contains("{")) {
-                        blocks++;
-                    }
-                    if(line.contains("}")) {
-                        blocks--;
-                    }
-                    roomBlock.add(line);
-                    content.remove(i);
-                }
-                if(roomBlock.get(roomBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
-                    roomBlock.remove(roomBlock.size()-1);
-                } else {
-                    roomBlock.set(roomBlock.size()-1, roomBlock.get(roomBlock.size()-1).substring(0, roomBlock.get(roomBlock.size()-1).lastIndexOf("}")).strip());
-                }
-                compiled.addAll(compileRoom(roomBlock));
+                compiled.addAll(compileRoom(getCodeBlock(i,content)));
                 i--;
             } else if (line.startsWith(SYNTAX_SET) && line.endsWith(SYNTAX_BLOCK_START)) {
-                ArrayList<String> setBlock = new ArrayList<>();
-                int blocks = 1;
-
-                setBlock.add(content.get(i));
-                content.remove(i);
-
-                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
-                    if(content.get(i).contains("{")) {
-                        blocks++;
-                    } else if(content.get(i).contains("}")) {
-                        blocks--;
-                    }
-                    setBlock.add(content.get(i));
-                    content.remove(i);
-                }
-                if(setBlock.get(setBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
-                    setBlock.remove(setBlock.size()-1);
-                } else {
-                    setBlock.set(setBlock.size()-1, setBlock.get(setBlock.size()-1).substring(0, setBlock.get(setBlock.size()-1).lastIndexOf("}")).strip());
-                }
-                compiled.add(compileSet(setBlock));
+                compiled.add(compileSet(getCodeBlock(i, content)));
                 i--;
             } else if (line.startsWith(SYNTAX_IF)) {
-                ArrayList<String> ifBlock = new ArrayList<>();
-                int blocks = 1;
-
-                ifBlock.add(content.get(i));
-                content.remove(i);
-
-                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
-                    if(content.get(i).contains("{")) {
-                        blocks++;
-                    }
-                    if(content.get(i).contains("}")) {
-                        blocks--;
-                    }
-                    ifBlock.add(content.get(i));
-                    content.remove(i);
-                }
-                if(ifBlock.get(ifBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
-                    ifBlock.remove(ifBlock.size()-1);
-                } else {
-                    ifBlock.set(ifBlock.size()-1, ifBlock.get(ifBlock.size()-1).substring(0, ifBlock.get(ifBlock.size()-1).lastIndexOf("}")).strip());
-                }
-                compiled.addAll(compileIf(ifBlock));
+                compiled.addAll(compileIf(getCodeBlock(i, content)));
                 i--;
             } else if (line.startsWith(SYNTAX_LOOP) && line.endsWith(SYNTAX_BLOCK_START)) {
-                ArrayList<String> loopBlock = new ArrayList<>();
-                int blocks = 1;
-                
-                loopBlock.add(content.get(i));
-                content.remove(i);
-
-                while(content.size() > i && !(content.get(i).strip().endsWith(SYNTAX_BLOCK_END) && blocks == 0)) {
-                    if(content.get(i).contains("{")) {
-                        blocks++;
-                    }
-                    if(content.get(i).contains("}")) {
-                        blocks--;
-                    }
-                    loopBlock.add(content.get(i));
-                    content.remove(i);
-                }
-                if(loopBlock.get(loopBlock.size()-1).strip().equals(SYNTAX_BLOCK_END)) {
-                    loopBlock.remove(loopBlock.size()-1);
-                } else {
-                    loopBlock.set(loopBlock.size()-1, loopBlock.get(loopBlock.size()-1).substring(0, loopBlock.get(loopBlock.size()-1).lastIndexOf("}")).strip());
-                }
-                compiled.addAll(compileLoop(loopBlock));
+                compiled.addAll(compileLoop(getCodeBlock(i, content)));
                 i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
                 compiled.add(compileRoomJumper(line));
@@ -657,6 +575,29 @@ public class Compiler extends CompilerSyntax {
             }
         }
         return toSplit;
+    }
+
+    private ArrayList<String> getCodeBlock(int index, ArrayList<String> lines) {
+        ArrayList<String> block = new ArrayList<>();
+        int blocks = 0;
+        String line = "";
+        for (int i=index; i< lines.size(); i++) {
+            line = lines.get(i);
+            if(line.contains("{")) {
+                blocks++;
+            }
+            if(line.contains("}")) {
+                blocks--;
+            }
+            if(blocks == 0) {
+                lines.remove(index);
+                break;
+            }
+            block.add(line);
+            lines.remove(index);
+            i--;
+        }
+        return block;
     }
 
 }
