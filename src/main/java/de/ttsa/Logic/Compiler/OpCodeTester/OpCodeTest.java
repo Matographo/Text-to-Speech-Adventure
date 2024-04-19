@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeRegex;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
@@ -25,6 +26,7 @@ public class OpCodeTest extends OpCode{
     private File file;
     private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
     private OpCodeIndex opCodeIndex = OpCodeIndex.NONE;
+    private OpCodeIfTypes ifTypes = OpCodeIfTypes.NONE;
 
 
 
@@ -386,9 +388,9 @@ public class OpCodeTest extends OpCode{
         for(String test : toTest) {
             i = test.charAt(0);
 
-            switch(i) {
-                case IF_NUMBER -> testResult = testResult && testIfVarNum(test.substring(1));
-                case IF_STRING -> testResult = testResult && testIfVarStr(test.substring(1));
+            switch(ifTypes.convert(i)) {
+                case NUMBER -> testResult = testResult && testIfVarNum(test.substring(1));
+                case STRING -> testResult = testResult && testIfVarStr(test.substring(1));
             }
 
         }
@@ -480,6 +482,7 @@ public class OpCodeTest extends OpCode{
         String[] actions    = args.split(ACTION_SEPERATOR);
         String actionName   = actions[0];
         String[] actionArgs = actions[1].split(ACTION_ARGS_SEPERATOR);
+        OpCodeIfTypes type;
 
 
         if(!actionNames.contains(actionName)) return false;
@@ -491,20 +494,21 @@ public class OpCodeTest extends OpCode{
         for(int i=0; i < actionArgs.length; i++) {
             if(isEmptyArg(actionArgs[i])) continue;
 
-            if(isValidName(actionArgs[i])) {
 
-                if(mainActionArgs[i].charAt(0) == IF_STRING) {
+            type = OpCodeIfTypes.convert(mainActionArgs[i].charAt(0));
+            if(isValidName(actionArgs[i])) {
+                if(type == OpCodeIfTypes.STRING) {
                     if(!strNames.contains(actionArgs[i])) return false;
-                } else if (mainActionArgs[i].charAt(0) == IF_NUMBER) {
+                } else if (type == OpCodeIfTypes.NUMBER) {
                     if(!numNames.contains(actionArgs[i])) return false;
                 }
 
             } else {
 
                 if(isNumber(actionArgs[i])) {
-                    if(mainActionArgs[i].charAt(0) != IF_NUMBER) return false;
+                    if(type != OpCodeIfTypes.NUMBER) return false;
                 } else {
-                    if(mainActionArgs[i].charAt(0) != IF_STRING) return false;
+                    if(type != OpCodeIfTypes.STRING) return false;
                 }
 
             }
@@ -520,32 +524,33 @@ public class OpCodeTest extends OpCode{
      */
     private boolean testActionVar(String args) {
         String[] actionArgs = args.split(ACTION_SEPERATOR);
+        OpCodeIfTypes type;
 
 
         if(actionNames.contains(actionArgs[0])) return false;
 
         actionNames.add(actionArgs[0]);
 
-        char type;
         String[] actionArgss = actionArgs[1].split(ACTION_ARGS_SEPERATOR);
 
         for(String actionArg : actionArgss) {
-            type = actionArg.charAt(0);
+            type = OpCodeIfTypes.convert(actionArg.charAt(0));
 
-            if(type == '-') continue;
+            if(type == OpCodeIfTypes.NONE_ARG) continue;
 
             actionArg = actionArg.substring(1);
 
-            if(!isArgType(type))        return false;
+            if(!type.isArgType())        return false;
             if(!isValidName(actionArg)) return false;
 
-            if(type == IF_STRING) {
+
+            if(type == OpCodeIfTypes.STRING) {
 
                 if(strNames.contains(actionArg)) return false;
 
                 strNames.add(actionArg);
 
-            } else if (type == IF_NUMBER) {
+            } else if (type == OpCodeIfTypes.NUMBER) {
 
                 if(numNames.contains(actionArg)) return false;
 
@@ -754,16 +759,16 @@ public class OpCodeTest extends OpCode{
      */
     private boolean isTestableVar(String test) {
         String[] tests     = test.split(IF_ELSE_SEPERATOR);
+        OpCodeIfTypes type;
         boolean testResult = true;
-        char i;
 
 
         for(String toTest : tests) {
-            i = toTest.charAt(0);
+            type = OpCodeIfTypes.convert(toTest.charAt(0));
 
-            switch(i) {
-                case IF_NUMBER -> testResult = testResult && isTestableVarNum(toTest.substring(1));
-                case IF_STRING -> testResult = testResult && isTestableVarStr(toTest.substring(1));
+            switch(type) {
+                case NUMBER -> testResult = testResult && isTestableVarNum(toTest.substring(1));
+                case STRING -> testResult = testResult && isTestableVarStr(toTest.substring(1));
             }
 
         }
@@ -866,15 +871,6 @@ public class OpCodeTest extends OpCode{
      */
     private boolean isEmptyArg(String name) {
         return name.equals("-");
-    }
-
-    /**
-     * Test if the String is an Argument Type
-     * @param type String to test
-     * @return true if the String is an Argument Type
-     */
-    private boolean isArgType(char type) {
-        return type == IF_NUMBER || type == IF_STRING;
     }
 
 

@@ -1,6 +1,7 @@
 package de.ttsa.Logic.Features.Loop;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
 
 public class LoopOpCodeSyntax extends OpCode implements OpCodeTestable {
@@ -19,14 +20,14 @@ public class LoopOpCodeSyntax extends OpCode implements OpCodeTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxSwitch(String args) {
-        char i = args.charAt(0);
+        OpCodeIfTypes type = OpCodeIfTypes.convert(args.charAt(0));
         args   = args.substring(1, args.indexOf(IF_NUM_SEPERATOR));
         boolean testResult;
 
-        switch(i) {
-            case IF_NUMBER -> testResult = testIfSyntaxNum(args);
-            case IF_STRING -> testResult = testIfSyntaxStr(args);
-            case IF_INPUT ->  testResult = testIfSyntaxIn(args);
+        switch(type) {
+            case NUMBER -> testResult = testIfSyntaxNum(args);
+            case STRING -> testResult = testIfSyntaxStr(args);
+            case INPUT ->  testResult = testIfSyntaxIn(args);
             default ->        testResult = false;
         }
 

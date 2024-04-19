@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 
 import de.ttsa.Logic.ClassTools.CompilerSyntax;
+import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 
 public class Compiler extends CompilerSyntax {
@@ -18,6 +20,7 @@ public class Compiler extends CompilerSyntax {
 
     ArrayList<ArrayList<String>> fileContent;
     HashMap<String, HashSet<String>> variables;
+    private OpCodeIfTypes ifTypes = OpCodeIfTypes.NONE;
     
 
 
@@ -338,26 +341,26 @@ public class Compiler extends CompilerSyntax {
     private String calculateCondition(String condition) {
         condition = condition.replaceAll(" ", "");
         StringBuilder compiled = new StringBuilder();
-        char mode = calculateConditionMode(condition);
+        OpCodeIfTypes mode = calculateConditionMode(condition);
         
-        compiled.append(mode);
+        compiled.append(mode.getType());
         switch(mode) {
-            case IF_NUMBER -> compiled.append(calculateIfNumber(condition));
-            case IF_STRING -> compiled.append(calculateIfString(condition));
-            case IF_INPUT -> compiled.append(calculateIfInput(condition));
-            case ' ' -> compiled.deleteCharAt(compiled.length()-1);
+            case NUMBER -> compiled.append(calculateIfNumber(condition));
+            case STRING -> compiled.append(calculateIfString(condition));
+            case INPUT -> compiled.append(calculateIfInput(condition));
+            case NONE -> compiled.deleteCharAt(compiled.length()-1);
         }
         return compiled.toString();
     }
 
-    private char calculateConditionMode(String conditionString) {
-        if(conditionString.equals("")) return ' ';
+    private OpCodeIfTypes calculateConditionMode(String conditionString) {
+        if(conditionString.equals("")) return OpCodeIfTypes.NONE;
 
         String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
 
-        if(variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IF_NUMBER;
-        else if(variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IF_STRING;
-        else if(conditionString.startsWith(SYNTAX_INPUT)) return IF_INPUT;
+        if(variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return OpCodeIfTypes.NUMBER;
+        else if(variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return OpCodeIfTypes.STRING;
+        else if(conditionString.startsWith(SYNTAX_INPUT)) return OpCodeIfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 
