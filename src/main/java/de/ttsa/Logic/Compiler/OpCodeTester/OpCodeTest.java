@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeIndex;
+import de.ttsa.Logic.Enums.OpCodeRegex;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
-import de.ttsa.Logic.Features.Printer.PrinterOpCodeSyntax;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
-import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 
 public class OpCodeTest extends OpCode{
 
@@ -24,6 +24,7 @@ public class OpCodeTest extends OpCode{
 
     private File file;
     private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
+    private OpCodeIndex opCodeIndex = OpCodeIndex.NONE;
 
 
 
@@ -165,34 +166,9 @@ public class OpCodeTest extends OpCode{
         for(String line : content) {
             command = line.split(COMMAND_SEPERATOR)[0];
             args    = line.substring(line.indexOf(COMMAND_SEPERATOR) + command.length()).strip();
-
-            test = opCodeSyntaxTest.getTest(command);
+            test    = opCodeSyntaxTest.getTest(command);
 
             testResult &= test.testOpCode(args);
-
-            /*
-            switch(command) {
-                case INDEX_SAY  ->              testResult &= test.testOpCode(args);
-                case INDEX_ROOM ->              testResult &= test.testOpCode(args);
-                case INDEX_ROOM_JUMPER ->       testResult &= test.testOpCode(args);
-                case INDEX_NUMBER_VARIABLE ->   testResult &= test.testOpCode(args);
-                case INDEX_STRING_VARIABLE ->   testResult &= test.testOpCode(args);
-                case INDEX_NUM_VARDEC ->        testResult &= test.testOpCode(args);
-                case INDEX_IF ->                testResult &= test.testOpCode(args);
-                case INDEX_INPUT ->             testResult &= test.testOpCode(args);
-                case INDEX_STR_VARDEC ->        testResult &= test.testOpCode(args);
-                case INDEX_DEBUG ->             testResult &= test.testOpCode(args);
-                case INDEX_SAVE ->              testResult &= test.testOpCode(args);
-                case INDEX_LOAD ->              testResult &= test.testOpCode(args);
-                case INDEX_EXIT ->              testResult &= test.testOpCode(args);
-                case INDEX_LOOP ->              testResult &= test.testOpCode(args);
-                case INDEX_LOOP_BREAKER ->      testResult &= test.testOpCode(args);
-                case INDEX_SET ->               testResult &= test.testOpCode(args);
-                case INDEX_ACTION ->            testResult &= test.testOpCode(args);
-                case INDEX_ACTION_CALL ->       testResult &= test.testOpCode(args);
-                default ->                      testResult = false;
-            }
-            */
         }
 
         return testResult;
@@ -220,20 +196,20 @@ public class OpCodeTest extends OpCode{
             command = content.get(i).split(COMMAND_SEPERATOR)[0];
             args    = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
-            switch(command) {
-                case INDEX_SAY ->               testResult = testResult && testSayVar(args);
-                case INDEX_ROOM ->              testResult = testResult && testRoomVar(args);
-                case INDEX_ROOM_JUMPER ->       testResult = testResult && testRoomJumperVar(args);
-                case INDEX_NUMBER_VARIABLE ->   testResult = testResult && testNumberVariableVar(args);
-                case INDEX_STRING_VARIABLE ->   testResult = testResult && testStringVariableVar(args);
-                case INDEX_NUM_VARDEC ->        testResult = testResult && testNumberDecVar(args);
-                case INDEX_IF ->                testResult = testResult && testIfVar(args);
-                case INDEX_DEBUG ->             testResult = testResult && testDebugInputVar(args);
-                case INDEX_STR_VARDEC ->        testResult = testResult && testStrVarDec(args);
-                case INDEX_LOOP ->              testResult = testResult && testLoopVar(args);
-                case INDEX_SET ->               testResult = testResult && testSetVar(args);
-                case INDEX_ACTION ->            testResult = testResult && testActionVar(args);
-                case INDEX_ACTION_CALL ->       testResult = testResult && testActionCallVar(args);
+            switch(opCodeIndex.convert(command)) {
+                case SAY ->               testResult = testResult && testSayVar(args);
+                case ROOM ->              testResult = testResult && testRoomVar(args);
+                case ROOM_JUMPER ->       testResult = testResult && testRoomJumperVar(args);
+                case NUMBER_DEC ->   testResult = testResult && testNumberVariableVar(args);
+                case STR_DEC ->   testResult = testResult && testStringVariableVar(args);
+                case NUM_INIT ->        testResult = testResult && testNumberDecVar(args);
+                case IF ->                testResult = testResult && testIfVar(args);
+                case DEBUG ->             testResult = testResult && testDebugInputVar(args);
+                case STR_INIT ->        testResult = testResult && testStrVarDec(args);
+                case LOOP ->              testResult = testResult && testLoopVar(args);
+                case SET ->               testResult = testResult && testSetVar(args);
+                case ACTION ->            testResult = testResult && testActionVar(args);
+                case ACTION_CALL ->       testResult = testResult && testActionCallVar(args);
             }
         }
 
@@ -262,19 +238,19 @@ public class OpCodeTest extends OpCode{
             command = content.get(i).split(COMMAND_SEPERATOR)[0];
             args    = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
-            switch(command) {
-                case INDEX_ROOM:
+            switch(opCodeIndex.convert(command)) {
+                case ROOM:
                     lastRoomLength = getRoomBlockLength(args);
 
                     testResult = testResult && testRoomBlock(args, content.size() - i);
                     break;
-                case INDEX_IF:
+                case IF:
                     testResult = testResult && testIfBlock(args, i, i + lastRoomLength);
                     break;
-                case INDEX_LOOP:
+                case LOOP:
                     testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
                     break;
-                case INDEX_ACTION:
+                case ACTION:
                     testResult = testResult && testActionBlock(args, content.size() - i);
                     break;
                 default:
@@ -283,285 +259,6 @@ public class OpCodeTest extends OpCode{
         }
 
         return testResult;
-    }
-
-
-
-// ----------------------------------------- Test Functions Syntax ------------------------------------------ //
-
-
-
-    /**
-     * Test the syntax of the say command
-     * @param args The arguments of the say command
-     * @return true if the syntax is correct
-     */
-    private boolean testSaySyntax(String args) {
-        return args.matches(REGEX_SAY);
-    }
-
-    /**
-     * Test the syntax of the room command
-     * @param args The arguments of the room command
-     * @return true if the syntax is correct
-     */
-    private boolean testRoomSyntax(String args) {
-        return args.matches(REGEX_ROOM);
-    }
-
-    /**
-     * Test the syntax of the room jumper command
-     * @param args The arguments of the room jumper command
-     * @return true if the syntax is correct
-     */
-    private boolean testRoomJumperSyntax(String args) {
-        return args.matches(REGEX_ROOM_JUMPER);
-    }
-
-    /**
-     * Test the syntax of the number variable command
-     * @param args The arguments of the number variable command
-     * @return true if the syntax is correct
-     */
-    private boolean testNumberVariableSyntax(String args) {
-        return args.matches(REGEX_NUMBER_VARIABLE);
-    }
-
-    /**
-     * Test the syntax of the string variable command
-     * @param args The arguments of the string variable command
-     * @return true if the syntax is correct
-     */
-    private boolean testStringVariableSyntax(String args) {
-        return args.matches(REGEX_STRING_VARIABLE);
-    }
-
-    /**
-     * Test the syntax of the number variable declaration command
-     * @param args The arguments of the number variable declaration command
-     * @return true if the syntax is correct
-     */
-    private boolean testNumberDecSyntax(String args) {
-        String[] arg = args.split(NUMBER_DEC_SEPERATOR);
-        String value = arg[1];
-
-
-        if(arg.length != 2)           return false;
-        else if(!isValidName(arg[0])) return false;
-        
-        if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
-            if(!isNumber(value) && !isValidName(value)) return false;
-            else                                        return true;
-        }
-
-        return isCalculatable(value);
-    }
-
-    /**
-     * Test the syntax of the if command
-     * @param args The arguments of the if command
-     * @return true if the syntax is correct
-     */
-    private boolean testIfSyntax(String args) {
-        String[] toTest    = args.split(IF_ELSE_SEPERATOR);
-        boolean testResult = true;
-
-
-        for(int i=0; i < toTest.length; i++) {
-            if(i == toTest.length - 1) {
-                testResult = testResult && isTestableElse(toTest[i]);
-            } else {
-                testResult = testResult && testIfSyntaxSwitch(toTest[i]);
-            }
-        }
-
-        return testResult;
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean isTestableElse(String test) {
-        if(test.startsWith(":") && isNumber(test.substring(1))) return true;
-
-        return testIfSyntaxSwitch(test);
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean testIfSyntaxSwitch(String args) {
-        char i = args.charAt(0);
-        args   = args.substring(1, args.indexOf(IF_NUM_SEPERATOR));
-        boolean testResult;
-
-        switch(i) {
-            case IF_NUMBER -> testResult = testIfSyntaxNum(args);
-            case IF_STRING -> testResult = testIfSyntaxStr(args);
-            case IF_INPUT ->  testResult = testIfSyntaxIn(args);
-            default ->        testResult = false;
-        }
-
-        return testResult;
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean testIfSyntaxNum(String args) {
-        while(hasBrackets(args)) {
-            if(!testIfSyntaxNumInnerBreckets(getInnerBreckets(args))) return false;
-            args = removeInnerBrecketsAndSubstitut(args, "1");
-        }
-        return args.matches(REGEX_IF_NUMBER);
-    }
-
-    private boolean testIfSyntaxNumInnerBreckets(String args) {
-        return args.matches(REGEX_IF_INNER_BRECKETS);
-    }
-
-    private String getInnerBreckets(String args) {
-        int start = args.lastIndexOf("(") + 1;
-        args = args.substring(start);
-        return args.substring(0, args.indexOf(")"));
-    }
-
-    private String removeInnerBrecketsAndSubstitut(String args, String substitut) {
-        int start = args.lastIndexOf("(");
-        String startStr = args.substring(0, start);
-        args = args.substring(start+1);
-        String endStr = args.substring(args.indexOf(")") + 1);
-        return startStr + substitut + endStr;
-    }
-
-    private boolean hasBrackets(String args) {
-        return args.contains("(") || args.contains(")");
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean testIfSyntaxStr(String args) {
-        return args.matches(REGEX_IF_STRING);
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean testIfSyntaxIn(String args) {
-        return args.matches(REGEX_IF_INPUT);
-    }
-
-    /**
-     * Test the syntax of the input command
-     * @param args The arguments of the input command
-     * @return true if the syntax is correct
-     */
-    private boolean testInputSyntax(String args) {
-        return args.strip().isEmpty();
-    }
-
-    /**
-     * Test the syntax of the string variable declaration command
-     * @param args The arguments of the string variable declaration command
-     * @return true if the syntax is correct
-     */
-    private boolean testStrDecSyntax(String args) {
-        return args.matches(REGEX_STR_VARDEC);
-    }
-
-    /**
-     * Test the syntax of the debug input command
-     * @param args The arguments of the debug input command
-     * @return true if the syntax is correct
-     */
-    private boolean testDebugInputSyntax(String args) {
-        return args.matches(REGEX_DEBUG);
-    }
-
-    /**
-     * Test the syntax of the save command
-     * @param args The arguments of the save command
-     * @return true if the syntax is correct
-     */
-    private boolean testSaveSyntax(String args) {
-        return args.strip().isEmpty();
-    }
-
-    /**
-     * Test the syntax of the load command
-     * @param args The arguments of the load command
-     * @return true if the syntax is correct
-     */
-    private boolean testLoadSyntax(String args) {
-        return args.strip().isEmpty();
-    }
-
-    /**
-     * Test the syntax of the exit command
-     * @param args The arguments of the exit command
-     * @return true if the syntax is correct
-     */
-    private boolean testExitSyntax(String args) {
-        return args.matches(REGEX_EXIT);
-    }
-
-    /**
-     * Test the syntax of the loop command
-     * @param args The arguments of the loop command
-     * @return true if the syntax is correct
-     */
-    private boolean testLoopSyntax(String args) {
-        String argsTyp2 = args.substring(0, args.indexOf(IF_NUM_SEPERATOR));
-
-
-        return testIfSyntaxSwitch(args) || argsTyp2.matches(REGEX_LOOP);
-    }
-
-    /**
-     * Test the syntax of the loop breaker command
-     * @param args The arguments of the loop breaker command
-     * @return true if the syntax is correct
-     */
-    private boolean testLoopBreakerSyntax(String args) {
-        return args.strip().isEmpty();
-    }
-
-    /**
-     * Test the syntax of the set command
-     * @param args The arguments of the set command
-     * @return true if the syntax is correct
-     */
-    private boolean testSetSyntax(String args) {
-        return args.matches(REGEX_SET);
-    }
-
-    /**
-     * Test the syntax of the action command
-     * @param args The arguments of the action command
-     * @return true if the syntax is correct
-     */
-    private boolean testActionSyntax(String arg) {
-        return arg.matches(REGEX_ACTION);
-    }
-
-    /**
-     * Test the syntax of the action call command
-     * @param args The arguments of the action call command
-     * @return true if the syntax is correct
-     */
-    private boolean testActionCallSyntax(String arg) {
-        return arg.matches(REGEX_ACTION_CALL);
     }
 
 

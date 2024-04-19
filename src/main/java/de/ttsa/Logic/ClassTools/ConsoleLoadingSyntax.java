@@ -7,7 +7,7 @@ public class ConsoleLoadingSyntax {
 // ------------------------------ Index Syntax --------------------------------
 
 
-
+/*
     protected final String INDEX_SAY                = "00";
     protected final String INDEX_ROOM               = "01";
     protected final String INDEX_ROOM_JUMPER        = "02";
@@ -26,7 +26,7 @@ public class ConsoleLoadingSyntax {
     protected final String INDEX_SET                = "0F";
     protected final String INDEX_ACTION             = "10";
     protected final String INDEX_ACTION_CALL        = "11";
-
+*/
 
 
 // ---------------------------- Command Seperators -----------------------------

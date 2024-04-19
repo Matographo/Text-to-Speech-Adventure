@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.ConsoleLoadingSyntax;
+import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Features.Action.Action;
 import de.ttsa.Logic.Features.ActionCall.ActionCall;
 import de.ttsa.Logic.Features.DebugInput.DebugInput;
@@ -36,6 +37,8 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
     private ArrayList<String> game;
 
     private Input input = new Input();
+
+    private OpCodeIndex opCodeIndex = OpCodeIndex.NONE;
 
 
 
@@ -83,13 +86,13 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
             opCode = line.split(COMMAND_SEPERATOR)[0];
             args   = line.substring(line.indexOf(COMMAND_SEPERATOR) + opCode.length()).strip();
 
-            switch(opCode) {
-                case INDEX_SAY:
+            switch(opCodeIndex.convert(opCode)) {
+                case SAY:
 
                     gameScript.add(say(args));
                     break;
 
-                case INDEX_ROOM:
+                case ROOM:
 
                     startTime = System.currentTimeMillis();
                     int roomSize = getRoomSize(args);
@@ -106,27 +109,27 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
                     i--;
                     break;
 
-                case INDEX_ROOM_JUMPER:
+                case ROOM_JUMPER:
 
                     gameScript.add(new RoomJumper(args));
                     break;
 
-                case INDEX_NUMBER_VARIABLE:
+                case NUMBER_DEC:
 
                     numVars(args);
                     break;
 
-                case INDEX_STRING_VARIABLE:
+                case STR_DEC:
 
                     strVars(args);
                     break;
 
-                case INDEX_NUM_VARDEC:
+                case NUM_INIT:
 
                     gameScript.add(varDec(args));
                     break;
 
-                case INDEX_IF:
+                case IF:
 
                     startTime = System.currentTimeMillis();
                     int ifSize = getIfSize(args);
@@ -143,37 +146,37 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
                     i--;
                     break;
 
-                case INDEX_INPUT:
+                case INPUT:
 
                     gameScript.add(input);
                     break;
 
-                case INDEX_STR_VARDEC:
+                case STR_INIT:
 
                     gameScript.add(strDec(args));
                     break;
 
-                case INDEX_DEBUG:
+                case DEBUG:
 
                     gameScript.add(new DebugInput(args));
                     break;
 
-                case INDEX_SAVE:
+                case SAVE:
 
                     gameScript.add(new GameSavingScript());
                     break;
 
-                case INDEX_LOAD:
+                case LOAD:
 
                     gameScript.add(new GameLoaderScript());
                     break;
 
-                case INDEX_EXIT:
+                case EXIT:
 
                     gameScript.add(new GameExitScript(args));
                     break;
 
-                case INDEX_LOOP:
+                case LOOP:
 
                     startTime = System.currentTimeMillis();
                     int loopSize = getLoopSize(args);
@@ -190,17 +193,17 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
                     i--;
                     break;
 
-                case INDEX_LOOP_BREAKER:
+                case LOOP_BREAKER:
 
                     gameScript.add(new LoopBreaker());
                     break;
 
-                case INDEX_SET:
+                case SET:
 
                     set(args);
                     break;
 
-                case INDEX_ACTION:
+                case ACTION:
 
                     startTime = System.currentTimeMillis();
                     int actionSize = getActionSize(args);
@@ -217,7 +220,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
                     i--;
                     break;
 
-                case INDEX_ACTION_CALL:
+                case ACTION_CALL:
 
                     gameScript.add(actionCall(args));
                     break;

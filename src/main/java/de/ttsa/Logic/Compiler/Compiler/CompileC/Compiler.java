@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import de.ttsa.Logic.ClassTools.CompilerSyntax;
+import de.ttsa.Logic.Enums.OpCodeIndex;
 
 public class Compiler extends CompilerSyntax {
 
@@ -119,7 +120,7 @@ public class Compiler extends CompilerSyntax {
     private String compileSay(String line) {
         StringBuilder commands = new StringBuilder(getWithoutCommand(line));
 
-        StringBuilder compiled = getStartCode(INDEX_SAY);
+        StringBuilder compiled = getStartCode(OpCodeIndex.SAY);
         compiled.append(getSay(commands));
         return compiled.toString();
     }
@@ -167,7 +168,7 @@ public class Compiler extends CompilerSyntax {
             commands = commands.substring(0, commands.indexOf(SYNTAX_BLOCK_START)).strip();
         }
 
-        StringBuilder compiled = getStartCode(INDEX_ROOM);
+        StringBuilder compiled = getStartCode(OpCodeIndex.ROOM);
         compiled.append(commands);
         compiled.append(ROOM_SEPERATOR);
 
@@ -184,18 +185,18 @@ public class Compiler extends CompilerSyntax {
     private String compileRoomJumper(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(INDEX_ROOM_JUMPER);
+        StringBuilder compiled = getStartCode(OpCodeIndex.ROOM_JUMPER);
         compiled.append(commands);
         return compiled.toString();
     }
 
 
-// ***************************** Num INIT ****************************************
+// ***************************** Num DEC ****************************************
     private String compileNum(String line) {
         String commands = getWithoutCommand(line);
         String varName = "";
 
-        StringBuilder compiled = getStartCode(INDEX_NUMBER_VARIABLE);
+        StringBuilder compiled = getStartCode(OpCodeIndex.NUMBER_DEC);
         if(commands.contains("=") || commands.contains(" ")) {
             String[] parts;
 
@@ -217,12 +218,12 @@ public class Compiler extends CompilerSyntax {
     }
 
 
-// ***************************** STR INIT ****************************************
+// ***************************** STR DEC ****************************************
     private String compileStr(String line) {
         String commands = getWithoutCommand(line);
         String varName = "";
 
-        StringBuilder compiled = getStartCode(INDEX_STRING_VARIABLE);
+        StringBuilder compiled = getStartCode(OpCodeIndex.STR_DEC);
         if(commands.contains("=") || commands.contains(" ")) {
             String[] parts;
 
@@ -248,11 +249,11 @@ public class Compiler extends CompilerSyntax {
     }
 
 
-// ***************************** NUM DEC ***************************************
+// ***************************** NUM INIT ***************************************
     private String compileNumDec(String line) {
         StringBuilder commands = new StringBuilder(getWithoutCommand(line));
 
-        StringBuilder compiled = getStartCode(INDEX_NUM_VARDEC);
+        StringBuilder compiled = getStartCode(OpCodeIndex.NUM_INIT);
         compiled.append(compileNumDecCommand(commands));
         return compiled.toString();
     }
@@ -270,13 +271,13 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** INPUT ****************************************
     private String compileInput(String line) {
-        return getStartCode(INDEX_INPUT).toString();
+        return getStartCode(OpCodeIndex.INPUT).toString();
     }
 
 
 // ***************************** IF *******************************************
     private ArrayList<String> compileIf(ArrayList<String> lines) {
-        String result = getStartCode(INDEX_IF).toString();
+        String result = getStartCode(OpCodeIndex.IF).toString();
 
         ArrayList<String> content = calculateIfBlocks(getBlocks(lines));
 
@@ -374,11 +375,11 @@ public class Compiler extends CompilerSyntax {
     }
 
 
-// ***************************** STR DEC ****************************************
+// ***************************** STR INIT ****************************************
     private String compileStrDec(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(INDEX_STR_VARDEC);
+        StringBuilder compiled = getStartCode(OpCodeIndex.STR_INIT);
         compiled.append(compileStrDecCommand(new StringBuilder(commands)));
         return compiled.toString();
     }
@@ -413,7 +414,7 @@ public class Compiler extends CompilerSyntax {
     private String compileDebug(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(INDEX_DEBUG);
+        StringBuilder compiled = getStartCode(OpCodeIndex.DEBUG);
         compiled.append(compileDebugCommand(new StringBuilder(commands)));
         return compiled.toString();
     }
@@ -438,19 +439,19 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** SAVE *******************************************
     private String compileSave(String line) {
-        return getStartCode(INDEX_SAVE).toString();
+        return getStartCode(OpCodeIndex.SAVE).toString();
     }
 
 
 // ***************************** LOAD *******************************************
     private String compileLoad(String line) {
-        return getStartCode(INDEX_LOAD).toString();
+        return getStartCode(OpCodeIndex.LOAD).toString();
     }
 
 
 // ***************************** EXIT *******************************************
     private String compileExit(String line) {
-        StringBuilder compiled = getStartCode(INDEX_EXIT);
+        StringBuilder compiled = getStartCode(OpCodeIndex.EXIT);
         compiled.append("0");
         return compiled.toString();
     }
@@ -463,7 +464,7 @@ public class Compiler extends CompilerSyntax {
         String commands = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_COMMAND) + 1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip();
         lines.remove(0);
 
-        StringBuilder compiled = getStartCode(INDEX_LOOP);
+        StringBuilder compiled = getStartCode(OpCodeIndex.LOOP);
 
         switch (getLoopMode(commands)) {
             case 'n':
@@ -507,7 +508,7 @@ public class Compiler extends CompilerSyntax {
 
 // ***************************** BREAK ******************************************
     private String compileBreak(String line) {
-        return getStartCode(INDEX_LOOP_BREAKER).toString();
+        return getStartCode(OpCodeIndex.LOOP_BREAKER).toString();
     }
 
 
@@ -516,7 +517,7 @@ public class Compiler extends CompilerSyntax {
         String setName = lines.get(0).substring(lines.get(0).indexOf(SYNTAX_SET) + SYNTAX_SET.length() +1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip();
         lines.remove(0);
 
-        StringBuilder compiled = getStartCode(INDEX_SET);
+        StringBuilder compiled = getStartCode(OpCodeIndex.SET);
         compiled.append(setName);
         compiled.append(SET_NAME_SEPERATOR);
         compiled.append(compileSetCommands(lines));
@@ -545,7 +546,7 @@ public class Compiler extends CompilerSyntax {
         StringBuilder commands = new StringBuilder(lines.get(0).substring(lines.get(0).indexOf(SYNTAX_ACTION) + SYNTAX_ACTION.length() + 1, lines.get(0).lastIndexOf(SYNTAX_BLOCK_START)).strip());
         lines.remove(0);
 
-        StringBuilder compiled = getStartCode(INDEX_ACTION);
+        StringBuilder compiled = getStartCode(OpCodeIndex.ACTION);
         compiled.append(commands.substring(0, commands.indexOf("(")).strip());
         compiled.append(ACTION_SEPERATOR);
         compiled.append(getActionParams(commands.substring(commands.indexOf("(") + 1, commands.lastIndexOf(")")).strip()));
@@ -601,7 +602,7 @@ public class Compiler extends CompilerSyntax {
     private String compileActionCall(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(INDEX_ACTION_CALL);
+        StringBuilder compiled = getStartCode(OpCodeIndex.ACTION_CALL);
         if(commands.strip().matches("[a-zA-Z]+\\w*")) {
             compiled.append(commands.strip());
             commands = "";
@@ -636,8 +637,8 @@ public class Compiler extends CompilerSyntax {
 // -------------------------------------------- Help Methods ------------------------------------------------ //
 
 
-    private StringBuilder getStartCode(String index) {
-        return new StringBuilder().append(index + COMMAND_SEPERATOR);
+    private StringBuilder getStartCode(OpCodeIndex index) {
+        return new StringBuilder().append(index.getIndex() + COMMAND_SEPERATOR);
     }
 
     private String getWithoutCommand(String line) {
