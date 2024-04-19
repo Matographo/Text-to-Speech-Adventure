@@ -1,12 +1,11 @@
 package de.ttsa.TestClasses.OpCodeTestTester;
 
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
 
 
 public class TesterStrVarTest extends OpCodeTestTesterClass {

@@ -1,0 +1,6 @@
+Room Raum1 {
+    Input:
+    If: "Hallo" & "Welt" {
+        
+    }
+}

@@ -1,0 +1,8 @@
+Str: Var1 = "Hallo"
+
+Room Raum1 {
+    Input:
+    If: {@Var1} {
+        
+    }
+}

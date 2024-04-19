@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.TestClasses.CodeCompilerTesterClass;
 
 public class CompilerNumVarTest extends CodeCompilerTesterClass {

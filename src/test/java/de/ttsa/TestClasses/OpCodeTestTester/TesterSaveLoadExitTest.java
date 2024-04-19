@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterSaveLoadExitTest extends OpCodeTestTesterClass {

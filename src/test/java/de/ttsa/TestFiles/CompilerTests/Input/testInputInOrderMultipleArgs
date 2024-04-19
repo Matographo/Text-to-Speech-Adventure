@@ -1,0 +1,12 @@
+Str: Var1 = "Hallo"
+
+Set Angriff {
+    HalliHallo
+}
+
+Room Raum1 {
+    Input:
+    If: [@Var1, 'Angriff', "Huhu"] {
+        
+    }
+}

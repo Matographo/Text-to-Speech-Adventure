@@ -1,0 +1,15 @@
+Str: Var1 = "Hallo"
+Str: Var2 = "Welt"
+
+Set TestSet {
+    test
+    Test
+    est
+}
+
+Room Raum1 {
+    Input:
+    If: [@Var1, {"Das", "ist"}, {"ein", 'TestSet'}, @Var2] {
+        
+    }
+}

@@ -1,0 +1,10 @@
+Set Attacke {
+    Hallo
+}
+
+Room Raum1 {
+    Input:
+    If: 'Hallo' {
+        
+    }
+}

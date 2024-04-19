@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Player.GameManager;
-import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Logic.Player.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerIfTest extends OpCodePlayerTesterClass {

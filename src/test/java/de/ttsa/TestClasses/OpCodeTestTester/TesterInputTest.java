@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterInputTest extends OpCodeTestTesterClass {

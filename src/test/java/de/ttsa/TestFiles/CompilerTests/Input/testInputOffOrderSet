@@ -1,0 +1,10 @@
+Set Angriff {
+    Test
+}
+
+Room Raum1 {
+    Input:
+    If: {'Angriff'} {
+        
+    }
+}

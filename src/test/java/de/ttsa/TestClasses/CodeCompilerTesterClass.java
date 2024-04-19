@@ -2,10 +2,10 @@ package de.ttsa.TestClasses;
 
 import java.util.ArrayList;
 
-import de.ttsa.ConsoleGame.Compiler.Compiler.CompileTools.CFileReader;
-import de.ttsa.ConsoleGame.Compiler.Compiler.CompileTools.Merger;
-import de.ttsa.ConsoleGame.Compiler.OpCodeTester.OpCodeTest;
-import de.ttsa.ConsoleGame.Compiler.Compiler.CompileC.Compiler;
+import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
+import de.ttsa.Logic.Compiler.Compiler.CompileTools.CFileReader;
+import de.ttsa.Logic.Compiler.Compiler.CompileTools.Merger;
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 
 public class CodeCompilerTesterClass {
     

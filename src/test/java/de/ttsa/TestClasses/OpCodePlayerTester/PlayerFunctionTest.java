@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import de.ttsa.ConsoleGame.Player.Player;
+import de.ttsa.Logic.Player.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerFunctionTest extends OpCodePlayerTesterClass {
