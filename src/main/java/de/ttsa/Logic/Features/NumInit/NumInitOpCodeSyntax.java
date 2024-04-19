@@ -2,9 +2,9 @@ package de.ttsa.Logic.Features.NumInit;
 
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
-public class NumInitOpCodeSyntax extends OpCode implements OpCodeTestable {
+public class NumInitOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {

@@ -1,6 +1,6 @@
 package de.ttsa.Logic.Interfaces;
 
-public interface OpCodeTestable {
+public interface OpCodeSyntaxTestable {
 
     /**
      * Test the syntax of the command

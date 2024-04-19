@@ -11,10 +11,16 @@ import java.util.HashSet;
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
-import de.ttsa.Logic.Enums.OpCodeRegex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Features.Action.ActionOpCodeBlock;
+import de.ttsa.Logic.Features.NumDec.NumDecOpCodeVar;
+import de.ttsa.Logic.Features.Printer.PrinterOpCodeVar;
+import de.ttsa.Logic.Features.Room.RoomOpCodeBlock;
+import de.ttsa.Logic.Features.Room.RoomOpCodeVar;
+import de.ttsa.Logic.Features.RoomJumper.RoomJumperOpCodeVar;
+import de.ttsa.Logic.Features.StrDec.StrDecOpCodeVar;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
 public class OpCodeTest extends OpCode{
 
@@ -163,7 +169,7 @@ public class OpCodeTest extends OpCode{
         boolean testResult = true;
         String command     = "";
         String args        = "";
-        OpCodeTestable test;
+        OpCodeSyntaxTestable test;
 
 
         for(String line : content) {
@@ -194,25 +200,27 @@ public class OpCodeTest extends OpCode{
         String command     = "";
         String args        = "";
 
+        OpCodeVar opCodeVar = new OpCodeVar(roomNames, varNames, numNames, strNames, actionNames, setNames);
 
         for(int i = 0; i < content.size(); i++) {
             command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
             args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
 
+
             switch(opCodeIndex.convert(command)) {
-                case SAY ->               testResult = testResult && testSayVar(args);
-                case ROOM ->              testResult = testResult && testRoomVar(args);
-                case ROOM_JUMPER ->       testResult = testResult && testRoomJumperVar(args);
-                case NUMBER_DEC ->   testResult = testResult && testNumberVariableVar(args);
-                case STR_DEC ->   testResult = testResult && testStringVariableVar(args);
-                case NUM_INIT ->        testResult = testResult && testNumberDecVar(args);
-                case IF ->                testResult = testResult && testIfVar(args);
-                case DEBUG ->             testResult = testResult && testDebugInputVar(args);
-                case STR_INIT ->        testResult = testResult && testStrVarDec(args);
-                case LOOP ->              testResult = testResult && testLoopVar(args);
-                case SET ->               testResult = testResult && testSetVar(args);
-                case ACTION ->            testResult = testResult && testActionVar(args);
-                case ACTION_CALL ->       testResult = testResult && testActionCallVar(args);
+                case SAY ->         testResult &= new PrinterOpCodeVar().test(args, opCodeVar);
+                case ROOM ->        testResult &= new RoomOpCodeVar().test(args, opCodeVar);
+                case ROOM_JUMPER -> testResult &= new RoomJumperOpCodeVar().test(args, opCodeVar);
+                case NUMBER_DEC ->  testResult &= new NumDecOpCodeVar().test(args, opCodeVar);
+                case STR_DEC ->     testResult &= new StrDecOpCodeVar().test(args, opCodeVar);
+                case NUM_INIT ->    testResult &= testNumberDecVar(args);
+                case IF ->          testResult &= testIfVar(args);
+                case DEBUG ->       testResult &= testDebugInputVar(args);
+                case STR_INIT ->    testResult &= testStrVarDec(args);
+                case LOOP ->        testResult &= testLoopVar(args);
+                case SET ->         testResult &= testSetVar(args);
+                case ACTION ->      testResult &= testActionVar(args);
+                case ACTION_CALL -> testResult &= testActionCallVar(args);
             }
         }
 
@@ -245,7 +253,7 @@ public class OpCodeTest extends OpCode{
                 case ROOM:
                     lastRoomLength = getRoomBlockLength(args);
 
-                    testResult = testResult && testRoomBlock(args, content.size() - i);
+                    testResult = testResult && new RoomOpCodeBlock().testOpCode(args, content.subList(i, content.size()));
                     break;
                 case IF:
                     testResult = testResult && testIfBlock(args, i, i + lastRoomLength);
@@ -254,7 +262,7 @@ public class OpCodeTest extends OpCode{
                     testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
                     break;
                 case ACTION:
-                    testResult = testResult && testActionBlock(args, content.size() - i);
+                    testResult = testResult && new ActionOpCodeBlock().testOpCode(args, content.subList(i, content.size()));
                     break;
                 default:
                     continue;

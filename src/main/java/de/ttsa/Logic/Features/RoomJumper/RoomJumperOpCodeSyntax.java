@@ -1,9 +1,9 @@
 package de.ttsa.Logic.Features.RoomJumper;
 
 import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
-public class RoomJumperOpCodeSyntax extends OpCode implements OpCodeTestable {
+public class RoomJumperOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {

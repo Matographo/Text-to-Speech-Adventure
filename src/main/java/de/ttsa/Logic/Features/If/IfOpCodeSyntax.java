@@ -3,9 +3,9 @@ package de.ttsa.Logic.Features.If;
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
-public class IfOpCodeSyntax extends OpCode implements OpCodeTestable {
+public class IfOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {

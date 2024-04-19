@@ -18,7 +18,7 @@ import de.ttsa.Logic.Features.RoomJumper.RoomJumperOpCodeSyntax;
 import de.ttsa.Logic.Features.Set.SetOpCodeSyntax;
 import de.ttsa.Logic.Features.StrDec.StrDecOpCodeSyntax;
 import de.ttsa.Logic.Features.StrInit.StrInitOpCodeSyntax;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 
 public enum OpCodeSyntaxTests {
@@ -75,9 +75,9 @@ public enum OpCodeSyntaxTests {
 
     }
 
-    public OpCodeTestable getTest(String mode) {
+    public OpCodeSyntaxTestable getTest(String mode) {
         getMode(mode);
-        OpCodeTestable test;
+        OpCodeSyntaxTestable test;
         switch (this.mode) {
             case SAY -> test = printer;
             case ACTION -> test = action;

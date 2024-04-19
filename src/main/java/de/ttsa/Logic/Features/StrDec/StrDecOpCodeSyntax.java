@@ -1,9 +1,9 @@
 package de.ttsa.Logic.Features.StrDec;
 
 import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
-public class StrDecOpCodeSyntax extends OpCode implements OpCodeTestable {
+public class StrDecOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
