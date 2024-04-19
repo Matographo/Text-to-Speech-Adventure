@@ -1,6 +1,6 @@
 package de.ttsa.Logic.ClassTools;
 
-public class OpCode extends ConsoleLoadingSyntax {
+public class OpCode {
 
     
 

@@ -1,13 +1,14 @@
 package de.ttsa.Logic.Features.NumInit;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
 
 public class NumInitOpCodeSyntax extends OpCode implements OpCodeTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        String[] args = arg.split(NUMBER_DEC_SEPERATOR);
+        String[] args = arg.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
         String value = args[1];
 
 

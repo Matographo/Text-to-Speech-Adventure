@@ -9,6 +9,7 @@ import de.ttsa.Logic.ClassTools.CompilerSyntax;
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 
 public class Compiler extends CompilerSyntax {
 
@@ -153,7 +154,7 @@ public class Compiler extends CompilerSyntax {
                 }
             }
             if (commands.length() > 0) {
-                endCommand.append(SAY_SEPERATOR);
+                endCommand.append(OpCodeSeperators.SAY.getSeperator());
             }
         }
 
@@ -173,7 +174,7 @@ public class Compiler extends CompilerSyntax {
 
         StringBuilder compiled = getStartCode(OpCodeIndex.ROOM);
         compiled.append(commands);
-        compiled.append(ROOM_SEPERATOR);
+        compiled.append(OpCodeSeperators.ROOM.getSeperator());
 
         roomContent.addAll(compileFile(lines));
 
@@ -208,12 +209,12 @@ public class Compiler extends CompilerSyntax {
 
             varName = parts[0].strip();
             compiled.append(varName);
-            compiled.append(NUMBER_VARIABLE_SEPERATOR);
+            compiled.append(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
             compiled.append(parts[1].strip());
         } else {
             varName = commands;
             compiled.append(varName);
-            compiled.append(NUMBER_VARIABLE_SEPERATOR);
+            compiled.append(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
             compiled.append("0");
         }
         variables.get("NUMBER").add(varName);
@@ -239,12 +240,12 @@ public class Compiler extends CompilerSyntax {
 
             varName = parts[0].strip();
             compiled.append(varName);
-            compiled.append(STR_SEPERATOR);
+            compiled.append(OpCodeSeperators.STR.getSeperator());
             compiled.append(parts[1].strip());
         } else {
             varName = commands;
             compiled.append(varName);
-            compiled.append(NUMBER_STRING_SEPERATOR);
+            compiled.append(OpCodeSeperators.NUMBER_STRING.getSeperator());
         }
 
         variables.get("STRING").add(varName);
@@ -265,7 +266,7 @@ public class Compiler extends CompilerSyntax {
         StringBuilder endString = new StringBuilder();
 
         endString.append(line.substring(0, line.indexOf("=")).strip());
-        endString.append(NUMBER_VARIABLE_SEPERATOR);
+        endString.append(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
         line.delete(0, line.indexOf("=") + 1);
         endString.append(line.toString().replaceAll(" ", "").strip());
         return endString.toString();
@@ -325,12 +326,12 @@ public class Compiler extends CompilerSyntax {
             block.remove(0);
 
             compiledIf.append(calculateCondition(condition));
-            compiledIf.append(IF_NUM_SEPERATOR);
+            compiledIf.append(OpCodeSeperators.IF_NUM.getSeperator());
             
             compiledFile = compileFile(block);
             result.addAll(compiledFile);
             compiledIf.append(compiledFile.size());
-            compiledIf.append(IF_ELSE_SEPERATOR);
+            compiledIf.append(OpCodeSeperators.IF_ELSE.getSeperator());
         }
         compiledIf.delete(compiledIf.length()-2, compiledIf.length());
 
@@ -391,7 +392,7 @@ public class Compiler extends CompilerSyntax {
         StringBuilder endString = new StringBuilder();
 
         endString.append(line.substring(0, line.indexOf("=")).strip());
-        endString.append(STR_SEPERATOR);
+        endString.append(OpCodeSeperators.STR.getSeperator());
         endString.append(calculateStrDec(new StringBuilder(line.substring(line.indexOf("=") + 1).strip())));
         return endString.toString();
     }
@@ -402,12 +403,12 @@ public class Compiler extends CompilerSyntax {
             endString.append("\"" + line.substring(0, line.indexOf("'")) + "\"");
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(STR_CONTENT_SEPERATOR);
+            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
 
             endString.append(line.substring(0, line.indexOf("'")).strip());
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(STR_CONTENT_SEPERATOR);
+            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
         }
         endString.append("\"" + line + "\"");
         return endString.toString();
@@ -429,12 +430,12 @@ public class Compiler extends CompilerSyntax {
             endString.append("\"" + line.substring(0, line.indexOf("'")) + "\"");
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(STR_CONTENT_SEPERATOR);
+            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
 
             endString.append(line.substring(0, line.indexOf("'")).strip());
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(STR_CONTENT_SEPERATOR);
+            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
         }
         endString.append("\"" + line + "\"");
         return endString.toString();
@@ -486,7 +487,7 @@ public class Compiler extends CompilerSyntax {
                 break;
         }
 
-        compiled.append(LOOP_SEPERATOR);
+        compiled.append(OpCodeSeperators.LOOP.getSeperator());
 
         List<String> loopContent = compileFile(lines);
         compiled.append(loopContent.size());
@@ -522,7 +523,7 @@ public class Compiler extends CompilerSyntax {
 
         StringBuilder compiled = getStartCode(OpCodeIndex.SET);
         compiled.append(setName);
-        compiled.append(SET_NAME_SEPERATOR);
+        compiled.append(OpCodeSeperators.SET_NAME.getSeperator());
         compiled.append(compileSetCommands(lines));
         return compiled.toString();
     }
@@ -536,7 +537,7 @@ public class Compiler extends CompilerSyntax {
             } else {
                 endString.append("\"" + line + "\"");
             }
-            endString.append(SET_SEPERATOR);
+            endString.append(OpCodeSeperators.SET.getSeperator());
         }
         endString.deleteCharAt(endString.length() - 1);
         return endString.toString();
@@ -551,9 +552,9 @@ public class Compiler extends CompilerSyntax {
 
         StringBuilder compiled = getStartCode(OpCodeIndex.ACTION);
         compiled.append(commands.substring(0, commands.indexOf("(")).strip());
-        compiled.append(ACTION_SEPERATOR);
+        compiled.append(OpCodeSeperators.ACTION.getSeperator());
         compiled.append(getActionParams(commands.substring(commands.indexOf("(") + 1, commands.lastIndexOf(")")).strip()));
-        compiled.append(ACTION_SEPERATOR);
+        compiled.append(OpCodeSeperators.ACTION.getSeperator());
         List<String> actionContent = compileFile(lines);
         compiled.append(actionContent.size());
         result.add(compiled.toString());
@@ -564,7 +565,7 @@ public class Compiler extends CompilerSyntax {
     private String getActionParams(String commands) {
         StringBuilder result = new StringBuilder();
         if(commands.equals("")) return "-";
-        String[] args = commands.split(ACTION_ARGS_SEPERATOR);
+        String[] args = commands.split(OpCodeSeperators.ACTION_ARGS.getSeperator());
         char argType;
         for(String arg : args) {
             arg = arg.strip();
@@ -580,7 +581,7 @@ public class Compiler extends CompilerSyntax {
                 default:
                     return "-";
             }
-            result.append(ACTION_ARGS_SEPERATOR);
+            result.append(OpCodeSeperators.ACTION_ARGS.getSeperator());
         }
         result.deleteCharAt(result.length()-1);
         return result.toString();
@@ -614,7 +615,7 @@ public class Compiler extends CompilerSyntax {
             commands = commands.substring(commands.indexOf(" ") + 1).strip();
         }
         
-        compiled.append(ACTION_SEPERATOR);
+        compiled.append(OpCodeSeperators.ACTION.getSeperator());
 
         compiled.append(getActionCallArgs(commands));
         return compiled.toString();
@@ -622,13 +623,13 @@ public class Compiler extends CompilerSyntax {
 
     private String getActionCallArgs(String args) {
         StringBuilder result = new StringBuilder();
-        String[] argsOfCall = args.split(ACTION_ARGS_SEPERATOR);
+        String[] argsOfCall = args.split(OpCodeSeperators.ACTION_ARGS.getSeperator());
         if(args.isBlank()) {
             return "-";
         }
         for(String arg : argsOfCall) {
             result.append(arg.strip());
-            result.append(ACTION_ARGS_SEPERATOR);
+            result.append(OpCodeSeperators.ACTION_ARGS.getSeperator());
         }
         result.deleteCharAt(result.length()-1);
         return result.toString();
@@ -641,7 +642,7 @@ public class Compiler extends CompilerSyntax {
 
 
     private StringBuilder getStartCode(OpCodeIndex index) {
-        return new StringBuilder().append(index.getIndex() + COMMAND_SEPERATOR);
+        return new StringBuilder().append(index.getIndex() + OpCodeSeperators.COMMAND.getSeperator());
     }
 
     private String getWithoutCommand(String line) {

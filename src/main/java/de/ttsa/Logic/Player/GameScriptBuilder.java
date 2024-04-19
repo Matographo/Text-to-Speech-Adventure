@@ -3,8 +3,8 @@ package de.ttsa.Logic.Player;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import de.ttsa.Logic.ClassTools.ConsoleLoadingSyntax;
 import de.ttsa.Logic.Enums.OpCodeIndex;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Features.Action.Action;
 import de.ttsa.Logic.Features.ActionCall.ActionCall;
 import de.ttsa.Logic.Features.DebugInput.DebugInput;
@@ -26,7 +26,7 @@ import de.ttsa.Logic.Interfaces.Printablable;
 import de.ttsa.Logic.Interfaces.Scriptable;
 import de.ttsa.Logic.Player.Datatypes.*;
 
-class GameScriptBuilder extends ConsoleLoadingSyntax{
+class GameScriptBuilder {
 
 
 
@@ -83,8 +83,8 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
         for(int i = 0; i < game.size(); i++) {
             line   = game.get(i);
-            opCode = line.split(COMMAND_SEPERATOR)[0];
-            args   = line.substring(line.indexOf(COMMAND_SEPERATOR) + opCode.length()).strip();
+            opCode = line.split(OpCodeSeperators.COMMAND.getSeperator())[0];
+            args   = line.substring(line.indexOf(OpCodeSeperators.COMMAND.getSeperator()) + opCode.length()).strip();
 
             switch(opCodeIndex.convert(opCode)) {
                 case SAY:
@@ -244,7 +244,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the say Scriptable
      */
     private Scriptable say(String args) {
-        String[] sayArgs          = args.split(SAY_SEPERATOR);
+        String[] sayArgs          = args.split(OpCodeSeperators.SAY.getSeperator());
         Printablable[] printables = new Printablable[sayArgs.length];
         String arg                = "";
 
@@ -278,7 +278,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      */
     private void room(ArrayList<String> roomContent) {
         try {
-            String[] roomArgs = roomContent.get(0).split(ROOM_SEPERATOR);
+            String[] roomArgs = roomContent.get(0).split(OpCodeSeperators.ROOM.getSeperator());
             String roomName   = roomArgs[0];
             
             
@@ -296,7 +296,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @param args the arguments
      */
     private void numVars(String args) {
-        String[] numVarArgs = args.split(NUMBER_VARIABLE_SEPERATOR);
+        String[] numVarArgs = args.split(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
         String numVarName   = numVarArgs[0];
 
 
@@ -313,7 +313,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @param args the arguments
      */
     private void strVars(String args) {
-        String[] strVarArgs = args.split(NUMBER_STRING_SEPERATOR);
+        String[] strVarArgs = args.split(OpCodeSeperators.NUMBER_STRING.getSeperator());
         String strVarName   = strVarArgs[0];
 
 
@@ -331,7 +331,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the VarDec Scriptable
      */
     private Scriptable varDec(String args) {
-        String[] varDecArgs = args.split(NUMBER_DEC_SEPERATOR);
+        String[] varDecArgs = args.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
         String varDecName   = varDecArgs[0];
 
 
@@ -354,7 +354,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
 
         ifContent.remove(0);
 
-        String[] ifArgs      = ifBlockArg.split(IF_ELSE_SEPERATOR);
+        String[] ifArgs      = ifBlockArg.split(OpCodeSeperators.IF_ELSE.getSeperator());
         Scriptable[] scripts = new Scriptable[ifArgs.length];
 
         ArrayList<String> code;
@@ -390,7 +390,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the StrDec Scriptable
      */
     private Scriptable strDec(String args) {
-        String[] strDecArgs = args.split(STR_SEPERATOR);
+        String[] strDecArgs = args.split(OpCodeSeperators.STR.getSeperator());
         String strDecName   = strDecArgs[0];
 
 
@@ -439,9 +439,9 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @param args the arguments
      */
     private void set(String args) {
-        String[] setArgs      = args.split(SET_NAME_SEPERATOR);
+        String[] setArgs      = args.split(OpCodeSeperators.SET_NAME.getSeperator());
         String setName        = setArgs[0];
-        String[] setVariables = setArgs[1].split(SET_SEPERATOR);
+        String[] setVariables = setArgs[1].split(OpCodeSeperators.SET.getSeperator());
 
 
         if(!isValidName(setName)) {
@@ -470,9 +470,9 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @param actionContent the action content
      */
     private void action(ArrayList<String> actionContent) {
-        String[] actionArgs   = actionContent.get(0).split(ACTION_SEPERATOR);
+        String[] actionArgs   = actionContent.get(0).split(OpCodeSeperators.ACTION.getSeperator());
         String actionName     = actionArgs[0];
-        String[] actionParams = actionArgs[1].split(ACTION_ARGS_SEPERATOR);
+        String[] actionParams = actionArgs[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
 
 
         actionContent.remove(0);
@@ -487,9 +487,9 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the ActionCall Scriptable
      */
     private Scriptable actionCall(String args) {
-        String[] actionCallArgs = args.split(ACTION_SEPERATOR);
+        String[] actionCallArgs = args.split(OpCodeSeperators.ACTION.getSeperator());
         String actionName       = actionCallArgs[0];
-        String[] actionParams   = actionCallArgs[1].split(ACTION_ARGS_SEPERATOR);
+        String[] actionParams   = actionCallArgs[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
 
 
         return new ActionCall(actionName, actionParams);
@@ -506,7 +506,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the size of the room
      */
     private int getRoomSize(String args) {
-        String[] roomArgs = args.split(ROOM_SEPERATOR);
+        String[] roomArgs = args.split(OpCodeSeperators.ROOM.getSeperator());
 
 
         return Integer.parseInt(roomArgs[1]);
@@ -545,7 +545,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
      * @return the size of the if
      */
     private int getIfSize(String args) {
-        String[] lengthS = args.split(IF_ELSE_SEPERATOR);
+        String[] lengthS = args.split(OpCodeSeperators.IF_ELSE.getSeperator());
         int length       = 0;
 
 

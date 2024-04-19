@@ -2,13 +2,14 @@ package de.ttsa.Logic.Features.If;
 
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
 
 public class IfOpCodeSyntax extends OpCode implements OpCodeTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        String[] toTest    = arg.split(IF_ELSE_SEPERATOR);
+        String[] toTest    = arg.split(OpCodeSeperators.IF_ELSE.getSeperator());
         boolean testResult = true;
 
 
@@ -41,7 +42,7 @@ public class IfOpCodeSyntax extends OpCode implements OpCodeTestable {
      */
     private boolean testIfSyntaxSwitch(String args) {
         OpCodeIfTypes type = OpCodeIfTypes.convert(args.charAt(0));
-        args   = args.substring(1, args.indexOf(IF_NUM_SEPERATOR));
+        args   = args.substring(1, args.indexOf(OpCodeSeperators.IF_NUM.getSeperator()));
         boolean testResult;
 
         switch(type) {

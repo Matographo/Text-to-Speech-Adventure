@@ -2,13 +2,14 @@ package de.ttsa.Logic.Features.Loop;
 
 import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
 
 public class LoopOpCodeSyntax extends OpCode implements OpCodeTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        String argsTyp2 = arg.substring(0, arg.indexOf(IF_NUM_SEPERATOR));
+        String argsTyp2 = arg.substring(0, arg.indexOf(OpCodeSeperators.IF_NUM.getSeperator()));
 
 
         return testIfSyntaxSwitch(arg) || argsTyp2.matches(REGEX_LOOP);
@@ -21,7 +22,7 @@ public class LoopOpCodeSyntax extends OpCode implements OpCodeTestable {
      */
     private boolean testIfSyntaxSwitch(String args) {
         OpCodeIfTypes type = OpCodeIfTypes.convert(args.charAt(0));
-        args   = args.substring(1, args.indexOf(IF_NUM_SEPERATOR));
+        args   = args.substring(1, args.indexOf(OpCodeSeperators.IF_NUM.getSeperator()));
         boolean testResult;
 
         switch(type) {

@@ -1,6 +1,7 @@
 package de.ttsa.Logic.Enums;
 
 public enum OpCodeSeperators {
+    NONE(""),
     COMMAND("::"),
     SAY(","),
     ROOM(":"),

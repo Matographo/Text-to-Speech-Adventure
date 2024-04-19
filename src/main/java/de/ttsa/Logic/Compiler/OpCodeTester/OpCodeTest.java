@@ -12,6 +12,7 @@ import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeRegex;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
 import de.ttsa.Logic.Interfaces.OpCodeTestable;
 
@@ -166,8 +167,8 @@ public class OpCodeTest extends OpCode{
 
 
         for(String line : content) {
-            command = line.split(COMMAND_SEPERATOR)[0];
-            args    = line.substring(line.indexOf(COMMAND_SEPERATOR) + command.length()).strip();
+            command = line.split(OpCodeSeperators.COMMAND.getSeperator())[0];
+            args    = line.substring(line.indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
             test    = opCodeSyntaxTest.getTest(command);
 
             testResult &= test.testOpCode(args);
@@ -195,8 +196,8 @@ public class OpCodeTest extends OpCode{
 
 
         for(int i = 0; i < content.size(); i++) {
-            command = content.get(i).split(COMMAND_SEPERATOR)[0];
-            args    = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
+            command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
 
             switch(opCodeIndex.convert(command)) {
                 case SAY ->               testResult = testResult && testSayVar(args);
@@ -237,8 +238,8 @@ public class OpCodeTest extends OpCode{
 
 
         for(int i = 0; i < content.size(); i++) {
-            command = content.get(i).split(COMMAND_SEPERATOR)[0];
-            args    = content.get(i).substring(content.get(i).indexOf(COMMAND_SEPERATOR) + command.length()).strip();
+            command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
 
             switch(opCodeIndex.convert(command)) {
                 case ROOM:
@@ -275,7 +276,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testSayVar(String args) {
-        String[] allArgs   = args.split(SAY_SEPERATOR);
+        String[] allArgs   = args.split(OpCodeSeperators.SAY.getSeperator());
         boolean testResult = true;
 
 
@@ -301,7 +302,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testRoomVar(String args) {
-        String[] arg = args.split(ROOM_SEPERATOR);
+        String[] arg = args.split(OpCodeSeperators.ROOM.getSeperator());
 
         if(roomNames.contains(arg[0])) return false;
 
@@ -325,7 +326,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testNumberVariableVar(String args) {
-        String[] arg = args.split(NUMBER_VARIABLE_SEPERATOR);
+        String[] arg = args.split(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
 
 
         if(varNames.contains(arg[0])) return false;
@@ -342,7 +343,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testStringVariableVar(String args) {
-        String[] arg = args.split(NUMBER_STRING_SEPERATOR);
+        String[] arg = args.split(OpCodeSeperators.NUMBER_STRING.getSeperator());
 
 
         if(varNames.contains(arg[0])) return false;
@@ -359,7 +360,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testNumberDecVar(String args) {
-        String[] arg   = args.split(NUMBER_DEC_SEPERATOR);
+        String[] arg   = args.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
         String numName = arg[0];
         String value   = arg[1];
 
@@ -380,7 +381,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testIfVar(String args) {
-        String[] toTest    = args.split(IF_ELSE_SEPERATOR);
+        String[] toTest    = args.split(OpCodeSeperators.IF_ELSE.getSeperator());
         boolean testResult = true;
         char i;
 
@@ -404,7 +405,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testIfVarNum(String args) {
-        String[] tests     = args.split(IF_NUM_SEPERATOR);
+        String[] tests     = args.split(OpCodeSeperators.IF_NUM.getSeperator());
         boolean testResult = true;
         String[] toTest    = tests[0].split("[&]{2} | [|]{2}");
 
@@ -461,11 +462,11 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testStrVarDec(String args) {
-        String[] strDecArgs = args.split(STR_SEPERATOR);
+        String[] strDecArgs = args.split(OpCodeSeperators.STR.getSeperator());
 
 
         if(!isStrVar(strDecArgs[0]))                          return false;
-        String[] tokens = strDecArgs[1].split(STR_CONTENT_SEPERATOR);
+        String[] tokens = strDecArgs[1].split(OpCodeSeperators.STR_CONTENT.getSeperator());
         for(String token : tokens) {
             if(!isStrVar(token) && !isStr(token)) return false;
         }
@@ -479,15 +480,15 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testActionCallVar(String args) {
-        String[] actions    = args.split(ACTION_SEPERATOR);
+        String[] actions    = args.split(OpCodeSeperators.ACTION.getSeperator());
         String actionName   = actions[0];
-        String[] actionArgs = actions[1].split(ACTION_ARGS_SEPERATOR);
+        String[] actionArgs = actions[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
         OpCodeIfTypes type;
 
 
         if(!actionNames.contains(actionName)) return false;
 
-        String[] mainActionArgs = this.actionArgs.get(actionName).split(ACTION_ARGS_SEPERATOR);
+        String[] mainActionArgs = this.actionArgs.get(actionName).split(OpCodeSeperators.ACTION_ARGS.getSeperator());
 
         if(!actionNames.contains(actionName)) return false;
 
@@ -523,7 +524,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testActionVar(String args) {
-        String[] actionArgs = args.split(ACTION_SEPERATOR);
+        String[] actionArgs = args.split(OpCodeSeperators.ACTION.getSeperator());
         OpCodeIfTypes type;
 
 
@@ -531,7 +532,7 @@ public class OpCodeTest extends OpCode{
 
         actionNames.add(actionArgs[0]);
 
-        String[] actionArgss = actionArgs[1].split(ACTION_ARGS_SEPERATOR);
+        String[] actionArgss = actionArgs[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
 
         for(String actionArg : actionArgss) {
             type = OpCodeIfTypes.convert(actionArg.charAt(0));
@@ -572,7 +573,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the variables are correct
      */
     private boolean testSetVar(String args) {
-        String setName = args.substring(0, args.indexOf(SET_NAME_SEPERATOR));
+        String setName = args.substring(0, args.indexOf(OpCodeSeperators.SET_NAME.getSeperator()));
 
         if(setNames.contains(setName)) return false;
 
@@ -605,7 +606,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the block is correct
      */
     private boolean testIfBlock(String args, int ifPosition, int endOfRoom) {
-        String[] toTest = args.split(IF_ELSE_SEPERATOR);
+        String[] toTest = args.split(OpCodeSeperators.IF_ELSE.getSeperator());
         int blockLenght = 0;
 
         for(String test : toTest) {
@@ -758,7 +759,7 @@ public class OpCodeTest extends OpCode{
      * @return true if the String is a Testable Variable
      */
     private boolean isTestableVar(String test) {
-        String[] tests     = test.split(IF_ELSE_SEPERATOR);
+        String[] tests     = test.split(OpCodeSeperators.IF_ELSE.getSeperator());
         OpCodeIfTypes type;
         boolean testResult = true;
 
@@ -816,7 +817,7 @@ public class OpCodeTest extends OpCode{
      * @return The length of the if block
      */
     private int getIfBlockLength(String args) {
-        return Integer.parseInt(args.split(IF_NUM_SEPERATOR)[1]);
+        return Integer.parseInt(args.split(OpCodeSeperators.IF_NUM.getSeperator())[1]);
     }
 
     /**
@@ -825,7 +826,7 @@ public class OpCodeTest extends OpCode{
      * @return The length of the room block
      */
     private int getRoomBlockLength(String args) {
-        return Integer.parseInt(args.split(ROOM_SEPERATOR)[1]);
+        return Integer.parseInt(args.split(OpCodeSeperators.ROOM.getSeperator())[1]);
     }
 
     /**
@@ -852,7 +853,7 @@ public class OpCodeTest extends OpCode{
      * @return The length of the action block
      */
     private int getActionBlockLength(String args) {
-        return Integer.parseInt(args.split(ACTION_SEPERATOR)[2]);
+        return Integer.parseInt(args.split(OpCodeSeperators.ACTION.getSeperator())[2]);
     }
 
     /**

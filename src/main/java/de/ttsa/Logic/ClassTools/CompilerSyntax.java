@@ -1,6 +1,6 @@
 package de.ttsa.Logic.ClassTools;
 
-public class CompilerSyntax extends ConsoleLoadingSyntax {
+public class CompilerSyntax {
 
 
 
