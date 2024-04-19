@@ -4,9 +4,26 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.ConsoleLoadingSyntax;
+import de.ttsa.Logic.Features.Action.Action;
+import de.ttsa.Logic.Features.ActionCall.ActionCall;
+import de.ttsa.Logic.Features.DebugInput.DebugInput;
+import de.ttsa.Logic.Features.GameExitScript.GameExitScript;
+import de.ttsa.Logic.Features.GameLoaderScript.GameLoaderScript;
+import de.ttsa.Logic.Features.GameSavingScript.GameSavingScript;
+import de.ttsa.Logic.Features.If.If;
+import de.ttsa.Logic.Features.Input.Input;
+import de.ttsa.Logic.Features.Loop.Loop;
+import de.ttsa.Logic.Features.LoopBreaker.LoopBreaker;
+import de.ttsa.Logic.Features.NumInit.NumInit;
+import de.ttsa.Logic.Features.Printer.Printer;
+import de.ttsa.Logic.Features.Room.Room;
+import de.ttsa.Logic.Features.RoomJumper.RoomJumper;
+import de.ttsa.Logic.Features.Script.Script;
+import de.ttsa.Logic.Features.Set.Set;
+import de.ttsa.Logic.Features.StrInit.StrInit;
+import de.ttsa.Logic.Interfaces.Printablable;
+import de.ttsa.Logic.Interfaces.Scriptable;
 import de.ttsa.Logic.Player.Datatypes.*;
-import de.ttsa.Logic.Player.Scriptables.*;
-import de.ttsa.Logic.Player.Structures.*;
 
 class GameScriptBuilder extends ConsoleLoadingSyntax{
 
@@ -320,7 +337,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         }
 
         String varDecValue = varDecArgs[1];
-        return new VarDec(varDecName, varDecValue);
+        return new NumInit(varDecName, varDecValue);
     }
 
     /**
@@ -379,7 +396,7 @@ class GameScriptBuilder extends ConsoleLoadingSyntax{
         }
 
         String operation = strDecArgs[1];
-        return new StrDec(strDecName, operation);
+        return new StrInit(strDecName, operation);
     }
 
     /**

@@ -1,5 +1,7 @@
 package de.ttsa.Logic.Player.Datatypes;
 
+import de.ttsa.Logic.Interfaces.Printablable;
+
 public class STRING implements Printablable {
 
 

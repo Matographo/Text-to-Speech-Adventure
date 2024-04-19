@@ -3,12 +3,12 @@ package de.ttsa.Logic.Player;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.ttsa.Logic.Features.Action.Action;
+import de.ttsa.Logic.Features.Room.Room;
+import de.ttsa.Logic.Features.Set.Set;
 import de.ttsa.Logic.Player.Datatypes.INT;
 import de.ttsa.Logic.Player.Datatypes.STRING;
-import de.ttsa.Logic.Player.Datatypes.Set;
 import de.ttsa.Logic.Player.Functions.GameSaver;
-import de.ttsa.Logic.Player.Structures.Action;
-import de.ttsa.Logic.Player.Structures.Room;
 
 public class GameManager {
 

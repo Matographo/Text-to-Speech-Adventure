@@ -28,6 +28,4 @@ public class OpCode extends ConsoleLoadingSyntax {
     protected final String REGEX_VALIDE_NUMBER     = "^[-]?[0-9]+$";
     protected final String CALCULATABLE            = "^(([-]?([0-9]))*|([-]?([a-zA-Z]+[a-zA-Z0-9])))*(?:[-+*/][-]?[a-zA-Z0-9]+)*$";
 
-
-
 }

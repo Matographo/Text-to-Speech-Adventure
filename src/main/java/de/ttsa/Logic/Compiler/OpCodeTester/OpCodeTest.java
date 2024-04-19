@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
+import de.ttsa.Logic.Features.Printer.PrinterOpCodeSyntax;
+import de.ttsa.Logic.Interfaces.OpCodeTestable;
+import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 
 public class OpCodeTest extends OpCode{
 
@@ -19,6 +23,7 @@ public class OpCodeTest extends OpCode{
 
 
     private File file;
+    private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
 
 
 
@@ -154,33 +159,40 @@ public class OpCodeTest extends OpCode{
         boolean testResult = true;
         String command     = "";
         String args        = "";
+        OpCodeTestable test;
 
 
         for(String line : content) {
             command = line.split(COMMAND_SEPERATOR)[0];
             args    = line.substring(line.indexOf(COMMAND_SEPERATOR) + command.length()).strip();
 
+            test = opCodeSyntaxTest.getTest(command);
+
+            testResult &= test.testOpCode(args);
+
+            /*
             switch(command) {
-                case INDEX_SAY  ->              testResult = testResult && testSaySyntax(args);
-                case INDEX_ROOM ->              testResult = testResult && testRoomSyntax(args);
-                case INDEX_ROOM_JUMPER ->       testResult = testResult && testRoomJumperSyntax(args);
-                case INDEX_NUMBER_VARIABLE ->   testResult = testResult && testNumberVariableSyntax(args);
-                case INDEX_STRING_VARIABLE ->   testResult = testResult && testStringVariableSyntax(args);
-                case INDEX_NUM_VARDEC ->        testResult = testResult && testNumberDecSyntax(args);
-                case INDEX_IF ->                testResult = testResult && testIfSyntax(args);
-                case INDEX_INPUT ->             testResult = testResult && testInputSyntax(args);
-                case INDEX_STR_VARDEC ->        testResult = testResult && testStrDecSyntax(args);
-                case INDEX_DEBUG ->             testResult = testResult && testDebugInputSyntax(args);
-                case INDEX_SAVE ->              testResult = testResult && testSaveSyntax(args);
-                case INDEX_LOAD ->              testResult = testResult && testLoadSyntax(args);
-                case INDEX_EXIT ->              testResult = testResult && testExitSyntax(args);
-                case INDEX_LOOP ->              testResult = testResult && testLoopSyntax(args);
-                case INDEX_LOOP_BREAKER ->      testResult = testResult && testLoopBreakerSyntax(args);
-                case INDEX_SET ->               testResult = testResult && testSetSyntax(args);
-                case INDEX_ACTION ->            testResult = testResult && testActionSyntax(args);
-                case INDEX_ACTION_CALL ->       testResult = testResult && testActionCallSyntax(args);
+                case INDEX_SAY  ->              testResult &= test.testOpCode(args);
+                case INDEX_ROOM ->              testResult &= test.testOpCode(args);
+                case INDEX_ROOM_JUMPER ->       testResult &= test.testOpCode(args);
+                case INDEX_NUMBER_VARIABLE ->   testResult &= test.testOpCode(args);
+                case INDEX_STRING_VARIABLE ->   testResult &= test.testOpCode(args);
+                case INDEX_NUM_VARDEC ->        testResult &= test.testOpCode(args);
+                case INDEX_IF ->                testResult &= test.testOpCode(args);
+                case INDEX_INPUT ->             testResult &= test.testOpCode(args);
+                case INDEX_STR_VARDEC ->        testResult &= test.testOpCode(args);
+                case INDEX_DEBUG ->             testResult &= test.testOpCode(args);
+                case INDEX_SAVE ->              testResult &= test.testOpCode(args);
+                case INDEX_LOAD ->              testResult &= test.testOpCode(args);
+                case INDEX_EXIT ->              testResult &= test.testOpCode(args);
+                case INDEX_LOOP ->              testResult &= test.testOpCode(args);
+                case INDEX_LOOP_BREAKER ->      testResult &= test.testOpCode(args);
+                case INDEX_SET ->               testResult &= test.testOpCode(args);
+                case INDEX_ACTION ->            testResult &= test.testOpCode(args);
+                case INDEX_ACTION_CALL ->       testResult &= test.testOpCode(args);
                 default ->                      testResult = false;
             }
+            */
         }
 
         return testResult;
