@@ -18,6 +18,7 @@ public class NumInitOpCodeVar implements OpCodeVarTestable {
 
 
         if(!opCodeVar.isVarName(numName))              return false;
+        if(!opCodeVar.isNumName(numName))              return false;
 
         if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
             if(!isNumber(value) && !isNumVar(value)) return false;
@@ -43,7 +44,7 @@ public class NumInitOpCodeVar implements OpCodeVarTestable {
      * @return true if the String is a Number Variable
      */
     private boolean isNumVar(String name) {
-        return !isNumber(name) && opCodeVar.isVarName(name);
+        return !isNumber(name) && opCodeVar.isNumName(name);
     }
 
         /**

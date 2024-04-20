@@ -70,6 +70,10 @@ public class OpCodeVar {
         return setNames.add(name);
     }
 
+    public void addActionArgs(String name, String args) {
+        actionArgs.put(name, args);
+    }
+
 //********************************** Asker ****************************************//
     public boolean isRoomName(String name) {
         return roomNames.contains(name);
@@ -93,5 +97,9 @@ public class OpCodeVar {
 
     public boolean isSetName(String name) {
         return setNames.contains(name);
+    }
+
+    public String getActionArgs(String name) {
+        return actionArgs.get(name);
     }
 }

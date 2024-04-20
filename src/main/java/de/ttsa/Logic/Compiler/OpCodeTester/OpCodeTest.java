@@ -14,12 +14,21 @@ import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
 import de.ttsa.Logic.Features.Action.ActionOpCodeBlock;
+import de.ttsa.Logic.Features.Action.ActionOpCodeVar;
+import de.ttsa.Logic.Features.ActionCall.ActionCallOpCodeVar;
+import de.ttsa.Logic.Features.DebugInput.DebugInput;
+import de.ttsa.Logic.Features.DebugInput.DebugInputOpCodeVar;
+import de.ttsa.Logic.Features.If.IfOpCodeVar;
+import de.ttsa.Logic.Features.Loop.LoopOpCodeVar;
 import de.ttsa.Logic.Features.NumDec.NumDecOpCodeVar;
+import de.ttsa.Logic.Features.NumInit.NumInitOpCodeVar;
 import de.ttsa.Logic.Features.Printer.PrinterOpCodeVar;
 import de.ttsa.Logic.Features.Room.RoomOpCodeBlock;
 import de.ttsa.Logic.Features.Room.RoomOpCodeVar;
 import de.ttsa.Logic.Features.RoomJumper.RoomJumperOpCodeVar;
+import de.ttsa.Logic.Features.Set.SetOpCodeVar;
 import de.ttsa.Logic.Features.StrDec.StrDecOpCodeVar;
+import de.ttsa.Logic.Features.StrInit.StrInitOpCodeVar;
 import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 
 public class OpCodeTest extends OpCode{
@@ -213,14 +222,14 @@ public class OpCodeTest extends OpCode{
                 case ROOM_JUMPER -> testResult &= new RoomJumperOpCodeVar().test(args, opCodeVar);
                 case NUMBER_DEC ->  testResult &= new NumDecOpCodeVar().test(args, opCodeVar);
                 case STR_DEC ->     testResult &= new StrDecOpCodeVar().test(args, opCodeVar);
-                case NUM_INIT ->    testResult &= testNumberDecVar(args);
-                case IF ->          testResult &= testIfVar(args);
-                case DEBUG ->       testResult &= testDebugInputVar(args);
-                case STR_INIT ->    testResult &= testStrVarDec(args);
-                case LOOP ->        testResult &= testLoopVar(args);
-                case SET ->         testResult &= testSetVar(args);
-                case ACTION ->      testResult &= testActionVar(args);
-                case ACTION_CALL -> testResult &= testActionCallVar(args);
+                case NUM_INIT ->    testResult &= new NumInitOpCodeVar().test(args, opCodeVar);
+                case IF ->          testResult &= new IfOpCodeVar().test(args, opCodeVar);
+                case DEBUG ->       testResult &= new DebugInputOpCodeVar().test(args, opCodeVar);
+                case STR_INIT ->    testResult &= new StrInitOpCodeVar().test(args, opCodeVar);
+                case LOOP ->        testResult &= new LoopOpCodeVar().test(args, opCodeVar);
+                case SET ->         testResult &= new SetOpCodeVar().test(args, opCodeVar);
+                case ACTION ->      testResult &= new ActionOpCodeVar().test(args, opCodeVar);
+                case ACTION_CALL -> testResult &= new ActionCallOpCodeVar().test(args, opCodeVar);
             }
         }
 
