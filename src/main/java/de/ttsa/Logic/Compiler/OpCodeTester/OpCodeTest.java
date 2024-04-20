@@ -13,6 +13,7 @@ import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 import de.ttsa.Logic.Enums.OpCodeSyntaxTests;
+import de.ttsa.Logic.Enums.OpCodeVarTests;
 import de.ttsa.Logic.Features.Action.ActionOpCodeBlock;
 import de.ttsa.Logic.Features.Action.ActionOpCodeVar;
 import de.ttsa.Logic.Features.ActionCall.ActionCallOpCodeVar;
@@ -30,6 +31,7 @@ import de.ttsa.Logic.Features.Set.SetOpCodeVar;
 import de.ttsa.Logic.Features.StrDec.StrDecOpCodeVar;
 import de.ttsa.Logic.Features.StrInit.StrInitOpCodeVar;
 import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
 
 public class OpCodeTest extends OpCode{
 
@@ -41,6 +43,7 @@ public class OpCodeTest extends OpCode{
 
     private File file;
     private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
+    private OpCodeVarTests opCodeVarTests = OpCodeVarTests.NONE;
     private OpCodeIndex opCodeIndex = OpCodeIndex.NONE;
     private OpCodeIfTypes ifTypes = OpCodeIfTypes.NONE;
 
@@ -209,14 +212,17 @@ public class OpCodeTest extends OpCode{
         String command     = "";
         String args        = "";
 
-        OpCodeVar opCodeVar = new OpCodeVar(roomNames, varNames, numNames, strNames, actionNames, setNames);
+        OpCodeVar opCodeVar = new OpCodeVar();
+        OpCodeVarTestable test;
 
         for(int i = 0; i < content.size(); i++) {
             command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
             args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
+            test    = opCodeVarTests.getTest(command);
 
+            testResult &= test.test(args, opCodeVar);
 
-            switch(opCodeIndex.convert(command)) {
+            /*switch(opCodeIndex.convert(command)) {
                 case SAY ->         testResult &= new PrinterOpCodeVar().test(args, opCodeVar);
                 case ROOM ->        testResult &= new RoomOpCodeVar().test(args, opCodeVar);
                 case ROOM_JUMPER -> testResult &= new RoomJumperOpCodeVar().test(args, opCodeVar);
@@ -230,7 +236,7 @@ public class OpCodeTest extends OpCode{
                 case SET ->         testResult &= new SetOpCodeVar().test(args, opCodeVar);
                 case ACTION ->      testResult &= new ActionOpCodeVar().test(args, opCodeVar);
                 case ACTION_CALL -> testResult &= new ActionCallOpCodeVar().test(args, opCodeVar);
-            }
+            }*/
         }
 
         return testResult;
