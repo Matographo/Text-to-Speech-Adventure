@@ -8,8 +8,9 @@ import de.ttsa.Logic.Interfaces.OpCodeBlockTestable;
 public class ActionOpCodeBlock implements OpCodeBlockTestable {
 
     @Override
-    public boolean testOpCode(String args, List<String> lines) {
-        return getActionBlockLength(args) <= lines.size();
+    public int testOpCode(String args, List<String> lines) {
+        if(getActionBlockLength(args) > lines.size()) return -1;
+        return getActionBlockLength(args);
     }
 
     /**

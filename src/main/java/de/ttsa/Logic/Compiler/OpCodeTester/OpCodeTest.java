@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import de.ttsa.Logic.ClassTools.OpCode;
+import de.ttsa.Logic.Enums.OpCodeBlockTests;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
@@ -30,6 +31,8 @@ import de.ttsa.Logic.Features.RoomJumper.RoomJumperOpCodeVar;
 import de.ttsa.Logic.Features.Set.SetOpCodeVar;
 import de.ttsa.Logic.Features.StrDec.StrDecOpCodeVar;
 import de.ttsa.Logic.Features.StrInit.StrInitOpCodeVar;
+import de.ttsa.Logic.Interfaces.OpCodeBlockTestable;
+import de.ttsa.Logic.Interfaces.OpCodeInnerBlockTestable;
 import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
 import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
 
@@ -44,6 +47,7 @@ public class OpCodeTest extends OpCode{
     private File file;
     private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
     private OpCodeVarTests opCodeVarTests = OpCodeVarTests.NONE;
+    private OpCodeBlockTests opCodeBlockTests = OpCodeBlockTests.NONE;
     private OpCodeIndex opCodeIndex = OpCodeIndex.NONE;
     private OpCodeIfTypes ifTypes = OpCodeIfTypes.NONE;
 
@@ -221,22 +225,6 @@ public class OpCodeTest extends OpCode{
             test    = opCodeVarTests.getTest(command);
 
             testResult &= test.test(args, opCodeVar);
-
-            /*switch(opCodeIndex.convert(command)) {
-                case SAY ->         testResult &= new PrinterOpCodeVar().test(args, opCodeVar);
-                case ROOM ->        testResult &= new RoomOpCodeVar().test(args, opCodeVar);
-                case ROOM_JUMPER -> testResult &= new RoomJumperOpCodeVar().test(args, opCodeVar);
-                case NUMBER_DEC ->  testResult &= new NumDecOpCodeVar().test(args, opCodeVar);
-                case STR_DEC ->     testResult &= new StrDecOpCodeVar().test(args, opCodeVar);
-                case NUM_INIT ->    testResult &= new NumInitOpCodeVar().test(args, opCodeVar);
-                case IF ->          testResult &= new IfOpCodeVar().test(args, opCodeVar);
-                case DEBUG ->       testResult &= new DebugInputOpCodeVar().test(args, opCodeVar);
-                case STR_INIT ->    testResult &= new StrInitOpCodeVar().test(args, opCodeVar);
-                case LOOP ->        testResult &= new LoopOpCodeVar().test(args, opCodeVar);
-                case SET ->         testResult &= new SetOpCodeVar().test(args, opCodeVar);
-                case ACTION ->      testResult &= new ActionOpCodeVar().test(args, opCodeVar);
-                case ACTION_CALL -> testResult &= new ActionCallOpCodeVar().test(args, opCodeVar);
-            }*/
         }
 
         return testResult;
@@ -257,354 +245,50 @@ public class OpCodeTest extends OpCode{
         boolean testResult = true;
         String command     = "";
         String args        = "";
-        int lastRoomLength = -1;
+        int lastStrucLenght = -1;
+
+        OpCodeInnerBlockTestable testInnerBlock;
+        OpCodeBlockTestable testBlock;
 
 
         for(int i = 0; i < content.size(); i++) {
             command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
             args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
 
+            testInnerBlock = opCodeBlockTests.getInnerBlockTest(command);
+            testBlock      = opCodeBlockTests.getBlockTest(command);
+
+            if(testInnerBlock == null && testBlock == null) {
+                continue;
+            }
+
+            if(testInnerBlock != null) {
+                testResult = testResult && testInnerBlock.test(args, i, i + lastStrucLenght);
+            } else {
+                testResult = testResult && (lastStrucLenght = testBlock.testOpCode(args, content.subList(i, content.size()))) >= 0;
+            }
+
+            /*
             switch(opCodeIndex.convert(command)) {
                 case ROOM:
-                    lastRoomLength = getRoomBlockLength(args);
-
-                    testResult = testResult && new RoomOpCodeBlock().testOpCode(args, content.subList(i, content.size()));
+                    testResult = testResult && (lastStrucLenght = new RoomOpCodeBlock().testOpCode(args, content.subList(i, content.size()))) >= 0;
                     break;
                 case IF:
-                    testResult = testResult && testIfBlock(args, i, i + lastRoomLength);
+                    testResult = testResult && testIfBlock(args, i, i + lastStrucLenght);
                     break;
                 case LOOP:
-                    testResult = testResult && testLoopBlock(args, i, i + lastRoomLength);
+                    testResult = testResult && testLoopBlock(args, i, i + lastStrucLenght);
                     break;
                 case ACTION:
-                    testResult = testResult && new ActionOpCodeBlock().testOpCode(args, content.subList(i, content.size()));
+                    testResult = testResult && (lastStrucLenght = new ActionOpCodeBlock().testOpCode(args, content.subList(i, content.size()))) >= 0;
                     break;
                 default:
                     continue;
-            }
+            }*/
         }
 
         return testResult;
     }
-
-
-
-// ------------------------------------------- Test Functions Variables ---------------------------------------- //
-
-
-
-    /**
-     * Test the variables of the say command
-     * @param args The arguments of the say command
-     * @return true if the variables are correct
-     */
-    private boolean testSayVar(String args) {
-        String[] allArgs   = args.split(OpCodeSeperators.SAY.getSeperator());
-        boolean testResult = true;
-
-
-        for(String arg : allArgs) {
-            if(arg.startsWith("\"") && arg.endsWith("\"")) continue;
-            else if (isValidName(arg)) {
-
-                if(!varNames.contains(arg)) {
-                    return false;
-                }
-
-            } else {
-                return false;
-            }
-        }
-
-        return testResult;
-    }
-
-    /**
-     * Test the variables of the room command
-     * @param args The arguments of the room command
-     * @return true if the variables are correct
-     */
-    private boolean testRoomVar(String args) {
-        String[] arg = args.split(OpCodeSeperators.ROOM.getSeperator());
-
-        if(roomNames.contains(arg[0])) return false;
-
-        roomNames.add(arg[0]);
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the room jumper command
-     * @param args The arguments of the room jumper command
-     * @return true if the variables are correct
-     */
-    private boolean testRoomJumperVar(String args) {
-        return roomNames.contains(args);
-    }
-
-    /**
-     * Test the variables of the number variable command
-     * @param args The arguments of the number variable command
-     * @return true if the variables are correct
-     */
-    private boolean testNumberVariableVar(String args) {
-        String[] arg = args.split(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
-
-
-        if(varNames.contains(arg[0])) return false;
-
-        varNames.add(arg[0]);
-        numNames.add(arg[0]);
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the string variable command
-     * @param args The arguments of the string variable command
-     * @return true if the variables are correct
-     */
-    private boolean testStringVariableVar(String args) {
-        String[] arg = args.split(OpCodeSeperators.NUMBER_STRING.getSeperator());
-
-
-        if(varNames.contains(arg[0])) return false;
-
-        varNames.add(arg[0]);
-        strNames.add(arg[0]);
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the number variable declaration command
-     * @param args The arguments of the number variable declaration command
-     * @return true if the variables are correct
-     */
-    private boolean testNumberDecVar(String args) {
-        String[] arg   = args.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
-        String numName = arg[0];
-        String value   = arg[1];
-
-
-        if(!varNames.contains(numName))              return false;
-
-        if(!value.contains("*") && !value.contains("/") && !value.contains("-") && !value.contains("+")) {
-            if(!isNumber(value) && !isNumVar(value)) return false;
-            else return true;
-        }
-
-        return isCalculatableVar(value);
-    }
-
-    /**
-     * Test the variables of the if command
-     * @param args The arguments of the if command
-     * @return true if the variables are correct
-     */
-    private boolean testIfVar(String args) {
-        String[] toTest    = args.split(OpCodeSeperators.IF_ELSE.getSeperator());
-        boolean testResult = true;
-        char i;
-
-
-        for(String test : toTest) {
-            i = test.charAt(0);
-
-            switch(ifTypes.convert(i)) {
-                case NUMBER -> testResult = testResult && testIfVarNum(test.substring(1));
-                case STRING -> testResult = testResult && testIfVarStr(test.substring(1));
-            }
-
-        }
-
-        return testResult;
-    }
-
-    /**
-     * Test the variables of the debug input command
-     * @param args The arguments of the debug input command
-     * @return true if the variables are correct
-     */
-    private boolean testIfVarNum(String args) {
-        String[] tests     = args.split(OpCodeSeperators.IF_NUM.getSeperator());
-        boolean testResult = true;
-        String[] toTest    = tests[0].split("[&]{2} | [|]{2}");
-
-
-        for (String test : toTest) {
-            testResult = testResult && isTestableVar(test);
-        }
-
-        return testResult;
-    }
-
-    /**
-     * Test the variables of the debug input command
-     * @param args The arguments of the debug input command
-     * @return true if the variables are correct
-     */
-    private boolean testIfVarStr(String args) {
-        args           = args.substring(0, args.indexOf(":"));
-        String[] tests;
-        if (args.contains("!=")) {
-            tests = args.split("!=");
-        } else {
-            tests = args.split("==");
-        }
-
-
-        if(!strNames.contains(tests[0]) && !tests[0].startsWith("\"") && !tests[0].endsWith("\"")) return false;
-        if(!strNames.contains(tests[1]) && !tests[1].startsWith("\"") && !tests[1].endsWith("\"")) return false;
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the debug input command
-     * @param args The arguments of the debug input command
-     * @return true if the variables are correct
-     */
-    private boolean testDebugInputVar(String args) {
-        return isValidName(args) && strNames.contains(args) || !isValidName(args);
-    }
-
-    /**
-     * Test the variables of the set command
-     * @param args The arguments of the set command
-     * @return true if the variables are correct
-     */
-    private boolean testLoopVar(String args) {
-        return testIfVar(args);
-    }
-
-    /**
-     * Test the variables of the set command
-     * @param args The arguments of the set command
-     * @return true if the variables are correct
-     */
-    private boolean testStrVarDec(String args) {
-        String[] strDecArgs = args.split(OpCodeSeperators.STR.getSeperator());
-
-
-        if(!isStrVar(strDecArgs[0]))                          return false;
-        String[] tokens = strDecArgs[1].split(OpCodeSeperators.STR_CONTENT.getSeperator());
-        for(String token : tokens) {
-            if(!isStrVar(token) && !isStr(token)) return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the set command
-     * @param args The arguments of the set command
-     * @return true if the variables are correct
-     */
-    private boolean testActionCallVar(String args) {
-        String[] actions    = args.split(OpCodeSeperators.ACTION.getSeperator());
-        String actionName   = actions[0];
-        String[] actionArgs = actions[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
-        OpCodeIfTypes type;
-
-
-        if(!actionNames.contains(actionName)) return false;
-
-        String[] mainActionArgs = this.actionArgs.get(actionName).split(OpCodeSeperators.ACTION_ARGS.getSeperator());
-
-        if(!actionNames.contains(actionName)) return false;
-
-        for(int i=0; i < actionArgs.length; i++) {
-            if(isEmptyArg(actionArgs[i])) continue;
-
-
-            type = OpCodeIfTypes.convert(mainActionArgs[i].charAt(0));
-            if(isValidName(actionArgs[i])) {
-                if(type == OpCodeIfTypes.STRING) {
-                    if(!strNames.contains(actionArgs[i])) return false;
-                } else if (type == OpCodeIfTypes.NUMBER) {
-                    if(!numNames.contains(actionArgs[i])) return false;
-                }
-
-            } else {
-
-                if(isNumber(actionArgs[i])) {
-                    if(type != OpCodeIfTypes.NUMBER) return false;
-                } else {
-                    if(type != OpCodeIfTypes.STRING) return false;
-                }
-
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the set command
-     * @param args The arguments of the set command
-     * @return true if the variables are correct
-     */
-    private boolean testActionVar(String args) {
-        String[] actionArgs = args.split(OpCodeSeperators.ACTION.getSeperator());
-        OpCodeIfTypes type;
-
-
-        if(actionNames.contains(actionArgs[0])) return false;
-
-        actionNames.add(actionArgs[0]);
-
-        String[] actionArgss = actionArgs[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
-
-        for(String actionArg : actionArgss) {
-            type = OpCodeIfTypes.convert(actionArg.charAt(0));
-
-            if(type == OpCodeIfTypes.NONE_ARG) continue;
-
-            actionArg = actionArg.substring(1);
-
-            if(!type.isArgType())        return false;
-            if(!isValidName(actionArg)) return false;
-
-
-            if(type == OpCodeIfTypes.STRING) {
-
-                if(strNames.contains(actionArg)) return false;
-
-                strNames.add(actionArg);
-
-            } else if (type == OpCodeIfTypes.NUMBER) {
-
-                if(numNames.contains(actionArg)) return false;
-
-                numNames.add(actionArg);
-
-            }
-
-            varNames.add(actionArg);
-        }
-
-        this.actionArgs.put(actionArgs[0], actionArgs[1]);
-
-        return true;
-    }
-
-    /**
-     * Test the variables of the set command
-     * @param args The arguments of the set command
-     * @return true if the variables are correct
-     */
-    private boolean testSetVar(String args) {
-        String setName = args.substring(0, args.indexOf(OpCodeSeperators.SET_NAME.getSeperator()));
-
-        if(setNames.contains(setName)) return false;
-
-        setNames.add(setName);
-
-        return true;
-    }
-
 
 
 // -------------------------------------------- Test Functions Blocks ------------------------------------------- //

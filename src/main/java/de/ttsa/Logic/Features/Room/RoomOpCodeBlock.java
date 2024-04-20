@@ -8,8 +8,9 @@ import de.ttsa.Logic.Interfaces.OpCodeBlockTestable;
 public class RoomOpCodeBlock implements OpCodeBlockTestable {
 
     @Override
-    public boolean testOpCode(String args, List<String> nextLines) {
-        return getRoomBlockLength(args) <= nextLines.size();
+    public int testOpCode(String args, List<String> nextLines) {
+        if(getRoomBlockLength(args) > nextLines.size()) return -1;
+        return getRoomBlockLength(args);
     }
 
 

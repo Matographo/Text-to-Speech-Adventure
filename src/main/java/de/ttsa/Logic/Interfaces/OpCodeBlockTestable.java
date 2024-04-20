@@ -9,5 +9,5 @@ public interface OpCodeBlockTestable {
      * @param lines The lines of the code
      * @return true if the syntax is correct
      */
-    boolean testOpCode(String args, List<String> lines);
+    int testOpCode(String args, List<String> lines);
 }
