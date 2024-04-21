@@ -1,9 +1,9 @@
 package de.ttsa.Logic.Features.NumDec;
 
-import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
-import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerLineMethods;
-import de.ttsa.Logic.Enums.OpCodeIndex;
-import de.ttsa.Logic.Enums.OpCodeSeperators;
+import de.ttsa.Enums.OpCodeIndex;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Logic.Compiler.CompilerSteps.Compiler;
+import de.ttsa.Parents.CompilerLineMethods;
 
 public class NumDecCompiler extends CompilerLineMethods {
 

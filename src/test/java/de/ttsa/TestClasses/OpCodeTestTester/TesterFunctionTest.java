@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 public class TesterFunctionTest extends OpCodeTestTesterClass {

@@ -1,8 +1,8 @@
 package de.ttsa.Logic.Features.DebugInput;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeVar;
-import de.ttsa.Logic.Enums.OpCodeRegex;
-import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
+import de.ttsa.Container.OpCodeVar;
+import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class DebugInputOpCodeVar implements OpCodeVarTestable {
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 /**
  * This class is used to calculate a String with a mathmatical expression.

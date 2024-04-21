@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.GameSavingScript;
 
-import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerLineMethods;
-import de.ttsa.Logic.Enums.OpCodeIndex;
+import de.ttsa.Enums.OpCodeIndex;
+import de.ttsa.Parents.CompilerLineMethods;
 
 public class GameSavingScriptCompiler extends CompilerLineMethods {
 

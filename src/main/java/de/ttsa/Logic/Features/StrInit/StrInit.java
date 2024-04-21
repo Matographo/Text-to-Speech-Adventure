@@ -1,8 +1,8 @@
 package de.ttsa.Logic.Features.StrInit;
 
-import de.ttsa.Logic.Interfaces.Scriptable;
-import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Interfaces.Scriptable;
 import de.ttsa.Logic.Player.Datatypes.STRING;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class StrInit implements Scriptable {
     

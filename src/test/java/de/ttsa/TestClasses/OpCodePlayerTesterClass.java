@@ -1,6 +1,6 @@
 package de.ttsa.TestClasses;
 
-import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class OpCodePlayerTesterClass {
     

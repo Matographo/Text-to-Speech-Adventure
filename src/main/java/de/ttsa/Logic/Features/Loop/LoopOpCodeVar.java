@@ -2,11 +2,11 @@ package de.ttsa.Logic.Features.Loop;
 
 import java.util.ArrayList;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeVar;
-import de.ttsa.Logic.Enums.OpCodeIfTypes;
-import de.ttsa.Logic.Enums.OpCodeRegex;
-import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
+import de.ttsa.Container.OpCodeVar;
+import de.ttsa.Enums.OpCodeIfTypes;
+import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class LoopOpCodeVar implements OpCodeVarTestable {
 

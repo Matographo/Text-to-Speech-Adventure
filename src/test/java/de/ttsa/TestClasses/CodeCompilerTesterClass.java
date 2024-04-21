@@ -2,10 +2,10 @@ package de.ttsa.TestClasses;
 
 import java.util.ArrayList;
 
-import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
-import de.ttsa.Logic.Compiler.Compiler.CompileTools.CFileReader;
-import de.ttsa.Logic.Compiler.Compiler.CompileTools.Merger;
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.CompilerSteps.CFileReader;
+import de.ttsa.Logic.Compiler.CompilerSteps.Compiler;
+import de.ttsa.Logic.Compiler.CompilerSteps.Merger;
+import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 
 public class CodeCompilerTesterClass {
     
@@ -16,8 +16,6 @@ public class CodeCompilerTesterClass {
 
 
     protected final String TEST_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/CompilerTests/";
-
-    protected final String TO_COMPILE_PATH = System.getProperty("user.dir") + "/src/test/java/de/ttsa/TestFiles/CompileTmpFiles/";
 
 
 

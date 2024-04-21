@@ -2,7 +2,7 @@ package de.ttsa.Logic;
 
 import java.io.IOException;
 
-import de.ttsa.Logic.Player.Player;
+import de.ttsa.Logic.Player.PlayerLogic.Player;
 
 public class PlayerApp {
     

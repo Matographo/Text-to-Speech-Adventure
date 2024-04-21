@@ -1,6 +1,6 @@
 package de.ttsa.TestClasses.OpCodeTestTester;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
+import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.TestClasses.OpCodeTestTesterClass;
 
 import static org.junit.Assert.assertEquals;

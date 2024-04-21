@@ -2,8 +2,8 @@ package de.ttsa.Logic.Features.Room;
 
 import java.util.List;
 
-import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.OpCodeBlockTestable;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Interfaces.OpCodeBlockTestable;
 
 public class RoomOpCodeBlock implements OpCodeBlockTestable {
 

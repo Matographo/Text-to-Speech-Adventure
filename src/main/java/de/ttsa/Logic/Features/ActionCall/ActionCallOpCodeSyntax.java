@@ -1,13 +1,13 @@
 package de.ttsa.Logic.Features.ActionCall;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class ActionCallOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class ActionCallOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(REGEX_ACTION_CALL);
+        return arg.matches(OpCodeRegex.ACTION_CALL.toString());
     }
     
 }

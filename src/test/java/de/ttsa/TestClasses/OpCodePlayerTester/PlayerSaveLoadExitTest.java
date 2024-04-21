@@ -9,8 +9,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import de.ttsa.Logic.Player.GameManager;
-import de.ttsa.Logic.Player.Player;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
+import de.ttsa.Logic.Player.PlayerLogic.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {

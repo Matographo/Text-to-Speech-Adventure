@@ -1,13 +1,13 @@
 package de.ttsa.Logic.Features.Room;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class RoomOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class RoomOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(REGEX_ROOM);
+        return arg.matches(OpCodeRegex.ROOM.toString());
     }
 
 }

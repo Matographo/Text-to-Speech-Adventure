@@ -1,13 +1,13 @@
 package de.ttsa.Logic.Features.Set;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class SetOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class SetOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(REGEX_SET);
+        return arg.matches(OpCodeRegex.SET.toString());
     }
     
 }

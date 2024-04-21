@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.DebugInput;
 
-import de.ttsa.Logic.Interfaces.Scriptable;
-import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Interfaces.Scriptable;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class DebugInput implements Scriptable {
 

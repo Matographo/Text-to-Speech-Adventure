@@ -1,9 +1,8 @@
 package de.ttsa.Logic.Features.Input;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class InputOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class InputOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {

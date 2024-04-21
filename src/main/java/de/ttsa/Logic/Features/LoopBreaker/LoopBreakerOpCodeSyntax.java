@@ -1,9 +1,8 @@
 package de.ttsa.Logic.Features.LoopBreaker;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class LoopBreakerOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class LoopBreakerOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {

@@ -1,9 +1,8 @@
 package de.ttsa.Logic.Features.GameLoaderScript;
 
-import de.ttsa.Logic.ClassTools.OpCode;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
-public class GameLoaderScriptOpCodeSyntax extends OpCode implements OpCodeSyntaxTestable {
+public class GameLoaderScriptOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {

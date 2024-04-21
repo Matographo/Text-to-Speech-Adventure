@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.Loop;
 
-import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.OpCodeInnerBlockTestable;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
 
 public class LoopOpCodeBlock implements OpCodeInnerBlockTestable {
 

@@ -1,6 +1,6 @@
 package de.ttsa.Logic.Features.Room;
 
-import de.ttsa.Logic.Interfaces.Scriptable;
+import de.ttsa.Interfaces.Scriptable;
 
 public class Room {
     

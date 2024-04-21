@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.RoomJumper;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeVar;
-import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
+import de.ttsa.Container.OpCodeVar;
+import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class RoomJumperOpCodeVar implements OpCodeVarTestable {
 

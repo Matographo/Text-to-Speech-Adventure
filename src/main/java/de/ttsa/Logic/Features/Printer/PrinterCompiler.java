@@ -1,9 +1,9 @@
 package de.ttsa.Logic.Features.Printer;
 
-import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerLineMethods;
-import de.ttsa.Logic.Enums.OpCodeIndex;
-import de.ttsa.Logic.Enums.OpCodeSeperators;
-import de.ttsa.Logic.Interfaces.CompilerLine;
+import de.ttsa.Enums.OpCodeIndex;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Interfaces.CompilerLine;
+import de.ttsa.Parents.CompilerLineMethods;
 
 public class PrinterCompiler extends CompilerLineMethods {
 

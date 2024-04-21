@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import de.ttsa.Logic.Player.GameManager;
 import de.ttsa.Logic.Player.Datatypes.INT;
 import de.ttsa.Logic.Player.Datatypes.STRING;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class GameSaver {
     

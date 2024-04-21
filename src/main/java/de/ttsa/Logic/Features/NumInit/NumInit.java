@@ -1,9 +1,9 @@
 package de.ttsa.Logic.Features.NumInit;
 
-import de.ttsa.Logic.Interfaces.Scriptable;
-import de.ttsa.Logic.Player.GameManager;
+import de.ttsa.Interfaces.Scriptable;
 import de.ttsa.Logic.Player.Datatypes.INT;
 import de.ttsa.Logic.Player.Functions.Calculator;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class NumInit implements Scriptable {
     

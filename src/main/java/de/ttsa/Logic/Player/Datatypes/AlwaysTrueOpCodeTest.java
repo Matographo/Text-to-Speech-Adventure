@@ -1,8 +1,8 @@
 package de.ttsa.Logic.Player.Datatypes;
 
-import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeVar;
-import de.ttsa.Logic.Interfaces.OpCodeSyntaxTestable;
-import de.ttsa.Logic.Interfaces.OpCodeVarTestable;
+import de.ttsa.Container.OpCodeVar;
+import de.ttsa.Interfaces.OpCodeSyntaxTestable;
+import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class AlwaysTrueOpCodeTest implements OpCodeSyntaxTestable, OpCodeVarTestable {
 

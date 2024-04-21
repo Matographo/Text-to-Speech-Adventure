@@ -2,10 +2,10 @@ package de.ttsa.Logic.Features.Room;
 
 import java.util.List;
 
-import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
-import de.ttsa.Logic.Enums.CompilerSyntax;
-import de.ttsa.Logic.Enums.OpCodeIndex;
-import de.ttsa.Logic.Enums.OpCodeSeperators;
+import de.ttsa.Enums.CompilerSyntax;
+import de.ttsa.Enums.OpCodeIndex;
+import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Parents.CompilerStructMethods;
 
 public class RoomCompiler extends CompilerStructMethods {
 

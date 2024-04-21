@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import de.ttsa.GetOutput;
-import de.ttsa.Logic.Player.Player;
+import de.ttsa.Logic.Player.PlayerLogic.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerRoomJumperTest extends OpCodePlayerTesterClass {

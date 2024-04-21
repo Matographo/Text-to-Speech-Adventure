@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import de.ttsa.GetOutput;
-import de.ttsa.Logic.Player.Player;
+import de.ttsa.Logic.Player.PlayerLogic.Player;
 import de.ttsa.TestClasses.OpCodePlayerTesterClass;
 
 public class PlayerRoomTest extends OpCodePlayerTesterClass {

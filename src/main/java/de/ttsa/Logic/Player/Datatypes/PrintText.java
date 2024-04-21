@@ -1,6 +1,6 @@
 package de.ttsa.Logic.Player.Datatypes;
 
-import de.ttsa.Logic.Interfaces.Printablable;
+import de.ttsa.Interfaces.Printablable;
 
 public class PrintText implements Printablable{
 
