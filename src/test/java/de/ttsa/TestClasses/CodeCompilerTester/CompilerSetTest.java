@@ -26,4 +26,12 @@ public class CompilerSetTest extends CodeCompilerTesterClass {
         result = test(PATH, testName);
         assertEquals(true, result);
     }
+
+    @Test
+    public void testSetWithRoom() {
+        String testName = "testSetWithRoom";
+        boolean result;
+        result = test(PATH, testName);
+        assertEquals(true, result);
+    }
 }

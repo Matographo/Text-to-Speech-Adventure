@@ -1,13 +1,152 @@
 package de.ttsa.Logic.Features.If;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.OpCodeIfTypes;
+import de.ttsa.Logic.Enums.OpCodeIndex;
+import de.ttsa.Logic.Enums.OpCodeSeperators;
 
 public class IfCompiler extends CompilerStructMethods {
 
+    private List<Integer> blockSizes;
+
+    public IfCompiler() {
+        blockSizes = new ArrayList<>();
+    }
+
     @Override
-    public String compile(String line, int blockSize) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compile'");
+    public String compile(List<String> lines, int blockStart) {
+        StringBuilder result = getStartCode(OpCodeIndex.IF);
+
+        result.append(calculateBlocks(getIfCodeArgs(lines, blockStart, getBlockEnd(lines, blockStart))));
+        return result.toString();
+    }
+
+    private List<String> getIfCodeArgs(List<String> lines, int blockStart, int blockEnd) {
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> content = new ArrayList<>();
+        String condition = "";
+        boolean isFirst = true;
+        for (int i=blockStart; i<blockEnd; i++) {
+            if ((lines.get(i).startsWith(SYNTAX_IF) || lines.get(i).startsWith("} Else If") || lines.get(i).startsWith("} Else")) && lines.get(i).endsWith(SYNTAX_BLOCK_START)) {
+                if(!isFirst) {
+                    result.add(condition);
+                    blockSizes.add(getBlockContentSize(content));
+                    content.clear();
+                }
+                
+                isFirst = false;
+                condition = lines.get(i).substring(lines.get(i).indexOf(SYNTAX_COMMAND) + 1, lines.get(i).lastIndexOf(SYNTAX_BLOCK_START)).strip();
+                lines.remove(i);
+                blockEnd--;
+                i--;
+            } else {
+                content.add(lines.get(i));
+            }
+        }
+        result.add(condition);
+        blockSizes.add(getBlockContentSize(content));
+        
+        return result;
+    }
+
+    private String calculateBlocks(List<String> conditions) {
+        StringBuilder compiled = new StringBuilder();
+        int value;
+
+        for (int i=0; i<conditions.size(); i++) {
+            value = blockSizes.get(i);
+
+            compiled.append(calculateCondition(conditions.get(i)));
+            compiled.append(OpCodeSeperators.IF_NUM.getSeperator());
+            
+            compiled.append(value);
+            compiled.append(OpCodeSeperators.IF_ELSE.getSeperator());
+        }
+        compiled.delete(compiled.length()-2, compiled.length());
+        return compiled.toString();
+    }
+
+    private int getBlockContentSize(List<String> lines) {
+        int size = lines.size();
+        for (int i = 0; i < lines.size(); i++) {
+            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+                size--;
+            }
+        }
+        return size;
+    }
+
+    private String calculateCondition(String condition) {
+        condition = condition.replaceAll(" ", "");
+        StringBuilder compiled = new StringBuilder();
+        OpCodeIfTypes mode = calculateConditionMode(condition);
+        
+        compiled.append(mode.getType());
+        switch(mode) {
+            case NUMBER -> compiled.append(calculateIfNumber(condition));
+            case STRING -> compiled.append(calculateIfString(condition));
+            case INPUT -> compiled.append(calculateIfInput(condition));
+            case NONE -> compiled.deleteCharAt(compiled.length()-1);
+        }
+        return compiled.toString();
+    }
+
+    private OpCodeIfTypes calculateConditionMode(String conditionString) {
+        if(conditionString.equals("")) return OpCodeIfTypes.NONE;
+
+        String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
+
+        if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return OpCodeIfTypes.NUMBER;
+        else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return OpCodeIfTypes.STRING;
+        else if(conditionString.startsWith(SYNTAX_INPUT)) return OpCodeIfTypes.INPUT;
+        throw new IllegalArgumentException("Syntax Error: " + condition);
+    }
+
+    private String calculateIfNumber(String condition) {
+        return condition;
+    }
+
+    private String calculateIfString(String condition) {
+        return condition;
+    }
+
+    private String calculateIfInput(String condition) {
+        //TODO: Implement
+        return null;
+    }
+
+    private String splitAtMatch(String toSplit, String[] matches) {
+        for (String match : matches) {
+            if(toSplit.contains(match)) {
+                return toSplit.substring(0, toSplit.indexOf(match));
+            }
+        }
+        return toSplit;
+    }
+
+    private int getBlockEnd(List<String> lines, int blockStart) {
+        int blockEnd = blockStart;
+        int blocks = 0;
+        String line = "";
+        for (int i = blockStart; i < lines.size(); i++) {
+            line = lines.get(i);
+            if(line.contains("{")) {
+                blocks++;
+            }
+            if(line.contains("}")) {
+                blocks--;
+            }
+            if(blocks == 0) {
+                lines.remove(i);
+                blockEnd = i;
+                break;
+            }
+        }
+        return blockEnd;
     }
     
 }

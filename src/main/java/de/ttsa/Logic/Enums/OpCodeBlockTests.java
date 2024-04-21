@@ -2,9 +2,7 @@ package de.ttsa.Logic.Enums;
 
 import de.ttsa.Logic.Features.Action.ActionOpCodeBlock;
 import de.ttsa.Logic.Features.If.IfOpCodeBlock;
-import de.ttsa.Logic.Features.If.IfOpCodeVar;
 import de.ttsa.Logic.Features.Loop.LoopOpCodeBlock;
-import de.ttsa.Logic.Features.Loop.LoopOpCodeSyntax;
 import de.ttsa.Logic.Features.Room.RoomOpCodeBlock;
 import de.ttsa.Logic.Interfaces.OpCodeBlockTestable;
 import de.ttsa.Logic.Interfaces.OpCodeInnerBlockTestable;

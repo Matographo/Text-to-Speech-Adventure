@@ -1,0 +1,10 @@
+Set angriffsSet {
+    attacke
+    angriff
+    schlag
+    toeten
+}
+
+Room START {
+    Say: Halli hallo willkommen in der Welt der Angriffe
+}
