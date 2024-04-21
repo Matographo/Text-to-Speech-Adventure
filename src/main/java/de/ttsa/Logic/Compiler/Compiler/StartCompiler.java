@@ -8,6 +8,7 @@ import de.ttsa.Logic.Compiler.Compiler.CompileTools.GameBuilder;
 import de.ttsa.Logic.Compiler.Compiler.CompileTools.Merger;
 import de.ttsa.Logic.Compiler.Compiler.CompileTools.Sorter;
 import de.ttsa.Logic.Compiler.Compiler.TestC.Test;
+import de.ttsa.Logic.Compiler.OpCodeTester.OpCodeTest;
 
 public class StartCompiler {
 
@@ -46,6 +47,7 @@ private String filePath;
         startCompiling();
         startSorting();
         startMerging();
+        startOpCodeTest();
         startBuilding();
 
     }
@@ -57,10 +59,8 @@ private String filePath;
 
 
     private boolean startReading() {
-        //output("Start reading data...");
         CFileReader reader = new CFileReader(filePath);
         fileContent = reader.read();
-        //output("data reading finished.");
         return false;
     }
     
@@ -71,11 +71,9 @@ private String filePath;
 
 
     private boolean startTesting() {
-        //output("Start testing...");
         Test test = new Test(fileContent);
         boolean testResult = true;
         testResult = test.test();
-        //output("Testing finished.");
         return testResult;
     }
 
@@ -86,10 +84,8 @@ private String filePath;
 
 
     private boolean startCompiling() {
-        //output("Start compiling...");
         Compiler compiler = new Compiler(fileContent);
         fileContent = compiler.compile();
-        //output("Compiling finished.");
         return false;
     }
 
@@ -100,10 +96,8 @@ private String filePath;
 
 
     private boolean startSorting() {
-        //output("Start sorting...");
         Sorter sorter = new Sorter(fileContent);
         fileContent = sorter.sort();
-        //output("Sorting finished.");
         return false;
     }
 
@@ -114,11 +108,19 @@ private String filePath;
 
 
     private boolean startMerging() {
-        //output("Start merging...");
         Merger merger = new Merger(fileContent);
         game = merger.merge();
-        //output("Merging finished.");
         return false;
+    }
+
+
+
+// ---------------------------------------------- OpCodeTest -------------------------------------------------- //
+
+
+
+    private boolean startOpCodeTest() {
+        return OpCodeTest.test(game);
     }
 
 
@@ -126,12 +128,9 @@ private String filePath;
 // ---------------------------------------------- Building -------------------------------------------------- //
 
 
-
     private boolean startBuilding() {
-        //output("Start building...");
         GameBuilder builder = new GameBuilder(game);
         builder.build();
-        //output("Building finished.");
         return false;
     }
 

@@ -6,10 +6,22 @@ import java.util.HashSet;
 import java.util.List;
 
 import de.ttsa.Logic.ClassTools.CompilerSyntax;
-import de.ttsa.Logic.ClassTools.OpCode;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
+import de.ttsa.Logic.Features.ActionCall.ActionCallCompiler;
+import de.ttsa.Logic.Features.DebugInput.DebugInputCompiler;
+import de.ttsa.Logic.Features.GameExitScript.GameExitScriptCompiler;
+import de.ttsa.Logic.Features.GameLoaderScript.GameLoaderScriptCompiler;
+import de.ttsa.Logic.Features.GameSavingScript.GameSavingScriptCompiler;
+import de.ttsa.Logic.Features.Input.InputCompiler;
+import de.ttsa.Logic.Features.LoopBreaker.LoopBreakerCompiler;
+import de.ttsa.Logic.Features.NumDec.NumDecCompiler;
+import de.ttsa.Logic.Features.NumInit.NumInitCompiler;
+import de.ttsa.Logic.Features.Printer.PrinterCompiler;
+import de.ttsa.Logic.Features.RoomJumper.RoomJumperCompiler;
+import de.ttsa.Logic.Features.StrDec.StrDecCompiler;
+import de.ttsa.Logic.Features.StrInit.StrInitCompiler;
 
 public class Compiler extends CompilerSyntax {
 
@@ -19,8 +31,8 @@ public class Compiler extends CompilerSyntax {
 
 
 
-    ArrayList<ArrayList<String>> fileContent;
-    HashMap<String, HashSet<String>> variables;
+    public static ArrayList<ArrayList<String>> fileContent;
+    public static HashMap<String, HashSet<String>> variables;
     private OpCodeIfTypes ifTypes = OpCodeIfTypes.NONE;
     
 
@@ -64,7 +76,7 @@ public class Compiler extends CompilerSyntax {
         for (int i = 0; i < content.size(); i++) {
             line = content.get(i).strip();
             if (line.startsWith(SYNTAX_SAY)) {
-                compiled.add(compileSay(line));
+                compiled.add(new PrinterCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_ROOM)) {
                 compiled.addAll(compileRoom(getCodeBlock(i,content)));
                 i--;
@@ -81,31 +93,31 @@ public class Compiler extends CompilerSyntax {
                 compiled.addAll(compileAction(getCodeBlock(i, content)));
                 i--;
             } else if (line.startsWith(SYNTAX_ROOM_JUMPER)) {
-                compiled.add(compileRoomJumper(line));
+                compiled.add(new RoomJumperCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_SAVE)) {
-                compiled.add(compileSave(line));
+                compiled.add(new GameSavingScriptCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_LOAD)) {
-                compiled.add(compileLoad(line));
+                compiled.add(new GameLoaderScriptCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_EXIT)) {
-                compiled.add(compileExit(line));
+                compiled.add(new GameExitScriptCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_INPUT)) {
-                compiled.add(compileInput(line));
+                compiled.add(new InputCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_NUM_VARDEC)) {
-                compiled.add(compileNumDec(line));
+                compiled.add(new NumInitCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_NUMBER_VARIABLE)) {
-                compiled.add(compileNum(line));
+                compiled.add(new NumDecCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_STR_VARDEC)) {
-                compiled.add(compileStrDec(line));
+                compiled.add(new StrInitCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_STRING_VARIABLE)) {
-                compiled.add(compileStr(line));
+                compiled.add(new StrDecCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
-                compiled.add(compileBreak(line));
+                compiled.add(new LoopBreakerCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_DEBUG)) {
-                compiled.add(compileDebug(line));
+                compiled.add(new DebugInputCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_LOOP_BREAKER)) {
-                compiled.add(compileBreak(line));
+                compiled.add(new LoopBreakerCompiler().compile(line));
             } else if (line.startsWith(SYNTAX_ACTION_CALL)) {
-                compiled.add(compileActionCall(line));
+                compiled.add(new ActionCallCompiler().compile(line));
             } else {
                 throw new IllegalArgumentException("Syntax Error: " + line);
             }

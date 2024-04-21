@@ -87,10 +87,8 @@ public class CFileReader extends CompilerSyntax {
 
     private boolean isFile(File file) {
         if(file.isDirectory()) {
-            //output("Path is a directory");
             return false;
         } else if (file.isFile()){
-            //output("Path is a file");
             return true;
         } else {
             throw new IllegalArgumentException("Path is not valid");
