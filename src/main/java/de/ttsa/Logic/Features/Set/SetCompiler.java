@@ -3,6 +3,7 @@ package de.ttsa.Logic.Features.Set;
 import java.util.List;
 
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 
@@ -10,7 +11,7 @@ public class SetCompiler extends CompilerStructMethods {
 
     @Override
     public String compile(List<String> lines, int blockStart) {
-        String setName = lines.get(blockStart).substring(lines.get(blockStart).indexOf(SYNTAX_SET) + SYNTAX_SET.length() +1, lines.get(blockStart).lastIndexOf(SYNTAX_BLOCK_START)).strip();
+        String setName = lines.get(blockStart).substring(lines.get(blockStart).indexOf(CompilerSyntax.SET.toString()) + CompilerSyntax.SET.toString().length() +1, lines.get(blockStart).lastIndexOf(CompilerSyntax.BLOCK_START.toString())).strip();
         lines.remove(blockStart);
 
         StringBuilder compiled = getStartCode(OpCodeIndex.SET);
@@ -25,7 +26,7 @@ public class SetCompiler extends CompilerStructMethods {
         String line = "";
         for (int i=blockStart; i<lines.size(); i++) {
             line = lines.get(i).strip();
-            if(line.startsWith(SYNTAX_BLOCK_END)) {
+            if(line.startsWith(CompilerSyntax.BLOCK_END.toString())) {
                 lines.remove(i);
                 break;
             }

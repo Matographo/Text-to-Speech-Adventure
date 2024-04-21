@@ -2,8 +2,8 @@ package de.ttsa.Logic.Enums;
 
 public enum CompilerSyntax {
     SAY("Say"), 
-    ACTION("Action"), 
     ACTION_CALL("Do"), 
+    ACTION("Action"), 
     DEBUG_INPUT("Debug"), 
     GAME_EXIT_SCRIPT("Exit"), 
     GAME_LOADER_SCRIPT("Load"), 
@@ -14,9 +14,9 @@ public enum CompilerSyntax {
     LOOP("Loop"), 
     NUM_INIT("NumDec"), 
     NUM_DEC("Num"), 
-    ROOM("Room"), 
     SET("Set"), 
     ROOM_JUMPER("Jump"), 
+    ROOM("Room"), 
     STR_INIT("StrDec"),
     STR_DEC("Str"), 
     COMMENT("//"),
@@ -41,6 +41,11 @@ public enum CompilerSyntax {
             }
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return syntax;
     }
 
 

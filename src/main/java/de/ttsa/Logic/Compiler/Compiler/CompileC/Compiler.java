@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import de.ttsa.Logic.ClassTools.CompilerSyntax;
 import de.ttsa.Logic.Enums.CompilerTests;
-import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Interfaces.CompilerLine;
 import de.ttsa.Logic.Interfaces.CompilerStruct;
 
-public class Compiler extends CompilerSyntax {
+public class Compiler {
 
 
 

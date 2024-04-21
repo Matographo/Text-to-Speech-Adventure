@@ -5,9 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-import de.ttsa.Logic.ClassTools.CompilerSyntax;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 
-public class CFileReader extends CompilerSyntax {
+
+public class CFileReader {
 
 
 
@@ -72,7 +73,7 @@ public class CFileReader extends CompilerSyntax {
                 if(line.isEmpty()) {
                     continue;
                 }
-                if(line.startsWith(SYNTAX_COMMENT)) {
+                if(line.startsWith(CompilerSyntax.COMMENT.toString())) {
                     continue;
                 }
                 readed.add(line);

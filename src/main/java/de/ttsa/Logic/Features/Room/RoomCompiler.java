@@ -3,6 +3,7 @@ package de.ttsa.Logic.Features.Room;
 import java.util.List;
 
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 
@@ -10,10 +11,10 @@ public class RoomCompiler extends CompilerStructMethods {
 
     @Override
     public String compile(List<String> lines, int blockStart) {
-        String commands = lines.get(blockStart).substring(lines.get(blockStart).indexOf(SYNTAX_ROOM) + SYNTAX_ROOM.length()).strip();
+        String commands = lines.get(blockStart).substring(lines.get(blockStart).indexOf(CompilerSyntax.ROOM.toString()) + CompilerSyntax.ROOM.toString().length()).strip();
         lines.remove(blockStart);
         if (commands.contains("{")) {
-            commands = commands.substring(0, commands.indexOf(SYNTAX_BLOCK_START)).strip();
+            commands = commands.substring(0, commands.indexOf(CompilerSyntax.BLOCK_START.toString())).strip();
         }
 
         StringBuilder compiled = getStartCode(OpCodeIndex.ROOM);
@@ -29,10 +30,10 @@ public class RoomCompiler extends CompilerStructMethods {
         int size = 0;
         int blockCount = 1;
         for (int i = blockStart; i < lines.size(); i++) {
-            if(lines.get(i).contains(SYNTAX_BLOCK_START)) {
+            if(lines.get(i).contains(CompilerSyntax.BLOCK_START.toString())) {
                 blockCount++;
             }
-            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
                 blockCount--;
             }

@@ -3,6 +3,7 @@ package de.ttsa.Logic.Features.Action;
 import java.util.List;
 
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
 
@@ -10,7 +11,7 @@ public class ActionCompiler extends CompilerStructMethods {
 
     @Override
     public String compile(List<String> lines, int blockStart) {
-        StringBuilder commands = new StringBuilder(lines.get(blockStart).substring(lines.get(blockStart).indexOf(SYNTAX_ACTION) + SYNTAX_ACTION.length() + 1, lines.get(blockStart).lastIndexOf(SYNTAX_BLOCK_START)).strip());
+        StringBuilder commands = new StringBuilder(lines.get(blockStart).substring(lines.get(blockStart).indexOf(CompilerSyntax.ACTION.toString()) + CompilerSyntax.ACTION.toString().length() + 1, lines.get(blockStart).lastIndexOf(CompilerSyntax.BLOCK_START.toString())).strip());
         lines.remove(blockStart);
 
         StringBuilder compiled = getStartCode(OpCodeIndex.ACTION);
@@ -50,9 +51,9 @@ public class ActionCompiler extends CompilerStructMethods {
     }
 
     private char getArgType(String arg) {
-        if(arg.substring(0, arg.indexOf(" ")).equals(SYNTAX_NUMBER_VARIABLE)) {
+        if(arg.substring(0, arg.indexOf(" ")).equals(CompilerSyntax.NUM_DEC.toString())) {
             return 'n';
-        } else if(arg.substring(0, arg.indexOf(" ")).equals(SYNTAX_STRING_VARIABLE)) {
+        } else if(arg.substring(0, arg.indexOf(" ")).equals(CompilerSyntax.STR_DEC.toString())) {
             return 's';
         } else {
             return '-';
@@ -67,10 +68,10 @@ public class ActionCompiler extends CompilerStructMethods {
         int size = 0;
         int blockCount = 1;
         for (int i = blockStart; i < lines.size(); i++) {
-            if(lines.get(i).contains(SYNTAX_BLOCK_START)) {
+            if(lines.get(i).contains(CompilerSyntax.BLOCK_START.toString())) {
                 blockCount++;
             }
-            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
                 blockCount--;
             }

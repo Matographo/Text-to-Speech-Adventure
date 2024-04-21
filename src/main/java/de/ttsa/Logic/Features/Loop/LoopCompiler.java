@@ -1,10 +1,10 @@
 package de.ttsa.Logic.Features.Loop;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
@@ -13,7 +13,7 @@ public class LoopCompiler extends CompilerStructMethods {
 
     @Override
     public String compile(List<String> lines, int blockStart) {
-        String commands = lines.get(blockStart).substring(lines.get(blockStart).indexOf(SYNTAX_COMMAND) + 1, lines.get(blockStart).lastIndexOf(SYNTAX_BLOCK_START)).strip();
+        String commands = lines.get(blockStart).substring(lines.get(blockStart).indexOf(CompilerSyntax.COMMAND.toString()) + 1, lines.get(blockStart).lastIndexOf(CompilerSyntax.BLOCK_START.toString())).strip();
         lines.remove(blockStart);
 
         StringBuilder compiled = getStartCode(OpCodeIndex.LOOP);
@@ -76,7 +76,7 @@ public class LoopCompiler extends CompilerStructMethods {
 
         if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return OpCodeIfTypes.NUMBER;
         else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return OpCodeIfTypes.STRING;
-        else if(conditionString.startsWith(SYNTAX_INPUT)) return OpCodeIfTypes.INPUT;
+        else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return OpCodeIfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 
@@ -105,7 +105,7 @@ public class LoopCompiler extends CompilerStructMethods {
     private int getBlockContentSize(List<String> lines) {
         int size = lines.size();
         for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
             }
         }
@@ -116,10 +116,10 @@ public class LoopCompiler extends CompilerStructMethods {
         int blockCount = 1;
         int size = 0;
         for (int i = blockStart; i < lines.size(); i++) {
-            if(lines.get(i).contains(SYNTAX_BLOCK_START)) {
+            if(lines.get(i).contains(CompilerSyntax.BLOCK_START.toString())) {
                 blockCount++;
             }
-            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
                 blockCount--;
             }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.ttsa.Logic.Compiler.Compiler.CompileC.Compiler;
 import de.ttsa.Logic.Compiler.Compiler.CompileC.CompilerStructMethods;
+import de.ttsa.Logic.Enums.CompilerSyntax;
 import de.ttsa.Logic.Enums.OpCodeIfTypes;
 import de.ttsa.Logic.Enums.OpCodeIndex;
 import de.ttsa.Logic.Enums.OpCodeSeperators;
@@ -31,7 +32,7 @@ public class IfCompiler extends CompilerStructMethods {
         String condition = "";
         boolean isFirst = true;
         for (int i=blockStart; i<blockEnd; i++) {
-            if ((lines.get(i).startsWith(SYNTAX_IF) || lines.get(i).startsWith("} Else If") || lines.get(i).startsWith("} Else")) && lines.get(i).endsWith(SYNTAX_BLOCK_START)) {
+            if ((lines.get(i).startsWith(CompilerSyntax.IF.toString()) || lines.get(i).startsWith("} Else If") || lines.get(i).startsWith("} Else")) && lines.get(i).endsWith(CompilerSyntax.BLOCK_START.toString())) {
                 if(!isFirst) {
                     result.add(condition);
                     blockSizes.add(getBlockContentSize(content));
@@ -39,7 +40,7 @@ public class IfCompiler extends CompilerStructMethods {
                 }
                 
                 isFirst = false;
-                condition = lines.get(i).substring(lines.get(i).indexOf(SYNTAX_COMMAND) + 1, lines.get(i).lastIndexOf(SYNTAX_BLOCK_START)).strip();
+                condition = lines.get(i).substring(lines.get(i).indexOf(CompilerSyntax.COMMAND.toString()) + 1, lines.get(i).lastIndexOf(CompilerSyntax.BLOCK_START.toString())).strip();
                 lines.remove(i);
                 blockEnd--;
                 i--;
@@ -73,7 +74,7 @@ public class IfCompiler extends CompilerStructMethods {
     private int getBlockContentSize(List<String> lines) {
         int size = lines.size();
         for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).contains(SYNTAX_BLOCK_END)) {
+            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
             }
         }
@@ -102,7 +103,7 @@ public class IfCompiler extends CompilerStructMethods {
 
         if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return OpCodeIfTypes.NUMBER;
         else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return OpCodeIfTypes.STRING;
-        else if(conditionString.startsWith(SYNTAX_INPUT)) return OpCodeIfTypes.INPUT;
+        else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return OpCodeIfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 
