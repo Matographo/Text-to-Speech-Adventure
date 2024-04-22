@@ -3,9 +3,9 @@ package de.ttsa.Logic.Features.If;
 import java.util.ArrayList;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeIfTypes;
-import de.ttsa.Enums.OpCodeRegex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.IfTypes;
+import de.ttsa.Enums.Regex;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class IfOpCodeVar implements OpCodeVarTestable {
@@ -15,7 +15,7 @@ public class IfOpCodeVar implements OpCodeVarTestable {
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
         this.opCodeVar = opCodeVar;
-        String[] args    = toTest.split(OpCodeSeperators.IF_ELSE.getSeperator());
+        String[] args    = toTest.split(Seperators.IF_ELSE.getSeperator());
         boolean testResult = true;
         char i;
 
@@ -23,7 +23,7 @@ public class IfOpCodeVar implements OpCodeVarTestable {
         for(String test : args) {
             i = test.charAt(0);
 
-            switch(OpCodeIfTypes.convert(i)) {
+            switch(IfTypes.convert(i)) {
                 case NUMBER -> testResult = testResult && testIfVarNum(test.substring(1));
                 case STRING -> testResult = testResult && testIfVarStr(test.substring(1));
             }
@@ -39,7 +39,7 @@ public class IfOpCodeVar implements OpCodeVarTestable {
      * @return true if the variables are correct
      */
     private boolean testIfVarNum(String args) {
-        String[] tests     = args.split(OpCodeSeperators.IF_NUM.getSeperator());
+        String[] tests     = args.split(Seperators.IF_NUM.getSeperator());
         boolean testResult = true;
         String[] toTest    = tests[0].split("[&]{2} | [|]{2}");
 
@@ -78,13 +78,13 @@ public class IfOpCodeVar implements OpCodeVarTestable {
      * @return true if the String is a Testable Variable
      */
     private boolean isTestableVar(String test) {
-        String[] tests     = test.split(OpCodeSeperators.IF_ELSE.getSeperator());
-        OpCodeIfTypes type;
+        String[] tests     = test.split(Seperators.IF_ELSE.getSeperator());
+        IfTypes type;
         boolean testResult = true;
 
 
         for(String toTest : tests) {
-            type = OpCodeIfTypes.convert(toTest.charAt(0));
+            type = IfTypes.convert(toTest.charAt(0));
 
             switch(type) {
                 case NUMBER -> testResult = testResult && isTestableVarNum(toTest.substring(1));
@@ -154,7 +154,7 @@ public class IfOpCodeVar implements OpCodeVarTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(OpCodeRegex.VALIDE_NUMBER.toString());
+        return number.matches(Regex.VALIDE_NUMBER.toString());
     }
     
     /**

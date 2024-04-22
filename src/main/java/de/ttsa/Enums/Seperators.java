@@ -1,6 +1,6 @@
 package de.ttsa.Enums;
 
-public enum OpCodeSeperators {
+public enum Seperators {
     NONE(""),
     COMMAND("::"),
     SAY(","),
@@ -22,7 +22,7 @@ public enum OpCodeSeperators {
 
     private final String seperator;
 
-    OpCodeSeperators(String seperator) {
+    Seperators(String seperator) {
         this.seperator = seperator;
     }
 

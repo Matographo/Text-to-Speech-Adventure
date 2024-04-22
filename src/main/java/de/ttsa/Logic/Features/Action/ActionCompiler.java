@@ -3,8 +3,8 @@ package de.ttsa.Logic.Features.Action;
 import java.util.List;
 
 import de.ttsa.Enums.CompilerSyntax;
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Parents.CompilerStructMethods;
 
 public class ActionCompiler extends CompilerStructMethods {
@@ -14,11 +14,11 @@ public class ActionCompiler extends CompilerStructMethods {
         StringBuilder commands = new StringBuilder(lines.get(blockStart).substring(lines.get(blockStart).indexOf(CompilerSyntax.ACTION.toString()) + CompilerSyntax.ACTION.toString().length() + 1, lines.get(blockStart).lastIndexOf(CompilerSyntax.BLOCK_START.toString())).strip());
         lines.remove(blockStart);
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.ACTION);
+        StringBuilder compiled = getStartCode(Index.ACTION);
         compiled.append(commands.substring(0, commands.indexOf("(")).strip());
-        compiled.append(OpCodeSeperators.ACTION.getSeperator());
+        compiled.append(Seperators.ACTION.getSeperator());
         compiled.append(getActionParams(commands.substring(commands.indexOf("(") + 1, commands.lastIndexOf(")")).strip()));
-        compiled.append(OpCodeSeperators.ACTION.getSeperator());
+        compiled.append(Seperators.ACTION.getSeperator());
 
 
         compiled.append(getBlockContentSize(lines, blockStart));
@@ -28,7 +28,7 @@ public class ActionCompiler extends CompilerStructMethods {
     private String getActionParams(String commands) {
         StringBuilder result = new StringBuilder();
         if(commands.equals("")) return "-";
-        String[] args = commands.split(OpCodeSeperators.ACTION_ARGS.getSeperator());
+        String[] args = commands.split(Seperators.ACTION_ARGS.getSeperator());
         char argType;
         for(String arg : args) {
             arg = arg.strip();
@@ -44,7 +44,7 @@ public class ActionCompiler extends CompilerStructMethods {
                 default:
                     return "-";
             }
-            result.append(OpCodeSeperators.ACTION_ARGS.getSeperator());
+            result.append(Seperators.ACTION_ARGS.getSeperator());
         }
         result.deleteCharAt(result.length()-1);
         return result.toString();

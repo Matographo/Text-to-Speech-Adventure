@@ -2,7 +2,7 @@ package de.ttsa.Logic.Features.Room;
 
 import java.util.List;
 
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeBlockTestable;
 
 public class RoomOpCodeBlock implements OpCodeBlockTestable {
@@ -20,7 +20,7 @@ public class RoomOpCodeBlock implements OpCodeBlockTestable {
      * @return The length of the room block
      */
     private int getRoomBlockLength(String args) {
-        return Integer.parseInt(args.split(OpCodeSeperators.ROOM.getSeperator())[1]);
+        return Integer.parseInt(args.split(Seperators.ROOM.getSeperator())[1]);
     }
     
 }

@@ -1,6 +1,6 @@
 package de.ttsa.Logic.Features.RoomJumper;
 
-import de.ttsa.Enums.OpCodeIndex;
+import de.ttsa.Enums.Index;
 import de.ttsa.Parents.CompilerLineMethods;
 
 public class RoomJumperCompiler extends CompilerLineMethods {
@@ -9,7 +9,7 @@ public class RoomJumperCompiler extends CompilerLineMethods {
     public String compile(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.ROOM_JUMPER);
+        StringBuilder compiled = getStartCode(Index.ROOM_JUMPER);
         compiled.append(commands);
         return compiled.toString();
     }

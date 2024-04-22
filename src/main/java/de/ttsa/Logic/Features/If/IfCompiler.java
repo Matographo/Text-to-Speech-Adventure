@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.ttsa.Enums.CompilerSyntax;
-import de.ttsa.Enums.OpCodeIfTypes;
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.IfTypes;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Logic.Compiler.CompilerSteps.Compiler;
 import de.ttsa.Parents.CompilerStructMethods;
 
@@ -20,7 +20,7 @@ public class IfCompiler extends CompilerStructMethods {
 
     @Override
     public String compile(List<String> lines, int blockStart) {
-        StringBuilder result = getStartCode(OpCodeIndex.IF);
+        StringBuilder result = getStartCode(Index.IF);
 
         result.append(calculateBlocks(getIfCodeArgs(lines, blockStart, getBlockEnd(lines, blockStart))));
         return result.toString();
@@ -62,10 +62,10 @@ public class IfCompiler extends CompilerStructMethods {
             value = blockSizes.get(i);
 
             compiled.append(calculateCondition(conditions.get(i)));
-            compiled.append(OpCodeSeperators.IF_NUM.getSeperator());
+            compiled.append(Seperators.IF_NUM.getSeperator());
             
             compiled.append(value);
-            compiled.append(OpCodeSeperators.IF_ELSE.getSeperator());
+            compiled.append(Seperators.IF_ELSE.getSeperator());
         }
         compiled.delete(compiled.length()-2, compiled.length());
         return compiled.toString();
@@ -84,7 +84,7 @@ public class IfCompiler extends CompilerStructMethods {
     private String calculateCondition(String condition) {
         condition = condition.replaceAll(" ", "");
         StringBuilder compiled = new StringBuilder();
-        OpCodeIfTypes mode = calculateConditionMode(condition);
+        IfTypes mode = calculateConditionMode(condition);
         
         compiled.append(mode.getType());
         switch(mode) {
@@ -96,14 +96,14 @@ public class IfCompiler extends CompilerStructMethods {
         return compiled.toString();
     }
 
-    private OpCodeIfTypes calculateConditionMode(String conditionString) {
-        if(conditionString.equals("")) return OpCodeIfTypes.NONE;
+    private IfTypes calculateConditionMode(String conditionString) {
+        if(conditionString.equals("")) return IfTypes.NONE;
 
         String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
 
-        if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return OpCodeIfTypes.NUMBER;
-        else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return OpCodeIfTypes.STRING;
-        else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return OpCodeIfTypes.INPUT;
+        if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IfTypes.NUMBER;
+        else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IfTypes.STRING;
+        else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return IfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 

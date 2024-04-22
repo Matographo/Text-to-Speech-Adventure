@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.NumDec;
 
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Logic.Compiler.CompilerSteps.Compiler;
 import de.ttsa.Parents.CompilerLineMethods;
 
@@ -12,7 +12,7 @@ public class NumDecCompiler extends CompilerLineMethods {
         String commands = getWithoutCommand(line);
         String varName = "";
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.NUMBER_DEC);
+        StringBuilder compiled = getStartCode(Index.NUMBER_DEC);
         if(commands.contains("=") || commands.contains(" ")) {
             String[] parts;
 
@@ -21,12 +21,12 @@ public class NumDecCompiler extends CompilerLineMethods {
 
             varName = parts[0].strip();
             compiled.append(varName);
-            compiled.append(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
+            compiled.append(Seperators.NUMBER_VARIABLE.getSeperator());
             compiled.append(parts[1].strip());
         } else {
             varName = commands;
             compiled.append(varName);
-            compiled.append(OpCodeSeperators.NUMBER_VARIABLE.getSeperator());
+            compiled.append(Seperators.NUMBER_VARIABLE.getSeperator());
             compiled.append("0");
         }
         Compiler.variables.get("NUMBER").add(varName);

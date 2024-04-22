@@ -2,7 +2,7 @@ package de.ttsa.Logic.Features.Action;
 
 import java.util.List;
 
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeBlockTestable;
 
 public class ActionOpCodeBlock implements OpCodeBlockTestable {
@@ -19,6 +19,6 @@ public class ActionOpCodeBlock implements OpCodeBlockTestable {
      * @return The length of the action block
      */
     private int getActionBlockLength(String args) {
-        return Integer.parseInt(args.split(OpCodeSeperators.ACTION.getSeperator())[2]);
+        return Integer.parseInt(args.split(Seperators.ACTION.getSeperator())[2]);
     }
 }

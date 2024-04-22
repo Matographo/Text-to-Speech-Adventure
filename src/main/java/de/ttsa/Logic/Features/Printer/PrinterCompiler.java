@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.Printer;
 
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.CompilerLine;
 import de.ttsa.Parents.CompilerLineMethods;
 
@@ -11,7 +11,7 @@ public class PrinterCompiler extends CompilerLineMethods {
     public String compile(String line) {
         StringBuilder commands = new StringBuilder(getWithoutCommand(line));
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.SAY);
+        StringBuilder compiled = getStartCode(Index.SAY);
         compiled.append(getSay(commands));
         return compiled.toString();
     }
@@ -41,7 +41,7 @@ public class PrinterCompiler extends CompilerLineMethods {
                 }
             }
             if (commands.length() > 0) {
-                endCommand.append(OpCodeSeperators.SAY.getSeperator());
+                endCommand.append(Seperators.SAY.getSeperator());
             }
         }
 

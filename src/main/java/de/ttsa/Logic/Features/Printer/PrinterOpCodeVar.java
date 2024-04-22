@@ -1,14 +1,14 @@
 package de.ttsa.Logic.Features.Printer;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class PrinterOpCodeVar implements OpCodeVarTestable {
 
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
-        String[] allArgs   = toTest.split(OpCodeSeperators.SAY.getSeperator());
+        String[] allArgs   = toTest.split(Seperators.SAY.getSeperator());
         boolean testResult = true;
 
 

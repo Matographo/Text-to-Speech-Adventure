@@ -1,6 +1,6 @@
 package de.ttsa.Enums;
 
-public enum OpCodeIfTypes {
+public enum IfTypes {
     NONE(' '),
     NUMBER('n'),
     STRING('s'),
@@ -9,7 +9,7 @@ public enum OpCodeIfTypes {
 
     private final char type;
 
-    OpCodeIfTypes(char type) {
+    IfTypes(char type) {
         this.type = type;
     }
 
@@ -17,8 +17,8 @@ public enum OpCodeIfTypes {
         return type;
     }
 
-    public static OpCodeIfTypes convert(char type) {
-        for (OpCodeIfTypes index : OpCodeIfTypes.values()) {
+    public static IfTypes convert(char type) {
+        for (IfTypes index : IfTypes.values()) {
             if (index.getType() == type) {
                 return index;
             }

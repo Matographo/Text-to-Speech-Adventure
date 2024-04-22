@@ -3,8 +3,8 @@ package de.ttsa.Logic.Features.Room;
 import java.util.List;
 
 import de.ttsa.Enums.CompilerSyntax;
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Parents.CompilerStructMethods;
 
 public class RoomCompiler extends CompilerStructMethods {
@@ -17,9 +17,9 @@ public class RoomCompiler extends CompilerStructMethods {
             commands = commands.substring(0, commands.indexOf(CompilerSyntax.BLOCK_START.toString())).strip();
         }
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.ROOM);
+        StringBuilder compiled = getStartCode(Index.ROOM);
         compiled.append(commands);
-        compiled.append(OpCodeSeperators.ROOM.getSeperator());
+        compiled.append(Seperators.ROOM.getSeperator());
 
         compiled.append(getBlockContentSize(lines, blockStart));
         return compiled.toString();

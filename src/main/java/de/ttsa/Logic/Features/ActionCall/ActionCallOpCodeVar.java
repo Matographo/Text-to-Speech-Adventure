@@ -1,24 +1,24 @@
 package de.ttsa.Logic.Features.ActionCall;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeIfTypes;
-import de.ttsa.Enums.OpCodeRegex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.IfTypes;
+import de.ttsa.Enums.Regex;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class ActionCallOpCodeVar implements OpCodeVarTestable {
 
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
-        String[] actions    = toTest.split(OpCodeSeperators.ACTION.getSeperator());
+        String[] actions    = toTest.split(Seperators.ACTION.getSeperator());
         String actionName   = actions[0];
-        String[] actionArgs = actions[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
-        OpCodeIfTypes type;
+        String[] actionArgs = actions[1].split(Seperators.ACTION_ARGS.getSeperator());
+        IfTypes type;
 
 
         if(!opCodeVar.isActionName(actionName)) return false;
 
-        String[] mainActionArgs = opCodeVar.getActionArgs(actionName).split(OpCodeSeperators.ACTION_ARGS.getSeperator());
+        String[] mainActionArgs = opCodeVar.getActionArgs(actionName).split(Seperators.ACTION_ARGS.getSeperator());
 
         if(!opCodeVar.isActionName(actionName)) return false;
 
@@ -26,20 +26,20 @@ public class ActionCallOpCodeVar implements OpCodeVarTestable {
             if(isEmptyArg(actionArgs[i])) continue;
 
 
-            type = OpCodeIfTypes.convert(mainActionArgs[i].charAt(0));
+            type = IfTypes.convert(mainActionArgs[i].charAt(0));
             if(isValidName(actionArgs[i])) {
-                if(type == OpCodeIfTypes.STRING) {
+                if(type == IfTypes.STRING) {
                     if(!opCodeVar.isStrName(actionArgs[i])) return false;
-                } else if (type == OpCodeIfTypes.NUMBER) {
+                } else if (type == IfTypes.NUMBER) {
                     if(!opCodeVar.isNumName(actionArgs[i])) return false;
                 }
 
             } else {
 
                 if(isNumber(actionArgs[i])) {
-                    if(type != OpCodeIfTypes.NUMBER) return false;
+                    if(type != IfTypes.NUMBER) return false;
                 } else {
-                    if(type != OpCodeIfTypes.STRING) return false;
+                    if(type != IfTypes.STRING) return false;
                 }
 
             }
@@ -54,7 +54,7 @@ public class ActionCallOpCodeVar implements OpCodeVarTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(OpCodeRegex.VALIDE_NUMBER.toString());
+        return number.matches(Regex.VALIDE_NUMBER.toString());
     }
 
     /**
@@ -72,6 +72,6 @@ public class ActionCallOpCodeVar implements OpCodeVarTestable {
      * @return true if the name is valid
      */
     private boolean isValidName(String name) {
-        return name.matches(OpCodeRegex.VALIDE_NAME.toString());
+        return name.matches(Regex.VALIDE_NAME.toString());
     }
 }

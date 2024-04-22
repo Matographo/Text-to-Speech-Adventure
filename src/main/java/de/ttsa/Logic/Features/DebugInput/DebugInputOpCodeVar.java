@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.DebugInput;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeRegex;
+import de.ttsa.Enums.Regex;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class DebugInputOpCodeVar implements OpCodeVarTestable {
@@ -17,7 +17,7 @@ public class DebugInputOpCodeVar implements OpCodeVarTestable {
      * @return true if the name is valid
      */
     private boolean isValidName(String name) {
-        return name.matches(OpCodeRegex.VALIDE_NAME.toString());
+        return name.matches(Regex.VALIDE_NAME.toString());
     }
     
 }

@@ -1,14 +1,14 @@
 package de.ttsa.Logic.Features.NumInit;
 
-import de.ttsa.Enums.OpCodeRegex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Regex;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
 public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        String[] args = arg.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
+        String[] args = arg.split(Seperators.NUMBER_DEC.getSeperator());
         String value = args[1];
 
 
@@ -29,7 +29,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the name is valid
      */
     private boolean isValidName(String name) {
-        return name.matches(OpCodeRegex.VALIDE_NAME.toString());
+        return name.matches(Regex.VALIDE_NAME.toString());
     }
 
         /**
@@ -38,7 +38,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(OpCodeRegex.VALIDE_NUMBER.toString());
+        return number.matches(Regex.VALIDE_NUMBER.toString());
     }
 
         /**
@@ -96,7 +96,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
             return false;
         }
 
-        return value.matches(OpCodeRegex.CALCULATABLE.toString());
+        return value.matches(Regex.CALCULATABLE.toString());
     }
     
 }

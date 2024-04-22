@@ -1,13 +1,13 @@
 package de.ttsa.Parents;
 
 import de.ttsa.Enums.CompilerSyntax;
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.CompilerLine;
 
 public abstract class CompilerLineMethods implements CompilerLine {
-    protected StringBuilder getStartCode(OpCodeIndex index) {
-        return new StringBuilder().append(index.getIndex() + OpCodeSeperators.COMMAND.getSeperator());
+    protected StringBuilder getStartCode(Index index) {
+        return new StringBuilder().append(index.getIndex() + Seperators.COMMAND.getSeperator());
     }
 
     protected String getWithoutCommand(String line) {

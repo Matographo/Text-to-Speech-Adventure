@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.StrInit;
 
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Parents.CompilerLineMethods;
 
 public class StrInitCompiler extends CompilerLineMethods {
@@ -10,7 +10,7 @@ public class StrInitCompiler extends CompilerLineMethods {
     public String compile(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.STR_INIT);
+        StringBuilder compiled = getStartCode(Index.STR_INIT);
         compiled.append(compileStrDecCommand(new StringBuilder(commands)));
         return compiled.toString();
     }
@@ -19,7 +19,7 @@ public class StrInitCompiler extends CompilerLineMethods {
         StringBuilder endString = new StringBuilder();
 
         endString.append(line.substring(0, line.indexOf("=")).strip());
-        endString.append(OpCodeSeperators.STR.getSeperator());
+        endString.append(Seperators.STR.getSeperator());
         endString.append(calculateStrDec(new StringBuilder(line.substring(line.indexOf("=") + 1).strip())));
         return endString.toString();
     }
@@ -30,12 +30,12 @@ public class StrInitCompiler extends CompilerLineMethods {
             endString.append("\"" + line.substring(0, line.indexOf("'")) + "\"");
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
+            endString.append(Seperators.STR_CONTENT.getSeperator());
 
             endString.append(line.substring(0, line.indexOf("'")).strip());
             line.delete(0, line.indexOf("'") + 1);
 
-            endString.append(OpCodeSeperators.STR_CONTENT.getSeperator());
+            endString.append(Seperators.STR_CONTENT.getSeperator());
         }
         endString.append("\"" + line + "\"");
         return endString.toString();

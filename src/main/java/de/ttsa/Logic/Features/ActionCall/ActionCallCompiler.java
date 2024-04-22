@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.ActionCall;
 
-import de.ttsa.Enums.OpCodeIndex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Parents.CompilerLineMethods;
 
 public class ActionCallCompiler extends CompilerLineMethods {
@@ -10,7 +10,7 @@ public class ActionCallCompiler extends CompilerLineMethods {
     public String compile(String line) {
         String commands = getWithoutCommand(line);
 
-        StringBuilder compiled = getStartCode(OpCodeIndex.ACTION_CALL);
+        StringBuilder compiled = getStartCode(Index.ACTION_CALL);
         if(commands.strip().matches("[a-zA-Z]+\\w*")) {
             compiled.append(commands.strip());
             commands = "";
@@ -19,7 +19,7 @@ public class ActionCallCompiler extends CompilerLineMethods {
             commands = commands.substring(commands.indexOf(" ") + 1).strip();
         }
         
-        compiled.append(OpCodeSeperators.ACTION.getSeperator());
+        compiled.append(Seperators.ACTION.getSeperator());
 
         compiled.append(getActionCallArgs(commands));
         return compiled.toString();
@@ -27,13 +27,13 @@ public class ActionCallCompiler extends CompilerLineMethods {
 
     private String getActionCallArgs(String args) {
         StringBuilder result = new StringBuilder();
-        String[] argsOfCall = args.split(OpCodeSeperators.ACTION_ARGS.getSeperator());
+        String[] argsOfCall = args.split(Seperators.ACTION_ARGS.getSeperator());
         if(args.isBlank()) {
             return "-";
         }
         for(String arg : argsOfCall) {
             result.append(arg.strip());
-            result.append(OpCodeSeperators.ACTION_ARGS.getSeperator());
+            result.append(Seperators.ACTION_ARGS.getSeperator());
         }
         result.deleteCharAt(result.length()-1);
         return result.toString();

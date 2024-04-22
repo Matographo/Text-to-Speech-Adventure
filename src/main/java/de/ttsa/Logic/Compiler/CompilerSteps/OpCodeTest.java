@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.OpCodeBlockTests;
-import de.ttsa.Enums.OpCodeSeperators;
-import de.ttsa.Enums.OpCodeSyntaxTests;
+import de.ttsa.Enums.Seperators;
+import de.ttsa.Enums.SyntaxTests;
 import de.ttsa.Enums.OpCodeVarTests;
 import de.ttsa.Interfaces.OpCodeBlockTestable;
 import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
@@ -25,7 +25,7 @@ public class OpCodeTest {
 
 
     private File file;
-    private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
+    private SyntaxTests opCodeSyntaxTest = SyntaxTests.ALWAYS_FALSE;
     private OpCodeVarTests opCodeVarTests = OpCodeVarTests.NONE;
     private OpCodeBlockTests opCodeBlockTests = OpCodeBlockTests.NONE;
 
@@ -152,8 +152,8 @@ public class OpCodeTest {
 
 
         for(String line : content) {
-            command = line.split(OpCodeSeperators.COMMAND.getSeperator())[0];
-            args    = line.substring(line.indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
+            command = line.split(Seperators.COMMAND.getSeperator())[0];
+            args    = line.substring(line.indexOf(Seperators.COMMAND.getSeperator()) + command.length()).strip();
             test    = opCodeSyntaxTest.getTest(command);
 
             testResult &= test.testOpCode(args);
@@ -183,8 +183,8 @@ public class OpCodeTest {
         OpCodeVarTestable test;
 
         for(int i = 0; i < content.size(); i++) {
-            command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
-            args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
+            command = content.get(i).split(Seperators.COMMAND.getSeperator())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(Seperators.COMMAND.getSeperator()) + command.length()).strip();
             test    = opCodeVarTests.getTest(command);
 
             testResult &= test.test(args, opCodeVar);
@@ -215,8 +215,8 @@ public class OpCodeTest {
 
 
         for(int i = 0; i < content.size(); i++) {
-            command = content.get(i).split(OpCodeSeperators.COMMAND.getSeperator())[0];
-            args    = content.get(i).substring(content.get(i).indexOf(OpCodeSeperators.COMMAND.getSeperator()) + command.length()).strip();
+            command = content.get(i).split(Seperators.COMMAND.getSeperator())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(Seperators.COMMAND.getSeperator()) + command.length()).strip();
 
             testInnerBlock = opCodeBlockTests.getInnerBlockTest(command);
             testBlock      = opCodeBlockTests.getBlockTest(command);

@@ -1,29 +1,29 @@
 package de.ttsa.Logic.Features.Action;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeIfTypes;
-import de.ttsa.Enums.OpCodeRegex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.IfTypes;
+import de.ttsa.Enums.Regex;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class ActionOpCodeVar implements OpCodeVarTestable {
 
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
-        String[] actionArgs = toTest.split(OpCodeSeperators.ACTION.getSeperator());
-        OpCodeIfTypes type;
+        String[] actionArgs = toTest.split(Seperators.ACTION.getSeperator());
+        IfTypes type;
 
 
         if(opCodeVar.isActionName(actionArgs[0])) return false;
 
         opCodeVar.addActionName(actionArgs[0]);
 
-        String[] actionArgss = actionArgs[1].split(OpCodeSeperators.ACTION_ARGS.getSeperator());
+        String[] actionArgss = actionArgs[1].split(Seperators.ACTION_ARGS.getSeperator());
 
         for(String actionArg : actionArgss) {
-            type = OpCodeIfTypes.convert(actionArg.charAt(0));
+            type = IfTypes.convert(actionArg.charAt(0));
 
-            if(type == OpCodeIfTypes.NONE_ARG) continue;
+            if(type == IfTypes.NONE_ARG) continue;
 
             actionArg = actionArg.substring(1);
 
@@ -31,13 +31,13 @@ public class ActionOpCodeVar implements OpCodeVarTestable {
             if(!isValidName(actionArg)) return false;
 
 
-            if(type == OpCodeIfTypes.STRING) {
+            if(type == IfTypes.STRING) {
 
                 if(opCodeVar.isStrName(actionArg)) return false;
 
                 opCodeVar.addStrName(actionArg);
 
-            } else if (type == OpCodeIfTypes.NUMBER) {
+            } else if (type == IfTypes.NUMBER) {
 
                 if(opCodeVar.isNumName(actionArg)) return false;
 
@@ -58,7 +58,7 @@ public class ActionOpCodeVar implements OpCodeVarTestable {
      * @return true if the name is valid
      */
     private boolean isValidName(String name) {
-        return name.matches(OpCodeRegex.VALIDE_NAME.toString());
+        return name.matches(Regex.VALIDE_NAME.toString());
     }
     
 }

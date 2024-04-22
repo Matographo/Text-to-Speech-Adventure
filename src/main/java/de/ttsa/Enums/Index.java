@@ -1,6 +1,6 @@
 package de.ttsa.Enums;
 
-public enum OpCodeIndex {
+public enum Index {
     NONE("--"),
     SAY("00"), 
     ROOM("01"), 
@@ -25,7 +25,7 @@ public enum OpCodeIndex {
 
     public final String Say = "00";
 
-    OpCodeIndex(String index) {
+    Index(String index) {
         this.command = index;
     }
 
@@ -33,8 +33,8 @@ public enum OpCodeIndex {
         return command;
     }
 
-    public OpCodeIndex convert(String command) {
-        for (OpCodeIndex index : OpCodeIndex.values()) {
+    public Index convert(String command) {
+        for (Index index : Index.values()) {
             if (index.getIndex().equals(command)) {
                 return index;
             }

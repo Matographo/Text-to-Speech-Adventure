@@ -1,6 +1,6 @@
 package de.ttsa.Enums;
 
-public enum OpCodeRegex {
+public enum Regex {
     SAY("^((\"([a-zA-Z0-9\\s\\?\\!])+\")|([a-zA-Z]+[a-zA-Z0-9]*|[\\d]?)){1}([,]((\"([\\w\\s\\?\\!]?)+\")|([a-zA-Z0-9]+)+))*"), 
     ROOM("([a-zA-Z][\\w\\s]*:[\\d]+)"), 
     ROOM_JUMPER("([a-zA-Z]\\w*)"), 
@@ -23,7 +23,7 @@ public enum OpCodeRegex {
 
     private String command;
 
-    OpCodeRegex(String regex) {
+    Regex(String regex) {
         this.command = regex;
     }
 

@@ -1,8 +1,8 @@
 package de.ttsa.Logic.Features.NumInit;
 
 import de.ttsa.Container.OpCodeVar;
-import de.ttsa.Enums.OpCodeRegex;
-import de.ttsa.Enums.OpCodeSeperators;
+import de.ttsa.Enums.Regex;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 
 public class NumInitOpCodeVar implements OpCodeVarTestable {
@@ -12,7 +12,7 @@ public class NumInitOpCodeVar implements OpCodeVarTestable {
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
         this.opCodeVar = opCodeVar;
-        String[] arg   = toTest.split(OpCodeSeperators.NUMBER_DEC.getSeperator());
+        String[] arg   = toTest.split(Seperators.NUMBER_DEC.getSeperator());
         String numName = arg[0];
         String value   = arg[1];
 
@@ -35,7 +35,7 @@ public class NumInitOpCodeVar implements OpCodeVarTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(OpCodeRegex.VALIDE_NUMBER.toString());
+        return number.matches(Regex.VALIDE_NUMBER.toString());
     }
 
     /**
