@@ -3,6 +3,7 @@ package de.ttsa.Logic.Features.If;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.ttsa.Container.InputContainerCompiler.InputOrder;
 import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Enums.IfTypes;
 import de.ttsa.Enums.Index;
@@ -102,8 +103,8 @@ public class IfCompiler extends CompilerStructMethods {
         String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
 
         if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IfTypes.NUMBER;
+        else if(conditionString.equals(condition) && testStringAsInput(condition)) return IfTypes.INPUT;
         else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IfTypes.STRING;
-        else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return IfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 
@@ -116,8 +117,8 @@ public class IfCompiler extends CompilerStructMethods {
     }
 
     private String calculateIfInput(String condition) {
-        //TODO: Implement
-        return null;
+        
+        return new InputOrder(condition).compile();
     }
 
     private String splitAtMatch(String toSplit, String[] matches) {
@@ -135,12 +136,8 @@ public class IfCompiler extends CompilerStructMethods {
         String line = "";
         for (int i = blockStart; i < lines.size(); i++) {
             line = lines.get(i);
-            if(line.contains("{")) {
-                blocks++;
-            }
-            if(line.contains("}")) {
-                blocks--;
-            }
+            blocks += countChar(line, '{');
+            blocks -= countChar(line, '}');
             if(blocks == 0) {
                 lines.remove(i);
                 blockEnd = i;
@@ -148,6 +145,31 @@ public class IfCompiler extends CompilerStructMethods {
             }
         }
         return blockEnd;
+    }
+
+    private boolean testStringAsInput(String condition) {
+        if(condition.startsWith("\"") ||
+           condition.startsWith("'") ||
+           condition.startsWith("{") ||
+           condition.startsWith("[") ||
+           condition.startsWith("-") ||
+           condition.startsWith("~") ||
+           condition.startsWith("@"))
+           {
+            return true;
+           } else {
+               return false;
+           }
+    }
+
+    private int countChar(String string, char c) {
+        int count = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if(string.charAt(i) == c) {
+                count++;
+            }
+        }
+        return count;
     }
     
 }

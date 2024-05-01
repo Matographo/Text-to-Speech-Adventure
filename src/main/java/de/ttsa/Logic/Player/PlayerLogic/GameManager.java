@@ -8,7 +8,8 @@ import de.ttsa.Logic.Features.Room.Room;
 import de.ttsa.Logic.Features.Set.Set;
 import de.ttsa.Logic.Player.Datatypes.INT;
 import de.ttsa.Logic.Player.Datatypes.STRING;
-import de.ttsa.Logic.Player.Functions.GameSaver;
+import de.ttsa.Logic.Player.Functions.PlayerFunctions.GameSaver;
+
 
 public class GameManager {
 

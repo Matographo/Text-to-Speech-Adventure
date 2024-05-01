@@ -89,8 +89,7 @@ public class LoopCompiler extends CompilerStructMethods {
     }
 
     private String calculateIfInput(String condition) {
-        //TODO: Implement
-        return null;
+        return condition;
     }
 
     private String splitAtMatch(String toSplit, String[] matches) {
@@ -115,13 +114,13 @@ public class LoopCompiler extends CompilerStructMethods {
     private int getBlockContentSize(List<String> lines, int blockStart) {
         int blockCount = 1;
         int size = 0;
+        String line = "";
         for (int i = blockStart; i < lines.size(); i++) {
-            if(lines.get(i).contains(CompilerSyntax.BLOCK_START.toString())) {
-                blockCount++;
-            }
+            line = lines.get(i);
+            blockCount += countChar(line, CompilerSyntax.BLOCK_START.toString().charAt(0));
             if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
-                blockCount--;
+                blockCount -= countChar(line, CompilerSyntax.BLOCK_END.toString().charAt(0));
             }
             if (blockCount == 0) {
                 size++;
@@ -131,6 +130,16 @@ public class LoopCompiler extends CompilerStructMethods {
             size++;
         }
         return size;
+    }
+
+    private int countChar(String string, char c) {
+        int count = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if(string.charAt(i) == c) {
+                count++;
+            }
+        }
+        return count;
     }
     
 }

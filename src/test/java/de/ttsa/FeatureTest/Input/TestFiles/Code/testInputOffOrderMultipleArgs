@@ -1,4 +1,4 @@
-Str: Var1 = "Hallo"
+Str: Var1 = Hallo
 
 Set Angriff {
     HalliHallo
@@ -6,7 +6,7 @@ Set Angriff {
 
 Room Raum1 {
     Input:
-    If: {@Var1, 'Angriff', "Huhu"} {
+    If: {@Var1 'Angriff' "Huhu"} {
         
     }
 }

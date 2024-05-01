@@ -2,5 +2,5 @@
 04::Varr:Hallo
 01::START:3
 09::"hallo Hallo Hallo hallo"
-06::i("hallo!!'Varr'""hallo!!'Varr'"):1
+06::i[{"hallo"*(1)@Varr@*(1)}*(1){"hallo"*(1)@Varr@*(1)}*(1)]*(1):1
 05::Var:1

@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.If;
 
 import de.ttsa.Interfaces.Scriptable;
-import de.ttsa.Logic.Player.Functions.ConditionTest;
+import de.ttsa.Logic.Player.Functions.PlayerFunctions.ConditionTest;
 
 public class If implements Scriptable {
 

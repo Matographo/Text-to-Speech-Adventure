@@ -1,6 +1,6 @@
 Room Raum1 {
     Input:
-    If: "Hallo"*(2-3) {
+    If: "Hallo"*(2) {
         
     }
 }

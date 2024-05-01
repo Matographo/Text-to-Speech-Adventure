@@ -21,7 +21,7 @@ public class SimpleLog extends Logger {
     HashMap<Level, Color>  msgBackgroundColor   = new HashMap<>();
     HashMap<Level, Color>  levelColor           = new HashMap<>();
     HashMap<Level, Color>  levelBackgroundColor = new HashMap<>();
-    HashMap<Level, String> levelText           = new HashMap<>();
+    HashMap<Level, String> levelText            = new HashMap<>();
 
 
 

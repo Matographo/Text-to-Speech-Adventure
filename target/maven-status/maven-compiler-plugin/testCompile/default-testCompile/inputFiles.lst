@@ -1,49 +1,49 @@
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterRoomTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterStrVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterIfTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/GetOutput.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterNumDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerStrDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerSaveLoadExitTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompileStrVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerRoomTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerNumVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerSaveLoadExitTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerSetTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterDebugInputTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerSayTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerFunctionTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterActionTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerIfTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerDebugInputTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTesterClass.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterRoomJumperTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterNumVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerSayTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomJumperTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerDebugTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerNumDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerSetTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTesterClass.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerInputTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerActionTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerActionTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterStrDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerNumDecTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerInputTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerRoomJumperTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerLoop.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerRoomTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSaveLoadExitTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSayTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerStrVarTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTesterClass.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/SetInput.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterFunctionTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterLoopTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/CodeCompilerTester/CompilerIfTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterSetTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodePlayerTester/PlayerLoopTest.java
-/home/leodora/Documents/Dev/Java/Text to Speech Adventure/src/test/java/de/ttsa/TestClasses/OpCodeTestTester/TesterInputTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrDec/TestClasses/CompilerStrDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/SaveLoadExit/TestClasses/TesterSaveLoadExitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Room/TestClasses/PlayerRoomTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Action/TestClasses/PlayerActionTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumInit/TestClasses/PlayerNumInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FunctionTest/TestClasses/PlayerFunctionTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrInit/TestClasses/CompilerStrInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Action/TestClasses/CompilerActionTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Input/TestClasses/TesterInputTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Loop/TestClasses/CompilerLoopTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/HelpClasses/OpCodePlayerTesterClass.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Loop/TestClasses/TesterLoopTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/RoomJumper/TestClasses/PlayerRoomJumperTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Room/TestClasses/CompilerRoomTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Say/TestClasses/TesterSayTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Set/TestClasses/TesterSetTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Debug/TestClasses/CompilerDebugTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Set/TestClasses/PlayerSetTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Say/TestClasses/PlayerSayTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumInit/TestClasses/CompilerNumInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/If/TestClasses/PlayerIfTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumDec/TestClasses/CompilerNumDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Loop/TestClasses/PlayerLoopTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FunctionTest/TestClasses/TesterFunctionTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/HelpClasses/GetOutput.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Input/TestClasses/CompilerInputTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrInit/TestClasses/TesterStrInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/RoomJumper/TestClasses/TesterRoomJumperTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/HelpClasses/OpCodeTestTesterClass.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/If/TestClasses/CompilerIfTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/HelpClasses/SetInput.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Set/TestClasses/CompilerSetTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/HelpClasses/CodeCompilerTesterClass.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumDec/TestClasses/TesterNumDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/If/TestClasses/TesterIfTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Input/TestClasses/PlayerInputTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/RoomJumper/TestClasses/CompilerRoomJumperTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Say/TestClasses/CompilerSayTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumDec/TestClasses/PlayerNumDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Room/TestClasses/TesterRoomTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/NumInit/TestClasses/TesterNumInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/SaveLoadExit/TestClasses/PlayerSaveLoadExitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrDec/TestClasses/TesterStrDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrInit/TestClasses/PlayerStrInitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Debug/TestClasses/TesterDebugInputTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Action/TestClasses/TesterActionTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/StrDec/TestClasses/PlayerStrDecTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/SaveLoadExit/TestClasses/CompilerSaveLoadExitTest.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/test/java/de/ttsa/FeatureTest/Debug/TestClasses/PlayerDebugInputTest.java

@@ -2,6 +2,8 @@ package de.ttsa.Logic.Features.Set;
 
 import java.util.HashSet;
 
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
+
 public class Set {
 
 
@@ -47,6 +49,15 @@ public class Set {
      */
     public HashSet<String> getVar() {
         return var;
+    }
+
+    public boolean contains(String str) {
+        for(String value : this.var) {
+            if(GameManager.strVars.get(value).getValue().equals(str)) {
+                return true;
+            }
+        }
+        return this.str.contains(str);
     }
 
 

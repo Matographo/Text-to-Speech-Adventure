@@ -1,5 +1,5 @@
-Str: Var1 = "Hallo"
-Str: Var2 = "Welt"
+Str: Var1 = Hallo
+Str: Var2 = Welt
 
 Set TestSet {
     test
@@ -9,7 +9,7 @@ Set TestSet {
 
 Room Raum1 {
     Input:
-    If: [@Var1, {"Das", "ist"}, {"ein", 'TestSet'}, @Var2] {
+    If: [@Var1 {"Das" "ist"} {"ein" 'TestSet'} @Var2] {
         
     }
 }

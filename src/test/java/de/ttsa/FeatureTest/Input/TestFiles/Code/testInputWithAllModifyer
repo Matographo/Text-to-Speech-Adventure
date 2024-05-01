@@ -1,5 +1,5 @@
-Str: Var1 = "Hallo"
-Str: Var2 = "Tschuess"
+Str: Var1 = Hallo
+Str: Var2 = Tschuess
 
 Set Attacke {
     angriff
@@ -11,7 +11,7 @@ Set Attacke {
 
 Room Raum1 {
     Input:
-    If: "Hallo" ! "Tschuess"*(1-5) & {@Var1, -@Var2*(-2)} ! ~-[-{-"Hallo", @Var2}] & -~[{-"Hallo"*(4-), @Var2*2}] {
+    If: "Hallo" ! "Tschuess"*(1) & {@Var1 -@Var2*(2)} ! ~-[-{-"Hallo" @Var2}] & -~[{-"Hallo"*(4) @Var2*2}] {
         
     }
 }

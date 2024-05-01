@@ -1,8 +1,8 @@
-Str: Var1 = "Hallo"
+Str: Var1 = Hallo
 
 Room Raum1 {
     Input:
-    If: [{@Var1,"Tschuess"}] {
+    If: [{@Var1"Tschuess"}] {
         
     }
 }

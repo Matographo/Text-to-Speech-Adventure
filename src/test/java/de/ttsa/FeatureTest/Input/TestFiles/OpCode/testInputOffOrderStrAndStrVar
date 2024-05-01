@@ -2,5 +2,5 @@
 04::Varr:H
 01::START:3
 09::"H allo"
-06::i("allo!!'Varr'"):1
+06::i[{"allo"*(1)@Varr@*(1)}*(1)]*(1):1
 05::Var:1

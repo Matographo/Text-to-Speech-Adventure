@@ -1,7 +1,7 @@
 package de.ttsa.Logic.Features.Loop;
 
 import de.ttsa.Interfaces.Scriptable;
-import de.ttsa.Logic.Player.Functions.ConditionTest;
+import de.ttsa.Logic.Player.Functions.PlayerFunctions.ConditionTest;
 import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 public class Loop implements Scriptable {
