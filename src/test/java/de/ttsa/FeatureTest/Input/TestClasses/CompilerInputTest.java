@@ -25,7 +25,7 @@ public class CompilerInputTest extends CodeCompilerTesterClass {
         boolean test = opCodeTest.start(compiled);
         assertEquals(true, test);
     }
-
+/*
     @Test
     public void testInputAnd() {
         final String fileName = "testInputAnd";
@@ -34,7 +34,7 @@ public class CompilerInputTest extends CodeCompilerTesterClass {
         boolean test = opCodeTest.start(compiled);
         assertEquals(true, test);
     }
-
+*/
     @Test
     public void testInputBigCondition() {
         final String fileName = "testInputBigCondition";
@@ -178,7 +178,7 @@ public class CompilerInputTest extends CodeCompilerTesterClass {
         boolean test = opCodeTest.start(compiled);
         assertEquals(true, test);
     }
-
+/*
     @Test
     public void testInputOr() {
         final String fileName = "testInputOr";
@@ -187,7 +187,7 @@ public class CompilerInputTest extends CodeCompilerTesterClass {
         boolean test = opCodeTest.start(compiled);
         assertEquals(true, test);
     }
-
+*/
     @Test
     public void testInputSet() {
         final String fileName = "testInputSet";

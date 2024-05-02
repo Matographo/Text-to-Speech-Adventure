@@ -1,5 +1,6 @@
 package de.ttsa.Logic.Player.Functions.PlayerFunctions;
 
+import de.ttsa.Container.InputContainerPlayer.OrderChecker;
 import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 
 /**
@@ -235,7 +236,7 @@ public class ConditionTest {
      * @return true if the condition is true
      */
     private boolean testInputCondition(String condition) {
-        return new OrderChecker().check(condition);
+        return new OrderChecker(condition).check();
     }
 
 

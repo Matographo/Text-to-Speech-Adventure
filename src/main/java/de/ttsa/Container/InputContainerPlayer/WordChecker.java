@@ -11,7 +11,7 @@ public class WordChecker extends StringMethods {
     private boolean isNot;
 
     public WordChecker(String toCheck) {
-        if(toCheck.startsWith("NOT")) {
+        if(toCheck.startsWith(InputChecker.NOT.toString())) {
             this.isNot = true;
             toCheck = toCheck.substring(1);
         }
