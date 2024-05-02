@@ -7,7 +7,7 @@ public class PrinterOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.SAY.toString());
+        return arg.matches(Regex.SAY_OPCODE.toString());
     }
     
 }

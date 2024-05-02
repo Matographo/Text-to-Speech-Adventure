@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.OpCodeBlockTests;
 import de.ttsa.Enums.Seperators;
-import de.ttsa.Enums.SyntaxTests;
+import de.ttsa.Enums.OpCodeSyntaxTests;
 import de.ttsa.Enums.OpCodeVarTests;
 import de.ttsa.Interfaces.OpCodeBlockTestable;
 import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
@@ -25,7 +25,7 @@ public class OpCodeTest {
 
 
     private File file;
-    private SyntaxTests opCodeSyntaxTest = SyntaxTests.ALWAYS_FALSE;
+    private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
     private OpCodeVarTests opCodeVarTests = OpCodeVarTests.NONE;
     private OpCodeBlockTests opCodeBlockTests = OpCodeBlockTests.NONE;
 

@@ -21,13 +21,13 @@ import de.ttsa.Logic.Features.StrDec.StrDecOpCodeSyntax;
 import de.ttsa.Logic.Features.StrInit.StrInitOpCodeSyntax;
 import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 
-public enum SyntaxTests {
+public enum OpCodeSyntaxTests {
 
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT, 
     GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM, 
     SET, ROOM_JUMPER, STR_DEC, STR_INIT, ALWAYS_FALSE;
     
-    SyntaxTests mode;
+    OpCodeSyntaxTests mode;
 
     private final AlwaysFalseOpCodeTest alwaysFalse;
     private final PrinterOpCodeSyntax printer;
@@ -52,7 +52,7 @@ public enum SyntaxTests {
 
     
 
-    SyntaxTests() {
+    OpCodeSyntaxTests() {
         alwaysFalse = new AlwaysFalseOpCodeTest();
         printer = new PrinterOpCodeSyntax();
         action = new ActionOpCodeSyntax();

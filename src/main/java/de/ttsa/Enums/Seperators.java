@@ -18,7 +18,9 @@ public enum Seperators {
     SET(","),
     SET_NAME(":"),
     ACTION(":"),
-    ACTION_ARGS(",");
+    ACTION_ARGS(","),
+    
+    CODE_COMMAND(":"),;
 
     private final String seperator;
 

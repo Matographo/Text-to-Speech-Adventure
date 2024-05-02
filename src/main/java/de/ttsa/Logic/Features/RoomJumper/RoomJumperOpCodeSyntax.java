@@ -7,7 +7,7 @@ public class RoomJumperOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.ROOM_JUMPER.toString());
+        return arg.matches(Regex.ROOM_JUMPER_OPCODE.toString());
     }
 
 }

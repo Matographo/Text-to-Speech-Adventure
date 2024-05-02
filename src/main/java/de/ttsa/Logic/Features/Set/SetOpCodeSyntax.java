@@ -7,7 +7,7 @@ public class SetOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.SET.toString());
+        return arg.matches(Regex.SET_OPCODE.toString());
     }
     
 }

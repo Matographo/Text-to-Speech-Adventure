@@ -7,7 +7,7 @@ public class DebugInputOpCodeSyntax implements OpCodeSyntaxTestable {
     
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.DEBUG.toString());
+        return arg.matches(Regex.DEBUG_OPCODE.toString());
     }
     
 }

@@ -7,7 +7,7 @@ public class ActionCallOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.ACTION_CALL.toString());
+        return arg.matches(Regex.ACTION_CALL_OPCODE.toString());
     }
     
 }

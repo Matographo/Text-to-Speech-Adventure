@@ -7,7 +7,7 @@ public class GameExitScriptOpCodeSyntax implements OpCodeSyntaxTestable {
         
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.EXIT.toString());
+        return arg.matches(Regex.EXIT_OPCODE.toString());
     }
     
 }

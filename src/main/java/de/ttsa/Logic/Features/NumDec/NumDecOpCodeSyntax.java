@@ -7,7 +7,7 @@ public class NumDecOpCodeSyntax implements OpCodeSyntaxTestable {
 
     @Override
     public boolean testOpCode(String arg) {
-        return arg.matches(Regex.NUMBER_DEC.toString());
+        return arg.matches(Regex.NUMBER_DEC_OPCODE.toString());
     }
     
 }
