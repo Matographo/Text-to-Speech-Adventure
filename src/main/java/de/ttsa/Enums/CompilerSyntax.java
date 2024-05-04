@@ -9,6 +9,8 @@ public enum CompilerSyntax {
     GAME_LOADER_SCRIPT("Load"), 
     GAME_SAVING_SCRIPT("Save"), 
     IF("If"), 
+    ELSE("Else"),
+    ELSE_IF("Else If"),
     INPUT("Input"), 
     LOOP_BREAKER("Break"), 
     LOOP("Loop"), 

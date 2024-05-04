@@ -17,9 +17,9 @@ public enum Regex {
     SET_OPCODE("^([a-zA-Z][\\w]*)[\\:]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w*])([\\,]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w]*))*"), 
     ACTION_OPCODE("([a-zA-Z]\\w*\\:)((-)|([sn][a-zA-Z]\\w*)([\\,]([sn][a-zA-Z]\\w*))*)(\\:\\d*)"), 
     ACTION_CALL_OPCODE("([a-zA-Z]\\w*\\:)((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*)(\\,((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*))*"), 
-    
+
     SAY_CODE("('[a-zA-Z]\\w*'|[\\w\\s!?]*)*"), 
-    ROOM_CODE(""), 
+    ROOM_CODE("\s*[a-zA-Z]\\w*\\s*\\{"), 
     ROOM_JUMPER_CODE(""), 
     NUMBER_DEC_CODE("[a-zA-Z]\\w*(\\s*=\\s*)?[\\d]*\\s*"),
     STR_DEC_CODE("[a-zA-Z]\\w*(\\s*=\\s*)?[\\w]*\\s*"),
@@ -33,6 +33,7 @@ public enum Regex {
     LOOP_CODE(""), 
     SET_CODE(""), 
     ACTION_CODE(""), 
+    ACTION_CALL_CODE(""),
     
 
     VALIDE_NAME("([a-zA-Z][\\w]*)"), 

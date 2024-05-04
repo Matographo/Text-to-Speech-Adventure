@@ -3,6 +3,7 @@ package de.ttsa.Logic.Compiler.CompilerSteps;
 import java.util.ArrayList;
 
 import de.ttsa.Enums.CodeSyntaxTests;
+import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.CodeSyntaxTestable;
 
@@ -68,8 +69,18 @@ public class CodeTester {
 
 
         for(String line : content) {
+            if(line.startsWith(CompilerSyntax.COMMENT.toString()) ||
+               line.strip().isEmpty() ||
+               line.strip().equals(CompilerSyntax.BLOCK_END.toString())) continue;
+               
             command = line.split(Seperators.CODE_COMMAND.getSeperator())[0];
             args    = line.substring(line.indexOf(Seperators.CODE_COMMAND.getSeperator()) + 1).strip();
+
+            if(command.equals(line)) {
+                command = line.substring(0, line.indexOf(" "));
+                args    = line.substring(line.indexOf(" ")+1).strip();
+            }
+            
             test    = codeSyntaxTest.getTest(command);
 
             testResult &= test.testCode(args);
