@@ -1,7 +1,9 @@
 package de.ttsa.Enums;
 
 import de.ttsa.Interfaces.CodeSyntaxTestable;
+import de.ttsa.Logic.Features.NumDec.NumDecCodeSyntax;
 import de.ttsa.Logic.Features.Printer.PrinterCodeSyntax;
+import de.ttsa.Logic.Features.StrDec.StrDecCodeSyntax;
 import de.ttsa.Logic.Player.Datatypes.AlwaysFalseCodeTest;
 
 public enum CodeSyntaxTests {
@@ -14,10 +16,14 @@ public enum CodeSyntaxTests {
 
     private final AlwaysFalseCodeTest alwaysFalse;
     private final PrinterCodeSyntax printer;
+    private final NumDecCodeSyntax numDec;
+    private final StrDecCodeSyntax strDec;
 
     CodeSyntaxTests() {
         alwaysFalse = new AlwaysFalseCodeTest();
         printer = new PrinterCodeSyntax();
+        numDec = new NumDecCodeSyntax();
+        strDec = new StrDecCodeSyntax();
     }
 
     public CodeSyntaxTestable getTest(String mode) {
@@ -25,6 +31,8 @@ public enum CodeSyntaxTests {
         CodeSyntaxTestable test;
         switch(this.mode) {
             case SAY -> test = printer;
+            case NUM_DEC -> test = numDec;
+            case STR_DEC -> test = strDec;
             case NONE -> test = alwaysFalse;
             default -> test = alwaysFalse;
         }
@@ -34,6 +42,12 @@ public enum CodeSyntaxTests {
     private void getMode(String mode) {
         if(mode.equals(CompilerSyntax.SAY.toString())) {
             this.mode = SAY;
+        } else if(mode.equals(CompilerSyntax.NUM_DEC.toString())) {
+            this.mode = NUM_DEC;
+        } else if(mode.equals(CompilerSyntax.STR_DEC.toString())) {
+            this.mode = STR_DEC;
+        } else {
+            this.mode = NONE;
         }
     }
 }
