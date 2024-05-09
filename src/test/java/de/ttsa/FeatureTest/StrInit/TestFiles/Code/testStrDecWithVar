@@ -1,6 +1,6 @@
 Str: var1
-Str: var2
+Str: var2 Hallo
 
 Room Raum1 {
-    StrDec: var1 = Das ist ein wunderschoener Text 'var2'
+    StrDec: var1 = 'var2'
 }

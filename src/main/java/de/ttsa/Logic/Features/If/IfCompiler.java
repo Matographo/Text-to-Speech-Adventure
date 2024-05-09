@@ -102,9 +102,12 @@ public class IfCompiler extends CompilerStructMethods {
 
         String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
 
-        if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IfTypes.NUMBER;
+        if (Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d"))
+            return IfTypes.NUMBER;
         else if(conditionString.equals(condition) && testStringAsInput(condition)) return IfTypes.INPUT;
-        else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IfTypes.STRING;
+        else if (Compiler.variables.get("STRING").contains(condition)
+                || condition.startsWith("\"") && condition.endsWith("\""))
+            return IfTypes.STRING;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
 

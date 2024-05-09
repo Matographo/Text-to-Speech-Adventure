@@ -10,21 +10,15 @@ import de.ttsa.Interfaces.CompilerStruct;
 
 public class Compiler {
 
-
-
-// ---------------------------------------------- Attributes -------------------------------------------------- //
-
-
+    // ---------------------------------------------- Attributes
+    // -------------------------------------------------- //
 
     public static ArrayList<ArrayList<String>> fileContent;
     public static HashMap<String, HashSet<String>> variables;
     private CompilerTests compiler = CompilerTests.NONE;
-    
 
-
-// ---------------------------------------------- Constructor ------------------------------------------------- //
-
-
+    // ---------------------------------------------- Constructor
+    // ------------------------------------------------- //
 
     public Compiler(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
@@ -35,11 +29,8 @@ public class Compiler {
         variables.put("NUMBER", numVar);
     }
 
-
-
-// -------------------------------------------- Start Method -------------------------------------------------- //
-
-
+    // -------------------------------------------- Start Method
+    // -------------------------------------------------- //
 
     public ArrayList<ArrayList<String>> compile() {
         ArrayList<ArrayList<String>> compiled = new ArrayList<ArrayList<String>>();
@@ -49,11 +40,8 @@ public class Compiler {
         return compiled;
     }
 
-
-
-// ------------------------------------------- Compile Chooser ------------------------------------------------ //
-
-
+    // ------------------------------------------- Compile Chooser
+    // ------------------------------------------------ //
 
     private ArrayList<String> compileFile(ArrayList<String> content) {
         ArrayList<String> compiled = new ArrayList<String>(content.size());
@@ -62,16 +50,15 @@ public class Compiler {
         CompilerLine compilerLine;
         CompilerStruct compilerStruct;
 
-
         for (int i = 0; i < content.size(); i++) {
             line = content.get(i).strip();
 
             compilerLine = compiler.getCompilerLine(line);
             compilerStruct = compiler.getCompilerStruct(line);
 
-            if(compilerLine != null) {
+            if (compilerLine != null) {
                 compiled.add(compilerLine.compile(line));
-            } else if(compilerStruct != null) {
+            } else if (compilerStruct != null) {
                 compiled.add(compilerStruct.compile(content, i));
                 i--;
             } else {

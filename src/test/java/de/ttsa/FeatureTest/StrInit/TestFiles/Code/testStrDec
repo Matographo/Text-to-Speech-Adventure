@@ -1,5 +1,5 @@
 Str: var1
 
 Room Raum1 {
-    StrDec: var1 = Das ist ein wunderschoener Text
+    StrDec: var1 = Das
 }

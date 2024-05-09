@@ -74,8 +74,11 @@ public class LoopCompiler extends CompilerStructMethods {
 
         String condition = splitAtMatch(conditionString, new String[]{"==", "!=", ">=", "<=", ">", "<"});
 
-        if(Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d")) return IfTypes.NUMBER;
-        else if(Compiler.variables.get("STRING").contains(condition) || condition.startsWith("\"") && condition.endsWith("\"")) return IfTypes.STRING;
+        if (Compiler.variables.get("NUMBER").contains(condition) || condition.matches("\\d"))
+            return IfTypes.NUMBER;
+        else if (Compiler.variables.get("STRING").contains(condition)
+                || condition.startsWith("\"") && condition.endsWith("\""))
+            return IfTypes.STRING;
         else if(conditionString.startsWith(CompilerSyntax.INPUT.toString())) return IfTypes.INPUT;
         throw new IllegalArgumentException("Syntax Error: " + condition);
     }
