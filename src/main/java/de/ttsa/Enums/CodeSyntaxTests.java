@@ -7,6 +7,7 @@ import de.ttsa.Logic.Features.DebugInput.DebugInputCodeSyntax;
 import de.ttsa.Logic.Features.GameExitScript.GameExitScriptCodeSyntax;
 import de.ttsa.Logic.Features.GameLoaderScript.GameLoaderScriptCodeSyntax;
 import de.ttsa.Logic.Features.GameSavingScript.GameSavingScriptCodeSyntax;
+import de.ttsa.Logic.Features.If.ElseCodeSyntax;
 import de.ttsa.Logic.Features.If.IfCodeSyntax;
 import de.ttsa.Logic.Features.Input.InputCodeSyntax;
 import de.ttsa.Logic.Features.Loop.LoopCodeSyntax;
@@ -24,7 +25,7 @@ import de.ttsa.Logic.Player.Datatypes.AlwaysFalseCodeTest;
 public enum CodeSyntaxTests {
 
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT,
-    GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM,
+    GAME_SAVING_SCRIPT, IF, ELSE, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM,
     SET, ROOM_JUMPER, STR_DEC, STR_INIT, ALWAYS_FALSE, NONE;
 
     CodeSyntaxTests mode;
@@ -37,7 +38,8 @@ public enum CodeSyntaxTests {
     private final GameExitScriptCodeSyntax gameExitScript;
     private final GameLoaderScriptCodeSyntax gameLoaderScript;
     private final GameSavingScriptCodeSyntax gameSavingScript;
-    private final IfCodeSyntax ifOpCode;
+    private final IfCodeSyntax ifCode;
+    private final ElseCodeSyntax elseCode;
     private final InputCodeSyntax input;
     private final LoopBreakerCodeSyntax loopBreaker;
     private final LoopCodeSyntax loop;
@@ -50,52 +52,54 @@ public enum CodeSyntaxTests {
     private final StrInitCodeSyntax strInit;
 
     CodeSyntaxTests() {
-        alwaysFalse = new AlwaysFalseCodeTest();
-        printer = new PrinterCodeSyntax();
-        numDec = new NumDecCodeSyntax();
-        strDec = new StrDecCodeSyntax();
-        action = new ActionCodeSyntax();
-        actionCall = new ActionCallCodeSyntax();
-        debugInput = new DebugInputCodeSyntax();
-        gameExitScript = new GameExitScriptCodeSyntax();
+        alwaysFalse      = new AlwaysFalseCodeTest();
+        printer          = new PrinterCodeSyntax();
+        numDec           = new NumDecCodeSyntax();
+        strDec           = new StrDecCodeSyntax();
+        action           = new ActionCodeSyntax();
+        actionCall       = new ActionCallCodeSyntax();
+        debugInput       = new DebugInputCodeSyntax();
+        gameExitScript   = new GameExitScriptCodeSyntax();
         gameLoaderScript = new GameLoaderScriptCodeSyntax();
         gameSavingScript = new GameSavingScriptCodeSyntax();
-        ifOpCode = new IfCodeSyntax();
-        input = new InputCodeSyntax();
-        loopBreaker = new LoopBreakerCodeSyntax();
-        loop = new LoopCodeSyntax();
-        numInit = new NumInitCodeSyntax();
-        room = new RoomCodeSyntax();
-        set = new SetCodeSyntax();
-        roomJumper = new RoomJumperCodeSyntax();
-        strInit = new StrInitCodeSyntax();
+        ifCode           = new IfCodeSyntax();
+        elseCode         = new ElseCodeSyntax();
+        input            = new InputCodeSyntax();
+        loopBreaker      = new LoopBreakerCodeSyntax();
+        loop             = new LoopCodeSyntax();
+        numInit          = new NumInitCodeSyntax();
+        room             = new RoomCodeSyntax();
+        set              = new SetCodeSyntax();
+        roomJumper       = new RoomJumperCodeSyntax();
+        strInit          = new StrInitCodeSyntax();
     }
 
     public CodeSyntaxTestable getTest(String mode) {
         getMode(mode);
         CodeSyntaxTestable test;
         switch (this.mode) {
-            case SAY -> test = printer;
-            case NUM_DEC -> test = numDec;
-            case STR_DEC -> test = strDec;
-            case ACTION -> test = action;
-            case ACTION_CALL -> test = actionCall;
-            case DEBUG_INPUT -> test = debugInput;
-            case GAME_EXIT_SCRIPT -> test = gameExitScript;
+            case SAY ->                test = printer;
+            case NUM_DEC ->            test = numDec;
+            case STR_DEC ->            test = strDec;
+            case ACTION ->             test = action;
+            case ACTION_CALL ->        test = actionCall;
+            case DEBUG_INPUT ->        test = debugInput;
+            case GAME_EXIT_SCRIPT ->   test = gameExitScript;
             case GAME_LOADER_SCRIPT -> test = gameLoaderScript;
             case GAME_SAVING_SCRIPT -> test = gameSavingScript;
-            case IF -> test = ifOpCode;
-            case INPUT -> test = input;
-            case LOOP_BREAKER -> test = loopBreaker;
-            case LOOP -> test = loop;
-            case NUM_INIT -> test = numInit;
-            case ROOM -> test = room;
-            case SET -> test = set;
-            case ROOM_JUMPER -> test = roomJumper;
-            case STR_INIT -> test = strInit;
-            case ALWAYS_FALSE -> test = alwaysFalse;
-            case NONE -> test = alwaysFalse;
-            default -> test = alwaysFalse;
+            case IF ->                 test = ifCode;
+            case ELSE ->               test = elseCode;
+            case INPUT ->              test = input;
+            case LOOP_BREAKER ->       test = loopBreaker;
+            case LOOP ->               test = loop;
+            case NUM_INIT ->           test = numInit;
+            case ROOM ->               test = room;
+            case SET ->                test = set;
+            case ROOM_JUMPER ->        test = roomJumper;
+            case STR_INIT ->           test = strInit;
+            case ALWAYS_FALSE ->       test = alwaysFalse;
+            case NONE ->               test = alwaysFalse;
+            default ->                 test = alwaysFalse;
         }
         return test;
     }
@@ -119,11 +123,11 @@ public enum CodeSyntaxTests {
             this.mode = GAME_LOADER_SCRIPT;
         } else if (mode.equals(CompilerSyntax.GAME_SAVING_SCRIPT.toString())) {
             this.mode = GAME_SAVING_SCRIPT;
-        } else if (mode.equals(CompilerSyntax.IF.toString()) || mode.startsWith("} ")) {
-            if(!mode.startsWith(CompilerSyntax.ELSE.toString()) && !mode.startsWith(CompilerSyntax.ELSE_IF.toString())) {
-                this.mode = NONE;
-                return;
-            }
+        } else if (mode.equals(CompilerSyntax.IF.toString())) {
+            this.mode = IF;
+        } else if (mode.equals("} " + CompilerSyntax.ELSE.toString())) {
+            this.mode = ELSE;
+        } else if (mode.equals("} " + CompilerSyntax.ELSE_IF.toString())) {
             this.mode = IF;
         } else if (mode.equals(CompilerSyntax.INPUT.toString())) {
             this.mode = INPUT;

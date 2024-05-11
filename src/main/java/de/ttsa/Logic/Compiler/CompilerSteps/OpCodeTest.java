@@ -25,9 +25,9 @@ public class OpCodeTest {
 
 
     private File file;
-    private OpCodeSyntaxTests opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
-    private OpCodeVarTests opCodeVarTests = OpCodeVarTests.NONE;
-    private OpCodeBlockTests opCodeBlockTests = OpCodeBlockTests.NONE;
+    private OpCodeSyntaxTests opCodeSyntaxTest;
+    private OpCodeVarTests    opCodeVarTests;
+    private OpCodeBlockTests  opCodeBlockTests;
 
 
 
@@ -41,12 +41,18 @@ public class OpCodeTest {
      */
     public OpCodeTest(String fileName) {
         this.file = new File(fileName);
+        opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
+        opCodeBlockTests = OpCodeBlockTests.NONE;
+        opCodeVarTests   = OpCodeVarTests.NONE;
 
 
         if(!this.file.exists()) throw new IllegalArgumentException("The file " + fileName + " does not exist.");
     }
 
     public OpCodeTest() {
+        opCodeSyntaxTest = OpCodeSyntaxTests.ALWAYS_FALSE;
+        opCodeBlockTests = OpCodeBlockTests.NONE;
+        opCodeVarTests   = OpCodeVarTests.NONE;
     }
 
 

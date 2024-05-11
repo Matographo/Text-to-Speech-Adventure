@@ -30,10 +30,10 @@ public class RoomCompiler extends CompilerStructMethods {
         int size = 0;
         int blockCount = 1;
         for (int i = blockStart; i < lines.size(); i++) {
-            if(lines.get(i).contains(CompilerSyntax.BLOCK_START.toString())) {
+            if(lines.get(i).strip().endsWith(CompilerSyntax.BLOCK_START.toString())) {
                 blockCount++;
             }
-            if (lines.get(i).contains(CompilerSyntax.BLOCK_END.toString())) {
+            if (lines.get(i).strip().startsWith(CompilerSyntax.BLOCK_END.toString())) {
                 size--;
                 blockCount--;
             }

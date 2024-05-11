@@ -1,9 +1,29 @@
-☐ Code Checker
-    ☐ Input
+✔ Code Checker Syntax @done(24-05-11 18:01)
+    ✔ Input @done(24-05-11 18:01)
+    ✔ If @done(24-05-11 17:14)
+    ✔ Loop @done(24-05-11 17:17)
+    ✔ LoopBreaker @done(24-05-11 17:17)
+    ✔ Var Bearbeiten @done(24-05-11 17:14)
+
+☐ Code Checker Variablen
+    ☐ Action
+    ☐ ActionCall
     ☐ If
     ☐ Loop
-    ☐ LoopBreaker
-    ☐ Var Bearbeiten
+    ☐ NumDec
+    ☐ NumInit
+    ☐ Printer
+    ☐ Room
+    ☐ Set
+    ☐ StrDec
+    ☐ StrInit
+
+☐ Code Checker Block
+    ☐ Action
+    ☐ If
+    ☐ Loop
+    ☐ Room
+    ☐ Set
 
 ☐ FileChooser im Homedir starten lassen
 ☐ Extra Folder für die Testspiele

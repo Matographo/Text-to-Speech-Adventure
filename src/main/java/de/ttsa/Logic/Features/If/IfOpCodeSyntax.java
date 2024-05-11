@@ -55,7 +55,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
         return testResult;
     }
 
-        /**
+    /**
      * Test if the String is a Number
      * @param number String to test
      * @return true if the String is a Number
@@ -64,7 +64,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
         return number.matches(Regex.VALIDE_NUMBER.toString());
     }
 
-        /**
+    /**
      * Test the syntax of the input command
      * @param args The arguments of the input command
      * @return true if the syntax is correct
@@ -77,7 +77,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
         return args.matches(Regex.IF_NUMBER_OPCODE.toString());
     }
 
-        /**
+    /**
      * Test the syntax of the input command
      * @param args The arguments of the input command
      * @return true if the syntax is correct
@@ -86,7 +86,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
         return args.matches(Regex.IF_STRING_OPCODE.toString());
     }
 
-        /**
+    /**
      * Test the syntax of the input command
      * @param args The arguments of the input command
      * @return true if the syntax is correct

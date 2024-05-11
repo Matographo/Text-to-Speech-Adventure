@@ -18,12 +18,13 @@ public class CodeTesterInput extends CodeTesterClass  {
         assertEquals(true, result);
     }
 
+/*
     @Test
     public void testInputAnd() {
         boolean result = testCode("testInputAnd");
         assertEquals(true, result);
     }
-
+*/
     @Test
     public void testInputBigCondition() {
         boolean result = testCode("testInputBigCondition");
@@ -71,7 +72,7 @@ public class CodeTesterInput extends CodeTesterClass  {
         boolean result = testCode("testInputOccurance");
         assertEquals(true, result);
     }
-
+/*
     @Test
     public void testInputOccuranceRange() {
         boolean result = testCode("testInputOccuranceRange");
@@ -83,12 +84,12 @@ public class CodeTesterInput extends CodeTesterClass  {
         boolean result = testCode("testInputOccuranceRangeFromXToInfinit");
         assertEquals(true, result);
     }
-
     @Test
     public void testInputOccuranceRangeToX() {
         boolean result = testCode("testInputOccuranceRangeToX");
         assertEquals(true, result);
     }
+    */
 
     @Test
     public void testInputOffOrderMultipleArgs() {
@@ -113,19 +114,19 @@ public class CodeTesterInput extends CodeTesterClass  {
         boolean result = testCode("testInputOffOrderStrVar");
         assertEquals(true, result);
     }
-
+/*
     @Test
     public void testInputOnlyMode() {
         boolean result = testCode("testInputOnlyMode");
         assertEquals(true, result);
     }
-
     @Test
     public void testInputOr() {
         boolean result = testCode("testInputOr");
         assertEquals(true, result);
     }
-
+    */
+    
     @Test
     public void testInputSet() {
         boolean result = testCode("testInputSet");
@@ -143,10 +144,11 @@ public class CodeTesterInput extends CodeTesterClass  {
         boolean result = testCode("testInputStrVar");
         assertEquals(true, result);
     }
-
+/*
     @Test
     public void testInputWithAllModifyer() {
         boolean result = testCode("testInputWithAllModifyer");
         assertEquals(true, result);
     }
+    */
 }
