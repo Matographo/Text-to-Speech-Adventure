@@ -10,8 +10,7 @@ import de.ttsa.Interfaces.CompilerStruct;
 
 public class Compiler {
 
-    // ---------------------------------------------- Attributes
-    // -------------------------------------------------- //
+    // ---------------------------------------------- Attributes ---------------- //
 
     public static ArrayList<ArrayList<String>> fileContent;
     public static HashMap<String, HashSet<String>> variables;

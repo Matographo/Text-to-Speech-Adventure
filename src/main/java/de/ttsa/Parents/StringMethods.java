@@ -237,4 +237,25 @@ public class StringMethods {
         }
         return result;
     }
+
+    protected boolean isEqualOccurence(String toCheck, char... chars) {
+        if(chars.length == 0) return false;
+        int highest = getOccurence(toCheck, chars[0]);
+        for(int i=1; i<chars.length; i++) {
+            if(getOccurence(toCheck, chars[i]) != highest) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected int getOccurence(String toCheck, char c) {
+        int count = 0;
+        for(int i = 0; i < toCheck.length(); i++) {
+            if(toCheck.charAt(i) == c) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

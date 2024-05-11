@@ -1,0 +1,31 @@
+☐ Code Checker
+    ☐ Input
+    ☐ If
+    ☐ Loop
+    ☐ LoopBreaker
+    ☐ Var Bearbeiten
+
+☐ FileChooser im Homedir starten lassen
+☐ Extra Folder für die Testspiele
+☐ Liste an Directorys in denen spiele gespeichert sein könnten
+☐ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen
+
+☐ Einzelne Unit tests für die Regexe
+    ☐ Action
+    ☐ ActionCall
+    ☐ DebugInput
+    ☐ GameExitScript
+    ☐ GameLoaderScript
+    ☐ GameSaveScript
+    ☐ If
+    ☐ Input
+    ☐ Loop
+    ☐ LoopBreaker
+    ☐ NumDec
+    ☐ NumInit
+    ☐ Printer
+    ☐ Room
+    ☐ RoomJumper
+    ☐ Set
+    ☐ StrDec
+    ☐ StrInit
