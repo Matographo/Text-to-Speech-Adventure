@@ -3,14 +3,18 @@ package de.ttsa.Logic.Compiler.CompilerSteps;
 import java.util.ArrayList;
 
 import de.ttsa.Container.OpCodeVar;
+import de.ttsa.Enums.CodeBlockTests;
 import de.ttsa.Enums.CodeSyntaxTests;
 import de.ttsa.Enums.CodeVarTests;
 import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Enums.OpCodeVarTests;
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
+import de.ttsa.Interfaces.CodeBlockTestable;
 import de.ttsa.Interfaces.CodeSyntaxTestable;
 import de.ttsa.Interfaces.CodeVarTestable;
+import de.ttsa.Interfaces.OpCodeBlockTestable;
+import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
 import de.ttsa.Interfaces.OpCodeVarTestable;
 import de.ttsa.Logic.Features.Set.SetCodeSyntax;
 import de.ttsa.Logic.Features.Set.SetCodeVar;
@@ -30,6 +34,7 @@ public class CodeTester {
     private ArrayList<ArrayList<String>> fileContent;
     private CodeSyntaxTests codeSyntaxTest = CodeSyntaxTests.NONE;
     private CodeVarTests codeVarTests = CodeVarTests.NONE;
+    private CodeBlockTests codeBlockTests = CodeBlockTests.NONE;
 
 
 
@@ -142,7 +147,28 @@ public class CodeTester {
     }
 
     private boolean testBlocks(ArrayList<String> content) {
-        return true;
+        boolean testResult = true;
+        String command     = "";
+        String args        = "";
+
+        CodeBlockTestable testBlock;
+
+
+        for(int i = 0; i < content.size(); i++) {
+            command = content.get(i).split(CompilerSyntax.COMMAND.toString())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(":") +1).strip();
+            
+            if(command.equals(content.get(i))) {
+                command = content.get(i).split(" ")[0];
+                args    = content.get(i).substring(content.get(i).indexOf(" ")).strip();
+            }
+
+            testBlock   = codeBlockTests.getBlockTest(command);
+
+            testResult &= testBlock.testCode(args, content.subList(i, content.size())) >= 0;
+        }
+
+        return testResult;
     }
     
 }

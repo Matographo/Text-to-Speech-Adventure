@@ -17,9 +17,6 @@ public class NumInitCodeSyntax extends StringMethods implements CodeSyntaxTestab
     }
 
     private boolean testCalc(String code) {
-        boolean result = true;
-        String toTest;
-
         if(!code.contains("*") && !code.contains("/") && !code.contains("-") && !code.contains("+")) {
             if(!code.matches(Regex.VALIDE_NUMBER.toString()) && !code.matches(Regex.VALIDE_NAME.toString())) return false;
             else return true;

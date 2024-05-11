@@ -6,10 +6,11 @@
     ✔ Var Bearbeiten @done(24-05-11 17:14)
 
 ☐ Code Checker Variablen
-    ☐ NumInit
-    ☐ If
-    ☐ Loop
-    ☐ StrInit
+    ✔ NumInit @done(24-05-12 00:31)
+    ✔ Input @done(24-05-12 01:23)
+    ✔ If @done(24-05-12 01:23)
+    ✔ Loop @done(24-05-12 01:25)
+    ✔ StrInit @done(24-05-12 00:35)
     ✔ ActionCall @done(24-05-12 00:12)
     ✔ Action @done(24-05-11 23:20)
     ✔ DebugInput @done(24-05-11 23:10)
@@ -24,7 +25,7 @@
     ☐ Action
     ☐ If
     ☐ Loop
-    ☐ Room
+    ✔ Room @done(24-05-12 01:46)
     ☐ Set
 
 ☐ FileChooser im Homedir starten lassen

@@ -25,6 +25,7 @@ public enum CompilerSyntax {
     BLOCK_START("{"),
     BLOCK_END("}"),
     COMMAND(":"),
+    TRUE("true"),
     NONE("");
 
     private final String syntax;
