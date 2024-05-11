@@ -1,7 +1,9 @@
 package de.ttsa.Container;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class OpCodeVar {
 
@@ -18,6 +20,7 @@ public class OpCodeVar {
     private HashSet<String> setNames;
 
     private HashMap<String, String> actionArgs = new HashMap<>();
+    private HashMap<String, List<String>> actionArgsCode = new HashMap<>();
 
 
 
@@ -74,6 +77,17 @@ public class OpCodeVar {
         actionArgs.put(name, args);
     }
 
+    public boolean addActionNameCode(String name) {
+        if(actionArgsCode.put(name, new ArrayList<String>()) != null) return false;
+        return actionNames.add(name);
+    }
+    
+    
+    public boolean addActionArgsCode(String actionName, String arg) {
+        if(!actionArgsCode.containsKey(actionName)) return false;
+        return actionArgsCode.get(actionName).add(arg);
+    }
+
 //********************************** Asker ****************************************//
     public boolean isRoomName(String name) {
         return roomNames.contains(name);
@@ -102,4 +116,9 @@ public class OpCodeVar {
     public String getActionArgs(String name) {
         return actionArgs.get(name);
     }
+
+    public List<String> getActionArgsCode(String action) {
+        return actionArgsCode.get(action);
+    }
+
 }

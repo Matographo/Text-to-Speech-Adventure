@@ -14,9 +14,7 @@ public class ActionOpCodeVar implements OpCodeVarTestable {
         IfTypes type;
 
 
-        if(opCodeVar.isActionName(actionArgs[0])) return false;
-
-        opCodeVar.addActionName(actionArgs[0]);
+        if(!opCodeVar.addActionName(actionArgs[0])) return false;
 
         String[] actionArgss = actionArgs[1].split(Seperators.ACTION_ARGS.getSeperator());
 
@@ -27,7 +25,7 @@ public class ActionOpCodeVar implements OpCodeVarTestable {
 
             actionArg = actionArg.substring(1);
 
-            if(!type.isArgType())        return false;
+            if(!type.isArgType())       return false;
             if(!isValidName(actionArg)) return false;
 
 

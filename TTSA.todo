@@ -6,12 +6,12 @@
     ✔ Var Bearbeiten @done(24-05-11 17:14)
 
 ☐ Code Checker Variablen
-    ☐ Action
-    ☐ ActionCall
+    ☐ NumInit
     ☐ If
     ☐ Loop
     ☐ StrInit
-    ☐ NumInit
+    ✔ ActionCall @done(24-05-12 00:12)
+    ✔ Action @done(24-05-11 23:20)
     ✔ DebugInput @done(24-05-11 23:10)
     ✔ Set @done(24-05-11 23:05)
     ✔ NumDec @done(24-05-11 22:39)
