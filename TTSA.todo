@@ -10,13 +10,15 @@
     ☐ ActionCall
     ☐ If
     ☐ Loop
-    ☐ NumDec
-    ☐ NumInit
-    ☐ Printer
-    ☐ Room
-    ☐ Set
-    ☐ StrDec
     ☐ StrInit
+    ☐ NumInit
+    ✔ DebugInput @done(24-05-11 23:10)
+    ✔ Set @done(24-05-11 23:05)
+    ✔ NumDec @done(24-05-11 22:39)
+    ✔ Printer @done(24-05-11 23:05)
+    ✔ Room @done(24-05-11 23:05)
+    ✔ RoomJumper @done(24-05-11 23:05)
+    ✔ StrDec @done(24-05-11 23:05)
 
 ☐ Code Checker Block
     ☐ Action

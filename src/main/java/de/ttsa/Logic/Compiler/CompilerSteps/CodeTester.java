@@ -2,12 +2,18 @@ package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
 
+import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.CodeSyntaxTests;
+import de.ttsa.Enums.CodeVarTests;
 import de.ttsa.Enums.CompilerSyntax;
+import de.ttsa.Enums.OpCodeVarTests;
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.CodeSyntaxTestable;
+import de.ttsa.Interfaces.CodeVarTestable;
+import de.ttsa.Interfaces.OpCodeVarTestable;
 import de.ttsa.Logic.Features.Set.SetCodeSyntax;
+import de.ttsa.Logic.Features.Set.SetCodeVar;
 
 
 /**
@@ -21,8 +27,9 @@ public class CodeTester {
 
 
 
-    ArrayList<ArrayList<String>> fileContent;
-    CodeSyntaxTests codeSyntaxTest = CodeSyntaxTests.NONE;
+    private ArrayList<ArrayList<String>> fileContent;
+    private CodeSyntaxTests codeSyntaxTest = CodeSyntaxTests.NONE;
+    private CodeVarTests codeVarTests = CodeVarTests.NONE;
 
 
 
@@ -102,7 +109,36 @@ public class CodeTester {
     }
 
     private boolean testVariables(ArrayList<String> content) {
-        return true;
+        boolean testResult = true;
+        boolean isSet      = false;
+        String command     = "";
+        String args        = "";
+
+        OpCodeVar opCodeVar = new OpCodeVar();
+        CodeVarTestable test;
+
+        for(int i = 0; i < content.size(); i++) {
+            if(content.get(i).strip().equals(CompilerSyntax.BLOCK_END.toString())) {
+                if(isSet) isSet = false;
+                continue;
+            }
+            if(isSet) continue;
+
+            command = content.get(i).split(CompilerSyntax.COMMAND.toString())[0];
+            args    = content.get(i).substring(content.get(i).indexOf(":") +1).strip();
+            
+            if(command.equals(content.get(i))) {
+                command = content.get(i).split(" ")[0];
+                args    = content.get(i).substring(content.get(i).indexOf(" ")).strip();
+            }
+            
+            test = codeVarTests.getTest(command);
+            if(test instanceof SetCodeVar) isSet = true;
+
+            testResult &= test.test(args, opCodeVar);
+        }
+
+        return testResult;
     }
 
     private boolean testBlocks(ArrayList<String> content) {

@@ -23,7 +23,7 @@ public class StringMethods {
     protected String getNextSubstring(String first, String last, String string) {
         if(!hasBlock(first, last, string)) return null;
         int firstIndex = string.indexOf(first);
-        int lastIndex = string.indexOf(last, firstIndex+1);
+        int lastIndex  = string.indexOf(last, firstIndex+1);
         return string.substring(firstIndex+1, lastIndex);
     }
 
