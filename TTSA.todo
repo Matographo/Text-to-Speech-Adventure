@@ -5,7 +5,7 @@
     ✔ LoopBreaker @done(24-05-11 17:17)
     ✔ Var Bearbeiten @done(24-05-11 17:14)
 
-☐ Code Checker Variablen
+✔ Code Checker Variablen @done(24-05-12 02:02)
     ✔ NumInit @done(24-05-12 00:31)
     ✔ Input @done(24-05-12 01:23)
     ✔ If @done(24-05-12 01:23)
@@ -21,7 +21,7 @@
     ✔ RoomJumper @done(24-05-11 23:05)
     ✔ StrDec @done(24-05-11 23:05)
 
-☐ Code Checker Block
+✔ Code Checker Block @done(24-05-12 02:02)
     ✔ Action @done(24-05-12 02:01)
     ✔ If @done(24-05-12 02:01)
     ✔ Loop @done(24-05-12 02:01)
