@@ -95,6 +95,13 @@ public class CFileReader {
             throw new IllegalArgumentException("Path is not valid");
         }
     }
+
+
+
+    public static void write(String string, String line) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'write'");
+    }
     
 
     

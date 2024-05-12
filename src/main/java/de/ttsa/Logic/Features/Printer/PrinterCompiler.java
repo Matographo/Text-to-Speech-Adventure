@@ -35,7 +35,7 @@ public class PrinterCompiler extends CompilerLineMethods {
                 }
                 endCommand.append("\"" + subCommand + "\"");
                 if (cutIndex != -1) {
-                    commands.delete(cutIndex, commands.length());
+                    commands.delete(0, cutIndex);
                 } else {
                     commands.setLength(0);
                 }

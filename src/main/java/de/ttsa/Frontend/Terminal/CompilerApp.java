@@ -22,6 +22,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
+        args = new String[] {"-c", "/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/Code/LittleGame"};
         new CompilerApp().start(args);
     }
     

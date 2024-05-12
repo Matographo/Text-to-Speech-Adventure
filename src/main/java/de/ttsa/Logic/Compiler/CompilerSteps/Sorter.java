@@ -29,7 +29,7 @@ public class Sorter {
 
 
     public ArrayList<ArrayList<String>> sort() {
-        return null;
+        return fileContent;
     }
 
 

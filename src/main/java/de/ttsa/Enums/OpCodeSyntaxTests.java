@@ -23,10 +23,10 @@ import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 
 public enum OpCodeSyntaxTests {
 
-    SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT, 
-    GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM, 
+    SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT,
+    GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM,
     SET, ROOM_JUMPER, STR_DEC, STR_INIT, ALWAYS_FALSE;
-    
+
     OpCodeSyntaxTests mode;
 
     private final AlwaysFalseOpCodeTest alwaysFalse;
@@ -49,9 +49,6 @@ public enum OpCodeSyntaxTests {
     private final StrDecOpCodeSyntax strDec;
     private final StrInitOpCodeSyntax strInit;
 
-
-    
-
     OpCodeSyntaxTests() {
         alwaysFalse = new AlwaysFalseOpCodeTest();
         printer = new PrinterOpCodeSyntax();
@@ -64,7 +61,7 @@ public enum OpCodeSyntaxTests {
         ifOpCode = new IfOpCodeSyntax();
         input = new InputOpCodeSyntax();
         loopBreaker = new LoopBreakerOpCodeSyntax();
-        loop = new LoopOpCodeSyntax();  
+        loop = new LoopOpCodeSyntax();
         numDec = new NumDecOpCodeSyntax();
         numInit = new NumInitOpCodeSyntax();
         room = new RoomOpCodeSyntax();
@@ -78,50 +75,50 @@ public enum OpCodeSyntaxTests {
     public OpCodeSyntaxTestable getTest(String mode) {
         getMode(mode);
         OpCodeSyntaxTestable test;
-        switch (this.mode) {
-            case SAY -> test = printer;
-            case ACTION -> test = action;
-            case ACTION_CALL -> test = actionCall;
-            case DEBUG_INPUT -> test = debugInput;
-            case GAME_EXIT_SCRIPT -> test = gameExitScript;
-            case GAME_LOADER_SCRIPT -> test = gameLoaderScript;
-            case GAME_SAVING_SCRIPT -> test = gameSavingScript;
-            case IF -> test = ifOpCode;
-            case INPUT -> test = input;
-            case LOOP_BREAKER -> test = loopBreaker;
-            case LOOP -> test = loop;
-            case NUM_DEC -> test = numDec;
-            case NUM_INIT -> test = numInit;
-            case ROOM -> test = room;
-            case SET -> test = set;
-            case ROOM_JUMPER -> test = roomJumper;
-            case STR_DEC -> test = strDec;
-            case STR_INIT -> test = strInit;
-            default -> test = alwaysFalse;
-        }
-        return test;
+        return switch (this.mode) {
+            case SAY -> printer;
+            case ACTION -> action;
+            case ACTION_CALL -> actionCall;
+            case DEBUG_INPUT -> debugInput;
+            case GAME_EXIT_SCRIPT -> gameExitScript;
+            case GAME_LOADER_SCRIPT -> gameLoaderScript;
+            case GAME_SAVING_SCRIPT -> gameSavingScript;
+            case IF -> ifOpCode;
+            case INPUT -> input;
+            case LOOP_BREAKER -> loopBreaker;
+            case LOOP -> loop;
+            case NUM_DEC -> numDec;
+            case NUM_INIT -> numInit;
+            case ROOM -> room;
+            case SET -> set;
+            case ROOM_JUMPER -> roomJumper;
+            case STR_DEC -> strDec;
+            case STR_INIT -> strInit;
+            default -> alwaysFalse;
+        };
     }
-    
+
     private void getMode(String mode) {
-        switch (mode) {
-            case "00" -> this.mode = SAY;
-            case "01" -> this.mode = ROOM;
-            case "02" -> this.mode = ROOM_JUMPER;
-            case "03" -> this.mode = NUM_DEC;
-            case "04" -> this.mode = STR_DEC;
-            case "05" -> this.mode = NUM_INIT;
-            case "06" -> this.mode = IF;
-            case "07" -> this.mode = INPUT;
-            case "08" -> this.mode = STR_INIT;
-            case "09" -> this.mode = DEBUG_INPUT;
-            case "0A" -> this.mode = GAME_SAVING_SCRIPT;
-            case "0B" -> this.mode = GAME_LOADER_SCRIPT;
-            case "0C" -> this.mode = GAME_EXIT_SCRIPT;
-            case "0D" -> this.mode = LOOP;
-            case "0E" -> this.mode = LOOP_BREAKER;
-            case "0F" -> this.mode = SET;
-            case "10" -> this.mode = ACTION;
-            case "11" -> this.mode = ACTION_CALL;
-        }
+        this.mode = switch (mode) {
+            case "00" -> SAY;
+            case "01" -> ROOM;
+            case "02" -> ROOM_JUMPER;
+            case "03" -> NUM_DEC;
+            case "04" -> STR_DEC;
+            case "05" -> NUM_INIT;
+            case "06" -> IF;
+            case "07" -> INPUT;
+            case "08" -> STR_INIT;
+            case "09" -> DEBUG_INPUT;
+            case "0A" -> GAME_SAVING_SCRIPT;
+            case "0B" -> GAME_LOADER_SCRIPT;
+            case "0C" -> GAME_EXIT_SCRIPT;
+            case "0D" -> LOOP;
+            case "0E" -> LOOP_BREAKER;
+            case "0F" -> SET;
+            case "10" -> ACTION;
+            case "11" -> ACTION_CALL;
+            default -> ALWAYS_FALSE;
+        };
     }
 }

@@ -42,13 +42,17 @@ private String filePath;
 
 
     public void compile() {
-        startReading();
-        startMerging();
-        startSorting();
-        startTesting();
-        startCompiling();
-        startOpCodeTest();
-        startBuilding();
+        if(startReading() &&
+        //startSorting() &&
+        startTesting() &&
+        startCompiling() &&
+        startMerging() &&
+        startOpCodeTest() &&
+        startBuilding()) {
+            System.out.println("Compilation successful.");
+        } else {
+            System.out.println("Compilation failed.");
+        }
     }
 
 
@@ -60,7 +64,7 @@ private String filePath;
     private boolean startReading() {
         CFileReader reader = new CFileReader(filePath);
         fileContent = reader.read();
-        return false;
+        return fileContent != null;
     }
     
     
@@ -85,7 +89,7 @@ private String filePath;
     private boolean startCompiling() {
         Compiler compiler = new Compiler(fileContent);
         fileContent = compiler.compile();
-        return false;
+        return true;
     }
 
 
@@ -109,7 +113,7 @@ private String filePath;
     private boolean startMerging() {
         Merger merger = new Merger(fileContent);
         game = merger.merge();
-        return false;
+        return game != null;
     }
 
 
@@ -129,8 +133,7 @@ private String filePath;
 
     private boolean startBuilding() {
         GameBuilder builder = new GameBuilder(game);
-        builder.build();
-        return false;
+        return builder.build();
     }
 
 }
