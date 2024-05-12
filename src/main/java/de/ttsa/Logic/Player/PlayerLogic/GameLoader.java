@@ -3,7 +3,14 @@ package de.ttsa.Logic.Player.PlayerLogic;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.ZipFile;
+
+import de.ttsa.Tools.ZipManager;
 
 class GameLoader {
     
@@ -13,6 +20,7 @@ class GameLoader {
 
 
     private String gameFile;
+    private String gameFileExtension = "ta";
 
 
 
@@ -38,16 +46,22 @@ class GameLoader {
      */
     public ArrayList<String> loadGameData() {
         File game = new File(gameFile);
-        ArrayList<String> gameContent = new ArrayList<String>();
 
-
-        if(game.isFile()) {
-            gameContent = loadGameFile(game);
-        } else {
+        if(!game.isFile()) {
             throw new RuntimeException("Game file is not a file!");
+        } else if(!game.getName().endsWith(gameFileExtension)) {
+            throw new RuntimeException("Game file is not a Text Adventure (.ta) file!");
         }
 
-        return gameContent;
+        if(isZipFile(game)) {
+            try {
+                loadGame(game);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return loadGameFile(game);
     }
 
     /**
@@ -70,6 +84,20 @@ class GameLoader {
             return gameContent;
         } catch(Exception e) {
             throw new RuntimeException("Error while reading game file!");
+        }
+    }
+
+    private List<String> loadGame(File game) throws IOException {
+        return ZipManager.readFromZip(game.getAbsolutePath(), game.getName());
+    }
+
+    private boolean isZipFile(File file) {
+        try {
+            ZipFile zipFile = new ZipFile(file);
+            zipFile.close();
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 }

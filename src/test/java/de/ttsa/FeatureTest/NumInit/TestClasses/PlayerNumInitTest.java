@@ -29,7 +29,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testNumDec() {
-        Player player = new Player(PATH + "testNumDec");
+        Player player = new Player(PATH + "testNumDec.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(10, GameManager.numVars.get("Zahl").getValue());
@@ -39,7 +39,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecWithOtherNum() {
         int expected = 10;
-        Player player = new Player(PATH + "testNumDecWithOtherNum");
+        Player player = new Player(PATH + "testNumDecWithOtherNum.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -49,7 +49,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecNegativeNumber() {
         int expected = -1;
-        Player player = new Player(PATH + "testNumDecNegativeNumber");
+        Player player = new Player(PATH + "testNumDecNegativeNumber.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -59,7 +59,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecCalcNegativeNumber() {
         int expected = -15;
-        Player player = new Player(PATH + "testNumDecCalcNegativeNumber");
+        Player player = new Player(PATH + "testNumDecCalcNegativeNumber.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -69,7 +69,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecCalcNumberAndVar() {
         int expected = 10;
-        Player player = new Player(PATH + "testNumDecCalcNumberAndVar");
+        Player player = new Player(PATH + "testNumDecCalcNumberAndVar.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -79,7 +79,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecCalcTwoNumbers() {
         int expected = 10;
-        Player player = new Player(PATH + "testNumDecCalcTwoNumbers");
+        Player player = new Player(PATH + "testNumDecCalcTwoNumbers.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -89,7 +89,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecCalcWithBreckeds() {
         int expected = 50;
-        Player player = new Player(PATH + "testNumDecCalcWithBreckeds");
+        Player player = new Player(PATH + "testNumDecCalcWithBreckeds.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Zahl"));
         assertEquals(expected, GameManager.numVars.get("Zahl").getValue());
@@ -105,7 +105,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecCalcWithDoublePlus() {
         try {
-            Player player = new Player(PATH + "testNumDecCalcWithDoublePlus");
+            Player player = new Player(PATH + "testNumDecCalcWithDoublePlus.ta");
             player.play();
             fail();
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecWithString() {
         try {
-            Player player = new Player(PATH + "testNumDecWithString");
+            Player player = new Player(PATH + "testNumDecWithString.ta");
             player.play();
             assertEquals(true, GameManager.numVars.containsKey("Zahl"));
             assertEquals(10, GameManager.numVars.get("Zahl").getValue());
@@ -131,7 +131,7 @@ public class PlayerNumInitTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumDecWithStrVar() {
         try {
-            Player player = new Player(PATH + "testNumDecWithStrVar");
+            Player player = new Player(PATH + "testNumDecWithStrVar.ta");
             player.play();
             fail();
         } catch (Exception e) {

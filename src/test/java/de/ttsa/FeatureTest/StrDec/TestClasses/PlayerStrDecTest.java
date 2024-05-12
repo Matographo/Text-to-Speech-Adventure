@@ -29,7 +29,7 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testStrVarOneWord() {
-        Player player = new Player(PATH + "testStrVarOneWord");
+        Player player = new Player(PATH + "testStrVarOneWord.ta");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Hallo"));
         assertEquals("Einzeiler", GameManager.strVars.get("Hallo").getValue());
@@ -38,7 +38,7 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testStrVarMultipleWords() {
-        Player player = new Player(PATH + "testStrVarMultipleWords");
+        Player player = new Player(PATH + "testStrVarMultipleWords.ta");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Hallo"));
         assertEquals("Das ist doch toll", GameManager.strVars.get("Hallo").getValue());
@@ -52,7 +52,7 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
 @Test
     public void testNumVarFalseName() {
         try {
-            Player player = new Player(PATH + "testNumVarFalseName");
+            Player player = new Player(PATH + "testNumVarFalseName.ta");
             player.play();
             fail();
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class PlayerStrDecTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumVarDoubleName() {
         try {
-            Player player = new Player(PATH + "testNumVarDoubleName");
+            Player player = new Player(PATH + "testNumVarDoubleName.ta");
             player.play();
             fail();
         } catch (Exception e) {

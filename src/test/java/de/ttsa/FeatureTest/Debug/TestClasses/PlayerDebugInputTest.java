@@ -28,7 +28,7 @@ public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testDebugInput() {
-        Player player = new Player(PATH + "testDebugInput");
+        Player player = new Player(PATH + "testDebugInput.ta");
         player.play();
         assertEquals("input", GameManager.input);
         resetTest();
@@ -36,7 +36,7 @@ public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testDebugInputWithStrVar() {
-        Player player = new Player(PATH + "testDebugInputWithStrVar");
+        Player player = new Player(PATH + "testDebugInputWithStrVar.ta");
         player.play();
         assertEquals("input", GameManager.input);
         resetTest();
@@ -44,7 +44,7 @@ public class PlayerDebugInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testDebugInputWithStrVarAndString() {
-        Player player = new Player(PATH + "testDebugInputWithStrVarAndString");
+        Player player = new Player(PATH + "testDebugInputWithStrVarAndString.ta");
         player.play();
         assertEquals("Hallo input", GameManager.input);
         resetTest();

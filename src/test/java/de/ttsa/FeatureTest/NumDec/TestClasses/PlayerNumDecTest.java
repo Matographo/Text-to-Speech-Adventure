@@ -29,7 +29,7 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testNumVar() {
-        Player player = new Player(PATH + "testNumVar");
+        Player player = new Player(PATH + "testNumVar.ta");
         player.play();
         assertEquals(true, GameManager.numVars.containsKey("Hallo"));
         assertEquals(5, GameManager.numVars.get("Hallo").getValue());
@@ -45,7 +45,7 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumVarFalseSyntax() {
         try {
-            Player player = new Player(PATH + "testNumVarFalseSyntax");
+            Player player = new Player(PATH + "testNumVarFalseSyntax.ta");
             player.play();
             fail();
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class PlayerNumDecTest extends OpCodePlayerTesterClass {
     @Test
     public void testNumVarInvalideName() {
         try {
-            Player player = new Player(PATH + "testNumVarInvalideName");
+            Player player = new Player(PATH + "testNumVarInvalideName.ta");
             player.play();
             fail();
         } catch (Exception e) {

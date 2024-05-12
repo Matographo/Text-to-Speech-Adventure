@@ -29,7 +29,7 @@ public TesterFunctionTest() {
 
     @Test
     public void testEmptyFile() {
-        new OpCodeTest(PATH + "testEmptyFile");
+        new OpCodeTest(PATH + "testEmptyFile.ta");
     }
 
 

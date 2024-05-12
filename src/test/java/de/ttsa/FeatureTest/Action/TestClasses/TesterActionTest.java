@@ -26,49 +26,49 @@ public class TesterActionTest extends OpCodeTestTesterClass {
 
     @Test
     public void testAction() {
-        OpCodeTest test = new OpCodeTest(PATH + "testAction");
+        OpCodeTest test = new OpCodeTest(PATH + "testAction.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionWithActionCall() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionWithActionCall");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionWithActionCall.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionWithNumArg() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionWithNumArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionWithNumArg.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionUseNumArg() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumArg.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionUseStrArg() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrArg");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrArg.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionUseNumVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseNumVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionUseStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testActionUseMultipleArgVars() {
-        OpCodeTest test = new OpCodeTest(PATH + "testActionUseMultipleArgVars");
+        OpCodeTest test = new OpCodeTest(PATH + "testActionUseMultipleArgVars.ta");
         assertEquals(true, test.start());
     }
 

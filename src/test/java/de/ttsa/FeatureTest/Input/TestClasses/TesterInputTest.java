@@ -26,43 +26,43 @@ public class TesterInputTest extends OpCodeTestTesterClass {
 
     @Test
     public void testInput() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInput");
+        OpCodeTest test = new OpCodeTest(PATH + "testInput.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputEQStr() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputEQStr");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputEQStr.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputInOrderDoubleOffOrder() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputInOrderDoubleOffOrder");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputInOrderDoubleOffOrder.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputInOrderOffOrderStr() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputInOrderOffOrderStr");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputInOrderOffOrderStr.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputOffOrderStr() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputOffOrderStr");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputOffOrderStr.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputEQStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputEQStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputEQStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testInputOffOrderStrAndStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testInputOffOrderStrAndStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testInputOffOrderStrAndStrVar.ta");
         assertEquals(true, test.start());
     }
 

@@ -28,14 +28,14 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testAction() {
-        Player player = new Player(PATH + "testAction");
+        Player player = new Player(PATH + "testAction.ta");
         player.play();
         resetTest();
     }
 
     @Test
     public void testActionWithActionCall() {
-        Player player = new Player(PATH + "testActionWithActionCall");
+        Player player = new Player(PATH + "testActionWithActionCall.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -43,7 +43,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionCallOtherAction() {
-        Player player = new Player(PATH + "testActionCallOtherAction");
+        Player player = new Player(PATH + "testActionCallOtherAction.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -51,7 +51,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionUseMultipleArgVars() {
-        Player player = new Player(PATH + "testActionUseMultipleArgVars");
+        Player player = new Player(PATH + "testActionUseMultipleArgVars.ta");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Varr").getValue());
         assertEquals(1, GameManager.numVars.get("Var").getValue());
@@ -60,7 +60,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionUseNumArg() {
-        Player player = new Player(PATH + "testActionUseNumArg");
+        Player player = new Player(PATH + "testActionUseNumArg.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -68,7 +68,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionUseNumVar() {
-        Player player = new Player(PATH + "testActionUseNumVar");
+        Player player = new Player(PATH + "testActionUseNumVar.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -76,7 +76,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionUseStrArg() {
-        Player player = new Player(PATH + "testActionUseStrArg");
+        Player player = new Player(PATH + "testActionUseStrArg.ta");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Var").getValue());
         resetTest();
@@ -84,7 +84,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionUseStrVar() {
-        Player player = new Player(PATH + "testActionUseStrVar");
+        Player player = new Player(PATH + "testActionUseStrVar.ta");
         player.play();
         assertEquals("Bye", GameManager.strVars.get("Varr").getValue());
         resetTest();
@@ -92,7 +92,7 @@ public class PlayerActionTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testActionWithNumArg() {
-        Player player = new Player(PATH + "testActionWithNumArg");
+        Player player = new Player(PATH + "testActionWithNumArg.ta");
         player.play();
         resetTest();
     }

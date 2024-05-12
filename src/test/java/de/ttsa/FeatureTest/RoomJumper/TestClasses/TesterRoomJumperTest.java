@@ -26,7 +26,7 @@ public class TesterRoomJumperTest extends OpCodeTestTesterClass {
 
     @Test
     public void testRoomJumperWithRoom() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithRoom.ta");
         assertEquals(true, test.start());
     }
 
@@ -37,26 +37,26 @@ public class TesterRoomJumperTest extends OpCodeTestTesterClass {
 
     @Test
     public void testRoomJumperAndSpaceInName() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperSpaceInName");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperSpaceInName.ta");
         assertEquals(false, test.start());
     }
 
     @Test
     public void testRoomJumperAsString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperAsString");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperAsString.ta");
         assertEquals(false, test.start());
     }
 
     @Test
     public void testRoomJumperWithSpecialChar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithSpecialChar");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithSpecialChar.ta");
         assertEquals(false, test.start());
     }
 
 
     @Test
     public void testRoomJumperWithoutRoom() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomJumperWithoutRoom.ta");
         assertEquals(false, test.start());
     }
     

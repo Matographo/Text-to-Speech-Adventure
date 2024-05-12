@@ -1,9 +1,15 @@
 package de.ttsa.Tools;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -13,6 +19,32 @@ public class ZipManager {
 
     // TODO: Schreiben einer Methode mit der man daten aus Zip liest ohne sie zu entpacken
 
+    public static List<String> readFromZip(String zipFilePath, String entryPath) throws IOException {
+        try (FileInputStream fis = new FileInputStream(zipFilePath);
+             ZipInputStream zis = new ZipInputStream(fis, StandardCharsets.UTF_8)) {
+
+            ZipEntry entry;
+            while ((entry = zis.getNextEntry()) != null) {
+                if (entry.getName().equals(entryPath)) {
+                    return readEntryData(zis);
+                }
+            }
+        }
+
+        throw new IOException("Entry " + entryPath + " not found in zip file " + zipFilePath);
+    }
+
+    private static List<String> readEntryData(InputStream is) throws IOException {
+        List<String> lines = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            lines.add(line);
+        }
+
+        return lines;
+    }
 
 
     public static boolean unzip(String source, String destination) {

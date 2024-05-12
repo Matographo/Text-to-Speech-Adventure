@@ -44,7 +44,7 @@ private final String TEST_PATH = "/TestFiles/";
 
     @Test
     public void testEmptyFile() {
-            new Player(PATH + "testEmptyFile");
+            new Player(PATH + "testEmptyFile.ta");
     }
 
 
@@ -55,7 +55,7 @@ private final String TEST_PATH = "/TestFiles/";
     @Test
     public void testNoneExistingFile() {
         try {
-        new Player(PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf");
+        new Player(PATH + "jkflasodijasdfadsfjajiewofewfaksdknawifowejfwf.ta");
         fail();
         } catch (Exception e) {
         }

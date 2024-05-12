@@ -31,7 +31,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayFixString() {
         String expected = "Hallo Welt!";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayFixString");
+        Player player = new Player(PATH + "testSayFixString.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -43,7 +43,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayMultipleFixStringsAtOnce() {
         String expected = "Hallo Weltchen!";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayMultipleFixStringsAtOnce");
+        Player player = new Player(PATH + "testSayMultipleFixStringsAtOnce.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -55,7 +55,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayMultipleSaysFixStrings() {
         String expected = "Hello\nWorld\nThis is cool";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayMultipleSaysFixStrings");
+        Player player = new Player(PATH + "testSayMultipleSaysFixStrings.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -67,7 +67,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayNumVar() {
         String expected = "5";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayNumVar");
+        Player player = new Player(PATH + "testSayNumVar.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -79,7 +79,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayStrVar() {
         String expected = "Hallo Welt!";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayStrVar");
+        Player player = new Player(PATH + "testSayStrVar.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -91,7 +91,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayFixStringAndStrVar() {
         String expected = "Hallo Welt!";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayFixStringAndStrVar");
+        Player player = new Player(PATH + "testSayFixStringAndStrVar.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -103,7 +103,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayNumVarAndFixString() {
         String expected = "5Hallo";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayNumVarAndFixString");
+        Player player = new Player(PATH + "testSayNumVarAndFixString.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -115,7 +115,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayStrVarAndNumVar() {
         String expected = "Hallo 5";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testSayStrVarAndNumVar");
+        Player player = new Player(PATH + "testSayStrVarAndNumVar.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());
@@ -131,7 +131,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayNonExistingVar() {
         GetOutput output = new GetOutput();
         try {
-            Player player = new Player(PATH + "testSayNonExistingVar");
+            Player player = new Player(PATH + "testSayNonExistingVar.ta");
             output.init();
             player.play();
             fail();
@@ -146,7 +146,7 @@ public class PlayerSayTest extends OpCodePlayerTesterClass {
     public void testSayFixNumber() {
         GetOutput output = new GetOutput();
         try {
-            Player player = new Player(PATH + "testSayFixNumber");
+            Player player = new Player(PATH + "testSayFixNumber.ta");
             output.init();
             player.play();
             fail();

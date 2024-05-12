@@ -27,7 +27,7 @@ public class TesterNumDecTest extends OpCodeTestTesterClass {
 
     @Test
     public void testNumVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testNumVar.ta");
         assertEquals(true, test.start());
     }
 
@@ -38,13 +38,13 @@ public class TesterNumDecTest extends OpCodeTestTesterClass {
 
     @Test
     public void testNumVarInvalideName() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumVarInvalideName");
+        OpCodeTest test = new OpCodeTest(PATH + "testNumVarInvalideName.ta");
         assertEquals(false, test.start());
     }
     
     @Test
     public void testNumVarFalseSyntax() {
-        OpCodeTest test = new OpCodeTest(PATH + "testNumVarFalseSyntax");
+        OpCodeTest test = new OpCodeTest(PATH + "testNumVarFalseSyntax.ta");
         assertEquals(false, test.start());
     }
 

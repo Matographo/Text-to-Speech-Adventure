@@ -26,31 +26,31 @@ public class TesterLoopTest extends OpCodeTestTesterClass {
 
     @Test
     public void testLoop() {
-        OpCodeTest test = new OpCodeTest(PATH + "testLoop");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoop.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testLoopJustNumber() {
-        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustNumber");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustNumber.ta");
         assertEquals(true, test.start());
     }
     
     @Test
     public void testLoopWhileTrue() {
-        OpCodeTest test = new OpCodeTest(PATH + "testLoopWhileTrue");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopWhileTrue.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testLoopWithBreaker() {
-        OpCodeTest test = new OpCodeTest(PATH + "testLoopWithBreaker");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopWithBreaker.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testLoopJustVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testLoopJustVar.ta");
         assertEquals(true, test.start());
     }
 

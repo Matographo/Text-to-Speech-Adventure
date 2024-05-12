@@ -27,19 +27,19 @@ public class TesterStrInitTest extends OpCodeTestTesterClass {
 
     @Test
     public void testStrDec() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrDec");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrDec.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testStrDecWithOtherStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrDecWithOtherStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrDecWithOtherStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testStrDecMultipleStringsAndVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrDecMultipleStringsAndVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrDecMultipleStringsAndVar.ta");
         assertEquals(true, test.start());
     }
 

@@ -29,7 +29,7 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
     @Test
     public void testLoop() {
         final int expected = 1;
-        Player player = new Player(PATH + "testLoop");
+        Player player = new Player(PATH + "testLoop.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -38,7 +38,7 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
     @Test
     public void testLoopWihleTrue() {
         final int expected = 1;
-        Player player = new Player(PATH + "testLoopWhileTrue");
+        Player player = new Player(PATH + "testLoopWhileTrue.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -47,7 +47,7 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
     @Test
     public void testLoopWithBreaker() {
         final int expected = 1;
-        Player player = new Player(PATH + "testLoopWithBreaker");
+        Player player = new Player(PATH + "testLoopWithBreaker.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -56,7 +56,7 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
     @Test
     public void testLoopJustNumber() {
         final int expected = 5;
-        Player player = new Player(PATH + "testLoopJustNumber");
+        Player player = new Player(PATH + "testLoopJustNumber.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -65,7 +65,7 @@ public class PlayerLoopTest extends OpCodePlayerTesterClass {
     @Test
     public void testLoopJustVar() {
         final int expected = 10;
-        Player player = new Player(PATH + "testLoopJustVar");
+        Player player = new Player(PATH + "testLoopJustVar.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();

@@ -30,7 +30,7 @@ public class PlayerRoomJumperTest extends OpCodePlayerTesterClass {
     public void testRoomJumperSwitchToRoom() {
         String expected = "Test Finished";
         GetOutput output = new GetOutput();
-        Player player = new Player(PATH + "testRoomJumperSwitchToRoom");
+        Player player = new Player(PATH + "testRoomJumperSwitchToRoom.ta");
         output.init();
         player.play();
         assertEquals(expected, output.getTerminalOutput());

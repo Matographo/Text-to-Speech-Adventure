@@ -27,13 +27,13 @@ public class TesterRoomTest extends OpCodeTestTesterClass {
 
     @Test
     public void testRoomEmpty() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmpty");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmpty.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testRoomNameWithSpace() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyNameWithSpace");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyNameWithSpace.ta");
         assertEquals(true, test.start());
     }
 
@@ -44,13 +44,13 @@ public class TesterRoomTest extends OpCodeTestTesterClass {
 
     @Test
     public void testRoomWithCharAsNumber() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithCharAsNumber");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithCharAsNumber.ta");
         assertEquals(false, test.start());
     }
     
     @Test
     public void testRoomWithUnvalideRange() {
-        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithUnvalideRange");
+        OpCodeTest test = new OpCodeTest(PATH + "testRoomEmptyWithUnvalideRange.ta");
         assertEquals(false, test.start());
     }
 

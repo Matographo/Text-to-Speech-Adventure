@@ -33,7 +33,7 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testSaveSimpleGame() throws IOException {
-        Player player = new Player(PATH + "testSaveSimpleGame");
+        Player player = new Player(PATH + "testSaveSimpleGame.ta");
         GameManager.savePath = PATH + "testSaveSimpleGame.save";
         player.play();
         assertEquals(5, getLines(PATH + "testSaveSimpleGame.save"));
@@ -42,7 +42,7 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testLoadSimpleGame() throws IOException {
-        Player player = new Player(PATH + "testLoadSimpleGame");
+        Player player = new Player(PATH + "testLoadSimpleGame.ta");
         GameManager.savePath = PATH + "testLoadSimpleGame.save";
         player.play();
         assertEquals(20, GameManager.numVars.get("Var").getValue());
@@ -51,7 +51,7 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testExitSimpleGameWithoutSave() throws IOException {
-        Player player = new Player(PATH + "testExitSimpleGameWithoutSave");
+        Player player = new Player(PATH + "testExitSimpleGameWithoutSave.ta");
         GameManager.savePath = PATH + "testExitSimpleGameWithoutSave.save";
         player.play();
         assertEquals(false, GameManager.running);
@@ -60,7 +60,7 @@ public class PlayerSaveLoadExitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testExitSimpleGameWithSave() throws IOException {
-        Player player = new Player(PATH + "testExitSimpleGameWithSave");
+        Player player = new Player(PATH + "testExitSimpleGameWithSave.ta");
         GameManager.savePath = PATH + "testExitSimpleGameWithSave.save";
         player.play();
         assertEquals(3, getLines(PATH + "testExitSimpleGameWithSave.save"));

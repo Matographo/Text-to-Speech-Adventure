@@ -28,13 +28,13 @@ public class TesterStrDecTest extends OpCodeTestTesterClass {
 
     @Test
     public void testStrVarOneWord() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrVarOneWord");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrVarOneWord.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testStrVarMultipleWords() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrVarMultipleWords");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrVarMultipleWords.ta");
         assertEquals(true, test.start());
     }
 
@@ -46,13 +46,13 @@ public class TesterStrDecTest extends OpCodeTestTesterClass {
 
     @Test
     public void testStrVarFalseName() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrVarFalseName");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrVarFalseName.ta");
         assertEquals(false, test.start());
     }
 
     @Test
     public void testStrVarDoubleName() {
-        OpCodeTest test = new OpCodeTest(PATH + "testStrVarDoubleName");
+        OpCodeTest test = new OpCodeTest(PATH + "testStrVarDoubleName.ta");
         assertEquals(false, test.start());
     }
 

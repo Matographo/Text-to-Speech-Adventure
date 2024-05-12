@@ -12,7 +12,7 @@ public class CompilerApp
 
 
     private static final String COMPILED_FILE_EXTENSION = "ta";
-    private static final String COMPILER_COMMAND = "ttsac";
+    private static final String COMPILER_COMMAND = "tacc";
     private static final String COMPILER_VERSION = "0.0.1";
 
 
@@ -22,7 +22,6 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        args = new String[] {"-c", "/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/Code/LittleGame"};
         new CompilerApp().start(args);
     }
     

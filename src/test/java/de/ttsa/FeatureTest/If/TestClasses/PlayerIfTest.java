@@ -29,7 +29,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIf() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIf");
+        Player player = new Player(PATH + "testIf.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Hi").getValue());
         resetTest();
@@ -38,7 +38,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithTwoVars() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithTwoVars");
+        Player player = new Player(PATH + "testIfWithTwoVars.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -47,7 +47,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithVar() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithVar");
+        Player player = new Player(PATH + "testIfWithVar.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -56,7 +56,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfLeftGERight() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfLeftGERight");
+        Player player = new Player(PATH + "testIfLeftGERight.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -65,7 +65,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfLeftLowerRight() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfLeftLowerRight");
+        Player player = new Player(PATH + "testIfLeftLowerRight.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -74,7 +74,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfLeftNERight() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfLeftNERight");
+        Player player = new Player(PATH + "testIfLeftNERight.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -83,7 +83,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithCalc() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithCalc");
+        Player player = new Player(PATH + "testIfWithCalc.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -92,7 +92,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithCalcVar() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithCalcVar");
+        Player player = new Player(PATH + "testIfWithCalcVar.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -101,7 +101,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithElse() {
         final int expected = 2;
-        Player player = new Player(PATH + "testIfWithElse");
+        Player player = new Player(PATH + "testIfWithElse.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -110,7 +110,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithElseIf() {
         final int expected = 2;
-        Player player = new Player(PATH + "testIfWithElseIf");
+        Player player = new Player(PATH + "testIfWithElseIf.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -119,7 +119,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithStrVar() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithStrVar");
+        Player player = new Player(PATH + "testIfWithStrVar.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -128,7 +128,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfWithStrVarEQStrVar() {
         final int expected = 1;
-        Player player = new Player(PATH + "testIfWithStrVarEQStrVar");
+        Player player = new Player(PATH + "testIfWithStrVarEQStrVar.ta");
         player.play();
         assertEquals(expected, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -137,7 +137,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfStrEQStr() {
         final String expected = "Hallo";
-        Player player = new Player(PATH + "testIfStrEQStr");
+        Player player = new Player(PATH + "testIfStrEQStr.ta");
         player.play();
         assertEquals(expected, GameManager.strVars.get("Var").getValue());
         resetTest();
@@ -146,7 +146,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfStrNEStr() {
         final String expected = "Hallo";
-        Player player = new Player(PATH + "testIfStrNEStr");
+        Player player = new Player(PATH + "testIfStrNEStr.ta");
         player.play();
         assertEquals(expected, GameManager.strVars.get("Var").getValue());
         resetTest();
@@ -155,7 +155,7 @@ public class PlayerIfTest extends OpCodePlayerTesterClass {
     @Test
     public void testIfStrVarEQStr() {
         final String expected = "Hallo";
-        Player player = new Player(PATH + "testIfStrVarEQStr");
+        Player player = new Player(PATH + "testIfStrVarEQStr.ta");
         player.play();
         assertEquals(expected, GameManager.strVars.get("Var").getValue());
         resetTest();

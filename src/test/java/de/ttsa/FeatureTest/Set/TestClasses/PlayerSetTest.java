@@ -28,7 +28,7 @@ public class PlayerSetTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testSetJustSet() {
-        Player player = new Player(PATH + "testSetJustSet");
+        Player player = new Player(PATH + "testSetJustSet.ta");
         player.play();
         assertEquals(3, GameManager.sets.get("Attack").getStr().size());
         resetTest();
@@ -36,7 +36,7 @@ public class PlayerSetTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testSetWithRoom() {
-        Player player = new Player(PATH + "testSetWithRoom");
+        Player player = new Player(PATH + "testSetWithRoom.ta");
         player.play();
         assertEquals(3, GameManager.sets.get("Attack").getStr().size());
         resetTest();
@@ -44,7 +44,7 @@ public class PlayerSetTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testSetWithVariable() {
-        Player player = new Player(PATH + "testSetWithVariable");
+        Player player = new Player(PATH + "testSetWithVariable.ta");
         player.play();
         assertEquals(1, GameManager.sets.get("Attack").getStr().size());
         assertEquals(1, GameManager.sets.get("Attack").getVar().size());
@@ -53,7 +53,7 @@ public class PlayerSetTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testSetInIf() {
-        Player player = new Player(PATH + "testSetInIf");
+        Player player = new Player(PATH + "testSetInIf.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Varr").getValue());
         resetTest();

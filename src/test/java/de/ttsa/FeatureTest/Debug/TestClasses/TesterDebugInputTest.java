@@ -26,19 +26,19 @@ public class TesterDebugInputTest extends OpCodeTestTesterClass {
 
     @Test
     public void testDebugInput() {
-        OpCodeTest test = new OpCodeTest(PATH + "testDebugInput");
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInput.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testDebugInputWithStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testDebugInputWithStrVarAndString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVarAndString");
+        OpCodeTest test = new OpCodeTest(PATH + "testDebugInputWithStrVarAndString.ta");
         assertEquals(true, test.start());
     }
 

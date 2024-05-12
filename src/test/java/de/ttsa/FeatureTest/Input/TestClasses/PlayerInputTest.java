@@ -28,7 +28,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputEQStr() {
-        Player player = new Player(PATH + "testInputEQStr");
+        Player player = new Player(PATH + "testInputEQStr.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -36,7 +36,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputEQStrVar() {
-        Player player = new Player(PATH + "testInputEQStrVar");
+        Player player = new Player(PATH + "testInputEQStrVar.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -44,7 +44,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputInOrderDoubleOffOrder() {
-        Player player = new Player(PATH + "testInputInOrderDoubleOffOrder");
+        Player player = new Player(PATH + "testInputInOrderDoubleOffOrder.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -52,7 +52,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputInOrderOffOrderStr() {
-        Player player = new Player(PATH + "testInputInOrderOffOrderStr");
+        Player player = new Player(PATH + "testInputInOrderOffOrderStr.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -60,7 +60,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputOffOrderStr() {
-        Player player = new Player(PATH + "testInputOffOrderStr");
+        Player player = new Player(PATH + "testInputOffOrderStr.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();
@@ -68,7 +68,7 @@ public class PlayerInputTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testInputOffOrderStrAndStrVar() {
-        Player player = new Player(PATH + "testInputOffOrderStrAndStrVar");
+        Player player = new Player(PATH + "testInputOffOrderStrAndStrVar.ta");
         player.play();
         assertEquals(1, GameManager.numVars.get("Var").getValue());
         resetTest();

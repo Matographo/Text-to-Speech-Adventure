@@ -28,7 +28,7 @@ public class PlayerStrInitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testStrDec() {
-        Player player = new Player(PATH + "testStrDec");
+        Player player = new Player(PATH + "testStrDec.ta");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Var"));
         assertEquals("all", GameManager.strVars.get("Var").getValue());
@@ -37,7 +37,7 @@ public class PlayerStrInitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testStrDecWithOtherStrVar() {
-        Player player = new Player(PATH + "testStrDecWithOtherStrVar");
+        Player player = new Player(PATH + "testStrDecWithOtherStrVar.ta");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Var"));
         assertEquals("all", GameManager.strVars.get("Var").getValue());
@@ -46,7 +46,7 @@ public class PlayerStrInitTest extends OpCodePlayerTesterClass {
 
     @Test
     public void testStrDecMultipleStringsAndVar() {
-        Player player = new Player(PATH + "testStrDecMultipleStringsAndVar");
+        Player player = new Player(PATH + "testStrDecMultipleStringsAndVar.ta");
         player.play();
         assertEquals(true, GameManager.strVars.containsKey("Var"));
         assertEquals("Hello all", GameManager.strVars.get("Var").getValue());

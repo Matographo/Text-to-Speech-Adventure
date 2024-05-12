@@ -26,49 +26,49 @@ public class TesterSayTest extends OpCodeTestTesterClass {
 
     @Test
     public void testSayFixString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayFixStringWithoutRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayFixStringWithoutRoom.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayMultipleFixString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleFixStringsAtOnceWithoutRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleFixStringsAtOnceWithoutRoom.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayMultipleSaysFixStrings() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleSaysFixStringsWithoutRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleSaysFixStringsWithoutRoom.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayNumVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayNumVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayNumVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayFixStringAndStrVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayFixStringAndStrVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayFixStringAndStrVar.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayNumVarAndFixString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayNumVarAndFixString");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayNumVarAndFixString.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSayStrVarAndNumVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayStrVarAndNumVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayStrVarAndNumVar.ta");
         assertEquals(true, test.start());
     }
     
@@ -79,13 +79,13 @@ public class TesterSayTest extends OpCodeTestTesterClass {
 
     @Test
     public void testSayNonExistingVar() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayNonExistingVar");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayNonExistingVar.ta");
         assertEquals(false, test.start());
     }
 
     @Test
     public void testSayFixNumber() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayFixNumber");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayFixNumber.ta");
         assertEquals(false, test.start());
     }
 

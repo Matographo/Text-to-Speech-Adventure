@@ -27,13 +27,13 @@ public class TesterSetTest extends OpCodeTestTesterClass {
 
     @Test
     public void testSetJustSet() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSetJustSet");
+        OpCodeTest test = new OpCodeTest(PATH + "testSetJustSet.ta");
         assertEquals(true, test.start());
     }
 
     @Test
     public void testSetWithRoom() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSetWithRoom");
+        OpCodeTest test = new OpCodeTest(PATH + "testSetWithRoom.ta");
         assertEquals(true, test.start());
     }
 
