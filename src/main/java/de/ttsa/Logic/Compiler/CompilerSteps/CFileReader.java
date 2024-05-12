@@ -16,7 +16,9 @@ public class CFileReader {
 
 
 
-    File data;
+    private final String COMPILED_FILE_EXTENSION = "ta";
+    private final String CODE_FILE_EXTENSION = "tac";
+    private File data;
 
 
 
@@ -64,6 +66,7 @@ public class CFileReader {
     
     
     private ArrayList<String> readFile(File file) {
+        if(!file.getAbsolutePath().endsWith("." + CODE_FILE_EXTENSION)) return new ArrayList<String>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             ArrayList<String> readed = new ArrayList<String>();
@@ -95,14 +98,5 @@ public class CFileReader {
             throw new IllegalArgumentException("Path is not valid");
         }
     }
-
-
-
-    public static void write(String string, String line) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'write'");
-    }
-    
-
     
 }

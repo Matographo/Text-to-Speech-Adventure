@@ -24,7 +24,7 @@ public class StartMenu implements Initializable {
 
     private FileChooser fileChooser = new FileChooser();
 
-    private String[] gameArgs       = new String[] {"-cp", "target/ttsa-1.0.jar", "de.ttsa.ConsoleGame.PlayerApp", ""};
+    private String[] gameArgs       = new String[] {"-cp", "target/ttsa-1.0.jar", "de.ttsa.Logic.PlayerApp", ""};
 
     private ProcessDialog game;
     private ProcessDialog sprachausgabe;
@@ -93,7 +93,12 @@ public class StartMenu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fileChooser.setInitialDirectory(new File(AppStart.settings.getStartDir()));
+        File start = new File(AppStart.settings.getStartDir());
+        if(!start.exists()) {
+            AppStart.settings.setStartDir("");
+            start = new File(AppStart.settings.getStartDir());
+        }
+        fileChooser.setInitialDirectory(start);
         textArea.setText("Here is the Game Data: \n");
     }
 

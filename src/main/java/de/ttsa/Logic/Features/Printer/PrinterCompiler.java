@@ -2,7 +2,6 @@ package de.ttsa.Logic.Features.Printer;
 
 import de.ttsa.Enums.Index;
 import de.ttsa.Enums.Seperators;
-import de.ttsa.Interfaces.CompilerLine;
 import de.ttsa.Parents.CompilerLineMethods;
 
 public class PrinterCompiler extends CompilerLineMethods {

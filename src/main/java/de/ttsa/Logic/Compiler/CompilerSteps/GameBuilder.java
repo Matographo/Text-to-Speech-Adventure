@@ -17,7 +17,9 @@ public class GameBuilder {
 
 
     ArrayList<String> gameContent;
-    String gamePath = "/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/Code/";
+    String fileSource;
+    String fileDestination;
+    final String COMPILED_FILE_EXTENSION = "ta";
 
 
 
@@ -25,8 +27,10 @@ public class GameBuilder {
 
 
 
-    public GameBuilder(ArrayList<String> gameContent) {
+    public GameBuilder(ArrayList<String> gameContent, String fileSource, String fileDestination) {
         this.gameContent = gameContent;
+        this.fileSource = fileSource;
+        this.fileDestination = fileDestination;
     }
 
 
@@ -36,45 +40,112 @@ public class GameBuilder {
 
 
     public boolean build() {
-        File gameFolder = new File(gamePath + "LittleGamee");
-        if(!gameFolder.exists()) {
-            gameFolder.mkdir();
-        } else {
-            System.out.println("Game folder already exists. You want to overwrite it? (y/n)");
-            switch (new Scanner(System.in).nextLine().toLowerCase()) {
-                case "y":
-                    gameFolder.delete();
-                    gameFolder.mkdir();
-                    break;
-                default:
-                    return false;
+
+        File destination = getDestinationPath(); // Wohin es gespeichert werden soll
+        File tmpFolder = createTmpFolder();   //Temporärer Ordner in dem die Compilierten Daten gespeichert werden
+
+        String gameName = tmpFolder.getParentFile().getName();
+
+        File gameFile = createGameFileInFolder(tmpFolder, gameName);
+
+        fillTmpGameFile(gameFile);
+
+        File game = makeZip(tmpFolder, destination, gameName);
+
+        deleteAll(tmpFolder);
+
+        return renameGame(game);
+    }
+
+
+
+    private File getDestinationPath() {
+        if(fileDestination.equals("")) {
+            File source = new File(fileSource);
+            if(source.isFile()) {
+                fileDestination = source.getParentFile().getAbsolutePath();
+            } else {
+                fileDestination = source.getAbsolutePath();
             }
         }
-        File gameFile = new File(gamePath + "LittleGamee/game.ttsa");
-        if(gameFile.exists()) {
-            gameFile.delete();
+        File destination = new File(fileDestination);
+        if(destination.isDirectory()) {
+            destination = new File(destination.getAbsolutePath());
+        } else {
+            throw new IllegalArgumentException("Destination path is not a directory.");
         }
-        try {
-            gameFile.createNewFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        // Write game content to file
+        return destination;
+    }
+
+
+    private boolean fillTmpGameFile(File gameFile) {
         try {
             FileWriter writer = new FileWriter(gameFile);
             for (String line : gameContent) {
                 writer.write(line + "\n");
             }
             writer.close();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-        File zipFile = ZipManager.zip(gameFile.getParentFile().getAbsolutePath(), gameFile.getParentFile().getParentFile().getParentFile().getAbsolutePath() + "/Games", "LittleGameee");
-        zipFile.renameTo(new File(zipFile.getParentFile().getAbsolutePath() + "/LittleGame.ttsa"));
-        return deleteAll(gameFolder);
     }
+
+
+    private File makeZip(File source, File destination, String gameName) {
+        return ZipManager.zip(source.getAbsolutePath(), destination.getAbsolutePath(), gameName);
+    }
+
+
+    private File createTmpFolder() {
+        File soruce = new File(fileSource);
+        File tmpFolder;
+        if(soruce.isFile()) {
+            tmpFolder = new File(soruce.getParentFile().getAbsolutePath() + "/tmp");
+        } else {
+            tmpFolder = new File(soruce.getAbsolutePath() + "/tmp");
+        }
+
+        if(tmpFolder.exists()) {
+            deleteAll(tmpFolder);
+        }
+        tmpFolder.mkdir();
+        tmpFolder.deleteOnExit();
+        return tmpFolder;
+    }
+
+
+    private File createGameFileInFolder(File folder, String gameName) {
+        File gameFile = new File(folder.getAbsolutePath() + "/" + gameName + "." + COMPILED_FILE_EXTENSION);
+        if(gameFile.exists()) {
+            gameFile.delete();
+        }
+        try {
+            gameFile.createNewFile();
+            return gameFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    private boolean renameGame(File game) {
+        File newGame = new File(game.getParentFile().getAbsolutePath() + "/" + game.getName().replace(".zip", "." + COMPILED_FILE_EXTENSION));
+        if(newGame.exists()) {
+            newGame.delete();
+        }
+        return game.renameTo(newGame);
+    } 
+
+
+
+
+
+
+
+
 
     private boolean deleteAll(File file) {
         if(file.isDirectory()) {

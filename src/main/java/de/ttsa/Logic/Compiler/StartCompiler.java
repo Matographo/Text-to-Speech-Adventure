@@ -21,7 +21,8 @@ public class StartCompiler {
 private ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
 private ArrayList<String> game                   = new ArrayList<String>();
 private boolean isHidden                         = false;
-private String filePath;
+private String fileSource;
+private String fileDestination;
 
 
 
@@ -29,10 +30,10 @@ private String filePath;
 
 
 
-    public StartCompiler(String path, boolean isHidden) {
-        this.isHidden = isHidden;
-        this.filePath = path;
-        
+    public StartCompiler(String sourcePath, String destinationPath, boolean isHidden) {
+        this.isHidden   = isHidden;
+        this.fileSource = sourcePath;
+        this.fileDestination = destinationPath;
     }
 
 
@@ -62,7 +63,7 @@ private String filePath;
 
 
     private boolean startReading() {
-        CFileReader reader = new CFileReader(filePath);
+        CFileReader reader = new CFileReader(fileSource);
         fileContent = reader.read();
         return fileContent != null;
     }
@@ -132,7 +133,7 @@ private String filePath;
 
 
     private boolean startBuilding() {
-        GameBuilder builder = new GameBuilder(game);
+        GameBuilder builder = new GameBuilder(game, fileSource, fileDestination);
         return builder.build();
     }
 

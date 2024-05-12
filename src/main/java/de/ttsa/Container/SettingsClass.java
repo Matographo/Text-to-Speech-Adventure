@@ -34,6 +34,9 @@ public class SettingsClass {
     }
 
     public void setStartDir(String startDir) {
+        if(startDir.isEmpty()) {
+            this.startDir = System.getProperty("user.home");
+        }
         this.startDir = startDir;
         properties.setProperty("startDir", startDir);
         try {

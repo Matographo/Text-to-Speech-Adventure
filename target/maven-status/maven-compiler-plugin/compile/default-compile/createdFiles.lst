@@ -3,6 +3,7 @@ de/ttsa/Logic/Features/GameSavingScript/GameSavingScript.class
 de/ttsa/Enums/InputChecker.class
 de/ttsa/Logic/Features/Room/Room.class
 de/ttsa/Logic/Features/Input/Input.class
+de/ttsa/Tools/ZipManager.class
 de/ttsa/Logic/Player/Functions/PlayerFunctions/Calculator$Operationen.class
 de/ttsa/Interfaces/OpCodeVarTestable.class
 de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptOpCodeSyntax.class
@@ -56,6 +57,7 @@ de/ttsa/Logic/Features/Printer/PrinterCodeSyntax.class
 de/ttsa/Logic/Features/StrInit/StrInitOpCodeSyntax.class
 de/ttsa/Logic/Features/GameExitScript/GameExitScriptOpCodeSyntax.class
 de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptCompiler.class
+de/ttsa/Tools/ProcessData.class
 de/ttsa/Logic/Features/Loop/LoopCodeBlock.class
 de/ttsa/Logic/Features/DebugInput/DebugInputOpCodeSyntax.class
 de/ttsa/Parents/StringMethods.class
@@ -65,7 +67,6 @@ de/ttsa/Enums/CodeBlockTests$1.class
 de/ttsa/Logic/Features/Printer/Printer.class
 de/ttsa/Logic/Player/PlayerLogic/GameLoader.class
 de/ttsa/Logic/Features/Printer/PrinterCompiler.class
-de/ttsa/Container/Settings.class
 de/ttsa/Interfaces/Printablable.class
 de/ttsa/Enums/CodeBlockTests.class
 de/ttsa/Frontend/GUI/ProcessDialog.class
@@ -177,6 +178,7 @@ de/ttsa/Container/OpCodeVar.class
 de/ttsa/Enums/Seperators.class
 de/ttsa/Logic/Features/GameSavingScript/GameSavingScriptOpCodeSyntax.class
 de/ttsa/Logic/Features/Set/SetCodeBlock.class
+de/ttsa/Container/SettingsClass.class
 de/ttsa/Logic/Features/Input/InputCompiler.class
 de/ttsa/Interfaces/CodeSyntaxTestable.class
 de/ttsa/Logic/Features/NumDec/NumDecOpCodeVar.class

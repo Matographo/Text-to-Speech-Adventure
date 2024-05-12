@@ -11,7 +11,7 @@ public class CompilerApp
 
 
 
-    private static final String COMPILED_FILE_EXTENSION = "ttsa";
+    private static final String COMPILED_FILE_EXTENSION = "ta";
     private static final String COMPILER_COMMAND = "ttsac";
     private static final String COMPILER_VERSION = "0.0.1";
 
@@ -46,10 +46,10 @@ public class CompilerApp
         else if (help) help();
         else if (version) version();
         else if (compile || hideExecute) {
-            if(hideExecute) {
-                compile(args[1], true);
+            if(args.length == 2) {
+                compile(args[1], "", hideExecute);
             } else {
-                compile(args[1], false);
+                compile(args[1], args[2], hideExecute);
             }
         } else if (test) test(args[1]);
         else {
@@ -99,9 +99,9 @@ public class CompilerApp
      * @param file path to the file
      * @param isHidden hide the Compilation output
      */
-    private void compile(String file, boolean isHidden) {
+    private void compile(String fileSource, String fileDestination, boolean isHidden) {
         try {
-            StartCompiler compiler = new StartCompiler(file, isHidden);
+            StartCompiler compiler = new StartCompiler(fileSource, fileDestination, isHidden);
 
 
             compiler.compile();
