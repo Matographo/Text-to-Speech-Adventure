@@ -16,6 +16,7 @@ import de.ttsa.Interfaces.CodeVarTestable;
 import de.ttsa.Interfaces.OpCodeBlockTestable;
 import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
 import de.ttsa.Interfaces.OpCodeVarTestable;
+import de.ttsa.Logic.Features.Set.SetCodeBlock;
 import de.ttsa.Logic.Features.Set.SetCodeSyntax;
 import de.ttsa.Logic.Features.Set.SetCodeVar;
 
@@ -150,11 +151,17 @@ public class CodeTester {
         boolean testResult = true;
         String command     = "";
         String args        = "";
+        int setLength      = 0;
 
         CodeBlockTestable testBlock;
 
 
         for(int i = 0; i < content.size(); i++) {
+            if(setLength > 0) {
+                setLength--;
+                continue;
+            }
+
             command = content.get(i).split(CompilerSyntax.COMMAND.toString())[0];
             args    = content.get(i).substring(content.get(i).indexOf(":") +1).strip();
             
@@ -164,6 +171,12 @@ public class CodeTester {
             }
 
             testBlock   = codeBlockTests.getBlockTest(command);
+
+            if(testBlock instanceof SetCodeBlock) {
+                setLength = testBlock.testCode(args, content.subList(i, content.size()));
+                testResult &= setLength >= 0;
+                continue;
+            }
 
             testResult &= testBlock.testCode(args, content.subList(i, content.size())) >= 0;
         }

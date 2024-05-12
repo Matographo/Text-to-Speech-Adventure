@@ -5,6 +5,7 @@ import de.ttsa.Logic.Features.Action.ActionCodeBlock;
 import de.ttsa.Logic.Features.If.IfCodeBlock;
 import de.ttsa.Logic.Features.Loop.LoopCodeBlock;
 import de.ttsa.Logic.Features.Room.RoomCodeBlock;
+import de.ttsa.Logic.Features.Set.SetCodeBlock;
 import de.ttsa.Logic.Player.Datatypes.AlwaysTrueCodeTest;
 
 public enum CodeBlockTests {
@@ -19,6 +20,7 @@ public enum CodeBlockTests {
     private final IfCodeBlock ifCode;
     private final LoopCodeBlock loop;
     private final RoomCodeBlock room;
+    private final SetCodeBlock set;
 
     CodeBlockTests() {
         alwaysTrue = new AlwaysTrueCodeTest();
@@ -26,6 +28,7 @@ public enum CodeBlockTests {
         ifCode   = new IfCodeBlock();
         loop     = new LoopCodeBlock();
         room     = new RoomCodeBlock();
+        set      = new SetCodeBlock();
     }
 
     public CodeBlockTestable getBlockTest(String mode) {
@@ -35,6 +38,7 @@ public enum CodeBlockTests {
             case ACTION -> action;
             case IF     -> ifCode;
             case LOOP   -> loop;
+            case SET    -> set;
             default     -> alwaysTrue;
         };
     }

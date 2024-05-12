@@ -2,14 +2,35 @@ package de.ttsa.Logic.Features.Action;
 
 import java.util.List;
 
+import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Interfaces.CodeBlockTestable;
 
 public class ActionCodeBlock implements CodeBlockTestable {
 
     @Override
     public int testCode(String args, List<String> lines) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'testCode'");
+        return getBlockContentSize(lines, 0);
+    }
+
+    private int getBlockContentSize(List<String> lines, int blockStart) {
+        int size = -1;
+        int blockCount = 0;
+        for (int i = blockStart; i < lines.size(); i++) {
+            if(lines.get(i).strip().endsWith(CompilerSyntax.BLOCK_START.toString())) {
+                blockCount++;
+            }
+            if (lines.get(i).strip().startsWith(CompilerSyntax.BLOCK_END.toString())) {
+                size--;
+                blockCount--;
+            }
+            if (blockCount == 0) {
+                size++;
+                lines.remove(i);
+                break;
+            }
+            size++;
+        }
+        return size;
     }
     
 }
