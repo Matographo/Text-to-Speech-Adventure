@@ -1,0 +1,10 @@
+Num: cookies = 0
+Num: cookiesProKlick = 1
+
+Room START {
+    Loop: true {
+        Input:
+        NumDec: cookies = cookies + cookiesProKlick
+        Say: Du hast 'cookies' Cookies
+    }
+}

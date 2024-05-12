@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import de.ttsa.AppStart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class StartMenue implements Initializable {
+public class StartMenu implements Initializable {
     
 
 
@@ -63,6 +63,7 @@ public class StartMenue implements Initializable {
     void loadGame(ActionEvent event) {
         try {
             File file = fileChooser.showOpenDialog(new Stage());
+            AppStart.settings.setStartDir(file.getParentFile().getAbsolutePath());
 
             textField.setOnKeyPressed(e -> {
                 if(e.getCode().toString().equals("ENTER")) {
@@ -92,7 +93,7 @@ public class StartMenue implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fileChooser.setInitialDirectory(new java.io.File("."));
+        fileChooser.setInitialDirectory(new File(AppStart.settings.getStartDir()));
         textArea.setText("Here is the Game Data: \n");
     }
 
