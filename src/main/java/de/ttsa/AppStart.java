@@ -17,6 +17,7 @@ public class AppStart extends Application {
     public static final String settingsPath = "src/main/resources/Data/data.settings";
     private static Scene scene;
     public static SettingsClass settings;
+    private static Stage stage;
 
     // ------------------------------------------------ Main
     // --------------------------------------------------- //
@@ -30,8 +31,9 @@ public class AppStart extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        this.stage = stage;
         settings = new SettingsClass(settingsPath);
-        scene = new Scene(loadFXML("StartMenu"), 640, 480);
+        scene = new Scene(loadFXML("StartMenu"), 640, 600);
         stage.setScene(scene);
         stage.show();
     }

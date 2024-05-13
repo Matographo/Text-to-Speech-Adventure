@@ -10,7 +10,6 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Interfaces/Scriptable.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/ActionCall/ActionCallCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/CompilerSteps/GameBuilder.java
-/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/GUI/ProcessData.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Interfaces/OpCodeVarTestable.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Container/InputContainerPlayer/InorderChecker.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/StrDec/StrDecCompiler.java
@@ -43,7 +42,6 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/RoomJumper/RoomJumperCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Enums/OpCodeBlockTests.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/GameSavingScript/GameSavingScript.java
-/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/GUI/ProcessDialog.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/LoopBreaker/LoopBreakerOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/StrInit/StrInitOpCodeVar.java
@@ -54,6 +52,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/GameSavingScript/GameSavingScriptCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Tools/SimpleLog.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/NumDec/NumDecCodeVar.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Tools/ProcessDialog.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Tools/ZipManager.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/RoomJumper/RoomJumperCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Container/InputContainerCompiler/InputOrder.java
@@ -161,6 +160,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Interfaces/OpCodeSyntaxTestable.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Player/Datatypes/AlwaysFalseOpCodeTest.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Loop/Loop.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/Functions/ProjectBuilder.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/NumDec/NumDecOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/If/IfCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/CompilerSteps/OpCodeTest.java
@@ -173,6 +173,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Container/OpCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Input/InputOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Set/SetCodeVar.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/GUI/CreateMode.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Container/Range.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/ActionCall/ActionCallOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/DebugInput/DebugInput.java

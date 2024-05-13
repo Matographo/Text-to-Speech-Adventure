@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.ttsa.AppStart;
+import de.ttsa.Tools.ProcessDialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,6 +47,15 @@ public class StartMenu implements Initializable {
 // ------------------------------------------- FXML Methods ----------------------------------------------- //
 
 
+    @FXML
+    void startCreateMode() {
+        try {
+            AppStart.setRoot("CreateMode");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void makeInput(ActionEvent event) {
@@ -62,6 +72,7 @@ public class StartMenu implements Initializable {
     @FXML
     void loadGame(ActionEvent event) {
         try {
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Adventure", "*.ta"));
             File file = fileChooser.showOpenDialog(new Stage());
             AppStart.settings.setStartDir(file.getParentFile().getAbsolutePath());
 
@@ -109,7 +120,7 @@ public class StartMenu implements Initializable {
 
 
     private boolean isPlayable(File file) {
-        return file.exists() && file.getAbsolutePath().substring(file.getAbsolutePath().length()-5).equals(".ttsa");
+        return file.exists() && file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf(".")+1).equals("ta");
 
     }
 

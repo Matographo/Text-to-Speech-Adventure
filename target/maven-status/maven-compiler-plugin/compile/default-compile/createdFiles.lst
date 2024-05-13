@@ -52,6 +52,7 @@ de/ttsa/Logic/Features/StrDec/StrDecCodeVar.class
 de/ttsa/Logic/Features/Script/Script.class
 de/ttsa/Logic/Features/Printer/PrinterOpCodeVar.class
 de/ttsa/Logic/Player/PlayerLogic/GameScriptBuilder.class
+de/ttsa/Tools/ProcessDialog.class
 de/ttsa/Logic/Features/LoopBreaker/LoopBreaker.class
 de/ttsa/Logic/Features/Printer/PrinterCodeSyntax.class
 de/ttsa/Logic/Features/StrInit/StrInitOpCodeSyntax.class
@@ -62,6 +63,7 @@ de/ttsa/Logic/Features/Loop/LoopCodeBlock.class
 de/ttsa/Logic/Features/DebugInput/DebugInputOpCodeSyntax.class
 de/ttsa/Parents/StringMethods.class
 de/ttsa/Logic/Features/Action/ActionOpCodeSyntax.class
+de/ttsa/Frontend/GUI/CreateMode$1.class
 de/ttsa/Logic/Player/Functions/CompilerFunctions/OrderCompiler.class
 de/ttsa/Enums/CodeBlockTests$1.class
 de/ttsa/Logic/Features/Printer/Printer.class
@@ -69,7 +71,6 @@ de/ttsa/Logic/Player/PlayerLogic/GameLoader.class
 de/ttsa/Logic/Features/Printer/PrinterCompiler.class
 de/ttsa/Interfaces/Printablable.class
 de/ttsa/Enums/CodeBlockTests.class
-de/ttsa/Frontend/GUI/ProcessDialog.class
 de/ttsa/Parents/CompilerStructMethods.class
 de/ttsa/Logic/Features/StrInit/StrInitCodeSyntax.class
 de/ttsa/Logic/Features/Set/Set.class
@@ -120,7 +121,6 @@ de/ttsa/Logic/Features/Action/ActionCodeBlock.class
 de/ttsa/Logic/Features/ActionCall/ActionCallCodeSyntax.class
 de/ttsa/Enums/CodeVarTests$1.class
 de/ttsa/Interfaces/CodeBlockTestable.class
-de/ttsa/Frontend/GUI/ProcessData.class
 de/ttsa/Logic/Features/ActionCall/ActionCallCodeVar.class
 de/ttsa/Interfaces/CodeVarTestable.class
 de/ttsa/Tools/SimpleLog$2.class
@@ -173,6 +173,7 @@ de/ttsa/Frontend/GUI/StartMenu.class
 de/ttsa/Logic/Features/StrInit/StrInit.class
 de/ttsa/Logic/Features/If/IfCompiler.class
 de/ttsa/Logic/PlayerApp.class
+de/ttsa/Logic/Compiler/Functions/ProjectBuilder.class
 de/ttsa/Enums/OpCodeVarTests$1.class
 de/ttsa/Container/OpCodeVar.class
 de/ttsa/Enums/Seperators.class
@@ -190,6 +191,7 @@ de/ttsa/Logic/Features/Loop/LoopOpCodeBlock.class
 de/ttsa/Logic/Features/NumInit/NumInitCodeVar.class
 de/ttsa/Interfaces/OpCodeSyntaxTestable.class
 de/ttsa/Logic/Player/PlayerLogic/GameBuilder.class
+de/ttsa/Frontend/GUI/CreateMode.class
 de/ttsa/Logic/Features/GameSavingScript/GameSavingScriptCompiler.class
 de/ttsa/Logic/Features/StrInit/StrInitCompiler.class
 de/ttsa/Logic/Features/ActionCall/ActionCall.class

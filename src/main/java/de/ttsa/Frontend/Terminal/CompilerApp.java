@@ -2,6 +2,7 @@ package de.ttsa.Frontend.Terminal;
 
 import de.ttsa.Logic.Compiler.StartCompiler;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
+import de.ttsa.Logic.Compiler.Functions.ProjectBuilder;
 
 
 public class CompilerApp 
@@ -22,6 +23,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
+        //args = new String[] {"-np", "/home/leodora", "LittleGame"};
         new CompilerApp().start(args);
     }
     
@@ -37,12 +39,14 @@ public class CompilerApp
         boolean help        = length == 1 && (args[0].equals("-help") || args[0].equals("-h"));
         boolean version     = length == 1 && (args[0].equals("-version") || args[0].equals("-v"));
         boolean compile     = length == 2 && (args[0].equals("-compile") || args[0].equals("-c"));
+        boolean newProject  = (length == 2 || length == 3) && (args[0].equals("-new") || args[0].equals("-n") || args[0].equals("-np"));
         boolean test        = length == 2 && (args[1].endsWith("." + COMPILED_FILE_EXTENSION) && ((args[0].equals("test") || args[0].equals("-t"))));
         boolean hideExecute = length == 2 && (args[0].equals("-x") && !args[1].endsWith("." + COMPILED_FILE_EXTENSION));
 
 
         if(noArgs) noArgs();
         else if (help) help();
+        else if (newProject) createProject(args);
         else if (version) version();
         else if (compile || hideExecute) {
             if(args.length == 2) {
@@ -79,11 +83,12 @@ public class CompilerApp
      */
     public static String getHelp() {
         return "Options:\n" +                
-               "  -h, -help     Print help message.\n" +
-               "  -v, -version  Print the version.\n" +
-               "  -c, -compile  Compile the given file.\n" +
-               "  -t, -test     Test the given file.\n" +
-               "  -x            Hide the execution of the given file.\n";
+               "  -h, -help       Print help message.\n" +
+               "  -v, -version    Print the version.\n" +
+               "  -c, -compile    Compile the given file.\n" +
+               "  -n, -new, -np   Create a new project.\n" +
+               "  -t, -test       Test the given file.\n" +
+               "  -x              Hide the execution of the given file.\n";
     }
 
     /**
@@ -126,6 +131,36 @@ public class CompilerApp
                 System.out.println("Test failed.");
             }
             
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Create a new project.
+     * @param args the arguments
+     */
+    private void createProject(String[] args) {
+        try {
+            String projectName;
+            String projectPath;
+
+            if(args.length == 2) {
+                projectName = "";
+                projectPath = args[1];
+            } else {
+                if(args[1].contains("/") || args[1].contains("\\")) {
+                    projectName = args[2];
+                    projectPath = args[1];
+                } else {
+                    projectName = args[1];
+                    projectPath = args[2];
+                }
+            }
+
+            projectPath = projectPath + "/" + projectName;
+
+            new ProjectBuilder(projectPath).build();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -4,12 +4,19 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ttsa.Frontend.GUI.StartMenu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="100.0" prefHeight="570.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ttsa.Frontend.GUI.StartMenu">
    <children>
-      <Button layoutX="22.0" layoutY="28.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="52.0" prefWidth="133.0" text="Load Game" />
-      <TextArea fx:id="textArea" layoutX="163.0" layoutY="14.0" prefHeight="326.0" prefWidth="423.0" />
-      <TextField fx:id="textField" layoutX="163.0" layoutY="355.0" prefHeight="24.0" prefWidth="423.0" />
-      <Button layoutX="58.0" layoutY="355.0" mnemonicParsing="false" onAction="#makeInput" text="Send" />
+      <TextArea fx:id="textArea" editable="false" layoutX="83.0" layoutY="28.0" prefHeight="483.0" prefWidth="426.0" wrapText="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="28.0" />
+      <TextField fx:id="textField" layoutX="152.0" layoutY="525.0" prefHeight="24.0" prefWidth="355.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="33.0" />
+      <Button layoutX="83.0" layoutY="525.0" mnemonicParsing="false" onAction="#makeInput" text="Send" AnchorPane.bottomAnchor="21.0" />
+      <Pane layoutY="28.0" prefHeight="541.0" prefWidth="65.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="28.0" />
+      <Pane prefHeight="570.0" prefWidth="65.0" style="-fx-background-color: #808080;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="2.0" layoutY="30.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="62.0" prefWidth="62.0" text="Load" />
+            <Button layoutX="2.0" layoutY="109.0" mnemonicParsing="false" onAction="#startCreateMode" prefHeight="62.0" prefWidth="62.0" text="Create" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
