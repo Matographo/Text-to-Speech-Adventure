@@ -17,9 +17,9 @@ public class PropertySaver {
         propertiesPath = file;
     }
 
-    public boolean  save() {
-        if(properie.getProperty("releaseDate") == null) {
-            properie.setProperty("releaseDate", getCurrentDate());
+    public boolean save() {
+        if(properie.getProperty("gameReleaseDate") == null || properie.getProperty("gameReleaseDate").isBlank()) {
+            properie.setProperty("gameReleaseDate", getCurrentDate());
         }
         fileConfig();
         try {

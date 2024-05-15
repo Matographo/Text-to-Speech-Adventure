@@ -98,6 +98,7 @@ de/ttsa/Logic/Features/RoomJumper/RoomJumperCompiler.class
 de/ttsa/Logic/Features/DebugInput/DebugInputCompiler.class
 de/ttsa/Logic/Features/GameExitScript/GameExitScriptCodeSyntax.class
 de/ttsa/Logic/Features/Printer/PrinterOpCodeSyntax.class
+de/ttsa/Logic/Compiler/Functions/ProjectObject.class
 de/ttsa/Logic/Features/If/IfCompiler$1.class
 de/ttsa/Interfaces/OpCodeBlockTestable.class
 de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptCodeSyntax.class
@@ -160,6 +161,7 @@ de/ttsa/Logic/Player/Datatypes/AlwaysFalseOpCodeTest.class
 de/ttsa/Logic/Compiler/Functions/Properties/GameProperty.class
 de/ttsa/Container/InputContainerCompiler/InputInorder.class
 de/ttsa/Logic/Features/LoopBreaker/LoopBreakerCodeSyntax.class
+de/ttsa/Logic/Compiler/Functions/ProjectFolderBuilder$1.class
 de/ttsa/Logic/Features/Action/ActionCodeSyntax.class
 de/ttsa/Container/Couple.class
 de/ttsa/Logic/Features/Input/InputOpCodeSyntax.class

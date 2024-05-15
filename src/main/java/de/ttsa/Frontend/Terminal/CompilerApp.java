@@ -23,7 +23,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        //args = new String[] {"-np", "/home/leodora", "LittleGame"};
+        args = new String[] {"-np", "/home/leodora", "LittleGame"};
         new CompilerApp().start(args);
     }
     

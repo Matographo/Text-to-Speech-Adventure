@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import de.ttsa.Logic.Compiler.Functions.ProjectObject;
 import de.ttsa.Tools.ZipManager;
 
 public class GameBuilder {
@@ -16,10 +17,8 @@ public class GameBuilder {
 
 
 
-    ArrayList<String> gameContent;
-    String fileSource;
-    String fileDestination;
     final String COMPILED_FILE_EXTENSION = "ta";
+    ProjectObject projectObject;
 
 
 
@@ -28,9 +27,9 @@ public class GameBuilder {
 
 
     public GameBuilder(ArrayList<String> gameContent, String fileSource, String fileDestination) {
-        this.gameContent = gameContent;
-        this.fileSource = fileSource;
-        this.fileDestination = fileDestination;
+        projectObject = new ProjectObject();
+        projectObject.setGameContent(gameContent);
+        projectObject.setPaths(new File(fileSource), new File(fileDestination));
     }
 
 
@@ -41,16 +40,15 @@ public class GameBuilder {
 
     public boolean build() {
 
-        File destination = getDestinationPath(); // Wohin es gespeichert werden soll
         File tmpFolder = createTmpFolder();   //Temporärer Ordner in dem die Compilierten Daten gespeichert werden
 
-        String gameName = tmpFolder.getParentFile().getName();
+        projectObject.setProjectName(tmpFolder.getParentFile().getName());
 
-        File gameFile = createGameFileInFolder(tmpFolder, gameName);
+        File gameFile = createGameFileInFolder(tmpFolder, projectObject.getProjectName());
 
         fillTmpGameFile(gameFile);
 
-        File game = makeZip(tmpFolder, destination, gameName);
+        File game = makeZip(tmpFolder, projectObject.getDestinationPath(), projectObject.getProjectName());
 
         deleteAll(tmpFolder);
 
@@ -58,30 +56,10 @@ public class GameBuilder {
     }
 
 
-
-    private File getDestinationPath() {
-        if(fileDestination.equals("")) {
-            File source = new File(fileSource);
-            if(source.isFile()) {
-                fileDestination = source.getParentFile().getAbsolutePath();
-            } else {
-                fileDestination = source.getAbsolutePath();
-            }
-        }
-        File destination = new File(fileDestination);
-        if(destination.isDirectory()) {
-            destination = new File(destination.getAbsolutePath());
-        } else {
-            throw new IllegalArgumentException("Destination path is not a directory.");
-        }
-        return destination;
-    }
-
-
     private boolean fillTmpGameFile(File gameFile) {
         try {
             FileWriter writer = new FileWriter(gameFile);
-            for (String line : gameContent) {
+            for (String line : projectObject.getGameContent()) {
                 writer.write(line + "\n");
             }
             writer.close();
@@ -99,12 +77,11 @@ public class GameBuilder {
 
 
     private File createTmpFolder() {
-        File soruce = new File(fileSource);
         File tmpFolder;
-        if(soruce.isFile()) {
-            tmpFolder = new File(soruce.getParentFile().getAbsolutePath() + "/tmp");
+        if(projectObject.getSourcePath().isFile()) {
+            tmpFolder = new File(projectObject.getSourcePath().getParentFile().getAbsolutePath() + "/tmp");
         } else {
-            tmpFolder = new File(soruce.getAbsolutePath() + "/tmp");
+            tmpFolder = new File(projectObject.getSourcePath().getAbsolutePath() + "/tmp");
         }
 
         if(tmpFolder.exists()) {
@@ -138,11 +115,6 @@ public class GameBuilder {
         }
         return game.renameTo(newGame);
     } 
-
-
-
-
-
 
 
 
