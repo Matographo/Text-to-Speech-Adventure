@@ -161,7 +161,6 @@ de/ttsa/Logic/Player/Datatypes/AlwaysFalseOpCodeTest.class
 de/ttsa/Logic/Compiler/Functions/Properties/GameProperty.class
 de/ttsa/Container/InputContainerCompiler/InputInorder.class
 de/ttsa/Logic/Features/LoopBreaker/LoopBreakerCodeSyntax.class
-de/ttsa/Logic/Compiler/Functions/ProjectFolderBuilder$1.class
 de/ttsa/Logic/Features/Action/ActionCodeSyntax.class
 de/ttsa/Container/Couple.class
 de/ttsa/Logic/Features/Input/InputOpCodeSyntax.class

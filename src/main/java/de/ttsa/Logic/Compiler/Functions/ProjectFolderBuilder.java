@@ -3,17 +3,16 @@ package de.ttsa.Logic.Compiler.Functions;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ProjectFolderBuilder {
     
@@ -79,38 +78,64 @@ public class ProjectFolderBuilder {
         
         File libActionFolder = createFolder(libFolder, "action");
         File libSetFolder = createFolder(libFolder, "set");
+        File libVariablesFolder = createFolder(libFolder, "variables");
 
-        copyLibFiles(libActionFolder, "action");
-        copyLibFiles(libSetFolder, "set");
+        Map<String, List<String>> actions   = copyLibFiles("action");
+        Map<String, List<String>> set       = copyLibFiles("set");
+        Map<String, List<String>> variables = copyLibFiles("variables");
+
+        createFilesFromMap(libActionFolder.getPath(), actions);
+        createFilesFromMap(libSetFolder.getPath(), set);
+        createFilesFromMap(libVariablesFolder.getPath(), variables);
     }
 
-    private void copyLibFiles(File libFolder, String libName) {
+    private Map<String, List<String>> copyLibFiles(String libName) {
+        Map<String, List<String>> fileContentsMap = new HashMap<>();
+
         try {
             URI uri = getClass().getResource("/ProjectTemplate/lib/" + libName + "/").toURI();
             Path sourcePath;
             if (uri.getScheme().equals("jar")) {
                 try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap())) {
                     sourcePath = fileSystem.getPath("/ProjectTemplate/lib/" + libName + "/");
-                    copyDirectory(sourcePath, libFolder.toPath());
+                    fileContentsMap = readFilesIntoMap(sourcePath);
                 }
             } else {
                 sourcePath = Paths.get(uri);
-                copyDirectory(sourcePath, libFolder.toPath());
+                fileContentsMap = readFilesIntoMap(sourcePath);
             }
-        } catch (IOException | URISyntaxException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return fileContentsMap;
     }
 
-    private void copyDirectory(Path source, Path target) throws IOException {
-        Files.walk(source).forEach(sourcePath -> {
-            try {
-                Path targetPath = target.resolve(source.relativize(sourcePath));
-                Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException e) {
-                e.printStackTrace();
+    private Map<String, List<String>> readFilesIntoMap(Path directory) throws IOException {
+        Map<String, List<String>> fileContentsMap = new HashMap<>();
+
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(directory)) {
+            for (Path path : directoryStream) {
+                if (!Files.isDirectory(path)) {
+                    String fileName = path.getFileName().toString();
+                    List<String> fileContents = Files.readAllLines(path);
+                    fileContentsMap.put(fileName, fileContents);
+                }
             }
-        });
+        }
+
+        return fileContentsMap;
+    }
+
+    public void createFilesFromMap(String directoryPath, Map<String, List<String>> fileContentsMap) {
+        try {
+            for (Map.Entry<String, List<String>> entry : fileContentsMap.entrySet()) {
+                Path filePath = Paths.get(directoryPath, entry.getKey());
+                Files.write(filePath, entry.getValue());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -120,11 +145,11 @@ public class ProjectFolderBuilder {
 
 
 
-private File createFolder(File parentFolder, String folderName) {
-    File folder = new File(parentFolder, folderName);
-    folder.mkdir();
-    return folder;
-}
+    private File createFolder(File parentFolder, String folderName) {
+        File folder = new File(parentFolder, folderName);
+        folder.mkdir();
+        return folder;
+    }
 
 
 }
