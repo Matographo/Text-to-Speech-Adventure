@@ -2,6 +2,8 @@ package de.ttsa.Logic.Compiler.Functions;
 
 import java.io.File;
 
+import de.ttsa.Logic.Compiler.Functions.Properties.GameProperty;
+
 public class ProjectBuilder {
     
     private String path;
@@ -13,72 +15,27 @@ public class ProjectBuilder {
 
     public void build() {
         File projectFolder = new File(path);
-        if(projectFolder.exists()) {
-            throw new RuntimeException("Project already exists");
-        }
-        if(!projectFolder.getParentFile().exists()) {
-            throw new RuntimeException("Path does not exist");
-        }
+        testValidPath(projectFolder);
 
+        new ProjectFolderBuilder(projectFolder).buildProjectFolderTree();
+        new GameProperty(projectFolder).createDefault().setGameTitle(projectFolder.getName()).save();
 
-        crateProjectFolder(projectFolder);
-        createResourceFolder(projectFolder);
-        createSourceFolder(projectFolder);
-        createLibFolder(projectFolder);
         createGameFile(projectFolder);
     }
 
 
-
-// ------------------------------ Project Folder ------------------------------ //
-
-
-
-    private void crateProjectFolder(File projectFolder) {
-        projectFolder.mkdir();
+    private void testValidPath(File path) {
+        if(path.exists()) {
+            throw new RuntimeException("Project already exists");
+        }
+        if(!path.getParentFile().exists()) {
+            throw new RuntimeException("Path does not exist");
+        }
     }
 
-
-
-// ------------------------------ Resource Folder ------------------------------ //
-
-
-
-    private void createResourceFolder(File projectFolder) {
-        File assetFolder = createFolder(projectFolder, "assets");
-
-        File imageFolder = createFolder(assetFolder, "image");
-        File soundFolder = createFolder(assetFolder, "sound");
-        File musicFolder = createFolder(assetFolder, "music");
-    }
-
-
-// ------------------------------ Source Folder ------------------------------ //
-
-
-
-    private void createSourceFolder(File projectFolder) {
-        File sourceFolder = createFolder(projectFolder, "src");
-
-        File roomFolder = createFolder(sourceFolder, "rooms");
-        File actionFolder = createFolder(sourceFolder, "actions");
-        File subScriptFolder = createFolder(sourceFolder, "subScripts");
-        File setFolder = createFolder(sourceFolder, "sets");
-    }
-
-
-
-// ------------------------------ Lib Folder ------------------------------ //
-
-
-
-    private void createLibFolder(File projectFolder) {
-        File libFolder = createFolder(projectFolder, "lib");
-    }
 
 
 // ------------------------------ Game File ------------------------------ //
-
 
 
     private void createGameFile(File projectFolder) {
@@ -89,17 +46,5 @@ public class ProjectBuilder {
             throw new RuntimeException("there was an error creating the game file");
         }
     }
-
-
-// ------------------------------ Help Methods ------------------------------ //
-
-
-    private File createFolder(File parentFolder, String folderName) {
-        File folder = new File(parentFolder, folderName);
-        folder.mkdir();
-        return folder;
-    }
-
-
 
 }

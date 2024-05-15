@@ -19,10 +19,11 @@ de/ttsa/Logic/Features/Loop/LoopCodeSyntax.class
 de/ttsa/Logic/Player/Datatypes/AlwaysTrueOpCodeTest.class
 de/ttsa/Logic/Features/Room/RoomOpCodeSyntax.class
 de/ttsa/Container/InputContainerCompiler/InputVar.class
+de/ttsa/Logic/Compiler/CompilerSteps/OpCodeTest.class
 de/ttsa/Logic/Features/Loop/LoopCompiler$1.class
 de/ttsa/Logic/Features/Loop/LoopCompiler.class
-de/ttsa/Logic/Compiler/CompilerSteps/OpCodeTest.class
 de/ttsa/Logic/Features/Room/RoomCompiler.class
+de/ttsa/Logic/Compiler/Functions/Properties/PropertySaver.class
 de/ttsa/Container/InputContainerCompiler/InputOrder.class
 de/ttsa/Logic/Features/NumInit/NumInitOpCodeSyntax.class
 de/ttsa/Logic/Features/DebugInput/DebugInputOpCodeVar.class
@@ -44,8 +45,8 @@ de/ttsa/Logic/Features/StrDec/StrDecOpCodeVar.class
 de/ttsa/Logic/Features/Room/RoomOpCodeVar.class
 de/ttsa/Logic/Player/Datatypes/AlwaysTrueCodeTest.class
 de/ttsa/Logic/Features/Printer/PrinterCodeVar.class
-de/ttsa/Logic/Features/RoomJumper/RoomJumperCodeSyntax.class
 de/ttsa/Logic/Compiler/CompilerSteps/GameBuilder.class
+de/ttsa/Logic/Features/RoomJumper/RoomJumperCodeSyntax.class
 de/ttsa/Logic/Player/PlayerLogic/GameManager.class
 de/ttsa/Logic/Features/Set/SetCodeVar.class
 de/ttsa/Logic/Features/StrDec/StrDecCodeVar.class
@@ -85,6 +86,7 @@ de/ttsa/Logic/Compiler/CompilerSteps/CFileReader.class
 de/ttsa/Logic/Features/Loop/Loop.class
 de/ttsa/Logic/Features/ActionCall/ActionCallOpCodeSyntax.class
 de/ttsa/Logic/Features/Set/SetCodeSyntax.class
+de/ttsa/Logic/Compiler/Functions/ProjectFolderBuilder.class
 de/ttsa/Logic/Features/NumInit/NumInitCompiler.class
 de/ttsa/Logic/Features/NumInit/NumInitOpCodeVar.class
 de/ttsa/Enums/CodeVarTests.class
@@ -141,6 +143,7 @@ de/ttsa/Logic/Features/StrInit/StrInitCodeVar.class
 de/ttsa/Enums/CompilerTests$1.class
 de/ttsa/Logic/Player/Datatypes/AlwaysFalseCodeTest.class
 de/ttsa/Interfaces/CompilerLine.class
+de/ttsa/Logic/Compiler/Functions/Properties/PropertyLoader.class
 de/ttsa/Logic/Features/Action/ActionCodeVar.class
 de/ttsa/Logic/Features/If/IfOpCodeVar$1.class
 de/ttsa/Frontend/Terminal/CompilerApp.class
@@ -154,6 +157,7 @@ de/ttsa/Logic/Compiler/CompilerSteps/Compiler.class
 de/ttsa/Logic/Features/RoomJumper/RoomJumperOpCodeSyntax.class
 de/ttsa/Logic/Player/Datatypes/STRING.class
 de/ttsa/Logic/Player/Datatypes/AlwaysFalseOpCodeTest.class
+de/ttsa/Logic/Compiler/Functions/Properties/GameProperty.class
 de/ttsa/Container/InputContainerCompiler/InputInorder.class
 de/ttsa/Logic/Features/LoopBreaker/LoopBreakerCodeSyntax.class
 de/ttsa/Logic/Features/Action/ActionCodeSyntax.class

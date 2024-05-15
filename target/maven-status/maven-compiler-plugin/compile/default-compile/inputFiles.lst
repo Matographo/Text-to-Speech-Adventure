@@ -86,6 +86,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Printer/PrinterOpCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Loop/LoopCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/StrDec/StrDecCodeSyntax.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/Functions/Properties/PropertyLoader.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/StartCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Loop/LoopCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Set/SetCodeSyntax.java
@@ -101,10 +102,13 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Container/Couple.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/NumDec/NumDecCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Parents/CompilerStructMethods.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/Functions/Properties/PropertySaver.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Room/RoomOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Enums/CompilerSyntax.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/Functions/Properties/GameProperty.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/If/ElseCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Set/SetOpCodeSyntax.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/Functions/ProjectFolderBuilder.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Enums/Index.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Interfaces/CodeSyntaxTestable.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Player/Datatypes/AlwaysTrueCodeTest.java

@@ -1,0 +1,21 @@
+# Compiler
+
+compilerName=Text Adventure Maker
+compilerVersion=0.0.1
+compilerPublisher=Leonard Ramminger
+
+
+# Meta data Game
+
+gameTitle=Mein kleines Spiel
+gameDescription=Ein spannendes Textabenteuer
+gameAuthor=Leonard Ramminger
+gameReleaseDate=2024-05-15
+gameGenre=Adventure,Horror
+gameLanguage=de
+
+
+# Player data
+
+playerMusic=false
+playerImage=false
