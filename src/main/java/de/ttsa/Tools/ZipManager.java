@@ -17,8 +17,6 @@ import java.util.zip.ZipOutputStream;
 public class ZipManager {
 
 
-    // TODO: Schreiben einer Methode mit der man daten aus Zip liest ohne sie zu entpacken
-
     public static List<String> readFromZip(String zipFilePath, String entryPath) throws IOException {
         try (FileInputStream fis = new FileInputStream(zipFilePath);
              ZipInputStream zis = new ZipInputStream(fis, StandardCharsets.UTF_8)) {
@@ -107,7 +105,7 @@ public class ZipManager {
                 addFilesToZip(file.getAbsolutePath(), sourceFolder, zos);
             } else {
                 // Datei zum Zip-Archiv hinzufügen
-                String relativePath = file.getAbsolutePath().substring(sourceFolder.length() + 1);
+                String relativePath = file.getAbsolutePath();
                 ZipEntry zipEntry = new ZipEntry(relativePath);
                 zos.putNextEntry(zipEntry);
 

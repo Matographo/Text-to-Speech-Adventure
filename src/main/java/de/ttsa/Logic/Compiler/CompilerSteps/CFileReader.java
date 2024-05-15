@@ -53,6 +53,7 @@ public class CFileReader {
             File[] files = folder.listFiles();
             for(File file : files) {
                 if(isFile(file)) {
+                    if(!file.getName().endsWith("." + CODE_FILE_EXTENSION)) continue;
                     readed.add(readFile(file));
                 } else {
                     readed.addAll(readFolder(file));

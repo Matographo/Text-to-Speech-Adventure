@@ -29,7 +29,7 @@ public class GameBuilder {
     public GameBuilder(ArrayList<String> gameContent, String fileSource, String fileDestination) {
         projectObject = new ProjectObject();
         projectObject.setGameContent(gameContent);
-        projectObject.setPaths(new File(fileSource), new File(fileDestination));
+        projectObject.setPaths(fileSource, fileDestination);
     }
 
 

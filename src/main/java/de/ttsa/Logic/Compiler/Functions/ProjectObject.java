@@ -57,14 +57,13 @@ public class ProjectObject {
         return sourcePath;
     }
 
-    public void setPaths(File sourcePath, File destinationPath) {
-        this.sourcePath = sourcePath;
-        this.destinationPath = destinationPath;
-        if(destinationPath.getAbsolutePath().equals("")) {
-            if(sourcePath.isFile()) {
-                destinationPath = new File(sourcePath.getParentFile().getAbsolutePath());
+    public void setPaths(String sourcePath, String destinationPath) {
+        this.sourcePath = new File(sourcePath);
+        if(destinationPath.isBlank()) {
+            if(this.sourcePath.isFile()) {
+                this.destinationPath = new File(this.sourcePath.getParentFile().getAbsolutePath());
             } else {
-                destinationPath = new File(sourcePath.getAbsolutePath());
+                this.destinationPath = new File(this.sourcePath.getAbsolutePath());
             }
         }
     }
