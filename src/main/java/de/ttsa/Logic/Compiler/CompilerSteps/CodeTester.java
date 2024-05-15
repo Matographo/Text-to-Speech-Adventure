@@ -32,6 +32,7 @@ public class CodeTester {
     private CodeSyntaxTests codeSyntaxTest = CodeSyntaxTests.NONE;
     private CodeVarTests codeVarTests = CodeVarTests.NONE;
     private CodeBlockTests codeBlockTests = CodeBlockTests.NONE;
+    OpCodeVar opCodeVar = new OpCodeVar();
 
 
 
@@ -116,7 +117,6 @@ public class CodeTester {
         String command     = "";
         String args        = "";
 
-        OpCodeVar opCodeVar = new OpCodeVar();
         CodeVarTestable test;
 
         for(int i = 0; i < content.size(); i++) {
