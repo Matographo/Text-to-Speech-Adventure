@@ -47,6 +47,7 @@
 ☐ Extra Folder für die Testspiele
 ☐ Liste an Directorys in denen spiele gespeichert sein könnten
 ☐ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen
+☐ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden
 
 ☐ Einzelne Unit tests für die Regexe
     ☐ Action
