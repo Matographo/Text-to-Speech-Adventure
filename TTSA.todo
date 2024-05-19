@@ -39,6 +39,8 @@
     ☐ Als Spieler will ich ein Spiel starten können, indem ich die Nummer des Spiels eingebe
     ☐ Als Spiele Entwickler will ich jede einzelne stufe meines Spiels hervorrufen (Test, Compile/Build)
     ☐ Als Spiele Entwickler will ich mein Spiel compilieren und direkt starten können durch einen befehl
+    ☐ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden
+
     
 
 ✔ FileChooser im Homedir starten lassen @done(24-05-12 03:10)
