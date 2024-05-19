@@ -48,6 +48,7 @@ de/ttsa/Logic/Features/Printer/PrinterCodeVar.class
 de/ttsa/Logic/Compiler/CompilerSteps/GameBuilder.class
 de/ttsa/Logic/Features/RoomJumper/RoomJumperCodeSyntax.class
 de/ttsa/Logic/Player/PlayerLogic/GameManager.class
+de/ttsa/Frontend/Terminal/Dialogs/ProjectCreator.class
 de/ttsa/Logic/Features/Set/SetCodeVar.class
 de/ttsa/Logic/Features/StrDec/StrDecCodeVar.class
 de/ttsa/Logic/Features/Script/Script.class
@@ -96,6 +97,7 @@ de/ttsa/Logic/Features/If/IfOpCodeSyntax$1.class
 de/ttsa/Logic/Features/ActionCall/ActionCallCompiler.class
 de/ttsa/Logic/Features/RoomJumper/RoomJumperCompiler.class
 de/ttsa/Logic/Features/DebugInput/DebugInputCompiler.class
+de/ttsa/Frontend/Terminal/Dialogs/ProjectConfigerator.class
 de/ttsa/Logic/Features/GameExitScript/GameExitScriptCodeSyntax.class
 de/ttsa/Logic/Features/Printer/PrinterOpCodeSyntax.class
 de/ttsa/Logic/Compiler/Functions/ProjectObject.class

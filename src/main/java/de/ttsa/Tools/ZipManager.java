@@ -17,13 +17,15 @@ import java.util.zip.ZipOutputStream;
 public class ZipManager {
 
 
+    private static String prePath;
+
     public static List<String> readFromZip(String zipFilePath, String entryPath) throws IOException {
         try (FileInputStream fis = new FileInputStream(zipFilePath);
              ZipInputStream zis = new ZipInputStream(fis, StandardCharsets.UTF_8)) {
 
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
-                if (entry.getName().equals(entryPath)) {
+                if (entry.getName().equals("/" + entryPath)) {
                     return readEntryData(zis);
                 }
             }
@@ -68,6 +70,7 @@ public class ZipManager {
     
     public static File zip(String source, String destination, String zipName) {
         String folderMarker;
+        prePath = source;
         if(ProcessData.isWindows()) folderMarker = "\\";
         else folderMarker = "/";
 
@@ -105,7 +108,7 @@ public class ZipManager {
                 addFilesToZip(file.getAbsolutePath(), sourceFolder, zos);
             } else {
                 // Datei zum Zip-Archiv hinzufügen
-                String relativePath = file.getAbsolutePath();
+                String relativePath = file.getAbsolutePath().substring(prePath.length());
                 ZipEntry zipEntry = new ZipEntry(relativePath);
                 zos.putNextEntry(zipEntry);
 

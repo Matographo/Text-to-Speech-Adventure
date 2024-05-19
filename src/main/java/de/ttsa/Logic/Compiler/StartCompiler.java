@@ -1,6 +1,7 @@
 package de.ttsa.Logic.Compiler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import de.ttsa.Logic.Compiler.CompilerSteps.CFileReader;
 import de.ttsa.Logic.Compiler.CompilerSteps.CodeTester;
@@ -23,6 +24,7 @@ private ArrayList<String> game                   = new ArrayList<String>();
 private boolean isHidden                         = false;
 private String fileSource;
 private String fileDestination;
+private String failedTest;
 
 
 
@@ -42,17 +44,19 @@ private String fileDestination;
 
 
 
-    public void compile() {
+    public boolean compile() {
         if(startReading() &&
-        //startSorting() &&
+        startMerging() &&
+        startSorting() &&
         startTesting() &&
         startCompiling() &&
-        startMerging() &&
         startOpCodeTest() &&
         startBuilding()) {
             System.out.println("Compilation successful.");
+            return true;
         } else {
-            System.out.println("Compilation failed.");
+            System.out.println("Compilation failed by " + failedTest + ".");
+            return false;
         }
     }
 
@@ -63,6 +67,7 @@ private String fileDestination;
 
 
     private boolean startReading() {
+        failedTest = "reading";
         CFileReader reader = new CFileReader(fileSource);
         fileContent = reader.read();
         return fileContent != null;
@@ -75,21 +80,21 @@ private String fileDestination;
 
 
     private boolean startTesting() {
-        CodeTester test = new CodeTester(fileContent);
-        boolean testResult = true;
-        testResult = test.test();
-        return testResult;
+        failedTest = "testing";
+        CodeTester test = new CodeTester(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
+        return test.test();
     }
 
-
+    
 
 // ---------------------------------------------- Compiling -------------------------------------------------- //
 
 
 
     private boolean startCompiling() {
-        Compiler compiler = new Compiler(fileContent);
-        fileContent = compiler.compile();
+        failedTest = "compiling";
+        Compiler compiler = new Compiler(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
+        game = compiler.compile().get(0);
         return true;
     }
 
@@ -100,9 +105,14 @@ private String fileDestination;
 
 
     private boolean startSorting() {
-        Sorter sorter = new Sorter(fileContent);
-        fileContent = sorter.sort();
-        return false;
+        failedTest = "sorting";
+        Sorter sorter = new Sorter(game);
+        try {
+            game = sorter.sort();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
@@ -112,6 +122,7 @@ private String fileDestination;
 
 
     private boolean startMerging() {
+        failedTest = "merging";
         Merger merger = new Merger(fileContent);
         game = merger.merge();
         return game != null;
@@ -124,6 +135,7 @@ private String fileDestination;
 
 
     private boolean startOpCodeTest() {
+        failedTest = "opcode testing";
         return OpCodeTest.test(game);
     }
 
@@ -133,6 +145,7 @@ private String fileDestination;
 
 
     private boolean startBuilding() {
+        failedTest = "building";
         GameBuilder builder = new GameBuilder(game, fileSource, fileDestination);
         return builder.build();
     }

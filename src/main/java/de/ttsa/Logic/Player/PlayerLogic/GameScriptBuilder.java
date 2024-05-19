@@ -2,6 +2,7 @@ package de.ttsa.Logic.Player.PlayerLogic;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import de.ttsa.Enums.Index;
 import de.ttsa.Enums.Seperators;
@@ -34,7 +35,7 @@ class GameScriptBuilder {
 
 
 
-    private ArrayList<String> game;
+    private List<String> game;
 
     private Input input = new Input();
 
@@ -49,7 +50,7 @@ class GameScriptBuilder {
      * Constructor for GameScriptBuilder
      * @param gameContent the game content
      */
-    public GameScriptBuilder(ArrayList<String> gameContent) {
+    public GameScriptBuilder(List<String> gameContent) {
         game = gameContent;
     }
 
@@ -70,7 +71,7 @@ class GameScriptBuilder {
      * @param game game Data as a list of strings
      * @return the game as a scriptable
      */
-    private Scriptable loadGame(ArrayList<String> game) {
+    private Scriptable loadGame(List<String> game) {
         String opCode = "";
         String args   = "";
         String line   = "";

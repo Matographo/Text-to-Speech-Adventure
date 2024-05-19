@@ -7,6 +7,8 @@ public class GameProperty {
     
     private File propertiesPath;
 
+    private boolean isLoadable;
+
     private String compilerName = "";
     private String compilerVersion = "";
     private String compilerPublisher = "";
@@ -22,8 +24,20 @@ public class GameProperty {
     private boolean playerImage = false;
 
 
+    public GameProperty(File file, boolean isLoadable) {
+        this.isLoadable = isLoadable;
+        propertiesPath  = new File(file, "game.properties");
+        if(isLoadable) start();
+    }
+    
     public GameProperty(File file) {
+        this(file, false);
+    }
+
+    public GameProperty setPropertiesPath(File file) {
         propertiesPath = new File(file, "game.properties");
+        if(isLoadable) start();
+        return this;
     }
 
 
@@ -112,9 +126,6 @@ public class GameProperty {
     }
 
 
-
-
-
     public boolean save() {
         Properties prop = new Properties();
         prop.setProperty("compilerName", "Text Adventure Maker Compiler");
@@ -134,7 +145,7 @@ public class GameProperty {
         return new PropertySaver(prop, propertiesPath).save();
     }
 
-    public boolean load() {
+    public GameProperty load() {
         if(isValide()) {
             Properties prop = new PropertyLoader(propertiesPath).load();
 
@@ -152,10 +163,10 @@ public class GameProperty {
             playerMusic = Boolean.parseBoolean(prop.getProperty("playerMusic"));
             playerImage = Boolean.parseBoolean(prop.getProperty("playerImage"));
 
-            return true;
+            return this;
         }
 
-        return false;
+        return null;
     }
 
     private boolean isValide() {
@@ -178,5 +189,23 @@ public class GameProperty {
         return this;
     }
 
+    
+    public void start() {
+        Properties prop = new PropertyLoader(propertiesPath).load();
+
+        compilerName = prop.getProperty("compilerName");
+        compilerVersion = prop.getProperty("compilerVersion");
+        compilerPublisher = prop.getProperty("compilerPublisher");
+
+        gameTitle = prop.getProperty("gameTitle");
+        gameDescription = prop.getProperty("gameDescription");
+        gameAuthor = prop.getProperty("gameAuthor");
+        gameReleaseDate = prop.getProperty("gameReleaseDate");
+        gameLanguage = prop.getProperty("gameLanguage");
+        gameGenre = prop.getProperty("gameGenre").split(",");
+
+        playerMusic = Boolean.parseBoolean(prop.getProperty("playerMusic"));
+        playerImage = Boolean.parseBoolean(prop.getProperty("playerImage"));
+    }
 
 }

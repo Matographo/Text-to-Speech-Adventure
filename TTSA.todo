@@ -30,9 +30,10 @@
 
 
 ☐ Runnable Terminal Programm
-    ☐ Als Spiele Programmierer will ich die einstellungen von meinem Projekt einstellen können
-    ☐ Als Spiele Programmierer will ich ein neues Projekt erstellen können in dem die standard werkzeuge und Ordner enthalten sind
+    ✔ Als Spiele Programmierer will ich die einstellungen von meinem Projekt einstellen können @done(24-05-19 00:31)
+    ✔ Als Spiele Programmierer will ich ein neues Projekt erstellen können in dem die standard werkzeuge und Ordner enthalten sind @done(24-05-19 00:31)
     ☐ Als Spieler will ich mein Programm einfach starten können um so spiele zu starten
+    ☐ Als Spiele Entwickler und als Spieler will ich die Meta Daten von dem Compilieren spiel sehen können
     ☐ Als Spieler will ich mein Spiel starten können, indem ich den Namen des Spiels eingebe
     ☐ Als Spieler will ich eine auflistung aller Spiele haben die ich starten kann
     ☐ Als Spieler will ich ein Spiel starten können, indem ich die Nummer des Spiels eingebe

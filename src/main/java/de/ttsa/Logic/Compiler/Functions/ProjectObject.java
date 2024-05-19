@@ -1,6 +1,8 @@
 package de.ttsa.Logic.Compiler.Functions;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -90,5 +92,14 @@ public class ProjectObject {
 
     public void setImages(List<File> images) {
         this.images = images;
+    }
+
+    public void identifyProperties() {
+        projectProperties = new Properties();
+        try {
+            this.projectProperties.load(new FileInputStream(new File(sourcePath, "game.properties")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

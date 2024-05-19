@@ -1,6 +1,7 @@
 package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.CodeBlockTests;
@@ -46,6 +47,7 @@ public class CodeTester {
 
 
 
+
 // ----------------------------------------------- Methods ---------------------------------------------------- //
 
 
@@ -86,6 +88,7 @@ public class CodeTester {
 
             if(line.startsWith(CompilerSyntax.COMMENT.toString()) ||
                line.strip().isEmpty() ||
+               isSet ||
                line.strip().equals(CompilerSyntax.BLOCK_END.toString())) continue;
                
             command = line.split(Seperators.CODE_COMMAND.getSeperator())[0];

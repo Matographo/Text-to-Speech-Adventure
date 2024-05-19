@@ -7,6 +7,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/GameSavingScript/GameSavingScriptOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptOpCodeSyntax.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Room/RoomCodeBlock.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/Terminal/Dialogs/ProjectConfigerator.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Interfaces/Scriptable.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/ActionCall/ActionCallCompiler.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Compiler/CompilerSteps/GameBuilder.java
@@ -135,6 +136,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Player/PlayerLogic/GameBuilder.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/If/IfOpCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Tools/ProcessData.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/Terminal/Dialogs/ProjectCreator.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/AppStart.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Set/SetCodeBlock.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Loop/LoopOpCodeVar.java

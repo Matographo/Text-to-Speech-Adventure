@@ -43,10 +43,12 @@ public class GameBuilder {
         File tmpFolder = createTmpFolder();   //Temporärer Ordner in dem die Compilierten Daten gespeichert werden
 
         projectObject.setProjectName(tmpFolder.getParentFile().getName());
+        projectObject.identifyProperties();
 
-        File gameFile = createGameFileInFolder(tmpFolder, projectObject.getProjectName());
+        File gameFile = createGameFileInFolder(tmpFolder, "game");
 
         fillTmpGameFile(gameFile);
+        createAndFillMetaDataFile(tmpFolder);
 
         File game = makeZip(tmpFolder, projectObject.getDestinationPath(), projectObject.getProjectName());
 
@@ -129,5 +131,18 @@ public class GameBuilder {
     }
     
 
+    private void createAndFillMetaDataFile(File folder) {
+        File metaData = new File(folder.getAbsolutePath() + "/game.properties");
+        try {
+            metaData.createNewFile();
+            FileWriter writer = new FileWriter(metaData);
+            for (String key : projectObject.getProjectProperties().stringPropertyNames()) {
+                writer.write(key + "=" + projectObject.getProjectProperties().getProperty(key) + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

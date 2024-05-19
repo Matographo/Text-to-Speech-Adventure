@@ -18,7 +18,9 @@ public class ProjectBuilder {
         testValidPath(projectFolder);
 
         new ProjectFolderBuilder(projectFolder).buildProjectFolderTree();
-        new GameProperty(projectFolder).createDefault().setGameTitle(projectFolder.getName()).save();
+        new GameProperty(projectFolder).createDefault()
+                                       .setGameTitle(projectFolder.getName())
+                                       .save();
 
         createGameFile(projectFolder);
     }

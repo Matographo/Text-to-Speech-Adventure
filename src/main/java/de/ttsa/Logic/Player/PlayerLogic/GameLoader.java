@@ -44,7 +44,7 @@ class GameLoader {
      * Load the game data
      * @return the game data as a list of strings
      */
-    public ArrayList<String> loadGameData() {
+    public List<String> loadGameData() {
         File game = new File(gameFile);
 
         if(!game.isFile()) {
@@ -55,7 +55,7 @@ class GameLoader {
 
         if(isZipFile(game)) {
             try {
-                loadGame(game);
+                return loadGame(game);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -88,7 +88,7 @@ class GameLoader {
     }
 
     private List<String> loadGame(File game) throws IOException {
-        return ZipManager.readFromZip(game.getAbsolutePath(), game.getName());
+        return ZipManager.readFromZip(game.getAbsolutePath(), "game.ta");
     }
 
     private boolean isZipFile(File file) {
