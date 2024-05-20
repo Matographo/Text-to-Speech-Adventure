@@ -31,14 +31,8 @@ public class TesterSayTest extends OpCodeTestTesterClass {
     }
 
     @Test
-    public void testSayMultipleFixString() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleFixStringsAtOnceWithoutRoom.ta");
-        assertEquals(true, test.start());
-    }
-
-    @Test
     public void testSayMultipleSaysFixStrings() {
-        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleSaysFixStringsWithoutRoom.ta");
+        OpCodeTest test = new OpCodeTest(PATH + "testSayMultipleSaysFixStrings.ta");
         assertEquals(true, test.start());
     }
 

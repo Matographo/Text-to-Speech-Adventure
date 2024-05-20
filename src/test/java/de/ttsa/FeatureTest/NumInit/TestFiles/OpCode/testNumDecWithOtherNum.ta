@@ -1,4 +1,4 @@
-03::Zahl:5
-03::Zwal:10
-01::START:1
-05::Zahl:Zwal
+03Zahl:5
+03Zwal:10
+01START:1
+05Zahl:Zwal

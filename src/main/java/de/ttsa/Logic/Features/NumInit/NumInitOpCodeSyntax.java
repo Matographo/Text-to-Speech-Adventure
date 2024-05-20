@@ -1,11 +1,18 @@
 package de.ttsa.Logic.Features.NumInit;
 
+import java.util.regex.Pattern;
+
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
 public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
         
+    private static Pattern patternName = Pattern.compile(Regex.VALIDE_NAME.toString());
+    private static Pattern patternNumber = Pattern.compile(Regex.VALIDE_NUMBER.toString());
+    private static Pattern patternCalculatable = Pattern.compile(Regex.CALCULATABLE.toString());
+
+
     @Override
     public boolean testOpCode(String arg) {
         String[] args = arg.split(Seperators.NUMBER_DEC.getSeperator());
@@ -29,7 +36,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the name is valid
      */
     private boolean isValidName(String name) {
-        return name.matches(Regex.VALIDE_NAME.toString());
+        return patternName.matcher(name).matches();
     }
 
         /**
@@ -38,7 +45,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(Regex.VALIDE_NUMBER.toString());
+        return patternNumber.matcher(number).matches();
     }
 
         /**
@@ -96,7 +103,7 @@ public class NumInitOpCodeSyntax implements OpCodeSyntaxTestable {
             return false;
         }
 
-        return value.matches(Regex.CALCULATABLE.toString());
+        return patternCalculatable.matcher(value).matches();
     }
     
 }

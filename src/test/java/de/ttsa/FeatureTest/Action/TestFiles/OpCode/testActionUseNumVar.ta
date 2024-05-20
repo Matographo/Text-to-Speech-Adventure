@@ -1,5 +1,5 @@
-03::Var:0
-10::Attack:nAngriff:1
-05::Var:Angriff+1
-01::START:1
-11::Attack:Var
+03Var:0
+10Attack:nAngriff:1
+05Var:Angriff+1
+01START:1
+11Attack:Var

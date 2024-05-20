@@ -1,5 +1,5 @@
-04::Var:hello
-10::Attack:sAngriff:1
-08::Var:Angriff
-01::START:1
-11::Attack:"Bye"
+04Var:hello
+10Attack:sAngriff:1
+08Var:Angriff
+01START:1
+11Attack:"Bye"

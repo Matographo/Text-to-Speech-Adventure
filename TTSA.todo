@@ -41,6 +41,10 @@
     ☐ Als Spiele Entwickler will ich mein Spiel compilieren und direkt starten können durch einen befehl
     ☐ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden
 
+
+☐ Logging
+    ☐ Compiler Logger
+    ☐ Player Logger
     
 
 ✔ FileChooser im Homedir starten lassen @done(24-05-12 03:10)

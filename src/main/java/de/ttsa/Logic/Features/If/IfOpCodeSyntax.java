@@ -1,5 +1,7 @@
 package de.ttsa.Logic.Features.If;
 
+import java.util.regex.Pattern;
+
 import de.ttsa.Enums.IfTypes;
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
@@ -7,6 +9,13 @@ import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
 public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
         
+    private static Pattern patternInnerBreckets = Pattern.compile(Regex.IF_INNER_BRECKETS_OPCODE.toString());
+    private static Pattern patternNumber = Pattern.compile(Regex.IF_NUMBER_OPCODE.toString());
+    private static Pattern patternString = Pattern.compile(Regex.IF_STRING_OPCODE.toString());
+    private static Pattern patternInput = Pattern.compile(Regex.IF_INPUT_OPCODE.toString());
+    private static Pattern pattern = Pattern.compile(Regex.VALIDE_NUMBER.toString());
+
+
     @Override
     public boolean testOpCode(String arg) {
         String[] toTest    = arg.split(Seperators.IF_ELSE.getSeperator());
@@ -61,7 +70,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the String is a Number
      */
     private boolean isNumber(String number) {
-        return number.matches(Regex.VALIDE_NUMBER.toString());
+        return pattern.matcher(number).matches();
     }
 
     /**
@@ -74,7 +83,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
             if(!testIfSyntaxNumInnerBreckets(getInnerBreckets(args))) return false;
             args = removeInnerBrecketsAndSubstitut(args, "1");
         }
-        return args.matches(Regex.IF_NUMBER_OPCODE.toString());
+        return patternNumber.matcher(args).matches();
     }
 
     /**
@@ -83,7 +92,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxStr(String args) {
-        return args.matches(Regex.IF_STRING_OPCODE.toString());
+        return patternString.matcher(args).matches();
     }
 
     /**
@@ -92,7 +101,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxIn(String args) {
-        return args.matches(Regex.IF_INPUT_OPCODE.toString());
+        return patternInput.matcher(args).matches();
     }
 
     private boolean hasBrackets(String args) {
@@ -106,7 +115,7 @@ public class IfOpCodeSyntax implements OpCodeSyntaxTestable {
     }
 
     private boolean testIfSyntaxNumInnerBreckets(String args) {
-        return args.matches(Regex.IF_INNER_BRECKETS_OPCODE.toString());
+        return patternInnerBreckets.matcher(args).matches();
     }
 
     private String removeInnerBrecketsAndSubstitut(String args, String substitut) {

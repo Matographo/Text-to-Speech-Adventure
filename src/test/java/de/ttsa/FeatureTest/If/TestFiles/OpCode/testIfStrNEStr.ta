@@ -1,4 +1,4 @@
-04::Var:H
-01::START:2
-06::s"Hallo"!="H":1
-08::Var:"Hallo"
+04Var:H
+01START:2
+06s"Hallo"!="H":1
+08Var:"Hallo"

@@ -1,4 +1,4 @@
-01::START:1
-02::END
-01::END:1
-00::"Test Finished"
+01START:1
+02END
+01END:1
+00"Test Finished"

@@ -14,16 +14,12 @@ public enum OpCodeBlockTests {
 
     OpCodeBlockTests mode;
 
-    private final ActionOpCodeBlock action;
-    private final IfOpCodeBlock ifOpCode;
-    private final LoopOpCodeBlock loop;
-    private final RoomOpCodeBlock room;
+    private static final ActionOpCodeBlock action = new ActionOpCodeBlock();
+    private static final IfOpCodeBlock ifOpCode = new IfOpCodeBlock();
+    private static final LoopOpCodeBlock loop = new LoopOpCodeBlock();
+    private static final RoomOpCodeBlock room = new RoomOpCodeBlock();
 
     OpCodeBlockTests() {
-        action   = new ActionOpCodeBlock();
-        ifOpCode = new IfOpCodeBlock();
-        loop     = new LoopOpCodeBlock();
-        room     = new RoomOpCodeBlock();
     }
 
     public OpCodeBlockTestable getBlockTest(String mode) {

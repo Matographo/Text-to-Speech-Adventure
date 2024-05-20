@@ -3,6 +3,7 @@ package de.ttsa.Logic.Compiler;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Logic.Compiler.CompilerSteps.CFileReader;
 import de.ttsa.Logic.Compiler.CompilerSteps.CodeTester;
 import de.ttsa.Logic.Compiler.CompilerSteps.Compiler;
@@ -10,6 +11,7 @@ import de.ttsa.Logic.Compiler.CompilerSteps.GameBuilder;
 import de.ttsa.Logic.Compiler.CompilerSteps.Merger;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Compiler.CompilerSteps.Sorter;
+import de.ttsa.Tools.SimpleLog;
 
 public class StartCompiler {
 
@@ -21,10 +23,10 @@ public class StartCompiler {
 
 private ArrayList<ArrayList<String>> fileContent = new ArrayList<ArrayList<String>>();
 private ArrayList<String> game                   = new ArrayList<String>();
-private boolean isHidden                         = false;
 private String fileSource;
 private String fileDestination;
 private String failedTest;
+private SimpleLog log = CompilerApp.log;
 
 
 
@@ -32,10 +34,12 @@ private String failedTest;
 
 
 
-    public StartCompiler(String sourcePath, String destinationPath, boolean isHidden) {
-        this.isHidden   = isHidden;
+    public StartCompiler(String sourcePath, String destinationPath) {
         this.fileSource = sourcePath;
         this.fileDestination = destinationPath;
+        log.info("Compiler received data");
+        log.debug("Compiler received source path: " + sourcePath);
+        log.debug("Compiler received destination path: " + destinationPath);
     }
 
 
@@ -52,10 +56,10 @@ private String failedTest;
         startCompiling() &&
         startOpCodeTest() &&
         startBuilding()) {
-            System.out.println("Compilation successful.");
+            log.info("Compilation successful.");
             return true;
         } else {
-            System.out.println("Compilation failed by " + failedTest + ".");
+            log.info("Compilation failed");
             return false;
         }
     }
@@ -67,9 +71,12 @@ private String failedTest;
 
 
     private boolean startReading() {
-        failedTest = "reading";
+        log.info("Reading file(s)...");
+        long startTime = System.currentTimeMillis();
         CFileReader reader = new CFileReader(fileSource);
         fileContent = reader.read();
+        log.debug("Reading time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Files read: " + fileContent.size());
         return fileContent != null;
     }
     
@@ -80,9 +87,12 @@ private String failedTest;
 
 
     private boolean startTesting() {
-        failedTest = "testing";
+        log.info("Testing code...");
+        long startTime = System.currentTimeMillis();
         CodeTester test = new CodeTester(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
-        return test.test();
+        boolean result = test.test();
+        log.debug("Testing time: " + (System.currentTimeMillis() - startTime) + "ms");
+        return result;
     }
 
     
@@ -92,10 +102,12 @@ private String failedTest;
 
 
     private boolean startCompiling() {
-        failedTest = "compiling";
+        log.info("Compiling code...");
+        long startTime = System.currentTimeMillis();
         Compiler compiler = new Compiler(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
         game = compiler.compile().get(0);
-        return true;
+        log.debug("Compiling time: " + (System.currentTimeMillis() - startTime) + "ms");
+        return game != null;
     }
 
 
@@ -105,10 +117,12 @@ private String failedTest;
 
 
     private boolean startSorting() {
-        failedTest = "sorting";
+        log.info("Sorting code...");
+        long startTime = System.currentTimeMillis();
         Sorter sorter = new Sorter(game);
         try {
             game = sorter.sort();
+            log.debug("Sorting time: " + (System.currentTimeMillis() - startTime) + "ms");
             return true;
         } catch (Exception e) {
             return false;
@@ -122,9 +136,11 @@ private String failedTest;
 
 
     private boolean startMerging() {
-        failedTest = "merging";
+        log.info("Merging code...");
+        long startTime = System.currentTimeMillis();
         Merger merger = new Merger(fileContent);
         game = merger.merge();
+        log.debug("Merging time: " + (System.currentTimeMillis() - startTime) + "ms");
         return game != null;
     }
 
@@ -135,8 +151,11 @@ private String failedTest;
 
 
     private boolean startOpCodeTest() {
-        failedTest = "opcode testing";
-        return OpCodeTest.test(game);
+        log.info("Testing Compiled Code...");
+        long startTime = System.currentTimeMillis();
+        boolean result = OpCodeTest.test(game);
+        log.debug("OpCodeTest time: " + (System.currentTimeMillis() - startTime) + "ms");
+        return result;
     }
 
 
@@ -145,9 +164,12 @@ private String failedTest;
 
 
     private boolean startBuilding() {
-        failedTest = "building";
+        log.info("Building Game File...");
+        long startTime = System.currentTimeMillis();
         GameBuilder builder = new GameBuilder(game, fileSource, fileDestination);
-        return builder.build();
+        boolean result = builder.build();
+        log.debug("Building time: " + (System.currentTimeMillis() - startTime) + "ms");
+        return result;
     }
 
 }

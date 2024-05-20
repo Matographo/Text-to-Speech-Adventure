@@ -1,12 +1,14 @@
 package de.ttsa.Frontend.Terminal;
 
 import java.io.File;
+import java.util.logging.Level;
 
 import de.ttsa.Frontend.Terminal.Dialogs.ProjectConfigerator;
 import de.ttsa.Frontend.Terminal.Dialogs.ProjectCreator;
 import de.ttsa.Logic.Compiler.StartCompiler;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Player.PlayerLogic.Player;
+import de.ttsa.Tools.SimpleLog;
 
 
 public class CompilerApp 
@@ -19,6 +21,7 @@ public class CompilerApp
     private static final String COMPILED_FILE_EXTENSION = "ta";
     private static final String COMPILER_COMMAND = "tacc";
     private static final String COMPILER_VERSION = "0.0.1";
+    public static SimpleLog log = SimpleLog.getLogger("Compiler");
 
 
 
@@ -62,7 +65,7 @@ public class CompilerApp
         else if (compile || hideExecute) {
             if(args.length == 2) compile(args[1], "", hideExecute);
             else compile(args[1], args[2], hideExecute);
-        } else throw new IllegalArgumentException("There are troubles with your arguments. Tipe the extention -h or -help for more information."); 
+        } else log.error("There are troubles with your arguments. Tipe the extention -h or -help for more information."); 
     }
 
 
@@ -74,7 +77,7 @@ public class CompilerApp
      * No arguments given.
      */
     private void noArgs() {
-        System.out.println("No arguments given. Type the extention -h or -help for more information.");
+        log.error("No arguments given. Type the extention -h or -help for more information.");
     }
 
 
@@ -111,12 +114,16 @@ public class CompilerApp
      * @param isHidden hide the Compilation output
      */
     private boolean compile(String fileSource, String fileDestination, boolean isHidden) {
+        configurateLog(Level.ALL);
+        long startTime = System.currentTimeMillis();
         try {
-            StartCompiler compiler = new StartCompiler(fileSource, fileDestination, isHidden);
-
-            return compiler.compile();
+            StartCompiler compiler = new StartCompiler(fileSource, fileDestination);
+            boolean result = compiler.compile();
+            log.debug("Compilation took: " + (System.currentTimeMillis() - startTime) + "ms");
+            return result;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("Compilation failed!");
+            log.fine(e.getMessage());
             return false;
         }
     }
@@ -127,19 +134,22 @@ public class CompilerApp
      */
     private void test(String file) {
         try {
+            log.debug("Receiving data for testing...");
             OpCodeTest test = new OpCodeTest(file);
 
             long startTime = System.currentTimeMillis();
+            log.debug("Start testing...");
             if(test.start()) {
                 long endTime = System.currentTimeMillis();
-                System.out.println("Test passed.");
-                System.out.println("Time: " + (endTime - startTime) + "ms");
+                log.info("Test passed!");
+                log.info("Time: " + (endTime - startTime) + "ms");
             } else {
-                System.out.println("Test failed.");
+                log.info("Test failed.");
             }
             
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("Failed to test the file.");
+            log.trace(e.getMessage());
         }
     }
 
@@ -148,7 +158,12 @@ public class CompilerApp
      * @param args the arguments
      */
     private void createProject(String[] args) {
-        new ProjectCreator(args).create();
+        try {
+            new ProjectCreator(args).create();
+        } catch (Exception e) {
+            log.error("Failed to create the project.");
+            log.trace(e.getMessage());
+        }
     }
     
     /**
@@ -156,11 +171,21 @@ public class CompilerApp
      * @param args the arguments
      */
     private void configurateProject(String arg) {
-        new ProjectConfigerator().configurate(getRealPath(arg));
+        try {
+            new ProjectConfigerator().configurate(getRealPath(arg));
+        } catch (Exception e) {
+            log.error("Something went wrong with the configuration.");
+            log.trace(e.getMessage());
+        }
     }
     
     private void showProperties(String arg) {
-        new ProjectConfigerator().showProperties(getRealPath(arg));
+        try {
+            new ProjectConfigerator().showProperties(getRealPath(arg));
+        } catch (Exception e) {
+            log.error("Something went wrong with the configuration.");
+            log.trace(e.getMessage());
+        }
     }
     
 
@@ -221,6 +246,11 @@ public class CompilerApp
             }
         }
         return "";
+    }
+    
+    private void configurateLog(Level logLevel) {
+        log.setLevel(logLevel);
+        log.setLevel(Level.ALL);
     }
 
 }

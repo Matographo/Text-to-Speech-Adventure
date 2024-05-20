@@ -24,38 +24,23 @@ public enum OpCodeVarTests {
 
     OpCodeVarTests mode;
 
-    private final AlwaysFalseOpCodeTest alwaysFalse;
-    private final AlwaysTrueOpCodeTest alwaysTrue;
-    private final PrinterOpCodeVar printer;
-    private final ActionOpCodeVar action;
-    private final ActionCallOpCodeVar actionCall;
-    private final DebugInputOpCodeVar debugInput;
-    private final IfOpCodeVar ifOpCode;
-    private final LoopOpCodeVar loop;
-    private final NumDecOpCodeVar numDec;
-    private final NumInitOpCodeVar numInit;
-    private final RoomOpCodeVar room;
-    private final SetOpCodeVar set;
-    private final RoomJumperOpCodeVar roomJumper;
-    private final StrDecOpCodeVar strDec;
-    private final StrInitOpCodeVar strInit;
+    private final AlwaysFalseOpCodeTest alwaysFalse = new AlwaysFalseOpCodeTest();
+    private final AlwaysTrueOpCodeTest alwaysTrue = new AlwaysTrueOpCodeTest();
+    private final PrinterOpCodeVar printer = new PrinterOpCodeVar();
+    private final ActionOpCodeVar action = new ActionOpCodeVar();
+    private final ActionCallOpCodeVar actionCall = new ActionCallOpCodeVar();
+    private final DebugInputOpCodeVar debugInput = new DebugInputOpCodeVar();
+    private final IfOpCodeVar ifOpCode = new IfOpCodeVar();
+    private final LoopOpCodeVar loop = new LoopOpCodeVar();
+    private final NumDecOpCodeVar numDec = new NumDecOpCodeVar();
+    private final NumInitOpCodeVar numInit = new NumInitOpCodeVar();
+    private final RoomOpCodeVar room = new RoomOpCodeVar();
+    private final SetOpCodeVar set = new SetOpCodeVar();
+    private final RoomJumperOpCodeVar roomJumper = new RoomJumperOpCodeVar();
+    private final StrDecOpCodeVar strDec = new StrDecOpCodeVar();
+    private final StrInitOpCodeVar strInit = new StrInitOpCodeVar();
 
     OpCodeVarTests() {
-        alwaysFalse = new AlwaysFalseOpCodeTest();
-        alwaysTrue = new AlwaysTrueOpCodeTest();
-        printer = new PrinterOpCodeVar();
-        action = new ActionOpCodeVar();
-        actionCall = new ActionCallOpCodeVar();
-        debugInput = new DebugInputOpCodeVar();
-        ifOpCode = new IfOpCodeVar();
-        loop = new LoopOpCodeVar();
-        numDec = new NumDecOpCodeVar();
-        numInit = new NumInitOpCodeVar();
-        room = new RoomOpCodeVar();
-        set = new SetOpCodeVar();
-        roomJumper = new RoomJumperOpCodeVar();
-        strDec = new StrDecOpCodeVar();
-        strInit = new StrInitOpCodeVar();
     }
 
     public OpCodeVarTestable getTest(String mode) {

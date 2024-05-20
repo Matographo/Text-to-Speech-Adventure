@@ -15,20 +15,14 @@ public enum CodeBlockTests {
 
     CodeBlockTests mode;
 
-    private final AlwaysTrueCodeTest alwaysTrue;
-    private final ActionCodeBlock action;
-    private final IfCodeBlock ifCode;
-    private final LoopCodeBlock loop;
-    private final RoomCodeBlock room;
-    private final SetCodeBlock set;
+    private final AlwaysTrueCodeTest alwaysTrue = new AlwaysTrueCodeTest();
+    private final ActionCodeBlock action = new ActionCodeBlock();
+    private final IfCodeBlock ifCode = new IfCodeBlock();
+    private final LoopCodeBlock loop = new LoopCodeBlock();
+    private final RoomCodeBlock room = new RoomCodeBlock();
+    private final SetCodeBlock set = new SetCodeBlock();
 
     CodeBlockTests() {
-        alwaysTrue = new AlwaysTrueCodeTest();
-        action   = new ActionCodeBlock();
-        ifCode   = new IfCodeBlock();
-        loop     = new LoopCodeBlock();
-        room     = new RoomCodeBlock();
-        set      = new SetCodeBlock();
     }
 
     public CodeBlockTestable getBlockTest(String mode) {

@@ -1,4 +1,4 @@
-03::A:5
-04::B:Hallo 
-01::START:1
-00::B," ",A
+03A:5
+04B:Hallo 
+01START:1
+00B," ",A

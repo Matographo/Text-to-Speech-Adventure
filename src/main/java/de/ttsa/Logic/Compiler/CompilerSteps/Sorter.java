@@ -1,16 +1,16 @@
 package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import de.ttsa.Enums.CompilerSyntax;
-import de.ttsa.Enums.Index;
 
 public class Sorter {
 
     // ---------------------------------------------- Attributes
     // -------------------------------------------------- //
 
-    ArrayList<String> fileContent;
+    LinkedList<String> fileContent;
 
     ArrayList<String> setContent;
     ArrayList<String> roomContent;
@@ -21,7 +21,7 @@ public class Sorter {
     // -------------------------------------------------- //
 
     public Sorter(ArrayList<String> fileContent) {
-        this.fileContent = fileContent;
+        this.fileContent = new LinkedList<>(fileContent);
         setContent = new ArrayList<String>();
         roomContent = new ArrayList<String>();
         varContent = new ArrayList<String>();

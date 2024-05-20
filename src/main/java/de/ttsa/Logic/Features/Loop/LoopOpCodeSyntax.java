@@ -1,5 +1,7 @@
 package de.ttsa.Logic.Features.Loop;
 
+import java.util.regex.Pattern;
+
 import de.ttsa.Enums.IfTypes;
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
@@ -7,12 +9,19 @@ import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 
 public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
         
+    private static Pattern patternLoop = Pattern.compile(Regex.LOOP_OPCODE.toString());
+    private static Pattern patternInnerBreckets = Pattern.compile(Regex.IF_INNER_BRECKETS_OPCODE.toString());
+    private static Pattern patternNumber = Pattern.compile(Regex.IF_NUMBER_OPCODE.toString());
+    private static Pattern patternString = Pattern.compile(Regex.IF_STRING_OPCODE.toString());
+    private static Pattern patternInput = Pattern.compile(Regex.IF_INPUT_OPCODE.toString());
+
+
     @Override
     public boolean testOpCode(String arg) {
         String argsTyp2 = arg.substring(0, arg.indexOf(Seperators.IF_NUM.getSeperator()));
 
 
-        return testIfSyntaxSwitch(arg) || argsTyp2.matches(Regex.LOOP_OPCODE.toString());
+        return testIfSyntaxSwitch(arg) || patternLoop.matcher(argsTyp2).matches();
     }
 
     /**
@@ -29,7 +38,7 @@ public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
             case NUMBER -> testResult = testIfSyntaxNum(args);
             case STRING -> testResult = testIfSyntaxStr(args);
             case INPUT ->  testResult = testIfSyntaxIn(args);
-            default ->        testResult = false;
+            default ->     testResult = false;
         }
 
         return testResult;
@@ -45,7 +54,7 @@ public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
             if(!testIfSyntaxNumInnerBreckets(getInnerBreckets(args))) return false;
             args = removeInnerBrecketsAndSubstitut(args, "1");
         }
-        return args.matches(Regex.IF_NUMBER_OPCODE.toString());
+        return patternNumber.matcher(args).matches();
     }
 
         /**
@@ -54,7 +63,7 @@ public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxStr(String args) {
-        return args.matches(Regex.IF_STRING_OPCODE.toString());
+        return patternString.matcher(args).matches();
     }
 
         /**
@@ -63,7 +72,7 @@ public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxIn(String args) {
-        return args.matches(Regex.IF_INPUT_OPCODE.toString());
+        return patternInput.matcher(args).matches();
     }
 
     private boolean hasBrackets(String args) {
@@ -77,7 +86,7 @@ public class LoopOpCodeSyntax implements OpCodeSyntaxTestable {
     }
 
     private boolean testIfSyntaxNumInnerBreckets(String args) {
-        return args.matches(Regex.IF_INNER_BRECKETS_OPCODE.toString());
+        return patternInnerBreckets.matcher(args).matches();
     }
 
     private String removeInnerBrecketsAndSubstitut(String args, String substitut) {

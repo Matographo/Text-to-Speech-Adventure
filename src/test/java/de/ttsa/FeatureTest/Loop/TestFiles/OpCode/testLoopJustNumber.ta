@@ -1,4 +1,4 @@
-03::Var:0
-01::START:2
-0D::5:1
-05::Var:Var+1
+03Var:0
+01START:2
+0D5:1
+05Var:Var+1

@@ -1,4 +1,4 @@
-04::Var:Hallo
-04::Varr:all
-01::START:1
-08::Var:"Hello ",Varr
+04Var:Hallo
+04Varr:all
+01START:1
+08Var:"Hello ",Varr

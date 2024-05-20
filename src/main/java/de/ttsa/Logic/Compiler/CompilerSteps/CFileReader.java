@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import de.ttsa.Enums.CompilerSyntax;
+import de.ttsa.Frontend.Terminal.CompilerApp;
+import de.ttsa.Tools.SimpleLog;
 
 
 public class CFileReader {
@@ -19,6 +21,7 @@ public class CFileReader {
     private final String COMPILED_FILE_EXTENSION = "ta";
     private final String CODE_FILE_EXTENSION = "tac";
     private File data;
+    private SimpleLog log = CompilerApp.log;
 
 
 
@@ -85,7 +88,7 @@ public class CFileReader {
             reader.close();
             return readed;
         } catch(Exception e) {
-            e.printStackTrace();
+            log.trace(e.getStackTrace().toString());
         }
         return null;
     }
@@ -96,6 +99,7 @@ public class CFileReader {
         } else if (file.isFile()){
             return true;
         } else {
+            log.error("Path " + file.getAbsolutePath() + " is not valid.");
             throw new IllegalArgumentException("Path is not valid");
         }
     }

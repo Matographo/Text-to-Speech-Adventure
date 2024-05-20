@@ -29,46 +29,27 @@ public enum OpCodeSyntaxTests {
 
     OpCodeSyntaxTests mode;
 
-    private final AlwaysFalseOpCodeTest alwaysFalse;
-    private final PrinterOpCodeSyntax printer;
-    private final ActionOpCodeSyntax action;
-    private final ActionCallOpCodeSyntax actionCall;
-    private final DebugInputOpCodeSyntax debugInput;
-    private final GameExitScriptOpCodeSyntax gameExitScript;
-    private final GameLoaderScriptOpCodeSyntax gameLoaderScript;
-    private final GameSavingScriptOpCodeSyntax gameSavingScript;
-    private final IfOpCodeSyntax ifOpCode;
-    private final InputOpCodeSyntax input;
-    private final LoopBreakerOpCodeSyntax loopBreaker;
-    private final LoopOpCodeSyntax loop;
-    private final NumDecOpCodeSyntax numDec;
-    private final NumInitOpCodeSyntax numInit;
-    private final RoomOpCodeSyntax room;
-    private final SetOpCodeSyntax set;
-    private final RoomJumperOpCodeSyntax roomJumper;
-    private final StrDecOpCodeSyntax strDec;
-    private final StrInitOpCodeSyntax strInit;
+    private static final AlwaysFalseOpCodeTest alwaysFalse = new AlwaysFalseOpCodeTest();
+    private static final PrinterOpCodeSyntax printer = new PrinterOpCodeSyntax();
+    private static final ActionOpCodeSyntax action = new ActionOpCodeSyntax();
+    private static final ActionCallOpCodeSyntax actionCall = new ActionCallOpCodeSyntax();
+    private static final DebugInputOpCodeSyntax debugInput = new DebugInputOpCodeSyntax();
+    private static final GameExitScriptOpCodeSyntax gameExitScript = new GameExitScriptOpCodeSyntax();
+    private static final GameLoaderScriptOpCodeSyntax gameLoaderScript = new GameLoaderScriptOpCodeSyntax();
+    private static final GameSavingScriptOpCodeSyntax gameSavingScript = new GameSavingScriptOpCodeSyntax();
+    private static final IfOpCodeSyntax ifOpCode = new IfOpCodeSyntax();
+    private static final InputOpCodeSyntax input = new InputOpCodeSyntax();
+    private static final LoopBreakerOpCodeSyntax loopBreaker = new LoopBreakerOpCodeSyntax();
+    private static final LoopOpCodeSyntax loop = new LoopOpCodeSyntax();
+    private static final NumDecOpCodeSyntax numDec = new NumDecOpCodeSyntax();
+    private static final NumInitOpCodeSyntax numInit = new NumInitOpCodeSyntax();
+    private static final RoomOpCodeSyntax room = new RoomOpCodeSyntax();
+    private static final SetOpCodeSyntax set = new SetOpCodeSyntax();
+    private static final RoomJumperOpCodeSyntax roomJumper = new RoomJumperOpCodeSyntax();
+    private static final StrDecOpCodeSyntax strDec = new StrDecOpCodeSyntax();
+    private static final StrInitOpCodeSyntax strInit = new StrInitOpCodeSyntax();
 
     OpCodeSyntaxTests() {
-        alwaysFalse = new AlwaysFalseOpCodeTest();
-        printer = new PrinterOpCodeSyntax();
-        action = new ActionOpCodeSyntax();
-        actionCall = new ActionCallOpCodeSyntax();
-        debugInput = new DebugInputOpCodeSyntax();
-        gameExitScript = new GameExitScriptOpCodeSyntax();
-        gameLoaderScript = new GameLoaderScriptOpCodeSyntax();
-        gameSavingScript = new GameSavingScriptOpCodeSyntax();
-        ifOpCode = new IfOpCodeSyntax();
-        input = new InputOpCodeSyntax();
-        loopBreaker = new LoopBreakerOpCodeSyntax();
-        loop = new LoopOpCodeSyntax();
-        numDec = new NumDecOpCodeSyntax();
-        numInit = new NumInitOpCodeSyntax();
-        room = new RoomOpCodeSyntax();
-        set = new SetOpCodeSyntax();
-        roomJumper = new RoomJumperOpCodeSyntax();
-        strDec = new StrDecOpCodeSyntax();
-        strInit = new StrInitOpCodeSyntax();
 
     }
 

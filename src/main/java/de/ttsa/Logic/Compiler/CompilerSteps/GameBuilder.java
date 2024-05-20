@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Logic.Compiler.Functions.ProjectObject;
+import de.ttsa.Tools.SimpleLog;
 import de.ttsa.Tools.ZipManager;
 
 public class GameBuilder {
@@ -19,6 +21,7 @@ public class GameBuilder {
 
     final String COMPILED_FILE_EXTENSION = "ta";
     ProjectObject projectObject;
+    private SimpleLog log = CompilerApp.log;
 
 
 
@@ -67,7 +70,7 @@ public class GameBuilder {
             writer.close();
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.trace(e.getStackTrace().toString());
             return false;
         }
     }
@@ -104,7 +107,7 @@ public class GameBuilder {
             gameFile.createNewFile();
             return gameFile;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.trace(e.getStackTrace().toString());
             return null;
         }
     }
@@ -141,7 +144,7 @@ public class GameBuilder {
             }
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.trace(e.getStackTrace().toString());
         }
     }
     

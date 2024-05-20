@@ -1,6 +1,6 @@
-03::Var:0
-04::Varr:Hallo
-10::Attack:sAngriff:1
-08::Varr:"Bye"
-01::START:1
-11::Attack:Varr
+03Var:0
+04Varr:Hallo
+10Attack:sAngriff:1
+08Varr:"Bye"
+01START:1
+11Attack:Varr

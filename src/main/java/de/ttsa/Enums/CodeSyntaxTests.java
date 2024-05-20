@@ -30,48 +30,28 @@ public enum CodeSyntaxTests {
 
     CodeSyntaxTests mode;
 
-    private final AlwaysFalseCodeTest alwaysFalse;
-    private final PrinterCodeSyntax printer;
-    private final ActionCodeSyntax action;
-    private final ActionCallCodeSyntax actionCall;
-    private final DebugInputCodeSyntax debugInput;
-    private final GameExitScriptCodeSyntax gameExitScript;
-    private final GameLoaderScriptCodeSyntax gameLoaderScript;
-    private final GameSavingScriptCodeSyntax gameSavingScript;
-    private final IfCodeSyntax ifCode;
-    private final ElseCodeSyntax elseCode;
-    private final InputCodeSyntax input;
-    private final LoopBreakerCodeSyntax loopBreaker;
-    private final LoopCodeSyntax loop;
-    private final NumDecCodeSyntax numDec;
-    private final NumInitCodeSyntax numInit;
-    private final RoomCodeSyntax room;
-    private final SetCodeSyntax set;
-    private final RoomJumperCodeSyntax roomJumper;
-    private final StrDecCodeSyntax strDec;
-    private final StrInitCodeSyntax strInit;
+    private final AlwaysFalseCodeTest alwaysFalse = new AlwaysFalseCodeTest();
+    private final PrinterCodeSyntax printer = new PrinterCodeSyntax();
+    private final ActionCodeSyntax action = new ActionCodeSyntax();
+    private final ActionCallCodeSyntax actionCall = new ActionCallCodeSyntax();
+    private final DebugInputCodeSyntax debugInput = new DebugInputCodeSyntax();
+    private final GameExitScriptCodeSyntax gameExitScript = new GameExitScriptCodeSyntax();
+    private final GameLoaderScriptCodeSyntax gameLoaderScript = new GameLoaderScriptCodeSyntax();
+    private final GameSavingScriptCodeSyntax gameSavingScript = new GameSavingScriptCodeSyntax();
+    private final IfCodeSyntax ifCode = new IfCodeSyntax();
+    private final ElseCodeSyntax elseCode = new ElseCodeSyntax();
+    private final InputCodeSyntax input = new InputCodeSyntax();
+    private final LoopBreakerCodeSyntax loopBreaker = new LoopBreakerCodeSyntax();
+    private final LoopCodeSyntax loop = new LoopCodeSyntax();
+    private final NumDecCodeSyntax numDec = new NumDecCodeSyntax();
+    private final NumInitCodeSyntax numInit = new NumInitCodeSyntax();
+    private final RoomCodeSyntax room = new RoomCodeSyntax();
+    private final SetCodeSyntax set = new SetCodeSyntax();
+    private final RoomJumperCodeSyntax roomJumper = new RoomJumperCodeSyntax();
+    private final StrDecCodeSyntax strDec = new StrDecCodeSyntax();
+    private final StrInitCodeSyntax strInit = new StrInitCodeSyntax();
 
     CodeSyntaxTests() {
-        alwaysFalse      = new AlwaysFalseCodeTest();
-        printer          = new PrinterCodeSyntax();
-        numDec           = new NumDecCodeSyntax();
-        strDec           = new StrDecCodeSyntax();
-        action           = new ActionCodeSyntax();
-        actionCall       = new ActionCallCodeSyntax();
-        debugInput       = new DebugInputCodeSyntax();
-        gameExitScript   = new GameExitScriptCodeSyntax();
-        gameLoaderScript = new GameLoaderScriptCodeSyntax();
-        gameSavingScript = new GameSavingScriptCodeSyntax();
-        ifCode           = new IfCodeSyntax();
-        elseCode         = new ElseCodeSyntax();
-        input            = new InputCodeSyntax();
-        loopBreaker      = new LoopBreakerCodeSyntax();
-        loop             = new LoopCodeSyntax();
-        numInit          = new NumInitCodeSyntax();
-        room             = new RoomCodeSyntax();
-        set              = new SetCodeSyntax();
-        roomJumper       = new RoomJumperCodeSyntax();
-        strInit          = new StrInitCodeSyntax();
     }
 
     public CodeSyntaxTestable getTest(String mode) {

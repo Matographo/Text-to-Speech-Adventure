@@ -1,6 +1,6 @@
-03::Var:0
-04::Varr:H
-01::START:3
-09::"H allo"
-06::i[{"allo"*(1)@Varr@*(1)}*(1)]*(1):1
-05::Var:1
+03Var:0
+04Varr:H
+01START:3
+09"H allo"
+06i[{"allo"*(1)@Varr@*(1)}*(1)]*(1):1
+05Var:1

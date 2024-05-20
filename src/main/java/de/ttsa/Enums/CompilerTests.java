@@ -30,46 +30,27 @@ public enum CompilerTests {
     CompilerTests mode;
     CompilerSyntax syntax = CompilerSyntax.ACTION;
 
-    private final AlwaysFalseOpCodeTest alwaysFalse;
-    private final PrinterCompiler printer;
-    private final ActionCompiler action;
-    private final ActionCallCompiler actionCall;
-    private final DebugInputCompiler debugInput;
-    private final GameExitScriptCompiler gameExitScript;
-    private final GameLoaderScriptCompiler gameLoaderScript;
-    private final GameSavingScriptCompiler gameSavingScript;
-    private final IfCompiler ifOpCode;
-    private final InputCompiler input;
-    private final LoopBreakerCompiler loopBreaker;
-    private final LoopCompiler loop;
-    private final NumDecCompiler numDec;
-    private final NumInitCompiler numInit;
-    private final RoomCompiler room;
-    private final SetCompiler set;
-    private final RoomJumperCompiler roomJumper;
-    private final StrDecCompiler strDec;
-    private final StrInitCompiler strInit;
+    private final AlwaysFalseOpCodeTest alwaysFalse = new AlwaysFalseOpCodeTest();
+    private final PrinterCompiler printer = new PrinterCompiler();
+    private final ActionCompiler action = new ActionCompiler();
+    private final ActionCallCompiler actionCall = new ActionCallCompiler();
+    private final DebugInputCompiler debugInput = new DebugInputCompiler();
+    private final GameExitScriptCompiler gameExitScript = new GameExitScriptCompiler();
+    private final GameLoaderScriptCompiler gameLoaderScript = new GameLoaderScriptCompiler();
+    private final GameSavingScriptCompiler gameSavingScript = new GameSavingScriptCompiler();
+    private final IfCompiler ifOpCode = new IfCompiler();
+    private final InputCompiler input = new InputCompiler();
+    private final LoopBreakerCompiler loopBreaker = new LoopBreakerCompiler();
+    private final LoopCompiler loop = new LoopCompiler();
+    private final NumDecCompiler numDec = new NumDecCompiler();
+    private final NumInitCompiler numInit = new NumInitCompiler();
+    private final RoomCompiler room = new RoomCompiler();
+    private final SetCompiler set = new SetCompiler();
+    private final RoomJumperCompiler roomJumper = new RoomJumperCompiler();
+    private final StrDecCompiler strDec = new StrDecCompiler();
+    private final StrInitCompiler strInit = new StrInitCompiler();
 
     CompilerTests() {
-        alwaysFalse = new AlwaysFalseOpCodeTest();
-        printer = new PrinterCompiler();
-        action = new ActionCompiler();
-        actionCall = new ActionCallCompiler();
-        debugInput = new DebugInputCompiler();
-        gameExitScript = new GameExitScriptCompiler();
-        gameLoaderScript = new GameLoaderScriptCompiler();
-        gameSavingScript = new GameSavingScriptCompiler();
-        ifOpCode = new IfCompiler();
-        input = new InputCompiler();
-        loopBreaker = new LoopBreakerCompiler();
-        loop = new LoopCompiler();
-        numDec = new NumDecCompiler();
-        numInit = new NumInitCompiler();
-        room = new RoomCompiler();
-        set = new SetCompiler();
-        roomJumper = new RoomJumperCompiler();
-        strDec = new StrDecCompiler();
-        strInit = new StrInitCompiler();
     }
 
     public CompilerLine getCompilerLine(String line) {

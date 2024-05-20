@@ -76,7 +76,6 @@ class GameScriptBuilder {
         String args   = "";
         String line   = "";
 
-        long startTime;
 
         ArrayList<Scriptable> gameScript = new ArrayList<Scriptable>();
         ArrayList<String> blockContent;
@@ -84,8 +83,8 @@ class GameScriptBuilder {
 
         for(int i = 0; i < game.size(); i++) {
             line   = game.get(i);
-            opCode = line.split(Seperators.COMMAND.getSeperator())[0];
-            args   = line.substring(line.indexOf(Seperators.COMMAND.getSeperator()) + opCode.length()).strip();
+            opCode = line.substring(0, 2);
+            args   = line.substring(2).strip();
 
             switch(opCodeIndex.convert(opCode)) {
                 case SAY:
@@ -95,7 +94,6 @@ class GameScriptBuilder {
 
                 case ROOM:
 
-                    startTime = System.currentTimeMillis();
                     int roomSize = getRoomSize(args);
                     blockContent = new ArrayList<String>(roomSize);
                     game.set(i, args);
@@ -132,7 +130,6 @@ class GameScriptBuilder {
 
                 case IF:
 
-                    startTime = System.currentTimeMillis();
                     int ifSize = getIfSize(args);
                     blockContent = new ArrayList<String>(ifSize);
                     game.set(i, args);
@@ -179,7 +176,6 @@ class GameScriptBuilder {
 
                 case LOOP:
 
-                    startTime = System.currentTimeMillis();
                     int loopSize = getLoopSize(args);
                     blockContent = new ArrayList<String>(loopSize);
                     game.set(i, args);
@@ -206,7 +202,6 @@ class GameScriptBuilder {
 
                 case ACTION:
 
-                    startTime = System.currentTimeMillis();
                     int actionSize = getActionSize(args);
                     blockContent = new ArrayList<String>(actionSize);
                     game.set(i, args);

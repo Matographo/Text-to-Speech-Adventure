@@ -1,7 +1,7 @@
-04::Varrr:hallo
-03::Varr:0
-0F::Var:Varrr
-01::START:3
-09::"hallo"
-06::i[{'Var'*(1)}*(1)]*(1):1
-05::Varr:1
+04Varrr:hallo
+03Varr:0
+0FVar:Varrr
+01START:3
+09"hallo"
+06i[{'Var'*(1)}*(1)]*(1):1
+05Varr:1

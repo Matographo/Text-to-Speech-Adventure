@@ -1,5 +1,5 @@
-03::Var:1
-01::START:3
-06::nVar==2:1;;nVar==1:1
-05::Var:1
-05::Var:2
+03Var:1
+01START:3
+06nVar==2:1;;nVar==1:1
+05Var:1
+05Var:2

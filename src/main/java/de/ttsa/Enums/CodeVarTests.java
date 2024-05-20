@@ -24,38 +24,23 @@ public enum CodeVarTests {
 
     CodeVarTests mode;
 
-    private final AlwaysFalseCodeTest alwaysFalse;
-    private final AlwaysTrueCodeTest alwaysTrue;
-    private final ActionCodeVar action;
-    private final ActionCallCodeVar actionCall;
-    private final PrinterCodeVar printer;
-    private final DebugInputCodeVar debugInput;
-    private final IfCodeVar ifOpCode;
-    private final LoopCodeVar loop;
-    private final NumDecCodeVar numDec;
-    private final NumInitCodeVar numInit;
-    private final RoomCodeVar room;
-    private final SetCodeVar set;
-    private final RoomJumperCodeVar roomJumper;
-    private final StrDecCodeVar strDec;
-    private final StrInitCodeVar strInit;
+    private final AlwaysFalseCodeTest alwaysFalse = new AlwaysFalseCodeTest();
+    private final AlwaysTrueCodeTest alwaysTrue = new AlwaysTrueCodeTest();
+    private final ActionCodeVar action = new ActionCodeVar();
+    private final ActionCallCodeVar actionCall = new ActionCallCodeVar();
+    private final PrinterCodeVar printer = new PrinterCodeVar();
+    private final DebugInputCodeVar debugInput = new DebugInputCodeVar();
+    private final IfCodeVar ifOpCode = new IfCodeVar();
+    private final LoopCodeVar loop = new LoopCodeVar();
+    private final NumDecCodeVar numDec = new NumDecCodeVar();
+    private final NumInitCodeVar numInit = new NumInitCodeVar();
+    private final RoomCodeVar room = new RoomCodeVar();
+    private final SetCodeVar set = new SetCodeVar();
+    private final RoomJumperCodeVar roomJumper = new RoomJumperCodeVar();
+    private final StrDecCodeVar strDec = new StrDecCodeVar();
+    private final StrInitCodeVar strInit = new StrInitCodeVar();
 
     CodeVarTests() {
-        alwaysFalse = new AlwaysFalseCodeTest();
-        alwaysTrue = new AlwaysTrueCodeTest();
-        printer = new PrinterCodeVar();
-        action = new ActionCodeVar();
-        actionCall = new ActionCallCodeVar();
-        ifOpCode = new IfCodeVar();
-        loop = new LoopCodeVar();
-        numDec = new NumDecCodeVar();
-        numInit = new NumInitCodeVar();
-        room = new RoomCodeVar();
-        set = new SetCodeVar();
-        roomJumper = new RoomJumperCodeVar();
-        strDec = new StrDecCodeVar();
-        strInit = new StrInitCodeVar();
-        debugInput = new DebugInputCodeVar();
     }
 
     public CodeVarTestable getTest(String mode) {

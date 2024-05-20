@@ -1,3 +1,3 @@
-03::Zahl:5
-01::START:1
-05::Zahl:5+Zahl
+03Zahl:5
+01START:1
+05Zahl:5+Zahl
