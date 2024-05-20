@@ -1,16 +1,25 @@
 package de.ttsa.Logic.Features.Loop;
 
+import java.util.regex.Pattern;
+
 import de.ttsa.Enums.Regex;
 import de.ttsa.Interfaces.CodeSyntaxTestable;
 
 public class LoopCodeSyntax implements CodeSyntaxTestable {
 
+    private static Pattern patternInnerBreckets = Pattern.compile(Regex.IF_INNER_BRECKETS_CODE.toString());
+    private static Pattern patternNumber = Pattern.compile(Regex.IF_NUMBER_CODE.toString());
+    private static Pattern patternString = Pattern.compile(Regex.IF_STRING_CODE.toString());
+    private static Pattern patternInput = Pattern.compile(Regex.IF_INPUT_CODE.toString());
+    private static Pattern pattern = Pattern.compile(Regex.VALIDE_NUMBER.toString());
+    private static Pattern patternName = Pattern.compile(Regex.VALIDE_NAME.toString());
+
     @Override
     public boolean testCode(String code) {
         boolean result = false;
         String condition = code.substring(0, code.indexOf("{")).strip().replaceAll(" ", "");
-        result |= condition.matches(Regex.VALIDE_NAME.toString());
-        result |= condition.matches(Regex.VALIDE_NUMBER.toString());
+        result |= pattern.matcher(condition).matches();
+        result |= patternName.matcher(condition).matches();
         result |= testIfSyntaxNum(condition);
         result |= testIfSyntaxStr(condition);
         result |= testIfSyntaxIn(condition);
@@ -27,7 +36,7 @@ public class LoopCodeSyntax implements CodeSyntaxTestable {
             if(!testIfSyntaxNumInnerBreckets(getInnerBreckets(args))) return false;
             args = removeInnerBrecketsAndSubstitut(args, "1");
         }
-        return args.matches(Regex.IF_NUMBER_CODE.toString());
+        return patternNumber.matcher(args).matches();
     }
 
     /**
@@ -36,7 +45,7 @@ public class LoopCodeSyntax implements CodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxStr(String args) {
-        return args.matches(Regex.IF_STRING_CODE.toString());
+        return patternString.matcher(args).matches();
     }
 
     /**
@@ -45,7 +54,7 @@ public class LoopCodeSyntax implements CodeSyntaxTestable {
      * @return true if the syntax is correct
      */
     private boolean testIfSyntaxIn(String args) {
-        return args.matches(Regex.IF_INPUT_CODE.toString());
+        return patternInput.matcher(args).matches();
     }
 
     private boolean hasBrackets(String args) {
@@ -59,7 +68,7 @@ public class LoopCodeSyntax implements CodeSyntaxTestable {
     }
 
     private boolean testIfSyntaxNumInnerBreckets(String args) {
-        return args.matches(Regex.IF_INNER_BRECKETS_CODE.toString());
+        return patternInnerBreckets.matcher(args).matches();
     }
 
     private String removeInnerBrecketsAndSubstitut(String args, String substitut) {
