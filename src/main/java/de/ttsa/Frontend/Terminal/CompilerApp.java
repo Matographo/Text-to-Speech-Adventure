@@ -30,7 +30,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        // args = new String[] {"-cp", "."};
+        args = new String[] {"-c", "TestProject"};
         new CompilerApp().start(args);
     }
     

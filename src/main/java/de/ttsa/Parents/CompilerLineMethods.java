@@ -1,6 +1,8 @@
 package de.ttsa.Parents;
 
+import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Enums.Index;
+import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.CompilerLine;
 
 public abstract class CompilerLineMethods implements CompilerLine {
@@ -9,7 +11,7 @@ public abstract class CompilerLineMethods implements CompilerLine {
     }
 
     protected String getWithoutCommand(String line) {
-        return line.substring(2).strip();
+        return line.substring(line.indexOf(CompilerSyntax.COMMAND.toString()) + 1).strip();
     }
 
 }

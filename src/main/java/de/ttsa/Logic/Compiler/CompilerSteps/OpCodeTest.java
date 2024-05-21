@@ -69,7 +69,7 @@ public class OpCodeTest {
             ArrayList<String> content = getContent();
 
             startTime = System.currentTimeMillis();
-            testResult = testSyntax(new ArrayList<String>(content)) && testResult;
+            testResult = testSyntax(content) && testResult;
             log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
 
             startTime = System.currentTimeMillis();
@@ -93,7 +93,7 @@ public class OpCodeTest {
 
         try {
             startTime = System.currentTimeMillis();
-            testResult = testSyntax(new ArrayList<String>(content)) && testResult;
+            testResult = testSyntax(content) && testResult;
             log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
 
             startTime = System.currentTimeMillis();
@@ -118,7 +118,7 @@ public class OpCodeTest {
         SimpleLog log = CompilerApp.log;
 
         startTime = System.currentTimeMillis();
-        testResult = test.testSyntax(new ArrayList<String>(content)) && testResult;
+        testResult = test.testSyntax(content) && testResult;
         log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
         
         startTime = System.currentTimeMillis();

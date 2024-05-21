@@ -59,7 +59,7 @@ private SimpleLog log = CompilerApp.log;
             log.info("Compilation successful.");
             return true;
         } else {
-            log.info("Compilation failed");
+            log.error("Compilation failed");
             return false;
         }
     }
