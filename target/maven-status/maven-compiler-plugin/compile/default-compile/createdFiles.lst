@@ -41,6 +41,7 @@ de/ttsa/Logic/Compiler/CompilerSteps/Merger.class
 de/ttsa/Logic/Features/If/IfCodeVar.class
 de/ttsa/Logic/Features/Action/ActionOpCodeVar.class
 de/ttsa/Container/InputContainerPlayer/InorderChecker.class
+de/ttsa/Tools/Formater.class
 de/ttsa/Logic/Features/StrDec/StrDecOpCodeVar.class
 de/ttsa/Logic/Features/Room/RoomOpCodeVar.class
 de/ttsa/Logic/Player/Datatypes/AlwaysTrueCodeTest.class

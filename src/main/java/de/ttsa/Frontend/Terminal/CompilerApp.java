@@ -8,6 +8,7 @@ import de.ttsa.Frontend.Terminal.Dialogs.ProjectCreator;
 import de.ttsa.Logic.Compiler.StartCompiler;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Player.PlayerLogic.Player;
+import de.ttsa.Tools.Formater;
 import de.ttsa.Tools.SimpleLog;
 
 
@@ -30,7 +31,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        args = new String[] {"-c", "TestProject"};
+        // args = new String[] {"-c", "TestProject"};
         new CompilerApp().start(args);
     }
     
@@ -119,7 +120,7 @@ public class CompilerApp
         try {
             StartCompiler compiler = new StartCompiler(fileSource, fileDestination);
             boolean result = compiler.compile();
-            log.debug("Compilation took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("Compilation took: " + Formater.format(System.currentTimeMillis() - startTime));
             return result;
         } catch (Exception e) {
             log.error("Compilation failed!");
@@ -142,7 +143,7 @@ public class CompilerApp
             if(test.start()) {
                 long endTime = System.currentTimeMillis();
                 log.info("Test passed!");
-                log.info("Time: " + (endTime - startTime) + "ms");
+                log.info("Time: " + Formater.format(endTime - startTime));
             } else {
                 log.info("Test failed.");
             }

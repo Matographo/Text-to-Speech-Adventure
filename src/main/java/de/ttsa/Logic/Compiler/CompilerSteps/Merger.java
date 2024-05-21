@@ -2,6 +2,9 @@ package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
 
+import de.ttsa.Frontend.Terminal.CompilerApp;
+import de.ttsa.Tools.SimpleLog;
+
 public class Merger {
 
 
@@ -11,6 +14,7 @@ public class Merger {
 
 
     ArrayList<ArrayList<String>> fileContent;
+    private SimpleLog log = CompilerApp.log;
 
 
 
@@ -33,6 +37,7 @@ public class Merger {
         for (ArrayList<String> file : fileContent) {
             merged.addAll(file);
         }
+        log.debug("Merged " + merged.size() + " lines.");
         return merged;
     }
 

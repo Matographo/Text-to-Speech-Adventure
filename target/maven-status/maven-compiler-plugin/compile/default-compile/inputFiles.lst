@@ -95,6 +95,7 @@
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Player/PlayerLogic/GameLoader.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/NumInit/NumInitOpCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Enums/OpCodeSyntaxTests.java
+/home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Tools/Formater.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Room/Room.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Logic/Features/Room/RoomOpCodeVar.java
 /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/src/main/java/de/ttsa/Frontend/GUI/StartMenu.java

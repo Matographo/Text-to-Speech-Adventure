@@ -16,6 +16,7 @@ import de.ttsa.Interfaces.OpCodeBlockTestable;
 import de.ttsa.Interfaces.OpCodeInnerBlockTestable;
 import de.ttsa.Interfaces.OpCodeSyntaxTestable;
 import de.ttsa.Interfaces.OpCodeVarTestable;
+import de.ttsa.Tools.Formater;
 import de.ttsa.Tools.SimpleLog;
 
 public class OpCodeTest {
@@ -70,15 +71,15 @@ public class OpCodeTest {
 
             startTime = System.currentTimeMillis();
             testResult = testSyntax(content) && testResult;
-            log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Syntax Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
             startTime = System.currentTimeMillis();
             testResult = testVariables(new ArrayList<String>(content)) && testResult;
-            log.debug("OpCode Variables Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Variables Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
             startTime = System.currentTimeMillis();
             testResult = testBlocks(new ArrayList<String>(content)) && testResult;
-            log.debug("OpCode Blocks Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Blocks Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
         } catch (Exception e) {
             return false;
@@ -94,15 +95,15 @@ public class OpCodeTest {
         try {
             startTime = System.currentTimeMillis();
             testResult = testSyntax(content) && testResult;
-            log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Syntax Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
             startTime = System.currentTimeMillis();
             testResult = testVariables(new ArrayList<String>(content)) && testResult;
-            log.debug("OpCode Variables Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Variables Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
             startTime = System.currentTimeMillis();
             testResult = testBlocks(new ArrayList<String>(content)) && testResult;
-            log.debug("OpCode Blocks Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("OpCode Blocks Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
         } catch (Exception e) {
             return false;
@@ -119,15 +120,15 @@ public class OpCodeTest {
 
         startTime = System.currentTimeMillis();
         testResult = test.testSyntax(content) && testResult;
-        log.debug("OpCode Syntax Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("OpCode Syntax Test took: " + Formater.format(System.currentTimeMillis() - startTime));
         
         startTime = System.currentTimeMillis();
         testResult = test.testVariables(new ArrayList<String>(content)) && testResult;
-        log.debug("OpCode Variables Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("OpCode Variables Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
         startTime = System.currentTimeMillis();
         testResult = test.testBlocks(new ArrayList<String>(content)) && testResult;
-        log.debug("OpCode Blocks Test took: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("OpCode Blocks Test took: " + Formater.format(System.currentTimeMillis() - startTime));
 
         return testResult;
     }

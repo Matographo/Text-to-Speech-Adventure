@@ -11,6 +11,7 @@ import de.ttsa.Logic.Compiler.CompilerSteps.GameBuilder;
 import de.ttsa.Logic.Compiler.CompilerSteps.Merger;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Compiler.CompilerSteps.Sorter;
+import de.ttsa.Tools.Formater;
 import de.ttsa.Tools.SimpleLog;
 
 public class StartCompiler {
@@ -75,7 +76,7 @@ private SimpleLog log = CompilerApp.log;
         long startTime = System.currentTimeMillis();
         CFileReader reader = new CFileReader(fileSource);
         fileContent = reader.read();
-        log.debug("Reading time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Reading time: " + Formater.format(System.currentTimeMillis() - startTime));
         log.debug("Files read: " + fileContent.size());
         return fileContent != null;
     }
@@ -91,7 +92,7 @@ private SimpleLog log = CompilerApp.log;
         long startTime = System.currentTimeMillis();
         CodeTester test = new CodeTester(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
         boolean result = test.test();
-        log.debug("Testing time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Testing time: " + Formater.format(System.currentTimeMillis() - startTime));
         return result;
     }
 
@@ -106,7 +107,7 @@ private SimpleLog log = CompilerApp.log;
         long startTime = System.currentTimeMillis();
         Compiler compiler = new Compiler(new ArrayList<ArrayList<String>>(Arrays.asList(game)));
         game = compiler.compile().get(0);
-        log.debug("Compiling time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Compiling time: " + Formater.format(System.currentTimeMillis() - startTime));
         return game != null;
     }
 
@@ -122,7 +123,7 @@ private SimpleLog log = CompilerApp.log;
         Sorter sorter = new Sorter(game);
         try {
             game = sorter.sort();
-            log.debug("Sorting time: " + (System.currentTimeMillis() - startTime) + "ms");
+            log.debug("Sorting time: " + Formater.format(System.currentTimeMillis() - startTime));
             return true;
         } catch (Exception e) {
             return false;
@@ -140,7 +141,7 @@ private SimpleLog log = CompilerApp.log;
         long startTime = System.currentTimeMillis();
         Merger merger = new Merger(fileContent);
         game = merger.merge();
-        log.debug("Merging time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Merging time: " + Formater.format(System.currentTimeMillis() - startTime));
         return game != null;
     }
 
@@ -154,7 +155,7 @@ private SimpleLog log = CompilerApp.log;
         log.info("Testing Compiled Code...");
         long startTime = System.currentTimeMillis();
         boolean result = OpCodeTest.test(game);
-        log.debug("OpCodeTest time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("OpCodeTest time: " + Formater.format(System.currentTimeMillis() - startTime));
         return result;
     }
 
@@ -168,7 +169,7 @@ private SimpleLog log = CompilerApp.log;
         long startTime = System.currentTimeMillis();
         GameBuilder builder = new GameBuilder(game, fileSource, fileDestination);
         boolean result = builder.build();
-        log.debug("Building time: " + (System.currentTimeMillis() - startTime) + "ms");
+        log.debug("Building time: " + Formater.format(System.currentTimeMillis() - startTime));
         return result;
     }
 
