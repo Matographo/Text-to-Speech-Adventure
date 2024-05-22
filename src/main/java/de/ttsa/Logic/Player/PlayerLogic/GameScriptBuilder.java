@@ -1,5 +1,6 @@
 package de.ttsa.Logic.Player.PlayerLogic;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +19,7 @@ import de.ttsa.Logic.Features.If.If;
 import de.ttsa.Logic.Features.Input.Input;
 import de.ttsa.Logic.Features.Loop.Loop;
 import de.ttsa.Logic.Features.LoopBreaker.LoopBreaker;
+import de.ttsa.Logic.Features.MusicStarter.MusicStarter;
 import de.ttsa.Logic.Features.NumInit.NumInit;
 import de.ttsa.Logic.Features.Printer.Printer;
 import de.ttsa.Logic.Features.Room.Room;
@@ -220,6 +222,16 @@ class GameScriptBuilder {
 
                     gameScript.add(actionCall(args));
                     break;
+                
+                case MUSIC_DEC:
+                    
+                    musicDec(args);
+                    break;
+
+                case MUSIC_STARTER:
+                        
+                        gameScript.add(new MusicStarter(args));
+                        break;
 
                 default:
                     throw new RuntimeException("OpCode " + opCode + " is not valid!");
@@ -467,14 +479,13 @@ class GameScriptBuilder {
      */
     private void action(ArrayList<String> actionContent) {
         String[] actionArgs   = actionContent.get(0).split(Seperators.ACTION.getSeperator());
-        String actionName     = actionArgs[0];
         String[] actionParams = actionArgs[1].split(Seperators.ACTION_ARGS.getSeperator());
 
 
         actionContent.remove(0);
 
         Scriptable actionScript = loadGame(actionContent);
-        GameManager.actions.put(actionName, new Action(actionScript, actionParams));
+        GameManager.actions.put(actionArgs[0], new Action(actionScript, actionParams));
     }
 
     /**
@@ -484,11 +495,15 @@ class GameScriptBuilder {
      */
     private Scriptable actionCall(String args) {
         String[] actionCallArgs = args.split(Seperators.ACTION.getSeperator());
-        String actionName       = actionCallArgs[0];
         String[] actionParams   = actionCallArgs[1].split(Seperators.ACTION_ARGS.getSeperator());
 
 
-        return new ActionCall(actionName, actionParams);
+        return new ActionCall(actionCallArgs[0], actionParams);
+    }
+
+    private void musicDec(String args) {
+        String[] musicArgs = args.split(Seperators.MUSIC_DEC.getSeperator());
+        GameManager.music.put(musicArgs[0], musicArgs[1]);
     }
 
 
@@ -575,7 +590,5 @@ class GameScriptBuilder {
         
         return Integer.parseInt(actionArgs[2]);
     }
-
-
 
 }

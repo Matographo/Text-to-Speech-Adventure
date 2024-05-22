@@ -19,7 +19,9 @@ public enum Index {
     LOOP_BREAKER("0E"), 
     SET("0F"), 
     ACTION("10"), 
-    ACTION_CALL("11");
+    ACTION_CALL("11"),
+    MUSIC_DEC("12"),
+    MUSIC_STARTER("13");
 
     private String command;
 

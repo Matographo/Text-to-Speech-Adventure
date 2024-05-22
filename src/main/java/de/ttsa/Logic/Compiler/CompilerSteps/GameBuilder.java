@@ -3,8 +3,10 @@ package de.ttsa.Logic.Compiler.CompilerSteps;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Logic.Compiler.Functions.ProjectObject;
@@ -52,6 +54,7 @@ public class GameBuilder {
 
         fillTmpGameFile(gameFile);
         createAndFillMetaDataFile(tmpFolder);
+        copyAssetFolder(tmpFolder);
 
         File game = makeZip(tmpFolder, projectObject.getDestinationPath(), projectObject.getProjectName());
 
@@ -146,6 +149,36 @@ public class GameBuilder {
         } catch (IOException e) {
             log.trace(e.getStackTrace().toString());
         }
+    }
+
+    private void copyAssetFolder(File folder) {
+        File assetFolder = new File(projectObject.getSourcePath().getAbsolutePath() + "/assets");
+        File newAssetFolder = new File(folder.getAbsolutePath());
+        if(assetFolder.exists()) {
+            newAssetFolder.mkdir();
+            try {
+                copyFolder(assetFolder.toPath(), newAssetFolder.toPath());
+            } catch (IOException e) {
+                log.trace(e.getStackTrace().toString());
+            }
+        }
+    }
+    
+    private void copyFolder(Path source, Path destination) throws IOException {
+        Files.walk(source).forEachOrdered(sourcePath -> {
+            try {
+                Path destinationPath = destination.resolve(source.relativize(sourcePath));
+                if (Files.isDirectory(sourcePath)) {
+                    if (!Files.exists(destinationPath)) {
+                        Files.createDirectories(destinationPath);
+                    }
+                } else {
+                    Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException("Fehler beim Kopieren von Dateien", e);
+            }
+        });
     }
     
 }

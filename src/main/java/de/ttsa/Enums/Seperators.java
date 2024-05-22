@@ -19,6 +19,8 @@ public enum Seperators {
     SET_NAME(":"),
     ACTION(":"),
     ACTION_ARGS(","),
+    MUSIC_DEC(":"),
+    MUSIC_STARTER(","),
     
     CODE_COMMAND(":"),;
 

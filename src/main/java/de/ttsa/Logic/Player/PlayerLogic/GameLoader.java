@@ -46,8 +46,13 @@ class GameLoader {
      */
     public List<String> loadGameData() {
         File game = new File(gameFile);
+        GameManager.gameFile = game;
 
-        if(!game.isFile()) {
+        if(!game.exists()) {
+            throw new RuntimeException("Game file does not exist!");
+        } else if(!game.canRead()) {
+            throw new RuntimeException("Game file is not readable!");
+        } else if(!game.isFile()) {
             throw new RuntimeException("Game file is not a file!");
         } else if(!game.getName().endsWith(gameFileExtension)) {
             throw new RuntimeException("Game file is not a Text Adventure (.ta) file!");

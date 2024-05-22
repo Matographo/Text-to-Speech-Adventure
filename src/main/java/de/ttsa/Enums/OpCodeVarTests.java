@@ -6,6 +6,8 @@ import de.ttsa.Logic.Features.ActionCall.ActionCallOpCodeVar;
 import de.ttsa.Logic.Features.DebugInput.DebugInputOpCodeVar;
 import de.ttsa.Logic.Features.If.IfOpCodeVar;
 import de.ttsa.Logic.Features.Loop.LoopOpCodeVar;
+import de.ttsa.Logic.Features.MusicDec.MusicDecOpCodeVar;
+import de.ttsa.Logic.Features.MusicStarter.MusicStarterOpCodeVar;
 import de.ttsa.Logic.Features.NumDec.NumDecOpCodeVar;
 import de.ttsa.Logic.Features.NumInit.NumInitOpCodeVar;
 import de.ttsa.Logic.Features.Printer.PrinterOpCodeVar;
@@ -20,7 +22,7 @@ import de.ttsa.Logic.Player.Datatypes.AlwaysTrueOpCodeTest;
 public enum OpCodeVarTests {
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT, 
     GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM, 
-    SET, ROOM_JUMPER, STR_DEC, STR_INIT, NONE;
+    SET, ROOM_JUMPER, STR_DEC, STR_INIT, MUSIC_DEC, MUSIC_STARTER, NONE;
 
     OpCodeVarTests mode;
 
@@ -39,6 +41,8 @@ public enum OpCodeVarTests {
     private final RoomJumperOpCodeVar roomJumper = new RoomJumperOpCodeVar();
     private final StrDecOpCodeVar strDec = new StrDecOpCodeVar();
     private final StrInitOpCodeVar strInit = new StrInitOpCodeVar();
+    private final MusicDecOpCodeVar musicDec = new MusicDecOpCodeVar();
+    private final MusicStarterOpCodeVar musicStarter = new MusicStarterOpCodeVar();
 
     OpCodeVarTests() {
     }
@@ -72,6 +76,10 @@ public enum OpCodeVarTests {
                 return strDec;
             case STR_INIT:
                 return strInit;
+            case MUSIC_DEC:
+                return musicDec;
+            case MUSIC_STARTER:
+                return musicStarter;
             case NONE:
                 return alwaysFalse;
             default:
@@ -100,6 +108,8 @@ public enum OpCodeVarTests {
             case "0F" -> this.mode = SET;
             case "10" -> this.mode = ACTION;
             case "11" -> this.mode = ACTION_CALL;
+            case "12" -> this.mode = MUSIC_DEC;
+            case "13" -> this.mode = MUSIC_STARTER;
             default   -> this.mode = NONE;
         }
     }

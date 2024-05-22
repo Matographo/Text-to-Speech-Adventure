@@ -18,6 +18,7 @@ public class OpCodeVar {
     private HashSet<String> strNames;
     private HashSet<String> actionNames;
     private HashSet<String> setNames;
+    private HashSet<String> musicNames;
 
     private HashMap<String, String> actionArgs = new HashMap<>();
     private HashMap<String, List<String>> actionArgsCode = new HashMap<>();
@@ -35,16 +36,17 @@ public class OpCodeVar {
         strNames    = new HashSet<String>();
         actionNames = new HashSet<String>();
         setNames    = new HashSet<String>();
+        musicNames  = new HashSet<String>();
     }
 
-    public OpCodeVar(HashSet<String> roomNames, HashSet<String> varNames, HashSet<String> numNames, HashSet<String> strNames, HashSet<String> actionNames, HashSet<String> setNames) {
+    public OpCodeVar(HashSet<String> roomNames, HashSet<String> varNames, HashSet<String> numNames, HashSet<String> strNames, HashSet<String> actionNames, HashSet<String> setNames, HashSet<String> musicNames) {
         this.roomNames = roomNames;
         this.varNames = varNames;
         this.numNames = numNames;
         this.strNames = strNames;
         this.actionNames = actionNames;
         this.setNames = setNames;
-
+        this.musicNames = musicNames;
     }
 
 
@@ -88,6 +90,10 @@ public class OpCodeVar {
         return actionArgsCode.get(actionName).add(arg);
     }
 
+    public boolean addMusicName(String name) {
+        return musicNames.add(name);
+    }
+
 //********************************** Asker ****************************************//
     public boolean isRoomName(String name) {
         return roomNames.contains(name);
@@ -119,6 +125,10 @@ public class OpCodeVar {
 
     public List<String> getActionArgsCode(String action) {
         return actionArgsCode.get(action);
+    }
+
+    public boolean isMusicName(String name) {
+        return musicNames.contains(name);
     }
 
 }

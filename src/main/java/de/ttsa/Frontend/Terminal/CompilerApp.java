@@ -31,7 +31,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        // args = new String[] {"-c", "TestProject"};
+        args = new String[] {"-c", "/home/leodora/Tester"};
         new CompilerApp().start(args);
     }
     

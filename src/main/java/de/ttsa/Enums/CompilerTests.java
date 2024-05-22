@@ -12,6 +12,8 @@ import de.ttsa.Logic.Features.If.IfCompiler;
 import de.ttsa.Logic.Features.Input.InputCompiler;
 import de.ttsa.Logic.Features.Loop.LoopCompiler;
 import de.ttsa.Logic.Features.LoopBreaker.LoopBreakerCompiler;
+import de.ttsa.Logic.Features.MusicDec.MusicDecCompiler;
+import de.ttsa.Logic.Features.MusicStarter.MusicStarterCompiler;
 import de.ttsa.Logic.Features.NumDec.NumDecCompiler;
 import de.ttsa.Logic.Features.NumInit.NumInitCompiler;
 import de.ttsa.Logic.Features.Printer.PrinterCompiler;
@@ -25,7 +27,7 @@ import de.ttsa.Logic.Player.Datatypes.AlwaysFalseOpCodeTest;
 public enum CompilerTests {
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT, 
     GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM, 
-    SET, ROOM_JUMPER, STR_DEC, STR_INIT, NONE;
+    SET, ROOM_JUMPER, STR_DEC, STR_INIT, MUSIC_DEC, MUSIC_STARTER, NONE;
 
     CompilerTests mode;
     CompilerSyntax syntax = CompilerSyntax.ACTION;
@@ -49,6 +51,8 @@ public enum CompilerTests {
     private final RoomJumperCompiler roomJumper = new RoomJumperCompiler();
     private final StrDecCompiler strDec = new StrDecCompiler();
     private final StrInitCompiler strInit = new StrInitCompiler();
+    private final MusicDecCompiler musicDec = new MusicDecCompiler();
+    private final MusicStarterCompiler musicStarter = new MusicStarterCompiler();
 
     CompilerTests() {
     }
@@ -82,6 +86,10 @@ public enum CompilerTests {
                 return strDec;
             case STR_INIT:
                 return strInit;
+            case MUSIC_DEC:
+                return musicDec;
+            case MUSIC_STARTER:
+                return musicStarter;
             default:
                 return null;
         }
@@ -125,6 +133,8 @@ public enum CompilerTests {
             case ROOM_JUMPER -> this.mode = ROOM_JUMPER;
             case STR_DEC -> this.mode = STR_DEC;
             case STR_INIT -> this.mode = STR_INIT;
+            case MUSIC_DEC -> this.mode = MUSIC_DEC;
+            case MUSIC_STARTER -> this.mode = MUSIC_STARTER;
             default -> this.mode = NONE;
         }
     }

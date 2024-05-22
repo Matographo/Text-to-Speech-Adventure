@@ -1,6 +1,8 @@
 package de.ttsa.Tools;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,7 +27,7 @@ public class ZipManager {
 
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
-                if (entry.getName().equals("/" + entryPath)) {
+                if (entry.getName().endsWith("/" + entryPath)) {
                     return readEntryData(zis);
                 }
             }
@@ -151,4 +153,37 @@ public class ZipManager {
             zipEntry = zis.getNextEntry();
         }
     }
+    
+
+
+public static List<InputStream> getMusicFiles(String zipFilePath, List<String> musicFileNames) {
+    List<InputStream> musicStreams = new ArrayList<>();
+    try {
+        FileInputStream fis = new FileInputStream(zipFilePath);
+        ZipInputStream zis = new ZipInputStream(fis);
+        ZipEntry entry;
+
+        while((entry = zis.getNextEntry()) != null){
+            String fileName = entry.getName();
+            if(!entry.isDirectory() && fileName.contains("music/") && musicFileNames.contains(fileName.substring(fileName.lastIndexOf("/")+1))) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int count;
+                while ((count = zis.read(buffer)) != -1) {
+                    baos.write(buffer, 0, count);
+                }
+                byte[] fileBytes = baos.toByteArray();
+                InputStream stream = new ByteArrayInputStream(fileBytes);
+                musicStreams.add(stream);
+            }
+        }
+        zis.close();
+        fis.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return musicStreams;
+}
+
+
 }

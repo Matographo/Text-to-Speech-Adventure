@@ -60,7 +60,9 @@ public class Sorter {
             if (line.startsWith(CompilerSyntax.NUM_DEC.toString()) &&
                     !line.startsWith(CompilerSyntax.NUM_INIT.toString()) ||
                     line.startsWith(CompilerSyntax.STR_DEC.toString()) &&
-                    !line.startsWith(CompilerSyntax.STR_INIT.toString())){
+                    !line.startsWith(CompilerSyntax.STR_INIT.toString()) ||
+                    line.startsWith(CompilerSyntax.MUSIC_DEC.toString()) &&
+                    !line.startsWith(CompilerSyntax.MUSIC_STARTER.toString())){
                 varContent.add(line);
                 block.remove(line);
             } else if (line.startsWith(CompilerSyntax.SET.toString())) {

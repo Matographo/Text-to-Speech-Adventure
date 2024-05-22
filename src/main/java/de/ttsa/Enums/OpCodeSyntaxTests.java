@@ -11,6 +11,8 @@ import de.ttsa.Logic.Features.If.IfOpCodeSyntax;
 import de.ttsa.Logic.Features.Input.InputOpCodeSyntax;
 import de.ttsa.Logic.Features.Loop.LoopOpCodeSyntax;
 import de.ttsa.Logic.Features.LoopBreaker.LoopBreakerOpCodeSyntax;
+import de.ttsa.Logic.Features.MusicDec.MusicDecOpCodeSyntax;
+import de.ttsa.Logic.Features.MusicStarter.MusicStarterOpCodeSyntax;
 import de.ttsa.Logic.Features.NumDec.NumDecOpCodeSyntax;
 import de.ttsa.Logic.Features.NumInit.NumInitOpCodeSyntax;
 import de.ttsa.Logic.Features.Printer.PrinterOpCodeSyntax;
@@ -25,7 +27,7 @@ public enum OpCodeSyntaxTests {
 
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT,
     GAME_SAVING_SCRIPT, IF, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM,
-    SET, ROOM_JUMPER, STR_DEC, STR_INIT, ALWAYS_FALSE;
+    SET, ROOM_JUMPER, STR_DEC, STR_INIT, MUSIC_DEC, MUSIC_STARTER, ALWAYS_FALSE;
 
     OpCodeSyntaxTests mode;
 
@@ -48,6 +50,8 @@ public enum OpCodeSyntaxTests {
     private static final RoomJumperOpCodeSyntax roomJumper = new RoomJumperOpCodeSyntax();
     private static final StrDecOpCodeSyntax strDec = new StrDecOpCodeSyntax();
     private static final StrInitOpCodeSyntax strInit = new StrInitOpCodeSyntax();
+    private static final MusicDecOpCodeSyntax musicDec = new MusicDecOpCodeSyntax();
+    private static final MusicStarterOpCodeSyntax musicStarter = new MusicStarterOpCodeSyntax();
 
     OpCodeSyntaxTests() {
 
@@ -75,6 +79,8 @@ public enum OpCodeSyntaxTests {
             case ROOM_JUMPER -> roomJumper;
             case STR_DEC -> strDec;
             case STR_INIT -> strInit;
+            case MUSIC_DEC -> musicDec;
+            case MUSIC_STARTER -> musicStarter;
             default -> alwaysFalse;
         };
     }
@@ -99,6 +105,8 @@ public enum OpCodeSyntaxTests {
             case "0F" -> SET;
             case "10" -> ACTION;
             case "11" -> ACTION_CALL;
+            case "12" -> MUSIC_DEC;
+            case "13" -> MUSIC_STARTER;
             default -> ALWAYS_FALSE;
         };
     }

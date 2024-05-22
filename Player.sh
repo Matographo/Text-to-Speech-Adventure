@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -cp target/ttsa-1.0.jar de.ttsa.Logic.PlayerApp $1 $2 $3 $4 $5 $6 $7 $8 $9
+java -cp /home/leodora/Documents/Dev/Java/Text-to-Speech-Adventure/target/ttsa-1.0.jar de.ttsa.Logic.PlayerApp $@

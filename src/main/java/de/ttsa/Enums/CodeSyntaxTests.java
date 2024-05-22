@@ -12,6 +12,8 @@ import de.ttsa.Logic.Features.If.IfCodeSyntax;
 import de.ttsa.Logic.Features.Input.InputCodeSyntax;
 import de.ttsa.Logic.Features.Loop.LoopCodeSyntax;
 import de.ttsa.Logic.Features.LoopBreaker.LoopBreakerCodeSyntax;
+import de.ttsa.Logic.Features.MusicDec.MusicDecCodeSyntax;
+import de.ttsa.Logic.Features.MusicStarter.MusicStarterCodeSyntax;
 import de.ttsa.Logic.Features.NumDec.NumDecCodeSyntax;
 import de.ttsa.Logic.Features.NumInit.NumInitCodeSyntax;
 import de.ttsa.Logic.Features.Printer.PrinterCodeSyntax;
@@ -26,30 +28,32 @@ public enum CodeSyntaxTests {
 
     SAY, ACTION, ACTION_CALL, DEBUG_INPUT, GAME_EXIT_SCRIPT, GAME_LOADER_SCRIPT,
     GAME_SAVING_SCRIPT, IF, ELSE, INPUT, LOOP_BREAKER, LOOP, NUM_DEC, NUM_INIT, ROOM,
-    SET, ROOM_JUMPER, STR_DEC, STR_INIT, ALWAYS_FALSE, NONE;
+    SET, ROOM_JUMPER, STR_DEC, STR_INIT, MUSIC_DEC, MUSIC_STARTER, ALWAYS_FALSE, NONE;
 
     CodeSyntaxTests mode;
 
-    private final AlwaysFalseCodeTest alwaysFalse = new AlwaysFalseCodeTest();
-    private final PrinterCodeSyntax printer = new PrinterCodeSyntax();
-    private final ActionCodeSyntax action = new ActionCodeSyntax();
-    private final ActionCallCodeSyntax actionCall = new ActionCallCodeSyntax();
-    private final DebugInputCodeSyntax debugInput = new DebugInputCodeSyntax();
-    private final GameExitScriptCodeSyntax gameExitScript = new GameExitScriptCodeSyntax();
-    private final GameLoaderScriptCodeSyntax gameLoaderScript = new GameLoaderScriptCodeSyntax();
-    private final GameSavingScriptCodeSyntax gameSavingScript = new GameSavingScriptCodeSyntax();
-    private final IfCodeSyntax ifCode = new IfCodeSyntax();
-    private final ElseCodeSyntax elseCode = new ElseCodeSyntax();
-    private final InputCodeSyntax input = new InputCodeSyntax();
-    private final LoopBreakerCodeSyntax loopBreaker = new LoopBreakerCodeSyntax();
-    private final LoopCodeSyntax loop = new LoopCodeSyntax();
-    private final NumDecCodeSyntax numDec = new NumDecCodeSyntax();
-    private final NumInitCodeSyntax numInit = new NumInitCodeSyntax();
-    private final RoomCodeSyntax room = new RoomCodeSyntax();
-    private final SetCodeSyntax set = new SetCodeSyntax();
-    private final RoomJumperCodeSyntax roomJumper = new RoomJumperCodeSyntax();
-    private final StrDecCodeSyntax strDec = new StrDecCodeSyntax();
-    private final StrInitCodeSyntax strInit = new StrInitCodeSyntax();
+    private static final AlwaysFalseCodeTest alwaysFalse = new AlwaysFalseCodeTest();
+    private static final PrinterCodeSyntax printer = new PrinterCodeSyntax();
+    private static final ActionCodeSyntax action = new ActionCodeSyntax();
+    private static final ActionCallCodeSyntax actionCall = new ActionCallCodeSyntax();
+    private static final DebugInputCodeSyntax debugInput = new DebugInputCodeSyntax();
+    private static final GameExitScriptCodeSyntax gameExitScript = new GameExitScriptCodeSyntax();
+    private static final GameLoaderScriptCodeSyntax gameLoaderScript = new GameLoaderScriptCodeSyntax();
+    private static final GameSavingScriptCodeSyntax gameSavingScript = new GameSavingScriptCodeSyntax();
+    private static final IfCodeSyntax ifCode = new IfCodeSyntax();
+    private static final ElseCodeSyntax elseCode = new ElseCodeSyntax();
+    private static final InputCodeSyntax input = new InputCodeSyntax();
+    private static final LoopBreakerCodeSyntax loopBreaker = new LoopBreakerCodeSyntax();
+    private static final LoopCodeSyntax loop = new LoopCodeSyntax();
+    private static final NumDecCodeSyntax numDec = new NumDecCodeSyntax();
+    private static final NumInitCodeSyntax numInit = new NumInitCodeSyntax();
+    private static final RoomCodeSyntax room = new RoomCodeSyntax();
+    private static final SetCodeSyntax set = new SetCodeSyntax();
+    private static final RoomJumperCodeSyntax roomJumper = new RoomJumperCodeSyntax();
+    private static final StrDecCodeSyntax strDec = new StrDecCodeSyntax();
+    private static final StrInitCodeSyntax strInit = new StrInitCodeSyntax();
+    private static final MusicDecCodeSyntax musicDec = new MusicDecCodeSyntax();
+    private static final MusicStarterCodeSyntax musicStarter = new MusicStarterCodeSyntax();
 
     CodeSyntaxTests() {
     }
@@ -77,6 +81,8 @@ public enum CodeSyntaxTests {
             case SET ->                test = set;
             case ROOM_JUMPER ->        test = roomJumper;
             case STR_INIT ->           test = strInit;
+            case MUSIC_DEC ->          test = musicDec;
+            case MUSIC_STARTER ->      test = musicStarter;
             case ALWAYS_FALSE ->       test = alwaysFalse;
             case NONE ->               test = alwaysFalse;
             default ->                 test = alwaysFalse;
@@ -125,6 +131,10 @@ public enum CodeSyntaxTests {
             this.mode = ROOM_JUMPER;
         } else if (mode.equals(CompilerSyntax.STR_INIT.toString())) {
             this.mode = STR_INIT;
+        } else if (mode.equals(CompilerSyntax.MUSIC_DEC.toString())) {
+            this.mode = MUSIC_DEC;
+        } else if (mode.equals(CompilerSyntax.MUSIC_STARTER.toString())) {
+            this.mode = MUSIC_STARTER;
         } else {
             this.mode = NONE;
         }

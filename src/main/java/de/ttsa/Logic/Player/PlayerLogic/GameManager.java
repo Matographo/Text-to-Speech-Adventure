@@ -1,5 +1,6 @@
 package de.ttsa.Logic.Player.PlayerLogic;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,11 +21,14 @@ public class GameManager {
 
     public static String savePath;
 
+    public static File gameFile;
+
     public static HashMap<String, Room> rooms     = new HashMap<>();
     public static HashMap<String, INT> numVars    = new HashMap<>();
     public static HashMap<String, STRING> strVars = new HashMap<>();
     public static HashMap<String, Set> sets       = new HashMap<>();
     public static HashMap<String, Action> actions = new HashMap<>();
+    public static HashMap<String, String> music     = new HashMap<>();
 
     public static String currentRoom;
     public static String nextRoom;
