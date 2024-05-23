@@ -11,7 +11,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -88,7 +91,6 @@ public class ZipManager {
             zos.close();
             fos.close();
 
-            System.out.println("Zip-Vorgang abgeschlossen.");
             return new File(destination + folderMarker + zipName + ".zip");
         } catch (IOException e) {
             return null;
@@ -157,7 +159,7 @@ public class ZipManager {
 
 
 public static List<InputStream> getMusicFiles(String zipFilePath, List<String> musicFileNames) {
-    List<InputStream> musicStreams = new ArrayList<>();
+    Map<String, byte[]> musicFilesMap = new HashMap<>();
     try {
         FileInputStream fis = new FileInputStream(zipFilePath);
         ZipInputStream zis = new ZipInputStream(fis);
@@ -165,24 +167,29 @@ public static List<InputStream> getMusicFiles(String zipFilePath, List<String> m
 
         while((entry = zis.getNextEntry()) != null){
             String fileName = entry.getName();
-            if(!entry.isDirectory() && fileName.contains("music/") && musicFileNames.contains(fileName.substring(fileName.lastIndexOf("/")+1))) {
+            if(!entry.isDirectory() && fileName.contains("music/")) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
                 int count;
                 while ((count = zis.read(buffer)) != -1) {
                     baos.write(buffer, 0, count);
                 }
-                byte[] fileBytes = baos.toByteArray();
-                InputStream stream = new ByteArrayInputStream(fileBytes);
-                musicStreams.add(stream);
+                musicFilesMap.put(fileName.substring(fileName.lastIndexOf("/")+1), baos.toByteArray());
             }
         }
-        zis.close();
-        fis.close();
+
+        List<InputStream> musicStreams = new ArrayList<>();
+        for (String musicFileName : musicFileNames) {
+            byte[] musicFile = musicFilesMap.get(musicFileName);
+            if (musicFile != null) {
+                musicStreams.add(new ByteArrayInputStream(musicFile));
+            }
+        }
+        return musicStreams;
     } catch (IOException e) {
         e.printStackTrace();
     }
-    return musicStreams;
+    return Collections.emptyList();
 }
 
 

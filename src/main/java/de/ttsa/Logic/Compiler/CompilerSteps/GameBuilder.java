@@ -9,7 +9,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 import de.ttsa.Frontend.Terminal.CompilerApp;
+import de.ttsa.Logic.Compiler.Functions.Mp3Converter;
 import de.ttsa.Logic.Compiler.Functions.ProjectObject;
+import de.ttsa.Tools.Formater;
 import de.ttsa.Tools.SimpleLog;
 import de.ttsa.Tools.ZipManager;
 
@@ -55,6 +57,7 @@ public class GameBuilder {
         fillTmpGameFile(gameFile);
         createAndFillMetaDataFile(tmpFolder);
         copyAssetFolder(tmpFolder);
+        convertNonmp3Files(tmpFolder);
 
         File game = makeZip(tmpFolder, projectObject.getDestinationPath(), projectObject.getProjectName());
 
@@ -80,7 +83,11 @@ public class GameBuilder {
 
 
     private File makeZip(File source, File destination, String gameName) {
-        return ZipManager.zip(source.getAbsolutePath(), destination.getAbsolutePath(), gameName);
+        File result;
+        long start = System.currentTimeMillis();
+        result = ZipManager.zip(source.getAbsolutePath(), destination.getAbsolutePath(), gameName);
+        log.debug("Compressing took " + Formater.format(System.currentTimeMillis() - start));
+        return result;
     }
 
 
@@ -179,6 +186,20 @@ public class GameBuilder {
                 throw new RuntimeException("Fehler beim Kopieren von Dateien", e);
             }
         });
+    }
+
+    private void convertNonmp3Files(File folder) {
+        File musicFolder = new File(folder.getAbsolutePath(), "/music");
+        if(musicFolder.exists()) {
+            long start = System.currentTimeMillis();
+            for (File file : musicFolder.listFiles()) {
+                if(file.isFile() && !file.getName().endsWith(".mp3")) {
+                    Mp3Converter.convertToMp3(file, new File(file.getAbsolutePath().replace(".wav", ".mp3")));
+                    file.delete();
+                }
+            }
+            log.debug("Conversion took " + Formater.format(System.currentTimeMillis() - start));
+        }
     }
     
 }

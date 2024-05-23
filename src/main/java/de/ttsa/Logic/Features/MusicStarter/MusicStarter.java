@@ -2,6 +2,7 @@ package de.ttsa.Logic.Features.MusicStarter;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,10 +18,7 @@ public class MusicStarter implements Scriptable {
 
     public MusicStarter(String args) {
         musicList = new LinkedList<>();
-        String[] musicFiles = args.split(Seperators.MUSIC_STARTER.getSeperator());
-        for (String musicFile : musicFiles) {
-            musicList.add(musicFile);
-        }
+        musicList.addAll(Arrays.asList(args.split(Seperators.MUSIC_STARTER.getSeperator())));
     }
 
     @Override

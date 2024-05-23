@@ -69,6 +69,7 @@ de/ttsa/Logic/Features/Loop/LoopCodeBlock.class
 de/ttsa/Logic/Features/DebugInput/DebugInputOpCodeSyntax.class
 de/ttsa/Logic/Features/MusicStarter/MusicStarterCodeVar.class
 de/ttsa/Parents/StringMethods.class
+de/ttsa/Logic/Compiler/Functions/Mp3Converter.class
 de/ttsa/Logic/Features/Action/ActionOpCodeSyntax.class
 de/ttsa/Frontend/GUI/CreateMode$1.class
 de/ttsa/Logic/Player/Functions/CompilerFunctions/OrderCompiler.class
