@@ -1,5 +1,9 @@
 package de.ttsa.Logic.Player.PlayerLogic;
 
+import java.io.FileInputStream;
+
+import de.ttsa.Logic.Player.Functions.PlayerFunctions.MusicPlayer;
+
 public class Player {
 
 
@@ -18,10 +22,10 @@ public class Player {
 
     /**
      * Constructor for Player
-     * @param gameFile the path to the game
+     * @param file the path to the game
      */
-    public Player(String gameFile) {
-        this.gameBuilder = new GameBuilder(gameFile);
+    public Player(String file) {
+        this.gameBuilder = new GameBuilder(file);
     }
 
     /**
@@ -58,6 +62,7 @@ public class Player {
         while(GameManager.nextRoom != null && GameManager.running) {
             GameManager.getNextRoom().play();
         }
+        MusicPlayer.endPlayer();
     }
 
 

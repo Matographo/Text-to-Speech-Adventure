@@ -1,95 +1,90 @@
 package de.ttsa.Logic.Player.Functions.PlayerFunctions;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 public class MusicPlayer {
     
-    private static float volume = 0.0f;
-
     private static boolean isRunning = false;
+    private static Thread musicThread;
+    private static float volume = 0.0f;
     private static boolean isNewQueue = false;
-    private static boolean isPlaying = false;
-    private static Queue<Clip> musicList; 
+    private static Queue<ByteArrayInputStream> musicList;
+    private static Player player;
 
     public MusicPlayer() {
     }
-
+    
     public static void playMusic() {
         if (!isRunning) {
-            Thread musicThread = new Thread(() -> {
-                try {
-                    isRunning = true;
-                    isPlaying = true;
-                    startMusic();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            musicThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        isRunning = true;
+                        startMusic();
+                    } catch (InterruptedException e) {
+                        System.out.println("Music Thread Interrupted");
+                    }
                 }
-            });
+            };
             musicThread.start();
         }
     }
 
-    public static void startMusic() throws InterruptedException {
-        FloatControl volume;
-        while (!musicList.isEmpty()) {
-            isNewQueue = false;
-            Clip currentClip = musicList.poll();
-            musicList.add(currentClip);
-            volume = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
-            volume.setValue(MusicPlayer.volume);
-            currentClip.start();
-            Thread.sleep(5);
-            while (currentClip.isRunning() && !isNewQueue && isPlaying) {
-                Thread.sleep(10);
+    private static void startMusic() throws InterruptedException {
+        while (!musicList.isEmpty() && isRunning) {
+            try {
+                
+                ByteArrayInputStream clip = musicList.poll();
+                clip.reset();
+                musicList.add(clip);
+                player = new Player(clip);
+                player.play();
+            } catch (JavaLayerException e) {
+                e.printStackTrace();
             }
-            currentClip.stop();
-            currentClip.setMicrosecondPosition(0);
         }
     }
 
     public static void setMusicList(List<InputStream> musicStreams) {
-    try {
-        Queue<Clip> newMusicList = new LinkedList<>();
-        for (InputStream stream : musicStreams) {
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(stream);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInput);
-            newMusicList.add(clip);
+        try {
+            Queue<ByteArrayInputStream> newMusicList = new LinkedList<>();
+            for (InputStream stream : musicStreams) {
+                ByteArrayInputStream clip = new ByteArrayInputStream(stream.readAllBytes());
+                newMusicList.add(clip);
+            }
+            endPlayer();
+            musicList = newMusicList;
+            if(isRunning()) {
+                playMusic();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        musicList = newMusicList;
-        isNewQueue = true;
-    } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-        e.printStackTrace();
-    }
-}
-
-    public static void setMusicPlaying(boolean isPlaying) {
-        MusicPlayer.isPlaying = isPlaying;
-    }
-    
-
-    public static void setVolume(int volumePercentage) {
-        if (volumePercentage < 0 || volumePercentage > 100) {
-            throw new IllegalArgumentException("Volume must be between 0 and 100");
-        }
-
-        if(volumePercentage == 0) {
-            MusicPlayer.volume = -80.0f;
-            return;
-        }
-        MusicPlayer.volume = (6.0f - -40.0f) * (volumePercentage / 100.0f) + -40.0f;
     }
 
+
+    public static boolean isRunning() {
+        return player != null && !player.isComplete() && isRunning;
+    }
+
+    public static void stopMusic() {
+        if(player != null) {
+            player.close();
+        }
+        isRunning = false;
+    }
+
+    public static void endPlayer() {
+        isRunning = false;
+        stopMusic();
+        if(musicThread != null) musicThread.interrupt();
+    }
 }

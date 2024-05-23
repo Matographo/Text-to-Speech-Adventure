@@ -80,6 +80,7 @@ de/ttsa/Interfaces/Printablable.class
 de/ttsa/Enums/CodeBlockTests.class
 de/ttsa/Parents/CompilerStructMethods.class
 de/ttsa/Logic/Features/StrInit/StrInitCodeSyntax.class
+de/ttsa/Logic/Player/Functions/PlayerFunctions/MusicPlayer$1.class
 de/ttsa/Logic/Features/Set/Set.class
 de/ttsa/Logic/Features/Loop/LoopOpCodeVar.class
 de/ttsa/Logic/Features/MusicDec/MusicDecOpCodeVar.class
@@ -221,3 +222,4 @@ de/ttsa/Enums/Regex.class
 de/ttsa/Enums/Index.class
 de/ttsa/Logic/Features/DebugInput/DebugInputCodeVar.class
 de/ttsa/Container/Range.class
+de/ttsa/Interfaces/MusicPlayable.class

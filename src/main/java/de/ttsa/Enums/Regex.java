@@ -17,7 +17,7 @@ public enum Regex {
     SET_OPCODE("^([a-zA-Z][\\w]*)[\\:]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w*])([\\,]([\"][a-zA-Z][\\w]*[\"]|[a-zA-Z][\\w]*))*"), 
     ACTION_OPCODE("([a-zA-Z]\\w*\\:)((-)|([sn][a-zA-Z]\\w*)([\\,]([sn][a-zA-Z]\\w*))*)(\\:\\d*)"), 
     ACTION_CALL_OPCODE("([a-zA-Z]\\w*\\:)((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*)(\\,((-)|([a-zA-Z]\\w*)|(\"([\\w\\s])*\")|\\d*))*"), 
-    MUSIC_DEC_OPCODE("[a-zA-Z]\\w*:[\\w]+.?(wav)"),
+    MUSIC_DEC_OPCODE("[a-zA-Z]\\w*:[\\w]+.?((wav)|(mp3))"),
     MUSIC_STARTER_OPCODE("[a-zA-Z]\\w*(,[a-zA-Z]\\w*)*"),
 
     SAY_CODE("('[a-zA-Z]\\w*'|[\\w\\s!?]*)*"), 
@@ -37,7 +37,7 @@ public enum Regex {
     SET_CONTENT("\\s*((\\w*)|('[a-zA-Z]\\w*'))\\s*"),
     ACTION_CODE("[a-zA-Z]\\w*\\s*\\(((\\s*)|((\\s*((Num)|(Str))\\s+[a-zA-Z]\\w*\\s*)(,(\\s*((Num)|(Str))\\s+[a-zA-Z]\\w*\\s*))*))\\)\\s*\\{"), 
     ACTION_CALL_CODE("\\s*[a-zA-Z]\\w*\\s*(([a-zA-Z]\\w*)|(\"[a-zA-Z]\\w*\")|(\\d+))\\s*(,\\s*(([a-zA-Z]\\w*)|(\"[a-zA-Z]\\w*\")|(\\d+)))?\\s*"),
-    MUSIC_DEC_CODE("\\s*[a-zA-Z]\\w*\\s*=\\s*[\\w]+.?(wav)\\s*"),
+    MUSIC_DEC_CODE("\\s*[a-zA-Z]\\w*\\s*=\\s*[\\w]+.?((wav)|(mp3))\\s*"),
     MUSIC_STARTER_CODE("(\\s*[a-zA-Z]\\w*)*\\s*"),
 
 
