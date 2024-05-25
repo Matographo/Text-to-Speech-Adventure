@@ -1,6 +1,8 @@
 package de.ttsa.Logic.Compiler.Functions.Properties;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class GameProperty {
@@ -192,6 +194,29 @@ public class GameProperty {
     
     public void start() {
         Properties prop = new PropertyLoader(propertiesPath).load();
+
+        compilerName = prop.getProperty("compilerName");
+        compilerVersion = prop.getProperty("compilerVersion");
+        compilerPublisher = prop.getProperty("compilerPublisher");
+
+        gameTitle = prop.getProperty("gameTitle");
+        gameDescription = prop.getProperty("gameDescription");
+        gameAuthor = prop.getProperty("gameAuthor");
+        gameReleaseDate = prop.getProperty("gameReleaseDate");
+        gameLanguage = prop.getProperty("gameLanguage");
+        gameGenre = prop.getProperty("gameGenre").split(",");
+
+        playerMusic = Boolean.parseBoolean(prop.getProperty("playerMusic"));
+        playerImage = Boolean.parseBoolean(prop.getProperty("playerImage"));
+    }
+
+    public void loadInputStream() {
+        Properties prop = new Properties();
+        try {
+            prop.load(new FileInputStream(propertiesPath.getAbsolutePath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         compilerName = prop.getProperty("compilerName");
         compilerVersion = prop.getProperty("compilerVersion");

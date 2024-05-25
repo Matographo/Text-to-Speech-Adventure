@@ -21,12 +21,11 @@ import java.util.zip.ZipOutputStream;
 
 public class ZipManager {
 
-
     private static String prePath;
 
     public static List<String> readFromZip(String zipFilePath, String entryPath) throws IOException {
         try (FileInputStream fis = new FileInputStream(zipFilePath);
-             ZipInputStream zis = new ZipInputStream(fis, StandardCharsets.UTF_8)) {
+                ZipInputStream zis = new ZipInputStream(fis, StandardCharsets.UTF_8)) {
 
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
@@ -51,7 +50,6 @@ public class ZipManager {
         return lines;
     }
 
-
     public static boolean unzip(String source, String destination) {
         try {
             // Eingabestream für die Zip-Datei
@@ -65,19 +63,19 @@ public class ZipManager {
             zis.close();
             fis.close();
 
-            System.out.println("Entpacken abgeschlossen.");
-
         } catch (IOException e) {
             return false;
         }
         return true;
     }
-    
+
     public static File zip(String source, String destination, String zipName) {
         String folderMarker;
         prePath = source;
-        if(ProcessData.isWindows()) folderMarker = "\\";
-        else folderMarker = "/";
+        if (ProcessData.isWindows())
+            folderMarker = "\\";
+        else
+            folderMarker = "/";
 
         try {
             // Ausgabedatei erstellen
@@ -155,42 +153,92 @@ public class ZipManager {
             zipEntry = zis.getNextEntry();
         }
     }
-    
 
+    public static List<InputStream> getMusicFiles(String zipFilePath, List<String> musicFileNames) {
+        Map<String, byte[]> musicFilesMap = new HashMap<>();
+        try {
+            FileInputStream fis = new FileInputStream(zipFilePath);
+            ZipInputStream zis = new ZipInputStream(fis);
+            ZipEntry entry;
 
-public static List<InputStream> getMusicFiles(String zipFilePath, List<String> musicFileNames) {
-    Map<String, byte[]> musicFilesMap = new HashMap<>();
-    try {
-        FileInputStream fis = new FileInputStream(zipFilePath);
-        ZipInputStream zis = new ZipInputStream(fis);
-        ZipEntry entry;
-
-        while((entry = zis.getNextEntry()) != null){
-            String fileName = entry.getName();
-            if(!entry.isDirectory() && fileName.contains("music/")) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int count;
-                while ((count = zis.read(buffer)) != -1) {
-                    baos.write(buffer, 0, count);
+            while ((entry = zis.getNextEntry()) != null) {
+                String fileName = entry.getName();
+                if (!entry.isDirectory() && fileName.contains("music/")) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    int count;
+                    while ((count = zis.read(buffer)) != -1) {
+                        baos.write(buffer, 0, count);
+                    }
+                    musicFilesMap.put(fileName.substring(fileName.lastIndexOf("/") + 1), baos.toByteArray());
                 }
-                musicFilesMap.put(fileName.substring(fileName.lastIndexOf("/")+1), baos.toByteArray());
             }
-        }
 
-        List<InputStream> musicStreams = new ArrayList<>();
-        for (String musicFileName : musicFileNames) {
-            byte[] musicFile = musicFilesMap.get(musicFileName);
-            if (musicFile != null) {
-                musicStreams.add(new ByteArrayInputStream(musicFile));
+            List<InputStream> musicStreams = new ArrayList<>();
+            for (String musicFileName : musicFileNames) {
+                byte[] musicFile = musicFilesMap.get(musicFileName);
+                if (musicFile != null) {
+                    musicStreams.add(new ByteArrayInputStream(musicFile));
+                }
             }
+            return musicStreams;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return musicStreams;
-    } catch (IOException e) {
-        e.printStackTrace();
+        return Collections.emptyList();
     }
-    return Collections.emptyList();
-}
 
+    public static List<InputStream> getInputStreams(String zipFilePath, List<String> fileNameList) {
+        Map<String, byte[]> musicFilesMap = new HashMap<>();
+        try {
+            FileInputStream fis = new FileInputStream(zipFilePath);
+            ZipInputStream zis = new ZipInputStream(fis);
+            ZipEntry entry;
 
+            while ((entry = zis.getNextEntry()) != null) {
+                String fileName = entry.getName();
+                if (!entry.isDirectory() && fileNameList.contains(fileName.substring(fileName.lastIndexOf("/") + 1))) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    int count;
+                    while ((count = zis.read(buffer)) != -1) {
+                        baos.write(buffer, 0, count);
+                    }
+                    musicFilesMap.put(fileName.substring(fileName.lastIndexOf("/") + 1), baos.toByteArray());
+                }
+            }
+
+            List<InputStream> musicStreams = new ArrayList<>();
+            for (String musicFileName : fileNameList) {
+                byte[] musicFile = musicFilesMap.get(musicFileName);
+                if (musicFile != null) {
+                    musicStreams.add(new ByteArrayInputStream(musicFile));
+                }
+            }
+            return musicStreams;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    public static List<InputStream> getInputStreamsForHashKey(File zipFilePath) {
+        List<String> fileNameList = new ArrayList<>();
+        try {
+            FileInputStream fis = new FileInputStream(zipFilePath);
+            ZipInputStream zis = new ZipInputStream(fis);
+            ZipEntry entry;
+
+            while ((entry = zis.getNextEntry()) != null) {
+                String fileName = entry.getName();
+                if (!entry.isDirectory() && !fileName.endsWith(".key")) {
+                    fileNameList.add(fileName.substring(fileName.lastIndexOf("/") + 1));
+                }
+            }
+            return getInputStreams(zipFilePath.getAbsolutePath(), fileNameList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
 }

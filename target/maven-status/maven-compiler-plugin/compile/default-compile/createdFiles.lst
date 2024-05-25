@@ -8,6 +8,7 @@ de/ttsa/Logic/Player/Functions/PlayerFunctions/Calculator$Operationen.class
 de/ttsa/Interfaces/OpCodeVarTestable.class
 de/ttsa/Logic/Features/GameLoaderScript/GameLoaderScriptOpCodeSyntax.class
 de/ttsa/Logic/Features/Room/RoomCodeVar.class
+de/ttsa/Tools/HashKeyGenerator.class
 de/ttsa/Logic/Features/Set/SetOpCodeSyntax.class
 de/ttsa/Enums/OpCodeSyntaxTests$1.class
 de/ttsa/Logic/Player/Functions/PlayerFunctions/Calculator.class

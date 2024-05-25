@@ -12,6 +12,7 @@ import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Logic.Compiler.Functions.Mp3Converter;
 import de.ttsa.Logic.Compiler.Functions.ProjectObject;
 import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.HashKeyGenerator;
 import de.ttsa.Tools.SimpleLog;
 import de.ttsa.Tools.ZipManager;
 
@@ -46,7 +47,7 @@ public class GameBuilder {
 
 
     public boolean build() {
-
+        boolean result = false;
         File tmpFolder = createTmpFolder();   //Temporärer Ordner in dem die Compilierten Daten gespeichert werden
 
         projectObject.setProjectName(tmpFolder.getParentFile().getName());
@@ -55,15 +56,16 @@ public class GameBuilder {
         File gameFile = createGameFileInFolder(tmpFolder, "game");
 
         fillTmpGameFile(gameFile);
-        createAndFillMetaDataFile(tmpFolder);
         copyAssetFolder(tmpFolder);
         convertNonmp3Files(tmpFolder);
-
+        createAndFillMetaDataFile(tmpFolder);
+        generateHashKeyFile(tmpFolder);
         File game = makeZip(tmpFolder, projectObject.getDestinationPath(), projectObject.getProjectName());
 
         deleteAll(tmpFolder);
 
-        return renameGame(game);
+        result = renameGame(game);
+        return result;
     }
 
 
@@ -128,7 +130,9 @@ public class GameBuilder {
         if(newGame.exists()) {
             newGame.delete();
         }
-        return game.renameTo(newGame);
+        boolean result = game.renameTo(newGame);
+        setChmod(newGame);
+        return result;
     } 
 
 
@@ -180,6 +184,9 @@ public class GameBuilder {
                         Files.createDirectories(destinationPath);
                     }
                 } else {
+                    if(sourcePath.getFileName().endsWith(".mp3") || sourcePath.getFileName().endsWith(".wav")) {
+                        projectObject.getProjectProperties().setProperty("playerMusic", "true");
+                    }
                     Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
                 }
             } catch (IOException e) {
@@ -191,6 +198,7 @@ public class GameBuilder {
     private void convertNonmp3Files(File folder) {
         File musicFolder = new File(folder.getAbsolutePath(), "/music");
         if(musicFolder.exists()) {
+            log.debug("Converting Music Files to mp3");
             long start = System.currentTimeMillis();
             for (File file : musicFolder.listFiles()) {
                 if(file.isFile() && !file.getName().endsWith(".mp3")) {
@@ -198,8 +206,27 @@ public class GameBuilder {
                     file.delete();
                 }
             }
-            log.debug("Conversion took " + Formater.format(System.currentTimeMillis() - start));
+            log.debug("Music Conversion took " + Formater.format(System.currentTimeMillis() - start));
         }
     }
-    
+
+    private void setChmod(File file) {
+        //file.setExecutable(false);
+        //file.setReadable(false);
+        //file.setWritable(false);
+    }
+
+    private void generateHashKeyFile(File folder) {
+        File keyFile = new File(folder.getAbsolutePath() + "/.key");
+        String hashKey = HashKeyGenerator.generateHashKeyFromFolder(folder).toString(16);
+        try {
+            keyFile.createNewFile();
+            FileWriter writer = new FileWriter(keyFile);
+            writer.write(hashKey);
+            writer.close();
+        } catch (IOException e) {
+            log.trace(e.getStackTrace().toString());
+        }
+    }
+
 }

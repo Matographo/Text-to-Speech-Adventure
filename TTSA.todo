@@ -33,13 +33,15 @@
     ✔ Als Spiele Programmierer will ich die einstellungen von meinem Projekt einstellen können @done(24-05-19 00:31)
     ✔ Als Spiele Programmierer will ich ein neues Projekt erstellen können in dem die standard werkzeuge und Ordner enthalten sind @done(24-05-19 00:31)
     ☐ Als Spieler will ich mein Programm einfach starten können um so spiele zu starten
-    ☐ Als Spiele Entwickler und als Spieler will ich die Meta Daten von dem Compilieren spiel sehen können
+    ✔ Als Spiele Entwickler und als Spieler will ich die Meta Daten von dem Compilieren spiel sehen können @done(24-05-25 04:15)
     ☐ Als Spieler will ich mein Spiel starten können, indem ich den Namen des Spiels eingebe
     ☐ Als Spieler will ich eine auflistung aller Spiele haben die ich starten kann
     ☐ Als Spieler will ich ein Spiel starten können, indem ich die Nummer des Spiels eingebe
-    ☐ Als Spiele Entwickler will ich jede einzelne stufe meines Spiels hervorrufen (Test, Compile/Build)
-    ☐ Als Spiele Entwickler will ich mein Spiel compilieren und direkt starten können durch einen befehl
-    ☐ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden
+    ✔ Als Spiele Entwickler will ich jede einzelne stufe meines Spiels hervorrufen (Test, Compile/Build) @done(24-05-25 04:16)
+    ✔ Als Spiele Entwickler will ich mein Spiel compilieren und direkt starten können durch einen befehl @done(24-05-25 03:38)
+    ✔ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden @done(24-05-25 02:54)
+    ☐ Als Spiele Entwickler will ich die Musik im Skript nicht mit endung hinschreiben müssen
+    ☐ Als Spiele Entwickler will ich die Musik auch so angebenkönnen, dass sonderzeichen und leerzeichen in der File vorhanden sein können
 
 
 ☐ Logging
@@ -48,10 +50,10 @@
     
 
 ✔ FileChooser im Homedir starten lassen @done(24-05-12 03:10)
-☐ Extra Folder für die Testspiele
+✔ Extra Folder für die Testspiele @done(24-05-25 04:15)
 ☐ Liste an Directorys in denen spiele gespeichert sein könnten
-☐ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen
-☐ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden
+✔ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen @done(24-05-25 03:38)
+✔ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden @done(24-05-25 03:39)
 
 ☐ Einzelne Unit tests für die Regexe
     ☐ Action

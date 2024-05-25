@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.OpCodeBlockTests;
-import de.ttsa.Enums.Seperators;
 import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Enums.OpCodeSyntaxTests;
 import de.ttsa.Enums.OpCodeVarTests;

@@ -212,4 +212,20 @@ public class ProjectConfigerator {
             System.out.println("  - " + genre);
         }
     }
+    
+    public void showGameProperties(String path) {
+        gameProperty = new GameProperty(new File(path), true);
+        System.out.println("Title: " + gameProperty.getGameTitle());
+        System.out.println("Description: " + gameProperty.getGameDescription());
+        System.out.println("Author: " + gameProperty.getGameAuthor());
+        System.out.println("Language: " + gameProperty.getGameLanguage());
+        System.out.println("Genre: ");
+        if(gameProperty.getGameGenre().length == 0 || gameProperty.getGameGenre() == null || gameProperty.getGameGenre()[0].isBlank()) {
+            System.out.println("  - No Genre");
+            return;
+        }
+        for (String genre : gameProperty.getGameGenre()) {
+            System.out.println("  - " + genre);
+        }
+    }
 }

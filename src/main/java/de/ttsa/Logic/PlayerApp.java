@@ -12,9 +12,9 @@ public class PlayerApp {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        args = new String[1];
+/*         args = new String[1];
         args[0] = "/home/leodora/Tester/Tester.ta";
-        new PlayerApp().start(args[0]);
+  */       new PlayerApp().start(args[0]);
     }
 
 

@@ -9,6 +9,7 @@ import de.ttsa.Logic.Compiler.StartCompiler;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Player.PlayerLogic.Player;
 import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.HashKeyGenerator;
 import de.ttsa.Tools.SimpleLog;
 
 
@@ -20,7 +21,7 @@ public class CompilerApp
 
 
     private static final String COMPILED_FILE_EXTENSION = "ta";
-    private static final String COMPILER_COMMAND = "tacc";
+    private static final String COMPILER_COMMAND = "tac";
     private static final String COMPILER_VERSION = "0.0.1";
     public static SimpleLog log = SimpleLog.getLogger("Compiler");
 
@@ -31,7 +32,7 @@ public class CompilerApp
 
 
     public static void main( String[] args ) {
-        args = new String[] {"-c", "/home/leodora/Tester"};
+        args = new String[] {"-cp", "/home/leodora/Tester"};
         new CompilerApp().start(args);
     }
     
@@ -42,6 +43,7 @@ public class CompilerApp
 
 
     public void start(String[] args) {
+        configurateLog(Level.INFO);
         int     length        = args.length;
         boolean noArgs        = length == 0;
         boolean help          = length == 1 && (args[0].equals("-help") || args[0].equals("-h"));
@@ -52,6 +54,7 @@ public class CompilerApp
         boolean hideExecute   = length == 2 && (args[0].equals("-x") && !args[1].endsWith("." + COMPILED_FILE_EXTENSION));
         boolean configProject = length == 2 && (args[0].equals("-config") || args[0].equals("-cfg"));
         boolean properties    = length == 2 && (args[0].equals("-properties") || args[0].equals("-p"));
+        boolean testOrigin    = length == 2 && (args[0].equals("-testOrigin") || args[0].equals("-to"));
         boolean compilePlay   = length == 2 && (args[0].equals("-compilePlay") || args[0].equals("-cp"));
 
 
@@ -63,6 +66,7 @@ public class CompilerApp
         else if (properties)    showProperties(args[1]);
         else if (test)          test(args[1]);
         else if (compilePlay)   compileAndPlay(args);
+        else if (testOrigin)    testOrigin(args[1]);
         else if (compile || hideExecute) {
             if(args.length == 2) compile(args[1], "", hideExecute);
             else compile(args[1], args[2], hideExecute);
@@ -182,7 +186,11 @@ public class CompilerApp
     
     private void showProperties(String arg) {
         try {
-            new ProjectConfigerator().showProperties(getRealPath(arg));
+            if(arg.endsWith(COMPILED_FILE_EXTENSION)) {
+                new ProjectConfigerator().showGameProperties(getRealPath(arg));
+            } else {
+                new ProjectConfigerator().showProperties(getRealPath(arg));
+            }
         } catch (Exception e) {
             log.error("Something went wrong with the configuration.");
             log.trace(e.getMessage());
@@ -252,6 +260,22 @@ public class CompilerApp
     private void configurateLog(Level logLevel) {
         log.setLevel(logLevel);
         log.setLevel(Level.ALL);
+    }
+
+    private void testOrigin(String file) {
+        try {
+            long startTime = System.currentTimeMillis();
+            log.debug("Start testing...");
+            if(HashKeyGenerator.testHashKey(new File(file))) {
+                System.out.println("Is Origin");
+            } else {
+                System.out.println("Is Not Origin! Please report this to the developer.");
+            }
+            log.debug("Testing took: " + Formater.format(System.currentTimeMillis() - startTime));
+        } catch (Exception e) {
+            log.error("An error occured while testing the file.");
+            log.trace(e.getMessage());
+        }
     }
 
 }

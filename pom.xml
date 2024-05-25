@@ -60,6 +60,11 @@
     <artifactId>commons-io</artifactId>
     <version>2.8.0</version>
 </dependency>
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.1</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -86,7 +91,7 @@
                 <archive>
                   <manifest>
                     <addClasspath>true</addClasspath>
-                    <mainClass>de.ttsa.ConsoleGame.ConsoleGame</mainClass>
+                    <mainClass>de.ttsa.Frontend.Terminal.CompilerApp</mainClass>
                   </manifest>
                 </archive>
                 <descriptorRefs>
