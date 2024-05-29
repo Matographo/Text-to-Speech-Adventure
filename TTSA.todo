@@ -28,7 +28,6 @@
     ✔ Room @done(24-05-12 01:46)
     ✔ Set @done(24-05-12 01:59)
 
-
 ☐ Runnable Terminal Programm
     ✔ Als Spiele Programmierer will ich die einstellungen von meinem Projekt einstellen können @done(24-05-19 00:31)
     ✔ Als Spiele Programmierer will ich ein neues Projekt erstellen können in dem die standard werkzeuge und Ordner enthalten sind @done(24-05-19 00:31)
@@ -40,8 +39,8 @@
     ✔ Als Spiele Entwickler will ich jede einzelne stufe meines Spiels hervorrufen (Test, Compile/Build) @done(24-05-25 04:16)
     ✔ Als Spiele Entwickler will ich mein Spiel compilieren und direkt starten können durch einen befehl @done(24-05-25 03:38)
     ✔ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden @done(24-05-25 02:54)
-    ☐ Als Spiele Entwickler will ich die Musik im Skript nicht mit endung hinschreiben müssen
-    ☐ Als Spiele Entwickler will ich die Musik auch so angebenkönnen, dass sonderzeichen und leerzeichen in der File vorhanden sein können
+    ✔ Als Spiele Entwickler will ich die Musik im Skript nicht mit endung hinschreiben müssen @done(24-05-25 23:10)
+    ✔ Als Spiele Entwickler will ich die Musik auch so angebenkönnen, dass sonderzeichen und leerzeichen in der File vorhanden sein können @done(24-05-29 02:43)
 
 
 ☐ Logging
@@ -54,6 +53,7 @@
 ☐ Liste an Directorys in denen spiele gespeichert sein könnten
 ✔ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen @done(24-05-25 03:38)
 ✔ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden @done(24-05-25 03:39)
+☐ Fixen dass die Room Variablen irgendwo schon gespeichert werden und so kein fehler kommt wenn man in Room1 mit Jump Room2 aufruft
 
 ☐ Einzelne Unit tests für die Regexe
     ☐ Action

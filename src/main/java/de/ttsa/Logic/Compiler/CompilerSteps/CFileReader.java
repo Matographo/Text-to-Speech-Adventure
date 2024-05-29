@@ -18,7 +18,6 @@ public class CFileReader {
 
 
 
-    private final String COMPILED_FILE_EXTENSION = "ta";
     private final String CODE_FILE_EXTENSION = "tac";
     private File data;
     private SimpleLog log = CompilerApp.log;
@@ -40,7 +39,7 @@ public class CFileReader {
 
 
     public ArrayList<ArrayList<String>> read() {
-        if(isFile(data)) {
+        if(isFile(data) && data.getName().endsWith("." + CODE_FILE_EXTENSION)) {
             ArrayList<ArrayList<String>> readed = new ArrayList<ArrayList<String>>();
             readed.add(readFile(data));
             return readed;
@@ -51,29 +50,27 @@ public class CFileReader {
 
     
     private ArrayList<ArrayList<String>> readFolder(File folder) {
-        ArrayList<ArrayList<String>> readed = new ArrayList<ArrayList<String>>();
-        if(folder.listFiles() != null) {
-            File[] files = folder.listFiles();
+        ArrayList<ArrayList<String>> readed = new ArrayList<>();
+        File[] files = folder.listFiles();
+        if(files != null) {
             for(File file : files) {
-                if(isFile(file)) {
-                    if(!file.getName().endsWith("." + CODE_FILE_EXTENSION)) continue;
+                if(isFile(file) && file.getName().endsWith("." + CODE_FILE_EXTENSION)) {
                     readed.add(readFile(file));
                 } else {
                     readed.addAll(readFolder(file));
                 }
             }
             return readed;
-        } else {
-            return null;
         }
+        return readed;
     }
     
     
     private ArrayList<String> readFile(File file) {
-        if(!file.getAbsolutePath().endsWith("." + CODE_FILE_EXTENSION)) return new ArrayList<String>();
+        if(!file.getAbsolutePath().endsWith("." + CODE_FILE_EXTENSION)) return new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            ArrayList<String> readed = new ArrayList<String>();
+            ArrayList<String> readed = new ArrayList<>();
             String line = "";
             while((line = reader.readLine()) != null) {
                 line = line.strip();

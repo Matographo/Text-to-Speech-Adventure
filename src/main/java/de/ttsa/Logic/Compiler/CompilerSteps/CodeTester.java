@@ -1,7 +1,6 @@
 package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import de.ttsa.Container.OpCodeVar;
 import de.ttsa.Enums.CodeBlockTests;
@@ -10,12 +9,15 @@ import de.ttsa.Enums.CodeVarTests;
 import de.ttsa.Enums.CompilerSyntax;
 import de.ttsa.Enums.Regex;
 import de.ttsa.Enums.Seperators;
+import de.ttsa.Frontend.Terminal.CompilerApp;
 import de.ttsa.Interfaces.CodeBlockTestable;
 import de.ttsa.Interfaces.CodeSyntaxTestable;
 import de.ttsa.Interfaces.CodeVarTestable;
 import de.ttsa.Logic.Features.Set.SetCodeBlock;
 import de.ttsa.Logic.Features.Set.SetCodeSyntax;
 import de.ttsa.Logic.Features.Set.SetCodeVar;
+import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.SimpleLog;
 
 
 /**
@@ -33,6 +35,7 @@ public class CodeTester {
     private CodeSyntaxTests codeSyntaxTest = CodeSyntaxTests.NONE;
     private CodeVarTests codeVarTests = CodeVarTests.NONE;
     private CodeBlockTests codeBlockTests = CodeBlockTests.NONE;
+    private SimpleLog log = CompilerApp.log;
     OpCodeVar opCodeVar = new OpCodeVar();
 
 
@@ -61,12 +64,20 @@ public class CodeTester {
 
     private boolean startTest(ArrayList<String> file) {
         boolean testResult = true;
-
+        long startTime;
 
         try {
+            startTime = System.currentTimeMillis();
             testResult = testSyntax(new ArrayList<String>(file))    && testResult;
+            log.debug("Code Testing Syntax: " + Formater.format(System.currentTimeMillis() - startTime));
+
+            startTime = System.currentTimeMillis();
             testResult = testVariables(new ArrayList<String>(file)) && testResult;
+            log.debug("Code Testing Variables: " + Formater.format(System.currentTimeMillis() - startTime));
+
+            startTime = System.currentTimeMillis();
             testResult = testBlocks(new ArrayList<String>(file))    && testResult;
+            log.debug("Code Testing Blocks: " + Formater.format(System.currentTimeMillis() - startTime));
 
         } catch(Exception e) {
             return false;

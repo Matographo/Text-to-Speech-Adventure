@@ -190,6 +190,7 @@ de/ttsa/Enums/OpCodeBlockTests$1.class
 de/ttsa/Frontend/GUI/StartMenu.class
 de/ttsa/Logic/Features/StrInit/StrInit.class
 de/ttsa/Logic/Features/MusicDec/MusicDecCodeVar.class
+de/ttsa/Logic/Compiler/CompilerSteps/Compiler$1.class
 de/ttsa/Logic/Features/If/IfCompiler.class
 de/ttsa/Logic/PlayerApp.class
 de/ttsa/Logic/Compiler/Functions/ProjectBuilder.class

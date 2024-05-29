@@ -72,9 +72,11 @@ public class GameBuilder {
     private boolean fillTmpGameFile(File gameFile) {
         try {
             FileWriter writer = new FileWriter(gameFile);
+            StringBuilder builder = new StringBuilder();
             for (String line : projectObject.getGameContent()) {
-                writer.write(line + "\n");
+                builder.append(line + "\n");
             }
+            writer.write(builder.toString());
             writer.close();
             return true;
         } catch (IOException e) {
@@ -153,9 +155,11 @@ public class GameBuilder {
         try {
             metaData.createNewFile();
             FileWriter writer = new FileWriter(metaData);
+            StringBuilder builder = new StringBuilder();
             for (String key : projectObject.getProjectProperties().stringPropertyNames()) {
-                writer.write(key + "=" + projectObject.getProjectProperties().getProperty(key) + "\n");
+                builder.append(key + "=" + projectObject.getProjectProperties().getProperty(key) + "\n");
             }
+            writer.write(builder.toString());
             writer.close();
         } catch (IOException e) {
             log.trace(e.getStackTrace().toString());

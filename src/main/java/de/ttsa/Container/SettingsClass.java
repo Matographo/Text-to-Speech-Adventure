@@ -34,11 +34,12 @@ public class SettingsClass {
     }
 
     public void setStartDir(String startDir) {
-        if(startDir.isEmpty()) {
+        if (startDir == null || startDir.isEmpty()) {
             this.startDir = System.getProperty("user.home");
+        } else {
+            this.startDir = startDir;
         }
-        this.startDir = startDir;
-        properties.setProperty("startDir", startDir);
+        properties.setProperty("startDir", this.startDir);
         try {
             properties.store(new FileOutputStream(AppStart.settingsPath), "");
         } catch (Exception e) {

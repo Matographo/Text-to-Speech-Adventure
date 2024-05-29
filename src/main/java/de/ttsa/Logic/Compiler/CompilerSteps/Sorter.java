@@ -1,7 +1,9 @@
 package de.ttsa.Logic.Compiler.CompilerSteps;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import de.ttsa.Enums.CompilerSyntax;
 
@@ -22,10 +24,10 @@ public class Sorter {
 
     public Sorter(ArrayList<String> fileContent) {
         this.fileContent = new LinkedList<>(fileContent);
-        setContent = new ArrayList<String>();
-        roomContent = new ArrayList<String>();
-        varContent = new ArrayList<String>();
-        actionContent = new ArrayList<String>();
+        setContent       = new ArrayList<String>();
+        roomContent      = new ArrayList<String>();
+        varContent       = new ArrayList<String>();
+        actionContent    = new ArrayList<String>();
     }
 
     // ---------------------------------------------- Methods
@@ -54,30 +56,13 @@ public class Sorter {
         String line = "";
         ArrayList<String> block = new ArrayList<String>();
 
-        while (!fileContent.isEmpty()) {
-            line = fileContent.remove(0).strip();
+        Iterator<String> iterator = fileContent.iterator();
+        while (iterator.hasNext()) {
+            line = iterator.next().strip();
             block.add(line);
-            if (line.startsWith(CompilerSyntax.NUM_DEC.toString()) &&
-                    !line.startsWith(CompilerSyntax.NUM_INIT.toString()) ||
-                    line.startsWith(CompilerSyntax.STR_DEC.toString()) &&
-                    !line.startsWith(CompilerSyntax.STR_INIT.toString()) ||
-                    line.startsWith(CompilerSyntax.MUSIC_DEC.toString()) &&
-                    !line.startsWith(CompilerSyntax.MUSIC_STARTER.toString())){
-                varContent.add(line);
-                block.remove(line);
-            } else if (line.startsWith(CompilerSyntax.SET.toString())) {
-                isSet = true;
-                isAction = false;
-                isRoom = false;
-            } else if (line.startsWith(CompilerSyntax.ACTION.toString())) {
-                isSet = false;
-                isAction = true;
-                isRoom = false;
-            } else if (line.startsWith(CompilerSyntax.ROOM.toString())) {
-                isSet = false;
-                isAction = false;
-                isRoom = true;
-            } else if (line.equals(CompilerSyntax.BLOCK_END.toString())) {
+            iterator.remove();
+            
+            if (line.equals(CompilerSyntax.BLOCK_END.toString())) {
                 if (isSet) {
                     setContent.addAll(block);
                 } else if (isAction) {
@@ -85,9 +70,25 @@ public class Sorter {
                 } else if (isRoom) {
                     roomContent.addAll(block);
                 }
-                block = new ArrayList<String>();
+                block.clear();
+                isSet = false;
+                isAction = false;
+                isRoom = false;
+            } else if (line.startsWith(CompilerSyntax.ROOM.toString())) {
+                isRoom = true;
+            } else if (line.startsWith(CompilerSyntax.ACTION.toString())) {
+                isAction = true;
+            } else if (line.startsWith(CompilerSyntax.SET.toString())) {
+                isSet = true;
+            } else if (line.startsWith(CompilerSyntax.NUM_DEC.toString()) &&
+                    !line.startsWith(CompilerSyntax.NUM_INIT.toString()) ||
+                    line.startsWith(CompilerSyntax.STR_DEC.toString()) &&
+                    !line.startsWith(CompilerSyntax.STR_INIT.toString()) ||
+                    line.startsWith(CompilerSyntax.MUSIC_DEC.toString()) &&
+                    !line.startsWith(CompilerSyntax.MUSIC_STARTER.toString())){
+                varContent.add(line);
+                block.remove(block.size()-1);
             }
-        }
+       }
     }
-
 }

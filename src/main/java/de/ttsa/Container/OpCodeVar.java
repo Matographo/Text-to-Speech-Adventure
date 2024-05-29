@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class OpCodeVar {
 
@@ -12,16 +14,16 @@ public class OpCodeVar {
 
 
 
-    private HashSet<String> roomNames;
-    private HashSet<String> varNames;
-    private HashSet<String> numNames;
-    private HashSet<String> strNames;
-    private HashSet<String> actionNames;
-    private HashSet<String> setNames;
-    private HashSet<String> musicNames;
+    private Set<String> roomNames;
+    private Set<String> varNames;
+    private Set<String> numNames;
+    private Set<String> strNames;
+    private Set<String> actionNames;
+    private Set<String> setNames;
+    private Set<String> musicNames;
 
-    private HashMap<String, String> actionArgs = new HashMap<>();
-    private HashMap<String, List<String>> actionArgsCode = new HashMap<>();
+    private Map<String, String> actionArgs = new HashMap<>();
+    private Map<String, List<String>> actionArgsCode = new HashMap<>();
 
 
 
@@ -30,13 +32,13 @@ public class OpCodeVar {
 
 
     public OpCodeVar() {
-        roomNames   = new HashSet<String>();
-        varNames    = new HashSet<String>();
-        numNames    = new HashSet<String>();
-        strNames    = new HashSet<String>();
-        actionNames = new HashSet<String>();
-        setNames    = new HashSet<String>();
-        musicNames  = new HashSet<String>();
+        roomNames   = new HashSet<>();
+        varNames    = new HashSet<>();
+        numNames    = new HashSet<>();
+        strNames    = new HashSet<>();
+        actionNames = new HashSet<>();
+        setNames    = new HashSet<>();
+        musicNames  = new HashSet<>();
     }
 
     public OpCodeVar(HashSet<String> roomNames, HashSet<String> varNames, HashSet<String> numNames, HashSet<String> strNames, HashSet<String> actionNames, HashSet<String> setNames, HashSet<String> musicNames) {

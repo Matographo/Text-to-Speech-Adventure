@@ -13,7 +13,7 @@ public class Merger {
 
 
 
-    ArrayList<ArrayList<String>> fileContent;
+    private ArrayList<ArrayList<String>> fileContent;
     private SimpleLog log = CompilerApp.log;
 
 

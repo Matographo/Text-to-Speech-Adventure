@@ -13,7 +13,10 @@ public class Compiler {
     // ---------------------------------------------- Attributes ---------------- //
 
     public static ArrayList<ArrayList<String>> fileContent;
-    public static HashMap<String, HashSet<String>> variables;
+    public static HashMap<String, HashSet<String>> variables = new HashMap<String, HashSet<String>>() {{
+        put("STRING", new HashSet<>());
+        put("NUMBER", new HashSet<>());
+    }};
     private CompilerTests compiler = CompilerTests.NONE;
 
     // ---------------------------------------------- Constructor
@@ -21,11 +24,6 @@ public class Compiler {
 
     public Compiler(ArrayList<ArrayList<String>> fileContent) {
         this.fileContent = fileContent;
-        variables = new HashMap<>();
-        HashSet<String> strVar = new HashSet<>();
-        HashSet<String> numVar = new HashSet<>();
-        variables.put("STRING", strVar);
-        variables.put("NUMBER", numVar);
     }
 
     // -------------------------------------------- Start Method
