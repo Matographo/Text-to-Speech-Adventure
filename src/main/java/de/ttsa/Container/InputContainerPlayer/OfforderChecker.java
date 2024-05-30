@@ -11,7 +11,7 @@ import de.ttsa.Parents.StringMethods;
 
 public class OfforderChecker extends StringMethods {
     
-    private List<Couple<WordChecker, Range>> wordorders;
+    private List<WordChecker> wordorders;
     private boolean isNot;
     private boolean onlyMode;
     private Range occurance;
@@ -35,7 +35,7 @@ public class OfforderChecker extends StringMethods {
             toCheck = toCheck.substring(toCheck.indexOf(varType)+1);
             wordOrder.append(toCheck.substring(0, toCheck.indexOf(")")+1));
             toCheck = toCheck.substring(toCheck.indexOf(")")+1);
-            wordorders.add(new Couple<WordChecker, Range>(new WordChecker(wordOrder.toString()), occurance));
+            wordorders.add(new WordChecker(wordOrder.toString()));
             wordOrder = new StringBuilder();
         }
     }
@@ -43,15 +43,15 @@ public class OfforderChecker extends StringMethods {
     public boolean check(List<String> words) {
         boolean result = true;
         int last = words.size();
-        List<Couple<WordChecker, Range>> wordorders = new ArrayList<>(this.wordorders);
-        Couple<WordChecker, Range> test;
+        List<WordChecker> wordorders = new ArrayList<>(this.wordorders);
+        WordChecker test;
 
         for(int i=0; i<wordorders.size(); i++) {
             test = wordorders.get(i);
             for(int j=0; j<words.size(); j++) {
-                if(test.getSecond().isInRange()) {
-                    if(test.getFirst().check(words.get(j))) {
-                        test.getSecond().decrease();
+                if(test.getRange().doesNotReachEnd()) {
+                    if(test.check(words.get(j))) {
+                        test.getRange().increase();
                         words.remove(j);
                         if(j<last) {
                             last = j;
@@ -61,7 +61,7 @@ public class OfforderChecker extends StringMethods {
                     break;
                 }
             }
-            if(test.getSecond().isInRange()) {
+            if(!test.getRange().isInRange()) {
                 result = false;
             }
 

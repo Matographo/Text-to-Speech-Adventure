@@ -3,9 +3,12 @@ package de.ttsa.Logic;
 import java.io.IOException;
 
 import de.ttsa.Logic.Player.PlayerLogic.Player;
+import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.SimpleLog;
 
 public class PlayerApp {
     
+    public static SimpleLog log = SimpleLog.getLogger("Player");
 
 // -------------------------- Main Method --------------------------
 

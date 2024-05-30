@@ -9,6 +9,7 @@ import de.ttsa.Enums.Index;
 import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.Printablable;
 import de.ttsa.Interfaces.Scriptable;
+import de.ttsa.Logic.PlayerApp;
 import de.ttsa.Logic.Features.Action.Action;
 import de.ttsa.Logic.Features.ActionCall.ActionCall;
 import de.ttsa.Logic.Features.DebugInput.DebugInput;
@@ -28,6 +29,8 @@ import de.ttsa.Logic.Features.Script.Script;
 import de.ttsa.Logic.Features.Set.Set;
 import de.ttsa.Logic.Features.StrInit.StrInit;
 import de.ttsa.Logic.Player.Datatypes.*;
+import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.SimpleLog;
 
 class GameScriptBuilder {
 
@@ -42,6 +45,7 @@ class GameScriptBuilder {
     private Input input = new Input();
 
     private Index opCodeIndex = Index.NONE;
+    private SimpleLog log = PlayerApp.log;
 
 
 
@@ -65,7 +69,10 @@ class GameScriptBuilder {
      * Load the game
      */
     public void load() {
+        log.info("Start loading game data");
+        long startTime = System.currentTimeMillis();
         loadGame(game);
+        log.debug("Game data loaded in " + Formater.format(System.currentTimeMillis() - startTime));
     }
 
     /**

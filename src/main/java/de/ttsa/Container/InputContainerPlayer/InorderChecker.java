@@ -3,7 +3,6 @@ package de.ttsa.Container.InputContainerPlayer;
 import java.util.List;
 import java.util.ArrayList;
 
-import de.ttsa.Container.Couple;
 import de.ttsa.Container.Range;
 import de.ttsa.Enums.InputChecker;
 import de.ttsa.Parents.StringMethods;
@@ -39,7 +38,13 @@ public class InorderChecker extends StringMethods {
         }
     }
 
-    public boolean check() {
-        return true;
+    public boolean check(List<String> input) {
+        boolean result = true;
+        
+        for(OfforderChecker toCheck : offorders) {
+            result &= toCheck.check(input);
+        }
+        
+        return result && !isNot;
     }
 }

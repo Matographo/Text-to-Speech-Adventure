@@ -1,8 +1,9 @@
 package de.ttsa.Logic.Player.PlayerLogic;
 
-import java.io.FileInputStream;
-
+import de.ttsa.Logic.PlayerApp;
 import de.ttsa.Logic.Player.Functions.PlayerFunctions.MusicPlayer;
+import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.SimpleLog;
 
 public class Player {
 
@@ -14,6 +15,7 @@ public class Player {
     private GameBuilder gameBuilder;
 
     private static final String START_ROOM = "START";
+    private SimpleLog log = PlayerApp.log;
 
 
 
@@ -58,11 +60,13 @@ public class Player {
         GameManager.running  = true;
         GameManager.nextRoom = START_ROOM;
 
-
+        log.debug("Starting Game...");        
+        long startTime = System.currentTimeMillis();
         while(GameManager.nextRoom != null && GameManager.running) {
             GameManager.getNextRoom().play();
         }
         MusicPlayer.endPlayer();
+        log.debug("Game finished in " + Formater.format(System.currentTimeMillis() - startTime));
     }
 
 

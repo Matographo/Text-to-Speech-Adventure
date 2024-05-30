@@ -47,12 +47,16 @@ public class Range {
         this.end = 1;
     }
 
-    public void decrease() {
-        current--;
+    public void increase() {
+        current++;
     }
 
     public boolean isInRange() {
-        return current > 0;
+        return current <= end && current >= begin;
+    }
+
+    public boolean doesNotReachEnd() {
+        return current < end;
     }
 
     @Override

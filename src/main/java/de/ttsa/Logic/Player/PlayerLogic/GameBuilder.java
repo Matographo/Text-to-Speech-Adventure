@@ -1,5 +1,9 @@
 package de.ttsa.Logic.Player.PlayerLogic;
 
+import de.ttsa.Logic.PlayerApp;
+import de.ttsa.Tools.Formater;
+import de.ttsa.Tools.SimpleLog;
+
 class GameBuilder {
 
 
@@ -8,6 +12,7 @@ class GameBuilder {
 
 
     private GameScriptBuilder gameScriptBuilder;
+    private SimpleLog log = PlayerApp.log;
     
 
 
@@ -20,7 +25,10 @@ class GameBuilder {
      */
     public GameBuilder(String gamePath) {
         GameLoader gameLoader  = new GameLoader(gamePath);
+        log.info("Start reading game data");
+        long startTime = System.currentTimeMillis();
         this.gameScriptBuilder = new GameScriptBuilder(gameLoader.loadGameData());
+        log.debug("Game data read in " + Formater.format(System.currentTimeMillis() - startTime));
     }
 
 

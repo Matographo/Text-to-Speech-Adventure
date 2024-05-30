@@ -3,9 +3,11 @@ package de.ttsa.Container.InputContainerPlayer;
 import java.util.List;
 
 import de.ttsa.Enums.InputChecker;
+import de.ttsa.Logic.Player.PlayerLogic.GameManager;
 import de.ttsa.Parents.StringMethods;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class OrderChecker extends StringMethods {
     
@@ -26,8 +28,10 @@ public class OrderChecker extends StringMethods {
 
     public boolean check() {
         boolean result = true;
+        List<String> input = new ArrayList<>();
+        input.addAll(Arrays.asList(GameManager.input.split(" ")));
         for(InorderChecker toCheck:inorders) {
-            result &= toCheck.check();
+            result &= toCheck.check(input);
         }
         return result;
     }

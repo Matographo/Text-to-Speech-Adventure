@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.ttsa.Container.Couple;
 import de.ttsa.Enums.Seperators;
 import de.ttsa.Interfaces.Scriptable;
 import de.ttsa.Logic.Player.Functions.PlayerFunctions.MusicPlayer;
@@ -33,11 +34,16 @@ public class MusicStarter implements Scriptable {
         return true;
     }
 
-    private List<InputStream> getMusicFiles() {
+    private List<Couple<String, InputStream>> getMusicFiles() {
         List<String> musicList = new ArrayList<>();
         for(String musicFile : this.musicList) {
             musicList.add(GameManager.music.get(musicFile));
         }
-        return ZipManager.getMusicFiles(GameManager.gameFile.getAbsolutePath(), musicList);
+        List<Couple<String, InputStream>> musicListResult = new ArrayList<>();
+        List<InputStream> musicListStream = ZipManager.getMusicFiles(GameManager.gameFile.getAbsolutePath(), musicList);
+        for(int i = 0; i < musicList.size(); i++) {
+            musicListResult.add(new Couple<>(musicList.get(i), musicListStream.get(i)));
+        }
+        return musicListResult;
     }
 }

@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import de.ttsa.Frontend.Terminal.Dialogs.ProjectConfigerator;
 import de.ttsa.Frontend.Terminal.Dialogs.ProjectCreator;
+import de.ttsa.Logic.PlayerApp;
 import de.ttsa.Logic.Compiler.StartCompiler;
 import de.ttsa.Logic.Compiler.CompilerSteps.OpCodeTest;
 import de.ttsa.Logic.Player.PlayerLogic.Player;
@@ -260,6 +261,8 @@ public class CompilerApp
     private void configurateLog(Level logLevel) {
         log.setLevel(logLevel);
         log.setLevel(Level.ALL);
+        PlayerApp.log.setLevel(logLevel);
+        PlayerApp.log.setLevel(Level.ALL);
     }
 
     private void testOrigin(String file) {
