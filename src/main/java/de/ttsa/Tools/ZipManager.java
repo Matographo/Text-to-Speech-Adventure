@@ -183,9 +183,8 @@ public class ZipManager {
             }
             return musicStreams;
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("Error while reading music files from zip file", e);
         }
-        return Collections.emptyList();
     }
 
     public static List<InputStream> getInputStreams(String zipFilePath, List<String> fileNameList) {

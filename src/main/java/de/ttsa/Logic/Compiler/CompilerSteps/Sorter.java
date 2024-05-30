@@ -53,6 +53,7 @@ public class Sorter {
         boolean isAction = false;
         boolean isRoom = false;
         String line = "";
+        int blockDepth = 0;
         ArrayList<String> block = new ArrayList<String>();
 
         Iterator<String> iterator = fileContent.iterator();
@@ -62,6 +63,10 @@ public class Sorter {
             iterator.remove();
             
             if (line.equals(CompilerSyntax.BLOCK_END.toString())) {
+                blockDepth--;
+                if(blockDepth > 0) {
+                    continue;
+                }
                 if (isSet) {
                     setContent.addAll(block);
                 } else if (isAction) {
@@ -75,10 +80,13 @@ public class Sorter {
                 isRoom = false;
             } else if (line.startsWith(CompilerSyntax.ROOM.toString())) {
                 isRoom = true;
+                blockDepth++;
             } else if (line.startsWith(CompilerSyntax.ACTION.toString())) {
                 isAction = true;
+                blockDepth++;
             } else if (line.startsWith(CompilerSyntax.SET.toString())) {
                 isSet = true;
+                blockDepth++;
             } else if (line.startsWith(CompilerSyntax.NUM_DEC.toString()) &&
                     !line.startsWith(CompilerSyntax.NUM_INIT.toString()) ||
                     line.startsWith(CompilerSyntax.STR_DEC.toString()) &&
@@ -87,6 +95,11 @@ public class Sorter {
                     !line.startsWith(CompilerSyntax.MUSIC_STARTER.toString())){
                 varContent.add(line);
                 block.remove(block.size()-1);
+            } else if (line.endsWith(CompilerSyntax.BLOCK_START.toString())) {
+                if(line.startsWith(CompilerSyntax.BLOCK_END.toString())) {
+                    blockDepth--;
+                }
+                blockDepth++;
             }
        }
     }

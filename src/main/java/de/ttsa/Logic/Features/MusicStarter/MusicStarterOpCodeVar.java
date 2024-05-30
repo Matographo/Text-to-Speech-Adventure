@@ -10,6 +10,9 @@ public class MusicStarterOpCodeVar  implements OpCodeVarTestable {
     public boolean test(String toTest, OpCodeVar opCodeVar) {
         boolean result = true;
         String[] args = toTest.split(Seperators.MUSIC_STARTER.getSeperator());
+        if(args.length == 1) {
+            if(args[0].equals("Stop") || args[0].equals("Next")) return true;
+        }
         for(String arg : args) {
             if(!opCodeVar.isMusicName(arg)) return false;
         }

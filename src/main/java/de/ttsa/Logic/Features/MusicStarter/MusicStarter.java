@@ -25,8 +25,10 @@ public class MusicStarter implements Scriptable {
     @Override
     public boolean run() {
         try {
-            MusicPlayer.setMusicList(getMusicFiles());
-            MusicPlayer.playMusic();
+            if(checkMode()) {
+                MusicPlayer.setMusicList(getMusicFiles());
+                MusicPlayer.playMusic();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -46,4 +48,20 @@ public class MusicStarter implements Scriptable {
         }
         return musicListResult;
     }
+    
+
+    private boolean checkMode() {
+        if(musicList.size() == 1) {
+            String music = musicList.get(0);
+            if(music.equals("Stop")) {
+                MusicPlayer.stopMusic();
+                return false;
+            } else if(music.equals("Next")) {
+                MusicPlayer.playNext();
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }

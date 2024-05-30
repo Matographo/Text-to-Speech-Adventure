@@ -102,6 +102,12 @@ public class MusicPlayer {
         if(musicThread != null) musicThread.interrupt();
     }
 
+    public static void playNext() {
+        if(player != null) {
+            player.close();
+        }
+    }
+
     public static boolean checkQueue(List<String> list) {
         if(musicNames == null) {
             return false;
