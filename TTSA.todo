@@ -53,7 +53,7 @@
 ☐ Liste an Directorys in denen spiele gespeichert sein könnten
 ✔ So umprogrammieren dass man nicht :: sondern nur die Hex zahlen @done(24-05-25 03:38)
 ✔ Machen, dass die Lib auch beim compilieren in die Game File geschrieben werden @done(24-05-25 03:39)
-☐ Fixen dass die Room Variablen irgendwo schon gespeichert werden und so kein fehler kommt wenn man in Room1 mit Jump Room2 aufruft
+✔ Fixen dass die Room Variablen irgendwo schon gespeichert werden und so kein fehler kommt wenn man in Room1 mit Jump Room2 aufruft @done(24-05-30 16:44)
 
 ☐ Einzelne Unit tests für die Regexe
     ☐ Action

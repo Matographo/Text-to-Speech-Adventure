@@ -9,7 +9,8 @@ public class RoomCodeVar implements CodeVarTestable {
     @Override
     public boolean test(String toTest, OpCodeVar opCodeVar) {
         toTest = toTest.substring(0, toTest.indexOf(CompilerSyntax.BLOCK_START.toString())).strip();
-        return opCodeVar.addRoomName(toTest);
+        //return opCodeVar.addRoomName(toTest);
+        return opCodeVar.isRoomName(toTest);
     }
     
 }

@@ -13,5 +13,5 @@ public class ActionCodeSyntax implements CodeSyntaxTestable {
     public boolean testCode(String code) {
         return pattern.matcher(code).matches();
     }
-    
+
 }

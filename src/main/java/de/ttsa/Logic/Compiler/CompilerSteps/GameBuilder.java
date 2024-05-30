@@ -172,7 +172,9 @@ public class GameBuilder {
         if(assetFolder.exists()) {
             newAssetFolder.mkdir();
             try {
+                long start = System.currentTimeMillis();
                 copyFolder(assetFolder.toPath(), newAssetFolder.toPath());
+                log.debug("Copying Asset Folder took " + Formater.format(System.currentTimeMillis() - start));
             } catch (IOException e) {
                 log.trace(e.getStackTrace().toString());
             }

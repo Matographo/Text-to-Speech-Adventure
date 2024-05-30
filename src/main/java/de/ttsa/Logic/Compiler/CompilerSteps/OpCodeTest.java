@@ -28,6 +28,7 @@ public class OpCodeTest {
     private OpCodeVarTests opCodeVarTests;
     private OpCodeBlockTests opCodeBlockTests;
     private SimpleLog log = CompilerApp.log;
+    public static OpCodeVar opCodeVar = new OpCodeVar();
 
     // ---------------------------------------------- Constructor
     // ----------------------------------------------- //
@@ -202,7 +203,7 @@ public class OpCodeTest {
         String command = "";
         String args = "";
 
-        OpCodeVar opCodeVar = new OpCodeVar();
+        OpCodeVar opCodeVar = OpCodeTest.opCodeVar;
         OpCodeVarTestable test;
 
         for (int i = 0; i < content.size(); i++) {

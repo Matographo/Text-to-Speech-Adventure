@@ -10,11 +10,7 @@ public class RoomOpCodeVar implements OpCodeVarTestable {
     public boolean test(String toTest, OpCodeVar opCodeVar) {
         String[] arg = toTest.split(Seperators.ROOM.getSeperator());
 
-        if(opCodeVar.isRoomName(arg[0])) return false;
-
-        opCodeVar.addRoomName(arg[0]);
-
-        return true;
+        return opCodeVar.isRoomName(arg[0]);
     }
     
 }

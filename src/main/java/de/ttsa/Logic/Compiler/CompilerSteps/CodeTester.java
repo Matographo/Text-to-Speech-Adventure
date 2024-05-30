@@ -36,7 +36,8 @@ public class CodeTester {
     private CodeVarTests codeVarTests = CodeVarTests.NONE;
     private CodeBlockTests codeBlockTests = CodeBlockTests.NONE;
     private SimpleLog log = CompilerApp.log;
-    OpCodeVar opCodeVar = new OpCodeVar();
+    private OpCodeVar opCodeVarLocal = new OpCodeVar();
+    public static OpCodeVar OpCodeVar = new OpCodeVar();
 
 
 
@@ -132,6 +133,7 @@ public class CodeTester {
         String args        = "";
 
         CodeVarTestable test;
+        opCodeVarLocal = CodeTester.OpCodeVar;
 
         for(int i = 0; i < content.size(); i++) {
             if(content.get(i).strip().equals(CompilerSyntax.BLOCK_END.toString())) {
@@ -151,7 +153,7 @@ public class CodeTester {
             test = codeVarTests.getTest(command);
             if(test instanceof SetCodeVar) isSet = true;
 
-            testResult &= test.test(args, opCodeVar);
+            testResult &= test.test(args, opCodeVarLocal);
         }
 
         return testResult;
